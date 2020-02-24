@@ -15,6 +15,9 @@ namespace Player
         public LayerMask enemyLayer;
         public int attackCount = 0;
 
+        [HideInInspector] public bool canAttack;
+        
+
     
     	void Awake()
 	    {
@@ -30,22 +33,13 @@ namespace Player
         {
             currentDirection = PlayerManager.Instance.playerMovement.currentDirection;            
 
-            if (Input.GetKeyDown(KeyCode.Space) && attackCount == 0)
+            if (Input.GetButtonDown("Attack"))
             {
-                Attack1();
-            }
-
-            else if (Input.GetKeyDown(KeyCode.Space) && attackCount == 1)
-            {
-                Attack2();
-            }
-
-             else if (Input.GetKeyDown(KeyCode.Space) && attackCount == 2)
-            {
-                Attack3();
+                StartCoroutine(PlayerManager.Instance.playerMovement.AttackDash());
             }
         }
     
+        //Trouver la position d'attaque pour le premier coup
         void GetAttackPos1()
         {
             if (currentDirection.x == 1)
@@ -68,6 +62,8 @@ namespace Player
                 currentAttackPos = attackPos[3];
             }
         }
+
+        //Trouver la position d'attaque pour le second coup
         void GetAttackPos2()
         {
             if (currentDirection.x == 1)
@@ -90,6 +86,8 @@ namespace Player
                 currentAttackPos = attackPos[5];
             }
         }
+
+        //Trouver la position d'attaque pour le troisième coup
         void GetAttackPos3()
         {
             if (currentDirection.x == 1)
@@ -113,28 +111,49 @@ namespace Player
             }
         }
 
+        //Choisi le type d'attaque en fonction du placement dans la séquence de coups
+        public void AttackManager()
+        {
+            if (attackCount == 0)
+            {
+                Attack1();
+            }
 
+            else if (attackCount == 1)
+            {
+                Attack2();
+            }
+
+            else if (attackCount == 2)
+            {
+                Attack3();
+            }
+        }
+
+        //Premier coup de la série d'attaques
         void Attack1()
         {
-            GetAttackPos1();
+            GetAttackPos1();            
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);            
             attackCount += 1;
         }
 
+        //Second coup de la série d'attaques
         void Attack2()
         {
             GetAttackPos2();
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);            
             attackCount += 1;
         }
 
+        //Troisième (et dernier) coup de la série d'attaques
         void Attack3()
         {
             GetAttackPos3();
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);            
             attackCount = 0;
         }
 

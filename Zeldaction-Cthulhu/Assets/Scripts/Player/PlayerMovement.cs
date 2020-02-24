@@ -10,6 +10,8 @@ namespace Player
         [Range(0, 100)]
         public int speed;
 
+        
+
         Rigidbody2D playerRb;
 
         float vertical;
@@ -17,6 +19,18 @@ namespace Player
         Vector2 direction;
 
         [HideInInspector] public Vector2 currentDirection;
+
+
+        public bool canMove = true;
+
+        [Range(0, 2)]
+        public float dashTime;
+        [Range(0, 2)]
+        public float dashDelay;
+        [Range(0, 10)]
+        public float dashSpeed;
+
+        public AnimationCurve dashCurve;
 
         void Awake()
         {
@@ -33,9 +47,17 @@ namespace Player
             vertical = Input.GetAxisRaw("Vertical");
             horizontal = Input.GetAxisRaw("Horizontal");
 
-            PlayerMove();
-            GetDirection();
-      
+            if(canMove == true)
+            {         
+                PlayerMove();
+                GetDirection();
+            }            
+
+            if(canMove == false)
+            {
+                playerRb.velocity = direction * 0 * Time.fixedDeltaTime;
+            }
+
         }
 
         //Fonction qui gère le déplacement en 8 directions du personnage
@@ -66,6 +88,7 @@ namespace Player
             {
                 horizontal = 0;
             }
+
             direction = new Vector2(horizontal, vertical).normalized;
             playerRb.velocity = direction * speed * Time.fixedDeltaTime;
         }
@@ -91,6 +114,29 @@ namespace Player
 
         }
 
+
+        public IEnumerator AttackDash()
+        {
+            float timer = 0.0f;
+
+            Vector2 aim = currentDirection;
+            canMove = false;            
+
+            yield return new WaitForSeconds(dashDelay);
+
+            PlayerManager.Instance.playerAttack.AttackManager();
+
+            while (timer < dashTime)
+            {
+                playerRb.velocity = aim.normalized * (dashSpeed * dashCurve.Evaluate(timer / dashTime));
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            playerRb.velocity = Vector2.zero;
+            canMove = true;
+        }
 
     }
 }
