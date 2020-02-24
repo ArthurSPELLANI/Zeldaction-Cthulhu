@@ -15,7 +15,7 @@ namespace Player
         public LayerMask enemyLayer;
         public int attackCount = 0;
 
-        [HideInInspector] public bool canAttack;
+        [HideInInspector] public bool canAttack = false;
         
 
     
@@ -33,7 +33,7 @@ namespace Player
         {
             currentDirection = PlayerManager.Instance.playerMovement.currentDirection;            
 
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Attack") && canAttack == false)
             {
                 StartCoroutine(PlayerManager.Instance.playerMovement.AttackDash());
             }

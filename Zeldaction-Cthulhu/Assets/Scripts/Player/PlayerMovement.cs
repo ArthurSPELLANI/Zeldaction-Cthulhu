@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Management;
 
 namespace Player
 {
@@ -20,6 +19,7 @@ namespace Player
 
         [HideInInspector] public Vector2 currentDirection;
 
+        Animator animator;
 
         public bool canMove = true;
 
@@ -35,11 +35,12 @@ namespace Player
         void Awake()
         {
             playerRb = GetComponentInParent<Rigidbody2D>();
+            
         }
 
         void Start()
         {
-
+            animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
         }
 
         void Update()
@@ -112,6 +113,9 @@ namespace Player
                 currentDirection = new Vector2(0, -1);
             }
 
+            animator.SetFloat("Horizontal", currentDirection.x);
+            animator.SetFloat("Vertical", currentDirection.y);
+
         }
 
 
@@ -120,7 +124,8 @@ namespace Player
             float timer = 0.0f;
 
             Vector2 aim = currentDirection;
-            canMove = false;            
+            canMove = false;
+            PlayerManager.Instance.playerAttack.canAttack = true;
 
             yield return new WaitForSeconds(dashDelay);
 
@@ -136,6 +141,7 @@ namespace Player
 
             playerRb.velocity = Vector2.zero;
             canMove = true;
+            PlayerManager.Instance.playerAttack.canAttack = false;
         }
 
     }
