@@ -33,6 +33,7 @@ namespace Player
         {
             currentDirection = PlayerManager.Instance.playerMovement.currentDirection;            
 
+            //Si le joueur appuie sur le bouton d'attaque, lance une coroutine dans le script PlayerMovement
             if (Input.GetButtonDown("Attack") && canAttack == false)
             {
                 StartCoroutine(PlayerManager.Instance.playerMovement.AttackDash());
