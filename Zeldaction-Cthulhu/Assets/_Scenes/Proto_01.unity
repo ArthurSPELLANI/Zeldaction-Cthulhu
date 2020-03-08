@@ -207,7 +207,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 20
+  field of view: 17
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -240,6 +240,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &468531478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6720052304002587719, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+    type: 3}
+  m_PrefabInstance: {fileID: 898860435102834390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &477132422
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +284,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 2022237132}
   m_Lens:
-    FieldOfView: 20
+    FieldOfView: 17
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -631,6 +637,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092813296547495034, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+        type: 3}
+      propertyPath: shadowObject
+      value: 
+      objectReference: {fileID: 468531478}
+    - target: {fileID: 9092813296547495034, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+        type: 3}
+      propertyPath: shadowSpeed
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d7809d19a52f974cb8a758d823c9ba3, type: 3}

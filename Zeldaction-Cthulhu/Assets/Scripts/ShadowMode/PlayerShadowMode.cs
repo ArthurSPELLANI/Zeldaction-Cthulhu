@@ -65,6 +65,12 @@ namespace Player
             {
                 ShadowMove();
             }
+
+            if(isShadowActivated == true && Input.GetButtonDown("Recall"))
+            {
+                RecallPlayer();
+            }
+
         }
     
         private void ShadowActivation()
@@ -113,6 +119,14 @@ namespace Player
 
             direction = new Vector2(horizontal, vertical).normalized;
             shadowRb.velocity = direction * shadowSpeed * Time.fixedDeltaTime;
+        }
+
+        private void RecallPlayer()
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            player.transform.position = shadowObject.transform.position;
+            isShadowActivated = false;
+            shadowObject.SetActive(false);
         }
     
     }
