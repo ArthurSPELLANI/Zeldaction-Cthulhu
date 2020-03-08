@@ -43,6 +43,16 @@ namespace Player
             animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
         }
 
+        private void FixedUpdate()
+        {
+            //Mouvement du joueur + store de la direction
+            if (canMove == true && PlayerManager.Instance.playerShadowMode.isShadowActivated == false)
+            {
+                PlayerMove();
+                GetDirection();
+            }
+        }
+
         void Update()
         {
 
@@ -51,12 +61,7 @@ namespace Player
             horizontal = Input.GetAxisRaw("Horizontal");
 
 
-            //Mouvement du joueur + store de la direction
-            if(canMove == true && PlayerManager.Instance.playerShadowMode.isShadowActivated == false)
-            {         
-                PlayerMove();
-                GetDirection();
-            }            
+                        
 
             //Reset de la vitesse de déplacement si le joueur ne bouge plus
             if(canMove == false)

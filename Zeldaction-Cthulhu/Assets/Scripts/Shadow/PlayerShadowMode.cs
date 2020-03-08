@@ -7,8 +7,11 @@ namespace Player
     public class PlayerShadowMode : MonoBehaviour
     {
 
-        [Range(0, 100)]
+        [Range(0, 4000)]
         public int shadowSpeed;
+
+        [Range(0, 1)]
+        public float slowTime;
 
         Rigidbody2D shadowRb;
 
@@ -22,16 +25,26 @@ namespace Player
         float horizontal;
         Vector2 direction;
 
+        float timeRef;
+
         void Awake()
 	    {
-	    
+            timeRef = Time.fixedDeltaTime;
 	    }
     
         void Start()
         {
             
         }
-    
+
+        private void FixedUpdate()
+        {
+            if (isShadowActivated == true)
+            {
+                ShadowMove();
+            }
+        }
+
         void Update()
         {
             shadowInput = Input.GetAxisRaw("Shadow");
@@ -58,15 +71,9 @@ namespace Player
             else if(shadowInput == 0 && isAxisInUse == true)
             {
                 isAxisInUse = false;
-            }            
-
-
-            if(isShadowActivated == true)
-            {
-                ShadowMove();
             }
 
-            if(isShadowActivated == true && Input.GetButtonDown("Recall"))
+            if (isShadowActivated == true && Input.GetButtonDown("Recall"))
             {
                 RecallPlayer();
             }
@@ -75,18 +82,25 @@ namespace Player
     
         private void ShadowActivation()
         {
+            if (isShadowActivated == false)
+            {
+                SlowItDown();
+            }
+
             isShadowActivated = true;
             PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0,0);
             player = GameObject.FindGameObjectWithTag("Player");
             shadowObject.SetActive(true);
             shadowObject.transform.position = player.transform.position;
-            shadowRb = GetComponentInChildren<Rigidbody2D>();
+            shadowRb = GetComponentInChildren<Rigidbody2D>();                    
         }
 
         private void ShadowExit()
         {
             isShadowActivated = false;
             shadowObject.SetActive(false);
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = timeRef;
         }
 
         private void ShadowMove()
@@ -127,6 +141,14 @@ namespace Player
             player.transform.position = shadowObject.transform.position;
             isShadowActivated = false;
             shadowObject.SetActive(false);
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = timeRef;
+        }
+
+        public void SlowItDown()
+        {
+            Time.timeScale = slowTime;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
         }
     
     }
