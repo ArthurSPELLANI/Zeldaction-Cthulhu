@@ -11,6 +11,7 @@ namespace Player
         public PlayerMovement playerMovement;
         public PlayerAttack playerAttack;
         public PlayerShadowMode playerShadowMode;
+        public PlayerStats playerStats;
 
         private void Awake()
         {
@@ -22,6 +23,7 @@ namespace Player
             playerAttack = GetComponentInChildren<PlayerAttack>();
             playerMovement = GetComponentInChildren<PlayerMovement>();
             playerShadowMode = GetComponentInChildren<PlayerShadowMode>();
+            playerStats = GetComponentInChildren<PlayerStats>();
         }
     
         void Update()

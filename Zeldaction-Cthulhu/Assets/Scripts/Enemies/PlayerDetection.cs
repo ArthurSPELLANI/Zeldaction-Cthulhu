@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Enemy
 {
 	public class PlayerDetection : MonoBehaviour
 	{
@@ -23,8 +23,8 @@ namespace Game
 			
 		}
 
-
-        private void OnTriggerEnter2D(Collider2D other)
+		// If the player is in the FieldOfView Collider, trigger Enemy's Behavior
+		private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {

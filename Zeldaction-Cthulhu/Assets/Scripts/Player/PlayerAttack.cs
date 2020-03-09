@@ -15,7 +15,7 @@ namespace Player
         public float attackRange;
         public LayerMask enemyLayer;
         public int attackCount = 0;
-        public int damage = 1;
+        public int playerDamage = 1;
 
         [HideInInspector] public bool canAttack = false;
         
@@ -155,7 +155,7 @@ namespace Player
             InflictDamage(hitEnemies);
 
             attackCount += 1;
-            damage++;
+            playerDamage++;
         }
 
         //Troisième (et dernier) coup de la série d'attaques
@@ -168,7 +168,7 @@ namespace Player
             InflictDamage(hitEnemies);
 
             attackCount = 0;
-            damage--;
+            playerDamage--;
         }
 
         private void OnDrawGizmosSelected()
@@ -191,7 +191,7 @@ namespace Player
                 {
                     if (hitEnemies[i].gameObject.tag == "Enemy")
                     {
-                        hitEnemies[i].GetComponent<EnemyBasicBehavior>().TakeDamage(damage);
+                        hitEnemies[i].GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
                     }
                 }
             }

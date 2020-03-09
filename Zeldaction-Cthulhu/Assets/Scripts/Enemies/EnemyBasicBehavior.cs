@@ -6,15 +6,16 @@ namespace Enemy
 {
 	public class EnemyBasicBehavior : MonoBehaviour
 	{
-        public int maxHealth;
-        private int currentHealth;
+        public int enemyMaxHealth;
+        private int enemyCurrentHealth;
+        public int enemyDamage;
+
         [Range(0, 100)]
         public int speed;
-        public Collider2D fieldOfView;
 
 		void Awake()
 		{
-            currentHealth = maxHealth;
+            enemyCurrentHealth = enemyMaxHealth;
 		}
 
 		void Start()
@@ -32,12 +33,12 @@ namespace Enemy
         /// <summary>
         /// Reduce enemy health by player attack damage
         /// </summary>
-        /// <param name="damage"></param>
-        public void TakeDamage(int damage)
+        /// <param name="playerDamage"></param>
+        public void TakeDamage(int playerDamage)
         {
-            currentHealth -= damage;
+            enemyCurrentHealth -= playerDamage;
 
-            if(currentHealth <= 0)
+            if(enemyCurrentHealth <= 0)
             {
                 Destroy(gameObject);
             }
