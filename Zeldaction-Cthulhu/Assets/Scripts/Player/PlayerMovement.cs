@@ -11,7 +11,7 @@ namespace Player
 
         
 
-        Rigidbody2D playerRb;
+        public Rigidbody2D playerRb;
 
         float vertical;
         float horizontal;
@@ -43,17 +43,27 @@ namespace Player
             animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
         }
 
+        private void FixedUpdate()
+        {
+            //Mouvement du joueur + store de la direction
+            if (canMove == true && PlayerManager.Instance.playerShadowMode.isShadowActivated == false)
+            {
+                PlayerMove();
+                GetDirection();
+            }
+        }
+
         void Update()
         {
+
+            //Store des valeur d'input du joystick gauche
             vertical = Input.GetAxisRaw("Vertical");
             horizontal = Input.GetAxisRaw("Horizontal");
 
-            if(canMove == true)
-            {         
-                PlayerMove();
-                GetDirection();
-            }            
 
+                        
+
+            //Reset de la vitesse de déplacement si le joueur ne bouge plus
             if(canMove == false)
             {
                 playerRb.velocity = direction * 0 * Time.fixedDeltaTime;
@@ -94,6 +104,7 @@ namespace Player
             playerRb.velocity = direction * speed * Time.fixedDeltaTime;
         }
 
+        //Fonction qui store la dernière direction du joueur + Direction de l'animator
         private void GetDirection()
         {
             if(direction.x == 1 && direction.y == 0)
@@ -118,7 +129,7 @@ namespace Player
 
         }
 
-
+        //Coroutine lancé après l'input d'attaque, lance la donction d'attaque dans le script PlayerAttack
         public IEnumerator AttackDash()
         {
             float timer = 0.0f;
