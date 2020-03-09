@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enemy;
 
 namespace Player
 {
@@ -14,6 +15,7 @@ namespace Player
         public float attackRange;
         public LayerMask enemyLayer;
         public int attackCount = 0;
+        public int damage = 1;
 
         [HideInInspector] public bool canAttack = false;
         
@@ -136,7 +138,10 @@ namespace Player
         {
             GetAttackPos1();            
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);            
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
+
+            InflictDamage(hitEnemies);
+
             attackCount += 1;
         }
 
@@ -145,8 +150,12 @@ namespace Player
         {
             GetAttackPos2();
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);            
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
+
+            InflictDamage(hitEnemies);
+
             attackCount += 1;
+            damage++;
         }
 
         //Troisième (et dernier) coup de la série d'attaques
@@ -154,8 +163,12 @@ namespace Player
         {
             GetAttackPos3();
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);            
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
+
+            InflictDamage(hitEnemies);
+
             attackCount = 0;
+            damage--;
         }
 
         private void OnDrawGizmosSelected()
@@ -165,6 +178,26 @@ namespace Player
 
             Gizmos.DrawWireSphere(currentAttackPos.position, attackRange);
         }
+
+        /// <summary>
+        /// Select the "damage script" to apply to all gameobject within player attack range depending on the gameobject tag
+        /// </summary>
+        /// <param name="hitEnemies"></param>
+        void InflictDamage(Collider2D[] hitEnemies)
+        {
+            if (hitEnemies.Length > 0)
+            {
+                for (int i = 0; i < hitEnemies.Length; i++)
+                {
+                    if (hitEnemies[i].gameObject.tag == "Enemy")
+                    {
+                        hitEnemies[i].GetComponent<EnemyBasicBehavior>().TakeDamage(damage);
+                    }
+                }
+            }
+        }
+
+     
 
     }
 }
