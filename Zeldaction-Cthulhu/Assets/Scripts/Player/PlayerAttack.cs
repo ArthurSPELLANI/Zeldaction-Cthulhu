@@ -31,13 +31,16 @@ namespace Player
     
         void Update()
         {
-            currentDirection = PlayerManager.Instance.playerMovement.currentDirection;            
+            currentDirection = PlayerManager.Instance.playerMovement.currentDirection;
 
-            //Si le joueur appuie sur le bouton d'attaque, lance une coroutine dans le script PlayerMovement
-            if (Input.GetButtonDown("Attack") && canAttack == false)
+            if (PlayerManager.Instance.playerShoot.isShooting == false)
             {
-                StartCoroutine(PlayerManager.Instance.playerMovement.AttackDash());
-            }
+                //Si le joueur appuie sur le bouton d'attaque, lance une coroutine dans le script PlayerMovement
+                if (Input.GetButtonDown("Attack") && canAttack == false)
+                {
+                    StartCoroutine(PlayerManager.Instance.playerMovement.AttackDash());
+                }
+            }            
         }
     
         //Trouver la position d'attaque pour le premier coup
