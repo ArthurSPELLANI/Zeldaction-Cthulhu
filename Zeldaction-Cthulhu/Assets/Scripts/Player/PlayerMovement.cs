@@ -34,8 +34,7 @@ namespace Player
 
         void Awake()
         {
-            playerRb = GetComponentInParent<Rigidbody2D>();
-            
+            playerRb = GetComponentInParent<Rigidbody2D>();            
         }
 
         void Start()
@@ -45,6 +44,7 @@ namespace Player
 
         private void FixedUpdate()
         {
+         
             //Mouvement du joueur + store de la direction
             if (canMove == true && PlayerManager.Instance.playerShadowMode.isShadowActivated == false)
             {
@@ -100,8 +100,21 @@ namespace Player
                 horizontal = 0;
             }
 
+            //Set de la vecocity en fonction de la direction du joueur
             direction = new Vector2(horizontal, vertical).normalized;
             playerRb.velocity = direction * speed * Time.fixedDeltaTime;
+
+
+            //Set de l'animator si le joueur est en mouvement
+            if(horizontal != 0 || vertical != 0)
+            {
+                animator.SetBool("IsWalking", true);
+            }
+            else if (horizontal == 0 && vertical == 0)
+            {
+                animator.SetBool("IsWalking", false);
+            }
+
         }
 
         //Fonction qui store la dernière direction du joueur + Direction de l'animator
@@ -124,12 +137,13 @@ namespace Player
                 currentDirection = new Vector2(0, -1);
             }
 
+            //Set de la direction de l'animator
             animator.SetFloat("Horizontal", currentDirection.x);
             animator.SetFloat("Vertical", currentDirection.y);
 
         }
 
-        //Coroutine lancé après l'input d'attaque, lance la donction d'attaque dans le script PlayerAttack
+        //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack
         public IEnumerator AttackDash()
         {
             float timer = 0.0f;

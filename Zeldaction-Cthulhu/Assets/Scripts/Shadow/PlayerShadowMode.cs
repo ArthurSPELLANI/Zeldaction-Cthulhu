@@ -7,7 +7,7 @@ namespace Player
     public class PlayerShadowMode : MonoBehaviour
     {
 
-        [Range(0, 4000)]
+        [Range(3000, 90000)]
         public int shadowSpeed;
 
         [Range(0, 1)]
