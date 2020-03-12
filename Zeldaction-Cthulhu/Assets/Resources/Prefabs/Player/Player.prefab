@@ -218,7 +218,7 @@ SpriteRenderer:
   m_Size: {x: 0.28, y: 0.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8161175935792746069
@@ -249,6 +249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8161175936064798188}
+  - component: {fileID: 2475124979230434154}
   m_Layer: 8
   m_Name: Behaviour
   m_TagString: Untagged
@@ -272,6 +273,19 @@ Transform:
   m_Father: {fileID: 8161175935499278978}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2475124979230434154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8161175936064798191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa490166f556394ab710ab20c8698bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMaxHealth: 6
 --- !u!1 &8161175936190198469
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +560,7 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   playerAttack: {fileID: 0}
   playerShadowMode: {fileID: 0}
+  playerStats: {fileID: 0}
   playerShoot: {fileID: 0}
 --- !u!1 &8161175937050003437
 GameObject:
@@ -643,6 +658,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   attackCount: 0
+  playerDamage: 1
   canAttack: 0
 --- !u!114 &8161175937153250675
 MonoBehaviour:
