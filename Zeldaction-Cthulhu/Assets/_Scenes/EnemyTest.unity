@@ -468,12 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &539731694 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1208080194341214737, guid: 0e98901ae9906e24c885318e831a9b5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6925617987755804650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &651301144
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,41 +542,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6925617986595675213, guid: 0e98901ae9906e24c885318e831a9b5e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925617986844400587, guid: 0e98901ae9906e24c885318e831a9b5e,
-        type: 3}
-      propertyPath: enemyGraphics
-      value: 
-      objectReference: {fileID: 539731694}
-    - target: {fileID: 6925617987008899480, guid: 0e98901ae9906e24c885318e831a9b5e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925617987327384438, guid: 0e98901ae9906e24c885318e831a9b5e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925617987411317721, guid: 0e98901ae9906e24c885318e831a9b5e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925617987411317726, guid: 0e98901ae9906e24c885318e831a9b5e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925617987783528014, guid: 0e98901ae9906e24c885318e831a9b5e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7100483376807138398, guid: 0e98901ae9906e24c885318e831a9b5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -596,7 +555,7 @@ PrefabInstance:
     - target: {fileID: 7100483376807138398, guid: 0e98901ae9906e24c885318e831a9b5e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.855484
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7100483376807138398, guid: 0e98901ae9906e24c885318e831a9b5e,
         type: 3}
