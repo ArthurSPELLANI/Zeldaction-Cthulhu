@@ -18,6 +18,7 @@ namespace Enemy
 
 		private Rigidbody2D wolfRb;
 		public GameObject enemyPrefab;
+		public GameObject enemyGraphics;
 
 		public float startAttackRange;
 		public float timeBeforeTargetLock;
@@ -70,12 +71,12 @@ namespace Enemy
 		/// <returns></returns>
 		IEnumerator WolfAttack()
 		{
-			enemyPrefab.GetComponent<SpriteRenderer>().material.color = Color.red;
+			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
 
 			yield return new WaitForSeconds(timeBeforeTargetLock);
 
 			dashTarget = target;
-			dashDirection = new Vector2(dashTarget.position.x - transform.position.x, dashTarget.position.y - transform.position.y);
+			dashDirection = new Vector2(dashTarget.position.x - transform.position.x, dashTarget.position.y - transform.position.y).normalized;
 
 			yield return new WaitForSeconds(timeBeforeWolfAttack);
 
@@ -85,7 +86,7 @@ namespace Enemy
 			yield return new WaitForSeconds(recoilDuration);
 
 			GetComponent<BoxCollider2D>().isTrigger = false;
-			enemyPrefab.GetComponent<SpriteRenderer>().material.color = Color.white;
+			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.white;
 			canMove = true;
 		}
 
