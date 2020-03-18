@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: b015688fc9ae0954dab6f351eeca7e8d
+guid: b9599c85e4cd14f48ac3139a24e59ad6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7517258439105665638
-    second: sheet_shadowIdleSide_0
+      213: 3560538311990042884
+    second: SheetPJ_hitDown3_0
   - first:
-      213: -1847971709130040805
-    second: sheet_shadowIdleSide_1
+      213: 2128719803867376661
+    second: SheetPJ_hitDown3_1
   - first:
-      213: 2438073984354994808
-    second: sheet_shadowIdleSide_2
+      213: -5275866898860470962
+    second: SheetPJ_hitDown3_2
   - first:
-      213: 5303591873444148343
-    second: sheet_shadowIdleSide_3
+      213: 7701813338361736833
+    second: SheetPJ_hitDown3_3
   - first:
-      213: 3742751478880680611
-    second: sheet_shadowIdleSide_4
+      213: 3732129049621650030
+    second: SheetPJ_hitDown3_4
+  - first:
+      213: -5337720313512787603
+    second: SheetPJ_hitDown3_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -98,6 +101,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -137,106 +152,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sheet_shadowIdleSide_0
+      name: SheetPJ_hitDown3_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 13
-        width: 19
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 73
+        height: 124
+      alignment: 9
+      pivot: {x: 0.48599443, y: 0.6855178}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66a53b3e8baa25860800000000000000
-      internalID: 7517258439105665638
+      spriteID: 401e55feab2996130800000000000000
+      internalID: 3560538311990042884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_shadowIdleSide_1
+      name: SheetPJ_hitDown3_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 13
-        width: 19
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 73
+        y: 0
+        width: 73
+        height: 124
+      alignment: 9
+      pivot: {x: 0.48599452, y: 0.66696596}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1a1552858faa56e0800000000000000
-      internalID: -1847971709130040805
+      spriteID: 51caad7126bba8d10800000000000000
+      internalID: 2128719803867376661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_shadowIdleSide_2
+      name: SheetPJ_hitDown3_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 13
-        width: 19
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 146
+        y: 0
+        width: 73
+        height: 124
+      alignment: 9
+      pivot: {x: 0.47198883, y: 0.67521125}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ac99d0f57c5d120800000000000000
-      internalID: 2438073984354994808
+      spriteID: e4d0e2b120b58c6b0800000000000000
+      internalID: -5275866898860470962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_shadowIdleSide_3
+      name: SheetPJ_hitDown3_3
       rect:
         serializedVersion: 2
-        x: 94
-        y: 13
-        width: 19
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 219
+        y: 0
+        width: 73
+        height: 124
+      alignment: 9
+      pivot: {x: 0.47198883, y: 0.68757904}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 774794295b42a9940800000000000000
-      internalID: 5303591873444148343
+      spriteID: 18eaa6fdc6652ea60800000000000000
+      internalID: 7701813338361736833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_shadowIdleSide_4
+      name: SheetPJ_hitDown3_4
       rect:
         serializedVersion: 2
-        x: 124
-        y: 13
-        width: 19
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 292
+        y: 0
+        width: 73
+        height: 124
+      alignment: 9
+      pivot: {x: 0.46848747, y: 0.68757904}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3aa304dd3ace0f330800000000000000
-      internalID: 3742751478880680611
+      spriteID: e6a5d92d89f2bc330800000000000000
+      internalID: 3732129049621650030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SheetPJ_hitDown3_5
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 0
+        width: 73
+        height: 124
+      alignment: 9
+      pivot: {x: 0.49299726, y: 0.70406955}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d610fa2c7ab9ce5b0800000000000000
+      internalID: -5337720313512787603
       vertices: []
       indices: 
       edges: []

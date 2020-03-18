@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 928e9bbd9dee44c479aba4175e85cb43
+guid: 939b20198cd275f43b316143f9382cdc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3716774833868167719
-    second: sheet_shadowIdleDown_0
+      213: 4876499264061275532
+    second: SheetShadow_idleBack_0
   - first:
-      213: 6452507976964676508
-    second: sheet_shadowIdleDown_1
+      213: -638030130280276459
+    second: SheetShadow_idleBack_1
   - first:
-      213: -3064324071246344561
-    second: sheet_shadowIdleDown_2
+      213: 666754242972092208
+    second: SheetShadow_idleBack_2
   - first:
-      213: 1836133113857326547
-    second: sheet_shadowIdleDown_3
+      213: 486588955979324361
+    second: SheetShadow_idleBack_3
   - first:
-      213: -1677262986517159294
-    second: sheet_shadowIdleDown_4
+      213: 3876377517659182586
+    second: SheetShadow_idleBack_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -98,6 +98,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -137,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sheet_shadowIdleDown_0
+      name: SheetShadow_idleBack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 13
-        width: 26
-        height: 57
+        y: 0
+        width: 25
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72ad2d2e403a49330800000000000000
-      internalID: 3716774833868167719
+      spriteID: c8d73dd6e3ecca340800000000000000
+      internalID: 4876499264061275532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_shadowIdleDown_1
+      name: SheetShadow_idleBack_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 13
-        width: 26
-        height: 57
+        x: 25
+        y: 0
+        width: 25
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9b9a5571d9eb8950800000000000000
-      internalID: 6452507976964676508
+      spriteID: 51ed5a81af24527f0800000000000000
+      internalID: -638030130280276459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_shadowIdleDown_2
+      name: SheetShadow_idleBack_2
       rect:
         serializedVersion: 2
-        x: 60
-        y: 13
-        width: 26
-        height: 57
+        x: 50
+        y: 0
+        width: 25
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8ecea02e755975d0800000000000000
-      internalID: -3064324071246344561
+      spriteID: 03706dc8379c04900800000000000000
+      internalID: 666754242972092208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_shadowIdleDown_3
+      name: SheetShadow_idleBack_3
       rect:
         serializedVersion: 2
-        x: 90
-        y: 13
-        width: 26
-        height: 57
+        x: 75
+        y: 0
+        width: 25
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dd3ccbb6514b7910800000000000000
-      internalID: 1836133113857326547
+      spriteID: 9cb96c0d316b0c600800000000000000
+      internalID: 486588955979324361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_shadowIdleDown_4
+      name: SheetShadow_idleBack_4
       rect:
         serializedVersion: 2
-        x: 120
-        y: 13
-        width: 26
-        height: 57
+        x: 100
+        y: 0
+        width: 25
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 282ebb5433a29b8e0800000000000000
-      internalID: -1677262986517159294
+      spriteID: af5d26b70d8abc530800000000000000
+      internalID: 3876377517659182586
       vertices: []
       indices: 
       edges: []

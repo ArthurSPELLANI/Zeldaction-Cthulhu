@@ -144,13 +144,15 @@ namespace Player
         }
 
         //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack
-        public IEnumerator AttackDash()
+        public IEnumerator AttackDashShort()
         {
             float timer = 0.0f;
 
             Vector2 aim = currentDirection;
             canMove = false;
-            PlayerManager.Instance.playerAttack.canAttack = true;
+            PlayerManager.Instance.playerAttack.cantAttack = true;
+            PlayerManager.Instance.playerAttack.AnimatorManager();
+
 
             yield return new WaitForSeconds(dashDelay);
 
@@ -164,10 +166,41 @@ namespace Player
                 yield return null;
             }
 
+            yield return new WaitForSeconds(0.2f);
+
+            PlayerManager.Instance.playerAttack.cantAttack = false;
             playerRb.velocity = Vector2.zero;
-            canMove = true;
-            PlayerManager.Instance.playerAttack.canAttack = false;
+            canMove = true;         
         }
 
+        //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack
+        public IEnumerator AttackDashLong()
+        {
+            float timer = 0.0f;
+
+            Vector2 aim = currentDirection;
+            canMove = false;
+            PlayerManager.Instance.playerAttack.cantAttack = true;
+            PlayerManager.Instance.playerAttack.AnimatorManager();
+
+
+            yield return new WaitForSeconds(dashDelay);
+
+            PlayerManager.Instance.playerAttack.AttackManager();
+
+            while (timer < dashTime)
+            {
+                playerRb.velocity = aim.normalized * 2 * (dashSpeed * dashCurve.Evaluate(timer / dashTime));
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(0.2f);
+
+            PlayerManager.Instance.playerAttack.cantAttack = false;
+            playerRb.velocity = Vector2.zero;
+            canMove = true;
+        }
     }
 }

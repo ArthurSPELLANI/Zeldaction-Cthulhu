@@ -24,6 +24,9 @@ namespace Player
         float vertical;
         float horizontal;
         Vector2 direction;
+        Vector2 currentDirection;
+
+        public Animator animator;
 
         float timeRef;
 
@@ -34,7 +37,7 @@ namespace Player
     
         void Start()
         {
-            
+
         }
 
         private void FixedUpdate()
@@ -42,6 +45,7 @@ namespace Player
             if (isShadowActivated == true)
             {
                 ShadowMove();
+                GetDirection();
             }
         }
 
@@ -134,6 +138,33 @@ namespace Player
             direction = new Vector2(horizontal, vertical).normalized;
             shadowRb.velocity = direction * shadowSpeed * Time.fixedDeltaTime;
         }
+
+        private void GetDirection()
+        {
+            if (direction.x == 1 && direction.y == 0)
+            {
+                currentDirection = new Vector2(1, 0);
+            }
+            if (direction.x == -1 && direction.y == 0)
+            {
+                currentDirection = new Vector2(-1, 0);
+            }
+            if (direction.x == 0 && direction.y == 1)
+            {
+                currentDirection = new Vector2(0, 1);
+            }
+            if (direction.x == 0 && direction.y == -1)
+            {
+                currentDirection = new Vector2(0, -1);
+            }
+
+            //Set de la direction de l'animator
+            animator.SetFloat("Horizontal", currentDirection.x);
+            animator.SetFloat("Vertical", currentDirection.y);
+
+        }
+
+
 
         private void RecallPlayer()
         {
