@@ -6,7 +6,7 @@ namespace Player
 {
     public class PlayerShadowMode : MonoBehaviour
     {
-
+        
         [Range(3000, 90000)]
         public int shadowSpeed;
 
@@ -29,6 +29,8 @@ namespace Player
         public Animator animator;
 
         float timeRef;
+
+        public bool isCharged;
 
         void Awake()
 	    {
