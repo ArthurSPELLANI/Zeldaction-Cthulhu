@@ -219,11 +219,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.045787454, y: 3.9505413}
-      - {x: -0.72195, y: 1.3626384}
-      - {x: -0.2703777, y: -0.2952874}
-      - {x: 0.26216245, y: -0.2952874}
-      - {x: 0.66833806, y: 1.3647932}
+    - - {x: -0.014523268, y: 1.0116408}
+      - {x: -0.7219498, y: 0.21477342}
+      - {x: -0.53527, y: -0.7367739}
+      - {x: 0.6153519, y: -0.758848}
+      - {x: 0.7345612, y: 0.2390027}
 --- !u!114 &6925617986655589426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDetected: 0
-  Behavior: {fileID: 6925617986844400628}
+  behavior: {fileID: 6925617986844400628}
 --- !u!1 &6925617986844400628
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,12 +446,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaxHealth: 2
   enemyCurrentHealth: 0
-  enemyDamage: 20
+  enemyDamage: 2
   fieldOfView: {fileID: 6925617986655589436}
   preDetectionPath: {fileID: 6925617987783528014}
   path: []
   direction: {x: 0, y: 0}
-  speed: 50
+  speed: 60
 --- !u!50 &6925617987206744222
 Rigidbody2D:
   serializedVersion: 4

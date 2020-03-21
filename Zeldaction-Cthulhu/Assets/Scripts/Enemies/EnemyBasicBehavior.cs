@@ -15,7 +15,7 @@ namespace Enemy
         private int childNbr;
         public Transform[] path;
         private int currentWaypoint = 0;
-        /*[HideInInspector]*/ public Vector2 direction;
+        [HideInInspector] public Vector2 direction;
         private Rigidbody2D EnemyRb;
 
         [Range(0, 100)]
