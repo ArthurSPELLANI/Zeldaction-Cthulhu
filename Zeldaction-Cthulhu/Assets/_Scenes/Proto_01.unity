@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6925617986655589426, guid: 0e98901ae9906e24c885318e831a9b5e,
+        type: 3}
+      propertyPath: behavior
+      value: 
+      objectReference: {fileID: 852580892}
     - target: {fileID: 6925617986844400628, guid: 0e98901ae9906e24c885318e831a9b5e,
         type: 3}
       propertyPath: m_Layer
@@ -311,6 +316,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &852580892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6925617986844400628, guid: 0e98901ae9906e24c885318e831a9b5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 349678188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1471865971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2342178725851585801, guid: 2d7809d19a52f974cb8a758d823c9ba3,

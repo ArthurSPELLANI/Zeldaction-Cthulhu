@@ -7,12 +7,12 @@ namespace Enemy
 	public class PlayerDetection : MonoBehaviour
 	{
 		[HideInInspector] public bool isDetected = false;
-        public GameObject Behavior;
-		private Rigidbody2D EnemyRb;
+        public GameObject behavior;
+		private Rigidbody2D enemyRb;
 
 		void Awake()
 		{
-			EnemyRb = GetComponentInParent<Rigidbody2D>();
+			enemyRb = GetComponentInParent<Rigidbody2D>();
 		}
 
 		void Start()
@@ -25,19 +25,19 @@ namespace Enemy
 			//Detect in which direction the enemy is going and orientate the field of view in this same direction.
 			if (isDetected == false)
 			{
-				if (EnemyRb.velocity.x >= 1)
+				if (enemyRb.velocity.x >= 0.9)
 				{
 					transform.eulerAngles = new Vector3(0, 0, 270);
 				}
-				else if (EnemyRb.velocity.x <= -1)
+				else if (enemyRb.velocity.x <= -0.9)
 				{
 					transform.eulerAngles = new Vector3(0, 0, 90);
 				}
-				else if (EnemyRb.velocity.y >= 1)
+				else if (enemyRb.velocity.y >= 0.9)
 				{
 					transform.eulerAngles = new Vector3(0, 0, 0);
 				}
-				else if (EnemyRb.velocity.y <= -1)
+				else if (enemyRb.velocity.y <= -0.9)
 				{
 					transform.eulerAngles = new Vector3(0, 0, 180);
 				}
@@ -50,7 +50,7 @@ namespace Enemy
         {
             if (other.CompareTag("Player"))
             {
-                Behavior.SetActive(true);
+                behavior.SetActive(true);
 				isDetected = true;
 				GetComponent<PolygonCollider2D>().enabled = false;
             }
