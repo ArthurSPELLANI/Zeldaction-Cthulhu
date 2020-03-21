@@ -182,7 +182,7 @@ namespace Player
 
             foreach(Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
             }
            
 
@@ -196,7 +196,10 @@ namespace Player
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
-            InflictDamage(hitEnemies);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(playerDamage);
+            }
 
             attackCount += 1;
             playerDamage++;
@@ -209,7 +212,10 @@ namespace Player
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
 
-            InflictDamage(hitEnemies);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(playerDamage);
+            }
 
             attackCount = 0;
             playerDamage--;
@@ -245,6 +251,7 @@ namespace Player
             Gizmos.DrawWireSphere(currentAttackPos.position, attackRange);
         }
 
+        /*
         /// <summary>
         /// Select the "damage script" to apply to all gameobject within player attack range depending on the gameobject tag
         /// </summary>
@@ -261,7 +268,7 @@ namespace Player
                     }
                 }
             }
-        }
+        }*/
 
     }
 }
