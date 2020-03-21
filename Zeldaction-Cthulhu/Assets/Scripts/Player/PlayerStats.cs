@@ -9,6 +9,7 @@ namespace Player
 
         public int playerMaxHealth;
         private int playerCurrentHealth;
+        public GameObject player;
 
         void Awake()
         {
@@ -37,7 +38,7 @@ namespace Player
 
             if (playerCurrentHealth <= 0)
             {
-                Destroy(gameObject);
+                Destroy(player);
             }
         }
 

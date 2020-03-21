@@ -16,8 +16,12 @@ namespace Player
         public LayerMask enemyLayer;
         public int attackCount = 0;
         public int playerDamage = 1;
+        public float comboKeepTime;
+        float coolDown = 0;
 
-        [HideInInspector] public bool canAttack = false;
+        Animator animator;
+
+        [HideInInspector] public bool cantAttack = false;
         
 
     
@@ -28,21 +32,43 @@ namespace Player
     
         void Start()
         {
-            
+            animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
         }
     
         void Update()
         {
             currentDirection = PlayerManager.Instance.playerMovement.currentDirection;
 
+            coolDown -= Time.deltaTime;
+
             if (PlayerManager.Instance.playerShoot.isShooting == false)
             {
                 //Si le joueur appuie sur le bouton d'attaque, lance une coroutine dans le script PlayerMovement
-                if (Input.GetButtonDown("Attack") && canAttack == false)
+                if (Input.GetButtonDown("Attack") && cantAttack == false)
                 {
-                    StartCoroutine(PlayerManager.Instance.playerMovement.AttackDash());
+                    if(attackCount != 2)
+                    {
+                        StartCoroutine(PlayerManager.Instance.playerMovement.AttackDashShort());
+                    }
+
+                    else if (attackCount == 2)
+                    {
+                        StartCoroutine(PlayerManager.Instance.playerMovement.AttackDashLong());
+                    }        
                 }
-            }            
+                
+            }
+            
+            if(cantAttack == false)
+            {
+                animator.SetBool("IsAttacking", false);
+            }
+
+            if(coolDown == 0 && attackCount != 0)
+            {
+                attackCount = 0;
+            }
+
         }
     
         //Trouver la position d'attaque pour le premier coup
@@ -50,22 +76,22 @@ namespace Player
         {
             if (currentDirection.x == 1)
             {
-                currentAttackPos = attackPos[1];
+                currentAttackPos = attackPos[4];
             }
 
             if (currentDirection.x == -1)
             {
-                currentAttackPos = attackPos[5];
+                currentAttackPos = attackPos[7];
             }
 
             if (currentDirection.y == 1)
             {
-                currentAttackPos = attackPos[7];
+                currentAttackPos = attackPos[1];
             }
 
             if (currentDirection.y == -1)
             {
-                currentAttackPos = attackPos[3];
+                currentAttackPos = attackPos[5];
             }
         }
 
@@ -74,22 +100,22 @@ namespace Player
         {
             if (currentDirection.x == 1)
             {
-                currentAttackPos = attackPos[3];
+                currentAttackPos = attackPos[1];
             }
 
             if (currentDirection.x == -1)
             {
-                currentAttackPos = attackPos[7];
+                currentAttackPos = attackPos[5];
             }
 
             if (currentDirection.y == 1)
             {
-                currentAttackPos = attackPos[1];
+                currentAttackPos = attackPos[7];
             }
 
             if (currentDirection.y == -1)
             {
-                currentAttackPos = attackPos[5];
+                currentAttackPos = attackPos[3];
             }
         }
 
@@ -134,6 +160,17 @@ namespace Player
             {
                 Attack3();
             }
+
+            if (cantAttack == false)
+            {
+                animator.SetBool("IsAttacking", false);
+            }
+
+            if (coolDown > 0)
+                return;
+
+            coolDown = comboKeepTime;
+
         }
 
         //Premier coup de la série d'attaques
@@ -143,9 +180,13 @@ namespace Player
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
-            InflictDamage(hitEnemies);
+            foreach(Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(playerDamage);
+            }
+           
 
-            attackCount += 1;
+            attackCount += 1;            
         }
 
         //Second coup de la série d'attaques
@@ -174,6 +215,28 @@ namespace Player
             playerDamage--;
         }
 
+        public void AnimatorManager()
+        {
+            if(attackCount == 0)
+            {
+                animator.SetInteger("AttackCount", 1);
+                animator.SetBool("IsAttacking", true);
+            }
+
+            else if(attackCount == 1)
+            {
+                animator.SetInteger("AttackCount", 2);
+                animator.SetBool("IsAttacking", true);
+            }
+
+            else if(attackCount == 2)
+            {
+                animator.SetInteger("AttackCount", 3);
+                animator.SetBool("IsAttacking", true);
+            }
+
+        }
+
         private void OnDrawGizmosSelected()
         {
             if (currentAttackPos == null)
@@ -194,13 +257,11 @@ namespace Player
                 {
                     if (hitEnemies[i].gameObject.tag == "Enemy")
                     {
-                        hitEnemies[i].GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                        hitEnemies[i].GetComponentInParent<EnemyBasicBehavior>().TakeDamage(playerDamage);
                     }
                 }
             }
         }
-
-     
 
     }
 }
