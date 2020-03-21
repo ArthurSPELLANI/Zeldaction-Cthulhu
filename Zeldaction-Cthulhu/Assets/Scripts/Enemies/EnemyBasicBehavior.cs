@@ -7,7 +7,7 @@ namespace Enemy
 	public class EnemyBasicBehavior : MonoBehaviour
 	{
         public int enemyMaxHealth;
-        private int enemyCurrentHealth;
+        [SerializeField] int enemyCurrentHealth;
         public int enemyDamage;
 
         public GameObject fieldOfView;

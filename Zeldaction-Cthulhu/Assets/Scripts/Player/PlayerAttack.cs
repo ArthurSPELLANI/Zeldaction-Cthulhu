@@ -180,7 +180,11 @@ namespace Player
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
-            InflictDamage(hitEnemies);
+            foreach(Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(playerDamage);
+            }
+           
 
             attackCount += 1;            
         }
@@ -253,7 +257,7 @@ namespace Player
                 {
                     if (hitEnemies[i].gameObject.tag == "Enemy")
                     {
-                        hitEnemies[i].GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                        hitEnemies[i].GetComponentInParent<EnemyBasicBehavior>().TakeDamage(playerDamage);
                     }
                 }
             }
