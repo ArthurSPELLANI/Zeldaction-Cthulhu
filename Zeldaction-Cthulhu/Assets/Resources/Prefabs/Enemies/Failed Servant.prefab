@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3575282250111895594}
   - component: {fileID: 3575282250111895573}
-  - component: {fileID: 2992666482860555745}
+  - component: {fileID: 2035637166375005977}
   m_Layer: 10
   m_Name: ExploBehavior
   m_TagString: Untagged
@@ -58,7 +58,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31777525, y: 0.29933643}
   m_EdgeRadius: 0
---- !u!114 &2992666482860555745
+--- !u!114 &2035637166375005977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDetected: 0
-  behavior: {fileID: 3575282250267150300}
+  behavior: {fileID: 3575282250111895572}
 --- !u!1 &3575282250474852269
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3575282250474852269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.52, y: -0.12, z: 0}
+  m_LocalPosition: {x: -2.579, y: -0.12, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 3575282251319205295}
@@ -261,7 +261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3575282250753916985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0.698, y: -0.13, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 3575282251319205295}

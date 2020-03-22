@@ -7,7 +7,7 @@ namespace Enemy
 	public class EnemyBasicBehavior : MonoBehaviour
 	{
         public int enemyMaxHealth;
-        [SerializeField] int enemyCurrentHealth;
+        [SerializeField] public int enemyCurrentHealth;
         public int enemyDamage;
 
         public GameObject fieldOfView;
@@ -114,7 +114,6 @@ namespace Enemy
             EnemyRb.velocity = direction * 0 * Time.fixedDeltaTime;
 
             currentWaypoint++;
-            Debug.Log("currentWaypoint is : " + currentWaypoint);
 
             //return at the start of the Array.
             if (currentWaypoint == childNbr)

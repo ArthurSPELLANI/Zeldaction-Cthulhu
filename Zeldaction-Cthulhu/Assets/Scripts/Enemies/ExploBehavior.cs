@@ -20,6 +20,7 @@ namespace Enemy
 		private int maxHp;
 		private int currentHp;
 		public float explosionTime;
+		[Range(0, 1)]
 		public float explosionRange;
 		public LayerMask playerLayer;
 		public LayerMask enemyLayer;
@@ -33,18 +34,19 @@ namespace Enemy
 			speed = enemyPrefab.GetComponent<EnemyBasicBehavior>().speed;
 			enemyDamage = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyDamage;
 			maxHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyMaxHealth;
+			
 		}
 
 		void Start()
 		{
-			currentHp = maxHp;
+
 		}
 
 		void Update()
 		{
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
+			currentHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth;
 
-			
 			if (canMove == true)
 			{
 				exploRb.velocity = direction * speed * Time.fixedDeltaTime;
@@ -62,6 +64,7 @@ namespace Enemy
 
 		IEnumerator TimeBeforeExplo()
 		{
+			Debug.Log("it's gonna be bim boom");
 			if (currentHp > 0)
 			{
 				yield return new WaitForSeconds(explosionTime);

@@ -47,6 +47,7 @@ namespace Enemy
 		{
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
 
+
 			//Si le wolf n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
 			if (Vector2.Distance(transform.position, target.position) > startAttackRange && canMove == true)
 			{
@@ -61,6 +62,7 @@ namespace Enemy
 				StartCoroutine(WolfAttack());
 			}
 
+			
 
 		}
 
@@ -72,6 +74,7 @@ namespace Enemy
 		IEnumerator WolfAttack()
 		{
 			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
+			//ANIM : wolf stay on first frame of attack anim to show he is going to jump
 
 			yield return new WaitForSeconds(timeBeforeTargetLock);
 
@@ -80,22 +83,15 @@ namespace Enemy
 
 			yield return new WaitForSeconds(timeBeforeWolfAttack);
 
-			GetComponent<BoxCollider2D>().isTrigger = true;
+			GetComponentInParent<BoxCollider2D>().isTrigger = true;
 			wolfRb.velocity = dashDirection * attackSpeed * Time.fixedDeltaTime;
+			//ANIM : Play wolf attack anim
 
 			yield return new WaitForSeconds(recoilDuration);
 
-			GetComponent<BoxCollider2D>().isTrigger = false;
+			GetComponentInParent<BoxCollider2D>().isTrigger = false;
 			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.white;
 			canMove = true;
-		}
-
-		private void OnTriggerEnter2D(Collider2D other)
-		{
-			if (other.CompareTag("Player"))
-			{
-				other.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
-			}
 		}
 
 	}
