@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Enemy;
+using Enemy;
 
 namespace Player
 {
@@ -9,6 +9,7 @@ namespace Player
     {
 
         public Rigidbody2D rb;
+        public int damage;
 
         
 
@@ -25,20 +26,19 @@ namespace Player
         void Update()
         {
             
-        }
+        }        
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                //collision.GetComponent<EnemyBasicBehaviour>.TakeDamage();
+                collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage);
             }
 
             if (collision.gameObject.tag == "Enviro")
             {
                 Destroy(this);
             }
-
         }
 
     }

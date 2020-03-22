@@ -87,7 +87,7 @@ namespace Player
             shadowRb = GetComponentInChildren<Rigidbody2D>();                    
         }
 
-        private void ShadowExit()
+        public void ShadowExit()
         {
             isShadowActivated = false;
             shadowObject.SetActive(false);
