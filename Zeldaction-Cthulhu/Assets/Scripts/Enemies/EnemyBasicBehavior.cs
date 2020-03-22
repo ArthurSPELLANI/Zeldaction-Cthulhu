@@ -28,6 +28,8 @@ namespace Enemy
 
         private bool canMove = true;
 
+        public Animator enemyAnimator;
+        [HideInInspector]public Vector2 animDirection;
 
         void Awake()
 		{
@@ -48,6 +50,10 @@ namespace Enemy
                 if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
                 {
                     direction = new Vector2(path[currentWaypoint].position.x - transform.position.x, path[currentWaypoint].position.y - transform.position.y).normalized;
+                    SetAnimDirection(direction);
+
+                    enemyAnimator.SetFloat("Horizontal", animDirection.x);
+                   
 
                     //Soft spot around the Waypoint position cause rigidbody can't reach a precise position while using velocity to move.
                     currentWaypointXMin = path[currentWaypoint].position.x - 0.02;
@@ -66,6 +72,14 @@ namespace Enemy
                         EnemyRb.velocity = direction * speed * Time.fixedDeltaTime;
                     }
 
+                }
+                if (canMove == true)
+                {
+                    enemyAnimator.SetBool("isRunning", true);
+                }
+                else
+                {
+                    enemyAnimator.SetBool("isRunning", false);
                 }
             }
 
@@ -126,6 +140,17 @@ namespace Enemy
             canMove = true;
         }
 
+        public void SetAnimDirection(Vector2 direction)
+        {
+            if (direction.x > 0)
+            {
+                animDirection.x = 1;
+            }
+            else
+            {
+                animDirection.x = -1;
+            }
+        }
 
     }
 }
