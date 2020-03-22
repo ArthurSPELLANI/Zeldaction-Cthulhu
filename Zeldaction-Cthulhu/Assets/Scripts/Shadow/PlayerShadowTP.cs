@@ -17,21 +17,24 @@ namespace Shadow
         }
 
         void Start()
-        {
-            targetMarked = new List<GameObject>();
+        {            
             shadMode = gameObject.GetComponentInParent<PlayerShadowMode>();
         }
-        
+
+        private void OnEnable()
+        {
+            targetMarked = new List<GameObject>();
+        }
+
         void Update()
         {
             if (Input.GetButtonDown("TP"))
             {
-                Debug.Log("TP");
                 foreach  (GameObject target in targetMarked)
                 {
-                    target.transform.position = this.gameObject.transform.position;
-                    
+                    target.transform.position = this.gameObject.transform.position;                    
                 }
+
                 shadMode.ShadowExit();
             }
         }

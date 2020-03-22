@@ -21,6 +21,8 @@ namespace Player
         void Start()
         {
             rb.velocity = PlayerManager.Instance.playerShoot.shootDirection * PlayerManager.Instance.playerShoot.bulletSpeed;
+            StartCoroutine(DeathByTime());
+
         }
     
         void Update()
@@ -39,6 +41,13 @@ namespace Player
             {
                 Destroy(this);
             }
+        }
+
+        IEnumerator DeathByTime()
+        {
+            yield return new WaitForSeconds(5);
+
+            Destroy(gameObject);
         }
 
     }

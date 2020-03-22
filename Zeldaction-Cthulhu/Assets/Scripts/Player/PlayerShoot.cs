@@ -19,6 +19,7 @@ namespace Player
 
         public GameObject bullet;
         public float shootCooldown;
+        public int ammunitions = 3;
 
         [HideInInspector] public bool isShooting = false;
 
@@ -42,7 +43,7 @@ namespace Player
             }
 
             if (Input.GetAxisRaw("Shoot") == 0 && isShooting == true)
-            {
+            {              
                ExitShoot();
             }
         }
@@ -56,7 +57,10 @@ namespace Player
 
             if (Input.GetButtonDown("Attack") && canShoot == true)
             {
-                ShootBullet();
+                if(ammunitions > 0)
+                {
+                    ShootBullet();
+                }                
             }
 
         }
@@ -79,6 +83,7 @@ namespace Player
         void ShootBullet()
         {            
             StartCoroutine(ShootDelay());
+            ammunitions -= 1;
             Instantiate(bullet, this.transform);
         }
 
