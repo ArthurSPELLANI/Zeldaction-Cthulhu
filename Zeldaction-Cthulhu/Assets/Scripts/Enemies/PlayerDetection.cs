@@ -9,6 +9,8 @@ namespace Enemy
 		[HideInInspector] public bool isDetected = false;
         public GameObject behavior;
 		private Rigidbody2D enemyRb;
+		public float alertRange;
+		public LayerMask enemyLayer;
 
 		void Awake()
 		{
@@ -42,6 +44,11 @@ namespace Enemy
 					transform.eulerAngles = new Vector3(0, 0, 180);
 				}
 			}
+			else
+			{
+				behavior.SetActive(true);
+				GetComponent<PolygonCollider2D>().enabled = false;
+			}
 	
 		}
 
@@ -50,10 +57,16 @@ namespace Enemy
         {
             if (other.CompareTag("Player"))
             {
-                behavior.SetActive(true);
+
 				isDetected = true;
-				GetComponent<PolygonCollider2D>().enabled = false;
-            }
+
+				Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, alertRange, enemyLayer);
+
+				foreach (Collider2D enemy in hitEnemies)
+				{
+					enemy.GetComponentInChildren<PlayerDetection>().isDetected = true;
+				}
+			}
            
         }
 
