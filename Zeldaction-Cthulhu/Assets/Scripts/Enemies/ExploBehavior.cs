@@ -33,8 +33,7 @@ namespace Enemy
 			target = player.transform;
 			speed = enemyPrefab.GetComponent<EnemyBasicBehavior>().speed;
 			enemyDamage = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyDamage;
-			maxHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyMaxHealth;
-			
+			maxHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyMaxHealth;	
 		}
 
 		void Start()
@@ -92,7 +91,7 @@ namespace Enemy
 				enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(enemyDamage);
 			}
 
-			Destroy(gameObject);
+			Destroy(enemyPrefab);
 		}
 
 

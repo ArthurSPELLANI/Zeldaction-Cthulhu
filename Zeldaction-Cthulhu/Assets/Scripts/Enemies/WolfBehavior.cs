@@ -15,6 +15,7 @@ namespace Enemy
 		private Transform dashTarget;
 		private int speed;
 		private int enemyDamage;
+		private int enemyCurrentHp;
 
 		private Rigidbody2D wolfRb;
 		public GameObject enemyPrefab;
@@ -46,7 +47,7 @@ namespace Enemy
 		void Update()
 		{
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
-
+			enemyCurrentHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth;
 
 			//Si le wolf n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
 			if (Vector2.Distance(transform.position, target.position) > startAttackRange && canMove == true)
@@ -62,8 +63,10 @@ namespace Enemy
 				StartCoroutine(WolfAttack());
 			}
 
-			
-
+			else if (enemyCurrentHp <= 0)
+			{
+				Destroy(enemyPrefab);
+			}
 		}
 
 
