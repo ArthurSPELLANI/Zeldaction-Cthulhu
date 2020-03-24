@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4580132030262957900}
   - component: {fileID: 4580132030262957901}
+  - component: {fileID: 5995488041803878569}
   m_Layer: 8
   m_Name: ShadowMode
   m_TagString: Untagged
@@ -104,12 +105,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca8e549102f6c0498c2a22c3ceadc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowSpeed: 40000
   slowTime: 0.04
   isShadowActivated: 0
   shadowObject: {fileID: 0}
   animator: {fileID: 0}
   isCharged: 0
+--- !u!114 &5995488041803878569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580132030262957891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de288df25bc864644a33cc0396012440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sanityLevel: 0
+  sanityMax: 0
 --- !u!1 &4580132030270416510
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMaxHealth: 5
+  playerCurrentHealth: 0
   player: {fileID: 4580132031468944960}
 --- !u!1 &4580132030933035050
 GameObject:
@@ -493,6 +508,7 @@ MonoBehaviour:
   bulletSpeed: 5
   bullet: {fileID: 5844217980954619402, guid: 880becf3ee5851d42aed7db5a282d655, type: 3}
   shootCooldown: 0.7
+  ammunitions: 3
   isShooting: 0
 --- !u!1 &4580132031356252412
 GameObject:
@@ -799,6 +815,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4580132030262957900}
     m_Modifications:
+    - target: {fileID: 5061571579558208700, guid: 879974bc903108e47b9aba2b67cab9fd,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_LocalPosition.x

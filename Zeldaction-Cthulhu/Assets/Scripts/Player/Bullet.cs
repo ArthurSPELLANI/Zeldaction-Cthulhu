@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Enemy;
+using Enemy;
 
 namespace Player
 {
@@ -9,6 +9,7 @@ namespace Player
     {
 
         public Rigidbody2D rb;
+        public int damage;
 
         
 
@@ -20,25 +21,33 @@ namespace Player
         void Start()
         {
             rb.velocity = PlayerManager.Instance.playerShoot.shootDirection * PlayerManager.Instance.playerShoot.bulletSpeed;
+            StartCoroutine(DeathByTime());
+
         }
     
         void Update()
         {
             
-        }
+        }        
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                //collision.GetComponent<EnemyBasicBehaviour>.TakeDamage();
+                collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage);
             }
 
             if (collision.gameObject.tag == "Enviro")
             {
                 Destroy(this);
             }
+        }
 
+        IEnumerator DeathByTime()
+        {
+            yield return new WaitForSeconds(5);
+
+            Destroy(gameObject);
         }
 
     }

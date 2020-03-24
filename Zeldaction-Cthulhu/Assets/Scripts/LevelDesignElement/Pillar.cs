@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using Shadow;
 
     public class Pillar : MonoBehaviour
     {

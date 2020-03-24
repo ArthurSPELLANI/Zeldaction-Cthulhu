@@ -8,7 +8,7 @@ namespace Player
     {
 
         public int playerMaxHealth;
-        private int playerCurrentHealth;
+        public int playerCurrentHealth;
         public GameObject player;
 
         void Awake()

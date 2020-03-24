@@ -105,15 +105,23 @@ namespace Player
             playerRb.velocity = direction * speed * Time.fixedDeltaTime;
 
 
-            //Set de l'animator si le joueur est en mouvement
-            if(horizontal != 0 || vertical != 0)
+            if(PlayerManager.Instance.playerShoot.isShooting == true)
             {
-                animator.SetBool("IsWalking", true);
+               //animator shoot
             }
-            else if (horizontal == 0 && vertical == 0)
+            else
             {
-                animator.SetBool("IsWalking", false);
+                //Set de l'animator si le joueur est en mouvement
+                if (horizontal != 0 || vertical != 0)
+                {
+                    animator.SetBool("IsWalking", true);
+                }
+                else if (horizontal == 0 && vertical == 0)
+                {
+                    animator.SetBool("IsWalking", false);
+                }
             }
+            
 
         }
 
@@ -136,10 +144,16 @@ namespace Player
             {
                 currentDirection = new Vector2(0, -1);
             }
+            
 
-            //Set de la direction de l'animator
-            animator.SetFloat("Horizontal", currentDirection.x);
-            animator.SetFloat("Vertical", currentDirection.y);
+           
+
+            if (PlayerManager.Instance.playerShoot.isShooting == false)
+            {
+                //Set de la direction de l'animator
+                animator.SetFloat("Horizontal", currentDirection.x);
+                animator.SetFloat("Vertical", currentDirection.y);
+            }            
 
         }
 
