@@ -110,7 +110,6 @@ namespace Player
         {
             Time.timeScale = slowTime;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
-        }
-    
+        }   
     }
 }

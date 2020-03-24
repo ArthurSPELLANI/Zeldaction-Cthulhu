@@ -26,9 +26,9 @@ public class Pillar : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
         else
-           {
-                gameObject.transform.GetChild(1).gameObject.SetActive(true);
-           }
+        {
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        }
         canInteract = true;
     }
 
@@ -49,10 +49,12 @@ public class Pillar : MonoBehaviour
         //Quand le player quitte le shadowMode, la charge revient.
 
         if (playerShadowMode.isCharged && myCharge && !playerShadowMode.isShadowActivated)
-            Charge();
+            Charge(true);
 
         if (!playerShadowMode.isCharged)
             myCharge = false;
+
+        Fog.transform.position = gameObject.transform.position;
 
 
     }
@@ -61,35 +63,39 @@ public class Pillar : MonoBehaviour
     {
         if (col.tag == "Shadow" && isCharged && canInteract && !playerShadowMode.isCharged)
         {
-            UnCharge();
+            UnCharge(true);
         }
         if (col.tag == "Shadow" && !isCharged && canInteract && playerShadowMode.isCharged)
         {
-            Charge();
+            Charge(true);
         }
     }
 
-    void UnCharge()
+    void UnCharge(bool shadow)
     {
         isCharged = false;
         canInteract = false;
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
-        StartCoroutine(ChargeCooldown());
-        playerShadowMode.isCharged = true;
+        StartCoroutine(ChargeCooldown());      
         myCharge = true;
         StartCoroutine(ChargeComeBack());
 
+        if (shadow)
+            playerShadowMode.isCharged = true;
+
     }
 
-    void Charge()
+    void Charge(bool shadow)
     {
         isCharged = true;
         canInteract = false;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
         StartCoroutine(ChargeCooldown());
-        playerShadowMode.isCharged = false;
+
+        if (shadow)
+            playerShadowMode.isCharged = false;
     }
 
     IEnumerator ChargeCooldown()
@@ -102,6 +108,6 @@ public class Pillar : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeChargeComeBack);
 
         if(playerShadowMode.isCharged)
-            Charge();
+            Charge(true);
     }
 }

@@ -41,7 +41,8 @@ namespace Shadow
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            targetMarked.Add(collision.gameObject);
+            if (collision.tag != "pillar" || collision.tag != "NegativeFog")
+                targetMarked.Add(collision.gameObject);
         }
     }
 }
