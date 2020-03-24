@@ -130,7 +130,7 @@ namespace Enemy
                 currentWaypoint = 0;
             }
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
             canMove = true;
         }
 

@@ -272,7 +272,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6925617986844400586}
   - component: {fileID: 6925617986844400587}
-  - component: {fileID: 6925617986844400629}
   - component: {fileID: 8334017702607744721}
   m_Layer: 10
   m_Name: WolfBehavior
@@ -315,32 +314,6 @@ MonoBehaviour:
   attackSpeed: 135
   recoilDuration: 1
   wolfAnimator: {fileID: 7491350745673005207}
---- !u!61 &6925617986844400629
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6925617986844400628}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00000011920929, y: -0.00000020861626}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.37, y: 0.34}
-    newSize: {x: 0.37, y: 0.34}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.31777525, y: 0.29933643}
-  m_EdgeRadius: 0
 --- !u!212 &8334017702607744721
 SpriteRenderer:
   m_ObjectHideFlags: 0

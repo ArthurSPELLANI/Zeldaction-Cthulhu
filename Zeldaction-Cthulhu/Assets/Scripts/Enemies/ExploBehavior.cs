@@ -88,7 +88,7 @@ namespace Enemy
 
 			foreach (Collider2D enemy in hitEnemies)
 			{
-				enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(enemyDamage);
+				enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(enemyDamage);
 			}
 
 			Destroy(enemyPrefab);
