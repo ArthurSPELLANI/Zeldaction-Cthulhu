@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1171408253043262570}
   - component: {fileID: 6793088304720284277}
+  - component: {fileID: 1237867225}
   m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1237867225
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3358189464692168584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 486ed3c52ca1a954b9fcf918ee12020c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4430687546579055276
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +270,8 @@ MonoBehaviour:
   path: []
   direction: {x: 0, y: 0}
   speed: 40
+  enemyAnimator: {fileID: 1237867225}
+  animDirection: {x: 0, y: 0}
 --- !u!50 &6793088303081489671
 Rigidbody2D:
   serializedVersion: 4
@@ -695,6 +717,11 @@ PrefabInstance:
     - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
         type: 3}
       propertyPath: recoilDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
+        type: 3}
+      propertyPath: startRetreatRange
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4491452026761534537, guid: 9701ac0cab941814b89af2f2224a3cee,

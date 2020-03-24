@@ -209,6 +209,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 417499233722832208, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1107458503}
+    - target: {fileID: 417499233722832208, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+        type: 3}
+      propertyPath: shadowRb
+      value: 
+      objectReference: {fileID: 1107458508}
+    - target: {fileID: 417499233722832208, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+        type: 3}
+      propertyPath: shadowSpeed
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 4580132030262957901, guid: 2d7809d19a52f974cb8a758d823c9ba3,
         type: 3}
       propertyPath: shadowObject
@@ -590,6 +605,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22016045, y: 0.54191536}
   m_EdgeRadius: 0
+--- !u!50 &1107458508 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 95171264170567755, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+    type: 3}
+  m_PrefabInstance: {fileID: 435851923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1207176750
 PrefabInstance:
   m_ObjectHideFlags: 0

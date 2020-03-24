@@ -307,6 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4580132030850431679}
   - component: {fileID: 4580132030850431673}
+  - component: {fileID: 5053417398748807863}
   m_Layer: 0
   m_Name: EnemyDetectionCollider
   m_TagString: Player
@@ -570,6 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMaxHealth: 6
+  playerCurrentHealth: 0
   player: {fileID: 4580132031468944960}
 --- !u!1 &4580132031392485401
 GameObject:
@@ -851,6 +853,21 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6201300188359779479, guid: 879974bc903108e47b9aba2b67cab9fd,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1183394570068982123}
+    - target: {fileID: 6201300188359779479, guid: 879974bc903108e47b9aba2b67cab9fd,
+        type: 3}
+      propertyPath: shadowRb
+      value: 
+      objectReference: {fileID: 95171264170567755}
+    - target: {fileID: 6201300188359779479, guid: 879974bc903108e47b9aba2b67cab9fd,
+        type: 3}
+      propertyPath: shadowSpeed
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -918,6 +935,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 879974bc903108e47b9aba2b67cab9fd, type: 3}
+--- !u!1 &2342178725851585801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8306088901830716622, guid: 879974bc903108e47b9aba2b67cab9fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6036003263914144199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2342178725851585803 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
@@ -930,9 +953,9 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 6036003263914144199}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2342178725851585801 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8306088901830716622, guid: 879974bc903108e47b9aba2b67cab9fd,
+--- !u!50 &95171264170567755 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: -3272378327527761524, guid: 879974bc903108e47b9aba2b67cab9fd,
     type: 3}
   m_PrefabInstance: {fileID: 6036003263914144199}
   m_PrefabAsset: {fileID: 0}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3321673650822826483}
   - component: {fileID: 6925617987755804652}
+  - component: {fileID: 7491350745673005207}
   m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7491350745673005207
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208080194341214737}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da5953a9bf3013947a014e5dd249e07c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6925617986595675213
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +258,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDetected: 0
   behavior: {fileID: 6925617986844400628}
+  alertRange: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6925617986844400628
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +273,6 @@ GameObject:
   - component: {fileID: 6925617986844400586}
   - component: {fileID: 6925617986844400587}
   - component: {fileID: 6925617986844400629}
-  - component: {fileID: 5133989044741570589}
   - component: {fileID: 8334017702607744721}
   m_Layer: 10
   m_Name: WolfBehavior
@@ -291,7 +314,7 @@ MonoBehaviour:
   timeBeforeWolfAttack: 0.25
   attackSpeed: 135
   recoilDuration: 1
-  wolfAnimator: {fileID: 5133989044741570589}
+  wolfAnimator: {fileID: 7491350745673005207}
 --- !u!61 &6925617986844400629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -318,25 +341,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31777525, y: 0.29933643}
   m_EdgeRadius: 0
---- !u!95 &5133989044741570589
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6925617986844400628}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: da5953a9bf3013947a014e5dd249e07c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &8334017702607744721
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -524,6 +528,8 @@ MonoBehaviour:
   path: []
   direction: {x: 0, y: 0}
   speed: 60
+  enemyAnimator: {fileID: 7491350745673005207}
+  animDirection: {x: 0, y: 0}
 --- !u!50 &6925617987206744222
 Rigidbody2D:
   serializedVersion: 4

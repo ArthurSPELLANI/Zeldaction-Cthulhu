@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Shadow
+namespace Player
 {
 
     public class PlayerShadowMovement : MonoBehaviour
