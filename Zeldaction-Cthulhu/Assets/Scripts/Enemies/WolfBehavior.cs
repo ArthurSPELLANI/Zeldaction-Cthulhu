@@ -30,6 +30,9 @@ namespace Enemy
 
 		private bool canMove = true;
 
+		public Animator wolfAnimator;
+		private Vector2 animDirection;
+
 		void Awake()
 		{
 			wolfRb = GetComponentInParent<Rigidbody2D>();
@@ -37,6 +40,7 @@ namespace Enemy
 			target = player.transform;
 			speed = enemyPrefab.GetComponent<EnemyBasicBehavior>().speed;
 			enemyDamage = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyDamage;
+			
 		}
 
 		void Start()
@@ -49,10 +53,21 @@ namespace Enemy
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
 			enemyCurrentHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth;
 
+			
+			
+
+			
+
 			//Si le wolf n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
 			if (Vector2.Distance(transform.position, target.position) > startAttackRange && canMove == true)
 			{
 				wolfRb.velocity = direction * speed * Time.fixedDeltaTime;
+
+				wolfAnimator.SetBool("isRunning", true);
+
+				enemyPrefab.GetComponent<EnemyBasicBehavior>().SetAnimDirection(direction);
+				animDirection = enemyPrefab.GetComponent<EnemyBasicBehavior>().animDirection;
+				wolfAnimator.SetFloat("Horizontal", animDirection.x);
 			}
 
 			//Si le joueur est à portée d'attaque du joueur et qu'il peut bouger, il arrête de bouger et lance son attaque.
@@ -60,6 +75,7 @@ namespace Enemy
 			{
 				canMove = false;
 				wolfRb.velocity = new Vector2(0,0) * speed * Time.fixedDeltaTime;
+				wolfAnimator.SetBool("isRunning", false);
 				StartCoroutine(WolfAttack());
 			}
 
@@ -78,23 +94,33 @@ namespace Enemy
 		{
 			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
 			//ANIM : wolf stay on first frame of attack anim to show he is going to jump
+			
 
 			yield return new WaitForSeconds(timeBeforeTargetLock);
 
 			dashTarget = target;
 			dashDirection = new Vector2(dashTarget.position.x - transform.position.x, dashTarget.position.y - transform.position.y).normalized;
+			enemyPrefab.GetComponent<EnemyBasicBehavior>().SetAnimDirection(dashDirection);
+			animDirection = enemyPrefab.GetComponent<EnemyBasicBehavior>().animDirection;
 
 			yield return new WaitForSeconds(timeBeforeWolfAttack);
 
 			GetComponentInParent<BoxCollider2D>().isTrigger = true;
+			wolfAnimator.SetFloat("Horizontal", animDirection.x);
+			wolfAnimator.SetBool("isAttacking", true);
+			GetComponent<BoxCollider2D>().isTrigger = true;
 			wolfRb.velocity = dashDirection * attackSpeed * Time.fixedDeltaTime;
 			//ANIM : Play wolf attack anim
+			
 
 			yield return new WaitForSeconds(recoilDuration);
 
 			GetComponentInParent<BoxCollider2D>().isTrigger = false;
 			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.white;
 			canMove = true;
+			wolfAnimator.SetBool("isAttacking", false);
+
+			
 		}
 
 		private void OnTriggerEnter2D(Collider2D other)
