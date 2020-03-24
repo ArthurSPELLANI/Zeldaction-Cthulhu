@@ -28,12 +28,13 @@ namespace Player
 
         void Awake()
 	    {
-            timeRef = Time.fixedDeltaTime;
-	    }
+            timeRef = Time.fixedDeltaTime;            
+        }
     
         void Start()
         {
             shadowInput = Input.GetAxisRaw("Shadow");
+            player = GameObject.FindGameObjectWithTag("Player");
         }
 
         private void FixedUpdate()
@@ -81,7 +82,6 @@ namespace Player
 
             isShadowActivated = true;
             PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0,0);
-            player = GameObject.FindGameObjectWithTag("Player");
             shadowObject.SetActive(true);
             shadowObject.transform.position = player.transform.position;
             shadowRb = GetComponentInChildren<Rigidbody2D>();                    
@@ -89,6 +89,7 @@ namespace Player
 
         public void ShadowExit()
         {
+            shadowObject.transform.position = player.transform.position;
             isShadowActivated = false;
             shadowObject.SetActive(false);
             Time.timeScale = 1;
@@ -97,8 +98,7 @@ namespace Player
         
 
         private void RecallPlayer()
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
+        {            
             player.transform.position = shadowObject.transform.position;
             isShadowActivated = false;
             shadowObject.SetActive(false);

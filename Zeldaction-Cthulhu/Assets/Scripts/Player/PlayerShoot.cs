@@ -9,7 +9,7 @@ namespace Player
 
         [HideInInspector] public Vector2 shootDirection;
         bool directionStored = false;
-        bool canShoot;
+        bool canShoot;        
 
         [Range(0,50)]
         public int aimSlow;
@@ -20,6 +20,8 @@ namespace Player
         public GameObject bullet;
         public float shootCooldown;
         public int ammunitions = 3;
+
+        Quaternion rotation = Quaternion.identity;
 
         [HideInInspector] public bool isShooting = false;
 
@@ -84,7 +86,7 @@ namespace Player
         {            
             StartCoroutine(ShootDelay());
             ammunitions -= 1;
-            Instantiate(bullet, this.transform);
+            Instantiate(bullet, this.transform.position, rotation);
         }
 
         IEnumerator ShootDelay()
