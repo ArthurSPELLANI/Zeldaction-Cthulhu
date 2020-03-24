@@ -5,34 +5,37 @@ using Player;
 
 namespace Enemy
 {
-	public class WolfBehavior : MonoBehaviour
+	public class DistBehavior : MonoBehaviour
 	{
 
 		private GameObject player;
+
 		private Vector2 direction;
-		private Vector2 dashDirection;
+		[HideInInspector] public Vector2 projectileDirection;
 		private Transform target;
-		private Transform dashTarget;
+		private Transform projectileTarget;
+
 		private int speed;
 		private int enemyDamage;
 		private int enemyCurrentHp;
 
-		private Rigidbody2D wolfRb;
+		public GameObject servantProjectile;
+
+		private Rigidbody2D servantRb;
 		public GameObject enemyPrefab;
 		public GameObject enemyGraphics;
 
 		public float startAttackRange;
-		public float timeBeforeTargetLock;
-		public float timeBeforeWolfAttack;
-		[Range(0, 200)]
-		public int attackSpeed;
+		public float startRetreatRange;
+		public float timeBeforeServantFire;
+
 		public float recoilDuration;
 
 		private bool canMove = true;
 
 		void Awake()
 		{
-			wolfRb = GetComponentInParent<Rigidbody2D>();
+			servantRb = GetComponentInParent<Rigidbody2D>();
 			player = GameObject.Find("Player");
 			target = player.transform;
 			speed = enemyPrefab.GetComponent<EnemyBasicBehavior>().speed;
@@ -41,7 +44,7 @@ namespace Enemy
 
 		void Start()
 		{
-			
+
 		}
 
 		void Update()
@@ -49,20 +52,27 @@ namespace Enemy
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
 			enemyCurrentHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth;
 
-			//Si le wolf n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
+			//Si le servant n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
 			if (Vector2.Distance(transform.position, target.position) > startAttackRange && canMove == true)
 			{
-				wolfRb.velocity = direction * speed * Time.fixedDeltaTime;
+				servantRb.velocity = direction * speed * Time.fixedDeltaTime;
+			}
+
+			//Si le joueur est trop proche du servant, ce dernier s'en éloigne
+			else if (Vector2.Distance(transform.position, target.position) < startRetreatRange && canMove == true)
+			{
+				servantRb.velocity = -direction * speed * Time.fixedDeltaTime;
 			}
 
 			//Si le joueur est à portée d'attaque du joueur et qu'il peut bouger, il arrête de bouger et lance son attaque.
-			else if (Vector2.Distance(transform.position, target.position) < startAttackRange && canMove == true)
+			else if (Vector2.Distance(transform.position, target.position) < startAttackRange && Vector2.Distance(transform.position, target.position) > startRetreatRange && canMove == true)
 			{
 				canMove = false;
-				wolfRb.velocity = new Vector2(0,0) * speed * Time.fixedDeltaTime;
-				StartCoroutine(WolfAttack());
+				servantRb.velocity = new Vector2(0, 0) * speed * Time.fixedDeltaTime;
+				StartCoroutine(FireProjectile());
 			}
 
+			//Si l'ennemi n'a plus de pv, son entity est détruite.
 			else if (enemyCurrentHp <= 0)
 			{
 				Destroy(enemyPrefab);
@@ -71,40 +81,21 @@ namespace Enemy
 
 
 		/// <summary>
-		/// Wolf Attack Pattern
+		/// The Servant fire a projectile after a short delay and then wait for another short delay.
 		/// </summary>
 		/// <returns></returns>
-		IEnumerator WolfAttack()
+		IEnumerator FireProjectile()
 		{
 			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
-			//ANIM : wolf stay on first frame of attack anim to show he is going to jump
 
-			yield return new WaitForSeconds(timeBeforeTargetLock);
+			yield return new WaitForSeconds(timeBeforeServantFire);
 
-			dashTarget = target;
-			dashDirection = new Vector2(dashTarget.position.x - transform.position.x, dashTarget.position.y - transform.position.y).normalized;
-
-			yield return new WaitForSeconds(timeBeforeWolfAttack);
-
-			GetComponentInParent<BoxCollider2D>().isTrigger = true;
-			wolfRb.velocity = dashDirection * attackSpeed * Time.fixedDeltaTime;
-			//ANIM : Play wolf attack anim
+			Instantiate(servantProjectile, transform.position, Quaternion.identity);
 
 			yield return new WaitForSeconds(recoilDuration);
 
-			GetComponentInParent<BoxCollider2D>().isTrigger = false;
 			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.white;
 			canMove = true;
-		}
-
-		private void OnTriggerEnter2D(Collider2D other)
-		{
-			Debug.Log(other);
-			if (other.CompareTag("Player"))
-			{
-				other.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
-			}
-
 		}
 
 	}

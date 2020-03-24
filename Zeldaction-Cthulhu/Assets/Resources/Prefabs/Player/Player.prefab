@@ -107,8 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowTime: 0.04
   isShadowActivated: 0
-  shadowObject: {fileID: 0}
-  animator: {fileID: 0}
+  shadowObject: {fileID: 2342178725851585801}
+  animator: {fileID: 1183394570068982123}
   isCharged: 0
 --- !u!114 &5995488041803878569
 MonoBehaviour:
@@ -307,8 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4580132030850431679}
   - component: {fileID: 4580132030850431673}
-  - component: {fileID: 5053417398748807863}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: EnemyDetectionCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -486,9 +485,9 @@ MonoBehaviour:
   attackRange: 0.35
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1024
   attackCount: 0
-  playerDamage: 1
+  playerDamage: 5
   comboKeepTime: 1.5
   cantAttack: 0
 --- !u!114 &4580132031067072194
@@ -519,6 +518,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4580132031356252413}
+  - component: {fileID: 7523831221411642108}
+  - component: {fileID: 4070308447217773796}
   m_Layer: 8
   m_Name: DamageCollider
   m_TagString: Player
@@ -540,6 +541,36 @@ Transform:
   m_Father: {fileID: 4580132031572655726}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &7523831221411642108
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580132031356252412}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.01090249, y: -0.02180493}
+  m_Size: {x: 0.1874604, y: 0.4476044}
+  m_Direction: 0
+--- !u!114 &4070308447217773796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580132031356252412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa490166f556394ab710ab20c8698bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMaxHealth: 6
+  player: {fileID: 4580132031468944960}
 --- !u!1 &4580132031392485401
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +921,18 @@ PrefabInstance:
 --- !u!4 &2342178725851585803 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6036003263914144199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1183394570068982123 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4875274047545739436, guid: 879974bc903108e47b9aba2b67cab9fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6036003263914144199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2342178725851585801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8306088901830716622, guid: 879974bc903108e47b9aba2b67cab9fd,
     type: 3}
   m_PrefabInstance: {fileID: 6036003263914144199}
   m_PrefabAsset: {fileID: 0}

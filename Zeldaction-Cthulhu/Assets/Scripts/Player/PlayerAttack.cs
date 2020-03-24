@@ -194,7 +194,12 @@ namespace Player
         {
             GetAttackPos2();
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+            }
 
             foreach (Collider2D enemy in hitEnemies)
             {
@@ -210,7 +215,12 @@ namespace Player
         {
             GetAttackPos3();
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+            }
 
             foreach (Collider2D enemy in hitEnemies)
             {
@@ -256,7 +266,7 @@ namespace Player
         /// Select the "damage script" to apply to all gameobject within player attack range depending on the gameobject tag
         /// </summary>
         /// <param name="hitEnemies"></param>
-        void InflictDamage(Collider2D[] hitEnemies)
+        /*void InflictDamage(Collider2D[] hitEnemies)
         {
             if (hitEnemies.Length > 0)
             {

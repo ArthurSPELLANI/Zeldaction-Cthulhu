@@ -7,12 +7,14 @@ namespace Enemy
 	public class PlayerDetection : MonoBehaviour
 	{
 		[HideInInspector] public bool isDetected = false;
-        public GameObject Behavior;
-		private Rigidbody2D EnemyRb;
+        public GameObject behavior;
+		private Rigidbody2D enemyRb;
+		public float alertRange;
+		public LayerMask enemyLayer;
 
 		void Awake()
 		{
-			EnemyRb = GetComponentInParent<Rigidbody2D>();
+			enemyRb = GetComponentInParent<Rigidbody2D>();
 		}
 
 		void Start()
@@ -23,24 +25,29 @@ namespace Enemy
 		void Update()
 		{
 			//Detect in which direction the enemy is going and orientate the field of view in this same direction.
-			if (isDetected == false)
-			{
-				if (EnemyRb.velocity.x >= 1)
-				{
-					transform.eulerAngles = new Vector3(0, 0, 270);
-				}
-				else if (EnemyRb.velocity.x <= -1)
-				{
-					transform.eulerAngles = new Vector3(0, 0, 90);
-				}
-				else if (EnemyRb.velocity.y >= 1)
-				{
-					transform.eulerAngles = new Vector3(0, 0, 0);
-				}
-				else if (EnemyRb.velocity.y <= -1)
-				{
-					transform.eulerAngles = new Vector3(0, 0, 180);
-				}
+			if (isDetected == false)
+			{
+				if (enemyRb.velocity.x >= 0.6)
+				{
+					transform.eulerAngles = new Vector3(0, 0, 270);
+				}
+				else if (enemyRb.velocity.x <= -0.6)
+				{
+					transform.eulerAngles = new Vector3(0, 0, 90);
+				}
+				else if (enemyRb.velocity.y >= 0.6)
+				{
+					transform.eulerAngles = new Vector3(0, 0, 0);
+				}
+				else if (enemyRb.velocity.y <= -0.6)
+				{
+					transform.eulerAngles = new Vector3(0, 0, 180);
+				}
+			}
+			else
+			{
+				behavior.SetActive(true);
+				GetComponent<PolygonCollider2D>().enabled = false;
 			}
 	
 		}
@@ -50,10 +57,16 @@ namespace Enemy
         {
             if (other.CompareTag("Player"))
             {
-                Behavior.SetActive(true);
+
 				isDetected = true;
-				GetComponent<PolygonCollider2D>().enabled = false;
-            }
+
+				Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, alertRange, enemyLayer);
+
+				foreach (Collider2D enemy in hitEnemies)
+				{
+					enemy.GetComponentInChildren<PlayerDetection>().isDetected = true;
+				}
+			}
            
         }
 

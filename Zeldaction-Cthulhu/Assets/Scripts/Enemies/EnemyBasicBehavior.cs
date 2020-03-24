@@ -7,7 +7,7 @@ namespace Enemy
 	public class EnemyBasicBehavior : MonoBehaviour
 	{
         public int enemyMaxHealth;
-        [SerializeField] int enemyCurrentHealth;
+        [SerializeField] public int enemyCurrentHealth;
         public int enemyDamage;
 
         public GameObject fieldOfView;
@@ -15,7 +15,7 @@ namespace Enemy
         private int childNbr;
         public Transform[] path;
         private int currentWaypoint = 0;
-        /*[HideInInspector]*/ public Vector2 direction;
+        [HideInInspector] public Vector2 direction;
         private Rigidbody2D EnemyRb;
 
         [Range(0, 100)]
@@ -80,11 +80,6 @@ namespace Enemy
         public void TakeDamage(int playerDamage)
         {
             enemyCurrentHealth -= playerDamage;
-
-            if(enemyCurrentHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
         }
 
 
@@ -114,7 +109,6 @@ namespace Enemy
             EnemyRb.velocity = direction * 0 * Time.fixedDeltaTime;
 
             currentWaypoint++;
-            Debug.Log("currentWaypoint is : " + currentWaypoint);
 
             //return at the start of the Array.
             if (currentWaypoint == childNbr)
