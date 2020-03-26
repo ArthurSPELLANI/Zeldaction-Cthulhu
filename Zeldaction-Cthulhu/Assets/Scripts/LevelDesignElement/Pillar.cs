@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Player;
 using Shadow;
+using Enemy;
+
 
 public class Pillar : MonoBehaviour
 {
@@ -13,11 +15,15 @@ public class Pillar : MonoBehaviour
     PlayerShadowMode playerShadowMode;
     public float timeBeforeChargeComeBack = 0.10f;
     public GameObject Fog;
+    public LayerMask pillarLayer;
+    public LayerMask enemyLayer;
+    BoxCollider2D colliBox;
 
     void Start()
     {
 
         playerShadowMode = GameObject.Find("ShadowMode").GetComponent<PlayerShadowMode>();
+        colliBox = GetComponent<BoxCollider2D>();
 
         //Déclaration de si le pillar est chargé ou pas.
 
@@ -109,5 +115,38 @@ public class Pillar : MonoBehaviour
 
         if(playerShadowMode.isCharged)
             Charge(true);
+
+   
     }
+    public void CorruptionBeam(Vector2 direction)
+    {
+        if (isCharged)
+        {
+            UnCharge(false);
+            RaycastHit2D hitPillar = Physics2D.Raycast(new Vector2(transform.position.x + (colliBox.size.x * direction.x), transform.position.y + (colliBox.size.y * direction.y)), direction, 3f, pillarLayer);
+
+            if (hitPillar.collider != null)
+            {
+                Debug.Log("yes");
+                hitPillar.collider.GetComponent<Pillar>().Charge(false);
+            }
+            else if (hitPillar.collider == false)
+            {
+                StartCoroutine(RaycastFalse());
+            }
+
+            RaycastHit2D[] hitEnemis = Physics2D.RaycastAll(transform.position, direction, 3f, enemyLayer);
+
+            foreach (RaycastHit2D hit in hitEnemis)
+            {
+                //hit.collider.GetComponent<EnemyBasicBehavior>().TaFonction();
+            }
+        }
+
+    }
+    IEnumerator RaycastFalse()
+    {
+        yield return new WaitForSeconds(3f);
+        Charge(false);
+    } 
 }
