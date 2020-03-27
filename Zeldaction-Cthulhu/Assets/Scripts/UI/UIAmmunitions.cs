@@ -24,7 +24,7 @@ public class UIAmmunitions : MonoBehaviour
     void Update()
     {
         ammo = PlayerManager.Instance.playerShoot.ammunitions -1;
-        isShooting = PlayerManager.Instance.playerShoot.isShooting;
+        isShooting = PlayerManager.Instance.playerShoot.isAiming;
 
         if (isShooting == true)
         {

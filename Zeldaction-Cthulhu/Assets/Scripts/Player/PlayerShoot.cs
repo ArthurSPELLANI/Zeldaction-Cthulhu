@@ -8,6 +8,9 @@ namespace Player
     {
 
         [HideInInspector] public Vector2 shootDirection;
+        float aimHorizontal;
+        float aimVertical;
+
         bool directionStored = false;
         bool canShoot;        
 
@@ -21,9 +24,11 @@ namespace Player
         public float shootCooldown;
         public int ammunitions = 3;
 
+        Animator animator;
+
         Quaternion rotation = Quaternion.identity;
 
-        [HideInInspector] public bool isShooting = false;
+        [HideInInspector] public bool isAiming = false;
 
 
         void Awake()
@@ -34,33 +39,41 @@ namespace Player
         void Start()
         {
             canShoot = true;
+            animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
         }
     
         void Update()
         {
+            aimHorizontal = shootDirection.normalized.x;
+            aimVertical = shootDirection.normalized.y;
+
 
             if (Input.GetAxisRaw("Shoot") != 0)
             {
-               AimMovement();                
+               AimMovement();
+               animator.SetBool("isAiming", true);
             }
 
-            if (Input.GetAxisRaw("Shoot") == 0 && isShooting == true)
+            if (Input.GetAxisRaw("Shoot") == 0 && isAiming == true)
             {              
                ExitShoot();
             }
         }
 
         void AimMovement()
-        {
+        {            
             if(directionStored == false)
             {
                 GetDirection();
             }
 
+
+
             if (Input.GetButtonDown("Attack") && canShoot == true)
             {
                 if(ammunitions > 0)
                 {
+                    animator.SetBool("isShooting", true);
                     ShootBullet();
                 }                
             }
@@ -72,18 +85,19 @@ namespace Player
             shootDirection = PlayerManager.Instance.playerMovement.currentDirection;
             PlayerManager.Instance.playerMovement.speed -= aimSlow;
             directionStored = true;
-            isShooting = true;
+            isAiming = true;
         }
 
         void ExitShoot()
         {
             directionStored = false;
             PlayerManager.Instance.playerMovement.speed += aimSlow;
-            isShooting = false;
+            animator.SetBool("isAiming", false);
+            isAiming = false;
         }
 
         void ShootBullet()
-        {            
+        {
             StartCoroutine(ShootDelay());
             ammunitions -= 1;
             Instantiate(bullet, this.transform.position, rotation);
@@ -92,8 +106,10 @@ namespace Player
         IEnumerator ShootDelay()
         {
             canShoot = false;
+            yield return new WaitForSeconds(0.1f);
+            animator.SetBool("isShooting", false);
             yield return new WaitForSeconds(shootCooldown);
-            canShoot = true;
+            canShoot = true;            
         }
 
     }

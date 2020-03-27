@@ -104,25 +104,15 @@ namespace Player
             direction = new Vector2(horizontal, vertical).normalized;
             playerRb.velocity = direction * speed * Time.fixedDeltaTime;
 
-
-            if(PlayerManager.Instance.playerShoot.isShooting == true)
+            //Set de l'animator si le joueur est en mouvement
+            if (horizontal != 0 || vertical != 0)
             {
-               //animator shoot
+                animator.SetBool("IsWalking", true);
             }
-            else
+            else if (horizontal == 0 && vertical == 0)
             {
-                //Set de l'animator si le joueur est en mouvement
-                if (horizontal != 0 || vertical != 0)
-                {
-                    animator.SetBool("IsWalking", true);
-                }
-                else if (horizontal == 0 && vertical == 0)
-                {
-                    animator.SetBool("IsWalking", false);
-                }
-            }
-            
-
+                animator.SetBool("IsWalking", false);
+            }            
         }
 
         //Fonction qui store la dernière direction du joueur + Direction de l'animator
@@ -143,18 +133,19 @@ namespace Player
             if (direction.x == 0 && direction.y == -1)
             {
                 currentDirection = new Vector2(0, -1);
-            }
-            
+            }           
 
-           
-
-            if (PlayerManager.Instance.playerShoot.isShooting == false)
+            if (PlayerManager.Instance.playerShoot.isAiming == false)
             {
                 //Set de la direction de l'animator
                 animator.SetFloat("Horizontal", currentDirection.x);
                 animator.SetFloat("Vertical", currentDirection.y);
-            }            
-
+            }
+            else
+            {
+                animator.SetFloat("AimHorizontal", currentDirection.x);
+                animator.SetFloat("AimVertical", currentDirection.y);
+            }
         }
 
         //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack

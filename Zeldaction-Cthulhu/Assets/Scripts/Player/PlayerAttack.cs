@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
@@ -41,7 +41,7 @@ namespace Player
 
             coolDown -= Time.deltaTime;
 
-            if (PlayerManager.Instance.playerShoot.isShooting == false)
+            if (PlayerManager.Instance.playerShoot.isAiming == false)
             {
                 //Si le joueur appuie sur le bouton d'attaque, lance une coroutine dans le script PlayerMovement
                 if (Input.GetButtonDown("Attack") && cantAttack == false)
