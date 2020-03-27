@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Enemy
   - NegativeFog
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Player
   - Shadow
   - Enemy
-  - 
-  - 
+  - Bullet
+  - Environnement
   - 
   - 
   - 
@@ -42,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: EnviroBg
+    uniqueID: 2960008709
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: EnviroFg
+    uniqueID: 2030513939
     locked: 0

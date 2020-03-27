@@ -106,9 +106,11 @@ namespace Enemy
 			yield return new WaitForSeconds(timeBeforeWolfAttack);
 
 			GetComponentInParent<BoxCollider2D>().isTrigger = true;
+
 			wolfAnimator.SetFloat("Horizontal", animDirection.x);
 			wolfAnimator.SetBool("isAttacking", true);
-			GetComponent<BoxCollider2D>().isTrigger = true;
+
+			GetComponentInParent<BoxCollider2D>().isTrigger = true;
 			wolfRb.velocity = dashDirection * attackSpeed * Time.fixedDeltaTime;
 			
 			
