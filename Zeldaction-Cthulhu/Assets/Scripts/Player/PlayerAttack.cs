@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
+using Boss;
 
 namespace Player
 {
@@ -182,7 +183,15 @@ namespace Player
 
             foreach(Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                if (enemy.CompareTag("Enemy"))
+                {
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                }
+
+                if (enemy.CompareTag("Boss"))
+                {
+                    enemy.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
+                }
             }
            
 
@@ -198,13 +207,17 @@ namespace Player
 
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                if (enemy.CompareTag("Enemy"))
+                {
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                }
+
+                if (enemy.CompareTag("Boss"))
+                {
+                    enemy.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
+                }
             }
 
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(playerDamage);
-            }
 
             attackCount += 1;
             playerDamage++;
@@ -219,12 +232,15 @@ namespace Player
 
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
-            }
+                if (enemy.CompareTag("Enemy"))
+                {
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                }
 
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponentInChildren<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                if (enemy.CompareTag("Boss"))
+                {
+                    enemy.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
+                }
             }
 
             attackCount = 0;
