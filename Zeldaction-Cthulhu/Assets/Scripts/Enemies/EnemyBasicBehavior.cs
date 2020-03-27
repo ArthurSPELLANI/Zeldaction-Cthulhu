@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Player;
+using Shadow;
 
 namespace Enemy
 {
@@ -20,6 +22,8 @@ namespace Enemy
 
         [Range(0, 100)]
         public int speed;
+
+        public float sanityDamage;
 
         private double currentWaypointXMin;
         private double currentWaypointXMax;
@@ -144,6 +148,11 @@ namespace Enemy
             {
                 animDirection.x = -1;
             }
+        }
+
+        public void SanityDamage()
+        {
+            PlayerManager.Instance.playerShadowMode.sanity -= sanityDamage;
         }
 
     }
