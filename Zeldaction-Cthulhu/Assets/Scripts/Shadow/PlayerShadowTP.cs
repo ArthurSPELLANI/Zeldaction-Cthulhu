@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using Enemy;
 
 namespace Shadow
 {
@@ -32,7 +33,8 @@ namespace Shadow
             {
                 foreach  (GameObject target in targetMarked)
                 {
-                    target.transform.position = this.gameObject.transform.position;                    
+                    target.transform.position = this.gameObject.transform.position;
+                    shadMode.actionPoints -= 1;
                 }
 
                 shadMode.ShadowExit();
@@ -41,8 +43,20 @@ namespace Shadow
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            targetMarked.Add(collision.gameObject);
+
+            if(shadMode.actionPoints > 0)
+            {
+                if (targetMarked.IndexOf(collision.gameObject) < 0)
+                {
+                    targetMarked.Add(collision.gameObject);
+                    if (collision.gameObject.tag is "Enemy")
+                    {
+                        collision.gameObject.GetComponent<EnemyBasicBehavior>().SanityDamage();
+                    }
+                }
+            }                      
         }
+
     }
 }
 

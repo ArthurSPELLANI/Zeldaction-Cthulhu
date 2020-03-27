@@ -93,7 +93,7 @@ namespace Enemy
 		IEnumerator WolfAttack()
 		{
 			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
-			//ANIM : wolf stay on first frame of attack anim to show he is going to jump
+			
 			
 
 			yield return new WaitForSeconds(timeBeforeTargetLock);
@@ -110,7 +110,7 @@ namespace Enemy
 			wolfAnimator.SetBool("isAttacking", true);
 			GetComponent<BoxCollider2D>().isTrigger = true;
 			wolfRb.velocity = dashDirection * attackSpeed * Time.fixedDeltaTime;
-			//ANIM : Play wolf attack anim
+			
 			
 
 			yield return new WaitForSeconds(recoilDuration);

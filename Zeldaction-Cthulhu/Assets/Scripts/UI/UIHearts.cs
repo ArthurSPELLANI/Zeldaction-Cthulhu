@@ -36,10 +36,7 @@ public class UIHearts : MonoBehaviour
             else if(i > health)
             {
                 hearts[i].sprite = emptyHeart;
-            }
-                
-
-
+            }             
         }
     }
 }

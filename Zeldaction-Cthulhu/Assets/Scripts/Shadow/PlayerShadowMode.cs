@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Shadow;
+using UI;
 
 namespace Player
 {
@@ -26,6 +27,14 @@ namespace Player
 
         public bool isCharged;
 
+        public float maxSanity;
+        public float sanity;
+        public GameObject sanityGauge;
+        public int sanityDecay;
+        public int sanityGain;
+
+        public int actionPoints;
+
         void Awake()
 	    {
             timeRef = Time.fixedDeltaTime;            
@@ -45,6 +54,24 @@ namespace Player
         void Update()
         {
             shadowInput = Input.GetAxisRaw("Shadow");
+
+            if (isShadowActivated == true)
+            {
+                sanity -= Time.fixedDeltaTime * sanityDecay;
+                sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
+            }
+            else if (isShadowActivated == false && sanity < maxSanity)
+            {
+                sanity += Time.deltaTime * sanityGain;
+                sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
+            }
+            
+            if(sanity <= 0)
+            {
+                ShadowExit();
+            }
+
+
 
             if (shadowInput != 0 && isAxisInUse == false)
             {
@@ -112,5 +139,11 @@ namespace Player
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
         }
     
+        /*public void SanityRemove(float sanityDamage)
+        {
+            sanity -= sanityDamage;
+        }*/
+
+
     }
 }
