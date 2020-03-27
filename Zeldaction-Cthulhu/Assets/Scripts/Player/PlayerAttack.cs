@@ -15,10 +15,13 @@ namespace Player
         [Range(0, 1)]
         public float attackRange;
         public LayerMask enemyLayer;
+        public LayerMask pillarLayer;
         public int attackCount = 0;
         public int playerDamage = 1;
         public float comboKeepTime;
         float coolDown = 0;
+
+        Pillar pillar;
 
         Animator animator;
 
@@ -193,9 +196,17 @@ namespace Player
                     enemy.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
                 }
             }
-           
 
-            attackCount += 1;            
+            Collider2D pillar = Physics2D.OverlapCircle(currentAttackPos.position, attackRange, pillarLayer);
+
+            if (pillar != null)
+            {
+                pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+            }
+                
+
+
+            attackCount += 1;
         }
 
         //Second coup de la série d'attaques
@@ -218,6 +229,12 @@ namespace Player
                 }
             }
 
+            Collider2D pillar = Physics2D.OverlapCircle(currentAttackPos.position, attackRange, pillarLayer);
+
+            if (pillar != null)
+            {
+                pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+            }
 
             attackCount += 1;
             playerDamage++;
@@ -241,6 +258,13 @@ namespace Player
                 {
                     enemy.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
                 }
+            }
+
+            Collider2D pillar = Physics2D.OverlapCircle(currentAttackPos.position, attackRange, pillarLayer);
+
+            if (pillar != null)
+            {
+                pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
             }
 
             attackCount = 0;

@@ -10,7 +10,7 @@ namespace Player
 
         public Rigidbody2D rb;
         public int damage;
-
+        Pillar pillar;
         
 
     	void Awake()
@@ -39,6 +39,12 @@ namespace Player
 
             if (collision.gameObject.tag == "Enviro")
             {
+                Destroy(this);
+            }
+
+            if (collision.gameObject.tag == "pillar")
+            {
+                collision.gameObject.GetComponent<Pillar>().CorruptionBeam(rb.velocity);
                 Destroy(this);
             }
         }

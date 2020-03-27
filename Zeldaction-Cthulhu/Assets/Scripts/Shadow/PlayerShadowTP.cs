@@ -55,6 +55,8 @@ namespace Shadow
                     }
                 }
             }                      
+            if (collision.tag != "pillar" || collision.tag != "NegativeFog")
+                targetMarked.Add(collision.gameObject);
         }
 
     }

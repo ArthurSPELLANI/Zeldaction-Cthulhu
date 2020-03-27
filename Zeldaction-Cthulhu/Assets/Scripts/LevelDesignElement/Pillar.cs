@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Player;
 using Shadow;
+using Enemy;
+
 
 public class Pillar : MonoBehaviour
 {
@@ -13,11 +15,15 @@ public class Pillar : MonoBehaviour
     PlayerShadowMode playerShadowMode;
     public float timeBeforeChargeComeBack = 0.10f;
     public GameObject Fog;
+    public LayerMask pillarLayer;
+    public LayerMask enemyLayer;
+    BoxCollider2D colliBox;
 
     void Start()
     {
 
         playerShadowMode = GameObject.Find("ShadowMode").GetComponent<PlayerShadowMode>();
+        colliBox = GetComponent<BoxCollider2D>();
 
         //Déclaration de si le pillar est chargé ou pas.
 
@@ -26,9 +32,9 @@ public class Pillar : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
         else
-           {
-                gameObject.transform.GetChild(1).gameObject.SetActive(true);
-           }
+        {
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        }
         canInteract = true;
     }
 
@@ -49,10 +55,12 @@ public class Pillar : MonoBehaviour
         //Quand le player quitte le shadowMode, la charge revient.
 
         if (playerShadowMode.isCharged && myCharge && !playerShadowMode.isShadowActivated)
-            Charge();
+            Charge(true);
 
         if (!playerShadowMode.isCharged)
             myCharge = false;
+
+        Fog.transform.position = gameObject.transform.position;
 
 
     }
@@ -61,35 +69,39 @@ public class Pillar : MonoBehaviour
     {
         if (col.tag == "Shadow" && isCharged && canInteract && !playerShadowMode.isCharged)
         {
-            UnCharge();
+            UnCharge(true);
         }
         if (col.tag == "Shadow" && !isCharged && canInteract && playerShadowMode.isCharged)
         {
-            Charge();
+            Charge(true);
         }
     }
 
-    void UnCharge()
+    void UnCharge(bool shadow)
     {
         isCharged = false;
         canInteract = false;
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
-        StartCoroutine(ChargeCooldown());
-        playerShadowMode.isCharged = true;
+        StartCoroutine(ChargeCooldown());      
         myCharge = true;
         StartCoroutine(ChargeComeBack());
 
+        if (shadow)
+            playerShadowMode.isCharged = true;
+
     }
 
-    void Charge()
+    void Charge(bool shadow)
     {
         isCharged = true;
         canInteract = false;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
         StartCoroutine(ChargeCooldown());
-        playerShadowMode.isCharged = false;
+
+        if (shadow)
+            playerShadowMode.isCharged = false;
     }
 
     IEnumerator ChargeCooldown()
@@ -102,6 +114,39 @@ public class Pillar : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeChargeComeBack);
 
         if(playerShadowMode.isCharged)
-            Charge();
+            Charge(true);
+
+   
     }
+    public void CorruptionBeam(Vector2 direction)
+    {
+        if (isCharged)
+        {
+            UnCharge(false);
+            RaycastHit2D hitPillar = Physics2D.Raycast(new Vector2(transform.position.x + (colliBox.size.x * direction.x), transform.position.y + (colliBox.size.y * direction.y)), direction, 3f, pillarLayer);
+
+            if (hitPillar.collider != null)
+            {
+                Debug.Log("yes");
+                hitPillar.collider.GetComponent<Pillar>().Charge(false);
+            }
+            else if (hitPillar.collider == false)
+            {
+                StartCoroutine(RaycastFalse());
+            }
+
+            RaycastHit2D[] hitEnemis = Physics2D.RaycastAll(transform.position, direction, 3f, enemyLayer);
+
+            foreach (RaycastHit2D hit in hitEnemis)
+            {
+                //hit.collider.GetComponent<EnemyBasicBehavior>().TaFonction();
+            }
+        }
+
+    }
+    IEnumerator RaycastFalse()
+    {
+        yield return new WaitForSeconds(3f);
+        Charge(false);
+    } 
 }
