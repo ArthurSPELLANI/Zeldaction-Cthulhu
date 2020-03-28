@@ -80,6 +80,7 @@ namespace Enemy
 		{
 			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(transform.position, explosionRange, playerLayer);
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRange, enemyLayer);
+			
 
 			foreach (Collider2D player in hitPlayer)
 			{
@@ -94,6 +95,9 @@ namespace Enemy
 			Destroy(enemyPrefab);
 		}
 
-
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.DrawWireSphere(transform.position, explosionRange);
+		}
 	}
 }

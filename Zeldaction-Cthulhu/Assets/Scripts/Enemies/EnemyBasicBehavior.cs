@@ -66,7 +66,7 @@ namespace Enemy
                     currentWaypointYMax = path[currentWaypoint].position.y + 0.02;
 
                     //if the enemy as reached the Waypoint, he target the next one on the Array.
-                    if (transform.position.x >= currentWaypointXMin && transform.position.x <= currentWaypointXMax && transform.position.y >= currentWaypointYMin && transform.position.y >= currentWaypointYMin)
+                    if (transform.position.x >= currentWaypointXMin && transform.position.x <= currentWaypointXMax && transform.position.y >= currentWaypointYMin && transform.position.y <= currentWaypointYMax)
                     {
                         StartCoroutine(ChangingWaypoint());
                     }
