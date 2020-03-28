@@ -17,11 +17,13 @@ public class Pillar : MonoBehaviour
     public GameObject Fog;
     public LayerMask pillarLayer;
     public LayerMask enemyLayer;
+    BoxCollider2D shadowColliBox;
     BoxCollider2D colliBox;
+    bool weGotShadow;
+    
 
     void Start()
     {
-
         playerShadowMode = GameObject.Find("ShadowMode").GetComponent<PlayerShadowMode>();
         colliBox = GetComponent<BoxCollider2D>();
 
@@ -40,6 +42,11 @@ public class Pillar : MonoBehaviour
 
     void Update()
     {
+
+        if (playerShadowMode.isShadowActivated && !weGotShadow)
+            GetShadow();
+        if (weGotShadow && !playerShadowMode.isShadowActivated)
+            weGotShadow = false;
             
         //Activation/désactivation du fog.
 
@@ -67,14 +74,20 @@ public class Pillar : MonoBehaviour
     //Collisions avec le Shadow.
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Shadow" && isCharged && canInteract && !playerShadowMode.isCharged)
+        if (col == shadowColliBox && isCharged && canInteract && !playerShadowMode.isCharged)
         {
             UnCharge(true);
         }
-        if (col.tag == "Shadow" && !isCharged && canInteract && playerShadowMode.isCharged)
+        if (col == shadowColliBox && !isCharged && canInteract && playerShadowMode.isCharged)
         {
             Charge(true);
         }
+    }
+
+    void GetShadow()
+    {
+        weGotShadow = true;
+        shadowColliBox = GameObject.Find("Shadow").GetComponent<BoxCollider2D>();
     }
 
     void UnCharge(bool shadow)
@@ -120,14 +133,23 @@ public class Pillar : MonoBehaviour
     }
     public void CorruptionBeam(Vector2 direction)
     {
+        if (direction.x > 0)
+            direction.x = 1;
+        if (direction.x < 0)
+            direction.x = -1;
+        if (direction.y > 0)
+            direction.y = 1;
+        if (direction.y < 0)
+            direction.y = -1;
+
         if (isCharged)
         {
             UnCharge(false);
             RaycastHit2D hitPillar = Physics2D.Raycast(new Vector2(transform.position.x + (colliBox.size.x * direction.x), transform.position.y + (colliBox.size.y * direction.y)), direction, 3f, pillarLayer);
 
+
             if (hitPillar.collider != null)
             {
-                Debug.Log("yes");
                 hitPillar.collider.GetComponent<Pillar>().Charge(false);
             }
             else if (hitPillar.collider == false)
