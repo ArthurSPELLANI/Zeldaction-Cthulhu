@@ -304,7 +304,7 @@ Transform:
   - {fileID: 3777866534833525380}
   - {fileID: 3777866533146749320}
   m_Father: {fileID: 3777866533924882521}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3777866533924882522
 GameObject:
@@ -334,6 +334,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3084716846156065074}
   - {fileID: 3777866534950632722}
   - {fileID: 3777866533156150206}
   m_Father: {fileID: 3777866534862073196}
@@ -456,6 +457,8 @@ GameObject:
   - component: {fileID: 1929926508965212557}
   - component: {fileID: 773336350}
   - component: {fileID: 773336351}
+  - component: {fileID: 8037080376436377517}
+  - component: {fileID: 8863893976731458716}
   m_Layer: 0
   m_Name: Phase1Behavior
   m_TagString: Untagged
@@ -473,8 +476,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3084716846156065074}
+  m_Children: []
   m_Father: {fileID: 3777866534950632722}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -502,12 +504,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d82f564c2a57eb49ba30dec1d1851d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Anchor:
+  anchor:
   - {fileID: 4106536708963956085}
   - {fileID: 4395485274446754010}
   - {fileID: 7751502259672860778}
   - {fileID: 8200589585338311396}
   - {fileID: 7421313032529507247}
+  moveSpeed: 0
+  timeBeforeNextDash: 0
 --- !u!114 &773336350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +525,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &773336351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777866534685081171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4725bd6e0bb0dc34a97deee801f604b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8037080376436377517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777866534685081171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f380e0f5918d124b91c6369ed2f218d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8863893976731458716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -683,6 +711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3777866534950632722}
+  - component: {fileID: 1700160390}
   m_Layer: 0
   m_Name: Phase1
   m_TagString: Untagged
@@ -705,8 +734,29 @@ Transform:
   - {fileID: 3777866534685081170}
   - {fileID: 3777866534616415333}
   m_Father: {fileID: 3777866533924882521}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1700160390
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777866534950632723}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &4068751348615686071
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +942,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8842767913221911314}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.138, y: -0.626, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -901,6 +951,6 @@ Transform:
   - {fileID: 7751502259672860778}
   - {fileID: 8200589585338311396}
   - {fileID: 7421313032529507247}
-  m_Father: {fileID: 3777866534685081170}
+  m_Father: {fileID: 3777866533924882521}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

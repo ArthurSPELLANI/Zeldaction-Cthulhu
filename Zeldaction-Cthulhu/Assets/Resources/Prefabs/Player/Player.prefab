@@ -70,7 +70,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4580132030262957900}
   - component: {fileID: 4580132030262957901}
-  - component: {fileID: 5995488041803878569}
   m_Layer: 8
   m_Name: ShadowMode
   m_TagString: Untagged
@@ -110,20 +109,12 @@ MonoBehaviour:
   shadowObject: {fileID: 2342178725851585801}
   animator: {fileID: 1183394570068982123}
   isCharged: 0
---- !u!114 &5995488041803878569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580132030262957891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de288df25bc864644a33cc0396012440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sanityLevel: 0
-  sanityMax: 0
+  maxSanity: 100
+  sanity: 100
+  sanityGauge: {fileID: 0}
+  sanityDecay: 40
+  sanityGain: 5
+  actionPoints: 5
 --- !u!1 &4580132030270416510
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,8 +462,11 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  pillarLayer:
+    serializedVersion: 2
+    m_Bits: 0
   attackCount: 0
-  playerDamage: 1
+  playerDamage: 5
   comboKeepTime: 1.5
   cantAttack: 0
 --- !u!114 &4580132031067072194
@@ -492,8 +486,8 @@ MonoBehaviour:
   bulletSpeed: 5
   bullet: {fileID: 5844217980954619402, guid: 880becf3ee5851d42aed7db5a282d655, type: 3}
   shootCooldown: 0.7
-  ammunitions: 3
-  isShooting: 0
+  ammunitions: 6
+  isAiming: 0
 --- !u!1 &4580132031356252412
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,10 +857,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4580132030262957900}
     m_Modifications:
+    - target: {fileID: -3272378327527761524, guid: 879974bc903108e47b9aba2b67cab9fd,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5061571579558208700, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061571579558208700, guid: 879974bc903108e47b9aba2b67cab9fd,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061571579558208700, guid: 879974bc903108e47b9aba2b67cab9fd,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 6201300188359779479, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
@@ -886,12 +895,12 @@ PrefabInstance:
     - target: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.066
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
