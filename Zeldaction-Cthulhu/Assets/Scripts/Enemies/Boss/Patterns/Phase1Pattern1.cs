@@ -8,8 +8,6 @@ namespace Boss
     public class Phase1Pattern1 : MonoBehaviour
     {
         public Transform[] anchor;
-        public float moveSpeed;
-        public float timeBeforeNextDash;
         private int dashNbr;
         private bool patternCanStart = false;
         private Vector2 vecDir;
@@ -17,8 +15,20 @@ namespace Boss
         private int currentAnchor;
         private bool isWaitingForNextAnchor;
         private bool pathIsChoosen = false;
+
         public List<int> anchorPath;
 
+        private bool canMove = true;
+
+        public GameObject bossBullet;
+
+        public float moveSpeed;
+        public float timebeforeFirstDash;
+        public float timeBeforeNextDash;
+        public float timeBeforeFiring;
+        public float timeBeforeWeakStateBegin;
+        public float timeBeforeWeakStateEnd;
+        
         private double AnchorXMin;
         private double AnchorXMax;
         private double AnchorYMin;
@@ -27,13 +37,26 @@ namespace Boss
 
         void Awake()
         {
-            bossPhase1Rb = GetComponentInParent<Rigidbody2D>();
-            anchorPath = new List<int>();
+            
         }
 
         void Start()
         {
+            
+        }
+
+        void OnEnable()
+        {
+            canMove = true;
+            pathIsChoosen = false;
+            patternCanStart = false;
+
+            Debug.Log("pattern1 à commencé");
+            bossPhase1Rb = GetComponentInParent<Rigidbody2D>();
+            anchorPath = new List<int>();
+
             dashNbr = Random.Range(2, 4);
+      
         }
 
         void Update()
@@ -72,32 +95,57 @@ namespace Boss
                     pathIsChoosen = true;
                 }
 
-                StartCoroutine(DashToNextAnchor());
+                if(canMove == true)
+                {
+                    canMove = false;
+                    StartCoroutine(DashToNextAnchor());
+                }
+                
             }
         }
 
         IEnumerator DashToNextAnchor()
         {
-            yield return new WaitForSeconds(timeBeforeNextDash);
+            yield return new WaitForSeconds(timebeforeFirstDash);
 
             for (int i = 0; i < dashNbr; i++)
             {
                 vecDir = new Vector2(anchor[anchorPath[i]].position.x - transform.position.x, anchor[anchorPath[i]].position.y - transform.position.y).normalized;
+                
                 yield return new WaitForSeconds(timeBeforeNextDash);
 
                 //Soft spot around the Anchor position cause rigidbody can't reach a precise position while using velocity to move.
-                AnchorXMin = anchor[i].position.x - 0.04;
-                AnchorXMax = anchor[i].position.x + 0.04;
-                AnchorYMin = anchor[i].position.y - 0.04;
-                AnchorYMax = anchor[i].position.y + 0.04;
+                AnchorXMin = anchor[anchorPath[i]].position.x - 0.04;
+                AnchorXMax = anchor[anchorPath[i]].position.x + 0.04;
+                AnchorYMin = anchor[anchorPath[i]].position.y - 0.04;
+                AnchorYMax = anchor[anchorPath[i]].position.y + 0.04;
 
-                while (transform.position.x <= AnchorXMin && transform.position.x >= AnchorXMax && transform.position.y <= AnchorYMin && transform.position.y >= AnchorYMax)
+                //tant que le boss n'a pas atteint le prochain point d'ancrage situé dans la liste, il se déplace vers se dernier
+                while (transform.position.x <= AnchorXMin || transform.position.x >= AnchorXMax || transform.position.y <= AnchorYMin || transform.position.y >= AnchorYMax)
                 {
                     bossPhase1Rb.velocity = vecDir * moveSpeed * Time.fixedDeltaTime;
+
+                    yield return null;
                 }
 
+                //une fois le point d'ancrage atteint, le boss s'arrête.
                 bossPhase1Rb.velocity = new Vector2(0, 0) * moveSpeed * Time.fixedDeltaTime;
             }
+
+            yield return new WaitForSeconds(timeBeforeFiring);
+
+            Instantiate(bossBullet, transform.position, Quaternion.identity);
+
+            yield return new WaitForSeconds(timeBeforeWeakStateBegin);
+
+            transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
+
+            yield return new WaitForSeconds(timeBeforeWeakStateEnd);
+
+            transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
+
+            GetComponent<Phase1PatternManager>().NextPatternSelection();
+
         }
 
         /// <summary>
@@ -223,6 +271,8 @@ namespace Boss
                 #endregion
             }
         }
+
+
     }
 }
 

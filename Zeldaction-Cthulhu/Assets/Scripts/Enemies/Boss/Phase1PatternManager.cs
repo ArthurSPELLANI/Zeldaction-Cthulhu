@@ -25,6 +25,12 @@ namespace Boss
         {
             if(patternNbr == 1 && isWaitingForNextPattern == true)
             {
+                if (patternCount > 0)
+                {
+                    Debug.Log("alo ?");
+                    GetComponent<Phase1Pattern1>().enabled = false;
+                }
+
                 isWaitingForNextPattern = false;
                 patternCount++;
 
@@ -36,6 +42,12 @@ namespace Boss
 
             else if(patternNbr == 2 && isWaitingForNextPattern == true)
             {
+                if (patternCount > 0)
+                {
+                    GetComponent<Phase1Pattern2>().enabled = false;
+                }
+
+                isWaitingForNextPattern = false;
                 patternCount++;
 
                 GetComponent<Phase1Pattern3>().enabled = false;
@@ -46,6 +58,13 @@ namespace Boss
 
             else if (patternNbr == 3 && isWaitingForNextPattern == true)
             {
+
+                if (patternCount > 0)
+                {
+                    GetComponent<Phase1Pattern3>().enabled = false;
+                }
+
+                isWaitingForNextPattern = false;
                 patternCount++;
 
                 GetComponent<Phase1Pattern1>().enabled = false;
@@ -63,7 +82,8 @@ namespace Boss
 
             for (int i = 0; i < patternCount; i++)
             {
-                patternSelector = Random.Range(1, 4);
+                //patternSelector = Random.Range(1, 4);
+                patternSelector = 1;
 
                 if (patternSelector != patternNbr)
                 {
@@ -73,6 +93,7 @@ namespace Boss
             }
 
             patternNbr = patternSelector;
+            isWaitingForNextPattern = true;
         }
 
 

@@ -300,25 +300,5 @@ namespace Player
 
             Gizmos.DrawWireSphere(currentAttackPos.position, attackRange);
         }
-
-        /*
-        /// <summary>
-        /// Select the "damage script" to apply to all gameobject within player attack range depending on the gameobject tag
-        /// </summary>
-        /// <param name="hitEnemies"></param>
-        /*void InflictDamage(Collider2D[] hitEnemies)
-        {
-            if (hitEnemies.Length > 0)
-            {
-                for (int i = 0; i < hitEnemies.Length; i++)
-                {
-                    if (hitEnemies[i].gameObject.tag == "Enemy")
-                    {
-                        hitEnemies[i].GetComponentInParent<EnemyBasicBehavior>().TakeDamage(playerDamage);
-                    }
-                }
-            }
-        }*/
-
     }
 }
