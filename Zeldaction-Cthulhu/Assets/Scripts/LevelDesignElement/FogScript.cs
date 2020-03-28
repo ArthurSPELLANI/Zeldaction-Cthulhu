@@ -5,11 +5,13 @@ using Player;
 
 public class FogScript : MonoBehaviour
 {
+    BoxCollider2D shadowColliBox;
     PlayerShadowMode playerShadowMode;
     public float timeBeforeShadowExit;
 
     void Start()
     {
+        shadowColliBox = GameObject.Find("Shadow").GetComponent<BoxCollider2D>();
         playerShadowMode = GameObject.Find("ShadowMode").GetComponent<PlayerShadowMode>();
     }
 
@@ -20,23 +22,21 @@ public class FogScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Shadow")
+        if (col == shadowColliBox)
         {
-            Debug.Log("yes");
             StartCoroutine(GoBackHuman());
         }
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.tag == "Shadow")
+        if (col == shadowColliBox)
         {
-            StopCoroutine(GoBackHuman());
+            Debug.Log("yes");
+            StopAllCoroutines();
         }
     }
     IEnumerator GoBackHuman()
     {
-        Debug.Log("yes");
-
         yield return new WaitForSeconds(timeBeforeShadowExit);
         playerShadowMode.ShadowExit();
     }
