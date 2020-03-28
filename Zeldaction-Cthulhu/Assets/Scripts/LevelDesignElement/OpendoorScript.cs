@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class OpendoorScript : MonoBehaviour
 {
-    public GameObject Door;
     public GameObject Pillar;
     void Start()
     {
@@ -12,6 +11,15 @@ public class OpendoorScript : MonoBehaviour
     }
     void Update()
     {
-        if (Pillar.activeSelf) { Destroy(gameObject); Debug.Log("yes"); }
+        if (Pillar.activeSelf) 
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<Collider2D>().enabled = true;
+        }
     }
 }
