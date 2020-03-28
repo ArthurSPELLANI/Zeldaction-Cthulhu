@@ -9,7 +9,7 @@ namespace Shadow
     public class PlayerShadowTP : MonoBehaviour
     {
 
-        public List<GameObject> targetMarked;
+        HashSet<GameObject> targetMarked;
         PlayerShadowMode shadMode;
 
         void Awake()
@@ -24,7 +24,7 @@ namespace Shadow
 
         private void OnEnable()
         {
-            targetMarked = new List<GameObject>();
+            targetMarked = new HashSet<GameObject>();
         }
 
         void Update()
@@ -46,7 +46,12 @@ namespace Shadow
 
             if(shadMode.actionPoints > 0)
             {
-                if (targetMarked.IndexOf(collision.gameObject) < 0)
+                if (collision.gameObject.tag == "pillar" || collision.gameObject.tag == "NegativeFog")
+                {
+                    return;
+                }
+
+                if (!targetMarked.Contains(collision.gameObject))
                 {
                     targetMarked.Add(collision.gameObject);
                     if (collision.gameObject.tag is "Enemy")
@@ -54,9 +59,9 @@ namespace Shadow
                         collision.gameObject.GetComponent<EnemyBasicBehavior>().SanityDamage();
                     }
                 }
-            }                      
-            if (collision.tag != "pillar" || collision.tag != "NegativeFog")
-                targetMarked.Add(collision.gameObject);
+
+            }              
+
         }
 
     }
