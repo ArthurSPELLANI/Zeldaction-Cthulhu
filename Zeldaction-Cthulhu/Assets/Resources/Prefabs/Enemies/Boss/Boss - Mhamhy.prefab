@@ -528,6 +528,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4725bd6e0bb0dc34a97deee801f604b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmg: 2
+  attackSpeed: 200
+  dashTime: 2
+  timeBeforeAttack: 1.5
+  timeBeforeWeakStatusBegin: 0.5
+  timeBeforeWeakStatusEnd: 1.25
 --- !u!114 &8037080376436377517
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -83,7 +83,7 @@ namespace Boss
             for (int i = 0; i < patternCount; i++)
             {
                 //patternSelector = Random.Range(1, 4);
-                patternSelector = 1;
+                patternSelector = 2;
 
                 if (patternSelector != patternNbr)
                 {
