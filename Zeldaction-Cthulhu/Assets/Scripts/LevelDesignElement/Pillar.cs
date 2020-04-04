@@ -20,6 +20,7 @@ public class Pillar : MonoBehaviour
     BoxCollider2D shadowColliBox;
     BoxCollider2D colliBox;
     bool weGotShadow;
+    public bool useFog;
     
 
     void Start()
@@ -50,11 +51,11 @@ public class Pillar : MonoBehaviour
             
         //Activation/désactivation du fog.
 
-        if(playerShadowMode.isShadowActivated && !isCharged)
+        if(playerShadowMode.isShadowActivated && !isCharged && useFog)
         {
             Fog.SetActive(true);
         }
-        else
+        else if (!playerShadowMode.isShadowActivated && useFog)
         {
             Fog.SetActive(false);
         }
@@ -67,7 +68,8 @@ public class Pillar : MonoBehaviour
         if (!playerShadowMode.isCharged)
             myCharge = false;
 
-        Fog.transform.position = gameObject.transform.position;
+        if (useFog)
+            Fog.transform.position = gameObject.transform.position;
 
 
     }
