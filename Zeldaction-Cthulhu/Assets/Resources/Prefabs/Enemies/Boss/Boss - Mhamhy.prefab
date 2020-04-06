@@ -396,6 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3777866534616415333}
   - component: {fileID: 570486571}
+  - component: {fileID: 5211987838648686219}
   m_Layer: 10
   m_Name: Phase1Collider
   m_TagString: Boss
@@ -443,6 +444,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32406902, y: 0.33118343}
   m_EdgeRadius: 0
+--- !u!114 &5211987838648686219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777866534616415334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717343a7ed927ed409c76c2f8dcb4bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phase1Behavior: {fileID: 3777866534685081171}
 --- !u!1 &3777866534685081171
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03757a2083e11d346b33f7cf3860d72d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patternNbr: 0
 --- !u!114 &1929926508965212557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,10 +545,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 2
   attackSpeed: 200
-  dashTime: 2
-  timeBeforeAttack: 1.5
+  dashTime: 0.75
+  timeBeforeAttack: 2.5
   timeBeforeWeakStatusBegin: 0.5
   timeBeforeWeakStatusEnd: 1.25
+  collider: {fileID: 3777866534616415334}
+  hasHitWall: 0
 --- !u!114 &8037080376436377517
 MonoBehaviour:
   m_ObjectHideFlags: 0

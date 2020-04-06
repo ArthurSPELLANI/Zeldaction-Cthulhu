@@ -22,6 +22,9 @@ namespace Boss
         private bool canMove;
         private Vector2 vecDir;
         private Rigidbody2D bossPhase1Rb;
+        public GameObject phase1Collider;
+
+        [HideInInspector] public bool hasHitWall = false;
 
         void Awake()
         {
@@ -33,16 +36,14 @@ namespace Boss
         {
 
         }
-
+         
         void OnEnable()
         {
+            
             canMove = false;
             canGoToNextPattern = false;
-
             target = player.transform;
-
             StartCoroutine(WaitingForPatternStart());
-
         }
 
         void Update()
@@ -55,12 +56,22 @@ namespace Boss
             else
             {
                 bossPhase1Rb.velocity = new Vector2(0,0) * attackSpeed * Time.fixedDeltaTime;
-                
             }
 
             if (canGoToNextPattern == true)
             {
+                Debug.Log("dit moi tout chien");
                 GetComponent<Phase1PatternManager>().NextPatternSelection();
+            }
+
+            if (hasHitWall == true)
+            {
+                StopCoroutine(DashDuration());
+
+                phase1Collider.GetComponent<Collider2D>().isTrigger = false;
+                canMove = false;
+
+                StartCoroutine(WeakTiming());
             }
         }
 
@@ -79,19 +90,26 @@ namespace Boss
         }
 
         /// <summary>
-        /// Set theduration of the dash so the boss doesn't dash into oblivion.
+        /// Set the duration of the dash so the boss doesn't dash into oblivion.
         /// </summary>
         /// <returns></returns>
         IEnumerator DashDuration()
         {
+            phase1Collider.GetComponent<Collider2D>().isTrigger = true;
             yield return new WaitForSeconds(dashTime);
 
             canMove = false;
+            phase1Collider.GetComponent<Collider2D>().isTrigger = false;
+
+            canGoToNextPattern = true;
         }
 
+        /// <summary>
+        /// Time during which the boss can be hit
+        /// </summary>
+        /// <returns></returns>
         IEnumerator WeakTiming()
         {
-
             yield return new WaitForSeconds(timeBeforeWeakStatusBegin);
 
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
@@ -101,20 +119,6 @@ namespace Boss
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
 
             canGoToNextPattern = true;
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("player"))
-            {
-                other.GetComponent<PlayerStats>().PlayerTakeDamage(dmg);
-            }
-
-            if (other.CompareTag("Enviro"))
-            {
-                canMove = false;
-                StartCoroutine(WeakTiming());
-            }
         }
 
     }

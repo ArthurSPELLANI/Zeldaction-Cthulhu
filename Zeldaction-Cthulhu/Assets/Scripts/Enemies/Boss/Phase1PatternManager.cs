@@ -6,7 +6,7 @@ namespace Boss
 {
     public class Phase1PatternManager : MonoBehaviour
     {
-        private int patternNbr;
+        public int patternNbr;
         private int patternSelector;
         private int patternCount;
         private bool isWaitingForNextPattern = true;
@@ -27,7 +27,7 @@ namespace Boss
             {
                 if (patternCount > 0)
                 {
-                    Debug.Log("alo ?");
+                    
                     GetComponent<Phase1Pattern1>().enabled = false;
                 }
 
@@ -44,6 +44,7 @@ namespace Boss
             {
                 if (patternCount > 0)
                 {
+                    Debug.Log("alo ?");
                     GetComponent<Phase1Pattern2>().enabled = false;
                 }
 
