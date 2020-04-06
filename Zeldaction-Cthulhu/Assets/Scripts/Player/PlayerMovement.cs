@@ -161,7 +161,7 @@ namespace Player
 
             yield return new WaitForSeconds(dashDelay);
 
-            PlayerManager.Instance.playerAttack.AttackManager();
+            //PlayerManager.Instance.playerAttack.AttackManager();
 
             while (timer < dashTime)
             {
@@ -191,7 +191,7 @@ namespace Player
 
             yield return new WaitForSeconds(dashDelay);
 
-            PlayerManager.Instance.playerAttack.AttackManager();
+            //PlayerManager.Instance.playerAttack.AttackManager();
 
             while (timer < dashTime)
             {
