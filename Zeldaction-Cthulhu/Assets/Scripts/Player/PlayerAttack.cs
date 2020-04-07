@@ -80,7 +80,7 @@ namespace Player
         {
             if (currentDirection.x == 1)
             {
-                currentAttackPos = attackPos[4];
+                currentAttackPos = attackPos[3];
             }
 
             if (currentDirection.x == -1)
@@ -214,8 +214,10 @@ namespace Player
         {
             GetAttackPos2();
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
-
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
+
+
+
             foreach (Collider2D enemy in hitEnemies)
             {
                 if (enemy.CompareTag("Enemy"))
@@ -245,8 +247,10 @@ namespace Player
         {
             GetAttackPos3();
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
-
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
+
+
+
             foreach (Collider2D enemy in hitEnemies)
             {
                 if (enemy.CompareTag("Enemy"))
