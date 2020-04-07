@@ -16,12 +16,14 @@ namespace Player
         public float attackRange;
         public LayerMask enemyLayer;
         public LayerMask pillarLayer;
+        public LayerMask roncesLayer;
         public int attackCount = 0;
         public int playerDamage = 1;
         public float comboKeepTime;
         float coolDown = 0;
 
         Pillar pillar;
+        Ronces ronces;
 
         Animator animator;
 
@@ -203,8 +205,13 @@ namespace Player
             {
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
             }
-                
 
+            Collider2D[] hitRonces = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, roncesLayer);
+
+            foreach(Collider2D ronces in hitRonces)
+            {
+                ronces.GetComponent<Ronces>().Destroy();
+            }
 
             attackCount += 1;
         }
@@ -238,6 +245,14 @@ namespace Player
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
             }
 
+            Collider2D[] hitRonces = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, roncesLayer);
+
+            foreach (Collider2D ronces in hitRonces)
+            {
+                ronces.GetComponent<Ronces>().Destroy();
+            }
+
+
             attackCount += 1;
             playerDamage++;
         }
@@ -269,6 +284,14 @@ namespace Player
             if (pillar != null)
             {
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+            }
+
+
+            Collider2D[] hitRonces = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, roncesLayer);
+
+            foreach (Collider2D ronces in hitRonces)
+            {
+                ronces.GetComponent<Ronces>().Destroy();
             }
 
             attackCount = 0;
