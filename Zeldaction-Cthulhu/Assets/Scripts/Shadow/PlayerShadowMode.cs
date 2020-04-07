@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Shadow;
 using UI;
+using Cinemachine;
 
 namespace Player
 {
@@ -22,6 +23,9 @@ namespace Player
         GameObject player;
                        
         public Animator animator;
+        public CinemachineVirtualCamera VCamMain;
+        public CinemachineVirtualCamera VCamShadow;
+        public bool isOutOfBounds = false;
 
         float timeRef;
 
@@ -71,6 +75,11 @@ namespace Player
                 ShadowExit();
             }
 
+            if(isOutOfBounds == true)
+            {
+                sanity -= Time.fixedDeltaTime * sanityDecay * 3;
+            }
+
 
 
             if (shadowInput != 0 && isAxisInUse == false)
@@ -108,6 +117,8 @@ namespace Player
             }
 
             isShadowActivated = true;
+            VCamMain.gameObject.SetActive(false);
+            VCamShadow.gameObject.SetActive(true);
             PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0,0);
             shadowObject.SetActive(true);
             shadowObject.transform.position = player.transform.position;
@@ -118,6 +129,11 @@ namespace Player
         {
             shadowObject.transform.position = player.transform.position;
             isShadowActivated = false;
+            VCamMain.gameObject.SetActive(true);
+            VCamShadow.gameObject.SetActive(false);
+            isOutOfBounds = false;
+            VCamMain.m_Lens.OrthographicSize = 1.77f;
+            shadowObject.GetComponent<PlayerShadowMovement>().shadowSpeed = 55;
             shadowObject.SetActive(false);
             Time.timeScale = 1;
             Time.fixedDeltaTime = timeRef;
@@ -128,6 +144,11 @@ namespace Player
         {            
             player.transform.position = shadowObject.transform.position;
             isShadowActivated = false;
+            isOutOfBounds = false;
+            VCamMain.gameObject.SetActive(true);
+            VCamShadow.gameObject.SetActive(false);
+            VCamMain.m_Lens.OrthographicSize = 1.77f;
+            shadowObject.GetComponent<PlayerShadowMovement>().shadowSpeed = 55;
             shadowObject.SetActive(false);
             Time.timeScale = 1;
             Time.fixedDeltaTime = timeRef;
@@ -137,6 +158,27 @@ namespace Player
         {
             Time.timeScale = slowTime;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
-        }   
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Shadow" && isShadowActivated == true)
+            {
+                isOutOfBounds = true;
+                shadowObject.GetComponent<PlayerShadowMovement>().shadowSpeed = 15;
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Shadow" && isShadowActivated == true)
+            {
+                isOutOfBounds = false;
+                shadowObject.GetComponent<PlayerShadowMovement>().shadowSpeed = 55;
+            }
+        }
+
+
+
     }
 }
