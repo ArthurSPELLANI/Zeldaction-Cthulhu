@@ -347,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454612473}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.14, y: 0.35, z: -0.3884375}
+  m_LocalPosition: {x: 16.18, y: -0.93, z: -0.3884375}
   m_LocalScale: {x: 0.617, y: 0.407, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1194,6 +1194,27 @@ PrefabInstance:
       propertyPath: phase1Collider
       value: 
       objectReference: {fileID: 245811766}
+    - target: {fileID: 773336351, guid: 5550a6053e4766d419b048b83a600d01, type: 3}
+      propertyPath: timeBeforeWeakStatusBegin
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 773336351, guid: 5550a6053e4766d419b048b83a600d01, type: 3}
+      propertyPath: bounceTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 773336351, guid: 5550a6053e4766d419b048b83a600d01, type: 3}
+      propertyPath: bounceSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 773336351, guid: 5550a6053e4766d419b048b83a600d01, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929926508965212557, guid: 5550a6053e4766d419b048b83a600d01,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3777866534862073196, guid: 5550a6053e4766d419b048b83a600d01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1253,6 +1274,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss - Mhamhy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037080376436377517, guid: 5550a6053e4766d419b048b83a600d01,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5550a6053e4766d419b048b83a600d01, type: 3}

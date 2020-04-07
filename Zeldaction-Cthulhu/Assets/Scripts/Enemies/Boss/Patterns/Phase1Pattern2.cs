@@ -15,8 +15,11 @@ namespace Boss
         public float attackSpeed;
         public float dashTime;
         public float timeBeforeAttack;
+        public float bounceSpeed;
+        public float bounceTime;
         public float timeBeforeWeakStatusBegin;
         public float timeBeforeWeakStatusEnd;
+
 
         private bool canGoToNextPattern;
         private bool canMove;
@@ -32,16 +35,11 @@ namespace Boss
             bossPhase1Rb = GetComponentInParent<Rigidbody2D>();
         }
 
-        void Start()
-        {
-
-        }
-         
         void OnEnable()
         {
-            
             canMove = false;
             canGoToNextPattern = false;
+            hasHitWall = false;
             target = player.transform;
             StartCoroutine(WaitingForPatternStart());
         }
@@ -50,27 +48,23 @@ namespace Boss
         {
             if (canMove == true)
             {
-                bossPhase1Rb.velocity = vecDir * attackSpeed * Time.fixedDeltaTime;
-                StartCoroutine(DashDuration());
-            }
-            else
-            {
-                bossPhase1Rb.velocity = new Vector2(0,0) * attackSpeed * Time.fixedDeltaTime;
+                StartCoroutine(Dash()); 
             }
 
             if (canGoToNextPattern == true)
             {
-                Debug.Log("dit moi tout chien");
                 GetComponent<Phase1PatternManager>().NextPatternSelection();
             }
 
             if (hasHitWall == true)
             {
-                StopCoroutine(DashDuration());
-
-                phase1Collider.GetComponent<Collider2D>().isTrigger = false;
                 canMove = false;
+                hasHitWall = false;
+                StopCoroutine(Dash());
 
+                bossPhase1Rb.velocity = new Vector2(0, 0) * attackSpeed * Time.fixedDeltaTime;
+                phase1Collider.GetComponent<Collider2D>().isTrigger = false;
+                
                 StartCoroutine(WeakTiming());
             }
         }
@@ -93,23 +87,33 @@ namespace Boss
         /// Set the duration of the dash so the boss doesn't dash into oblivion.
         /// </summary>
         /// <returns></returns>
-        IEnumerator DashDuration()
+        IEnumerator Dash()
         {
+            canMove = false;
+
+            bossPhase1Rb.velocity = vecDir * attackSpeed * Time.fixedDeltaTime;
             phase1Collider.GetComponent<Collider2D>().isTrigger = true;
+            
             yield return new WaitForSeconds(dashTime);
 
-            canMove = false;
+            bossPhase1Rb.velocity = new Vector2(0, 0) * attackSpeed * Time.fixedDeltaTime;
             phase1Collider.GetComponent<Collider2D>().isTrigger = false;
 
             canGoToNextPattern = true;
         }
 
         /// <summary>
-        /// Time during which the boss can be hit
+        /// Bounce effect + Time during which the boss can be hit 
         /// </summary>
         /// <returns></returns>
         IEnumerator WeakTiming()
         {
+            bossPhase1Rb.velocity = -vecDir * bounceSpeed * Time.fixedDeltaTime;
+
+            yield return new WaitForSeconds(bounceTime);
+
+            bossPhase1Rb.velocity = new Vector2(0, 0) * attackSpeed * Time.fixedDeltaTime;
+
             yield return new WaitForSeconds(timeBeforeWeakStatusBegin);
 
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
@@ -120,6 +124,7 @@ namespace Boss
 
             canGoToNextPattern = true;
         }
+
 
     }
 }
