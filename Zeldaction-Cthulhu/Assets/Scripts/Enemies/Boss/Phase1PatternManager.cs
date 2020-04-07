@@ -6,14 +6,14 @@ namespace Boss
 {
     public class Phase1PatternManager : MonoBehaviour
     {
-        private int patternNbr;
+        public int patternNbr;
         private int patternSelector;
         private int patternCount;
         private bool isWaitingForNextPattern = true;
         
         void Awake()
         {
-            patternNbr = 1;
+            patternNbr = 2;
         }
 
         void Start()
@@ -27,7 +27,6 @@ namespace Boss
             {
                 if (patternCount > 0)
                 {
-                    Debug.Log("alo ?");
                     GetComponent<Phase1Pattern1>().enabled = false;
                 }
 
@@ -38,6 +37,7 @@ namespace Boss
                 GetComponent<Phase1Pattern3>().enabled = false;
 
                 GetComponent<Phase1Pattern1>().enabled = true;
+                Debug.Log("Pattern " + patternNbr + " has begun");
             }
 
             else if(patternNbr == 2 && isWaitingForNextPattern == true)
@@ -54,6 +54,7 @@ namespace Boss
                 GetComponent<Phase1Pattern1>().enabled = false;
 
                 GetComponent<Phase1Pattern2>().enabled = true;
+                Debug.Log("Pattern " + patternNbr + " has begun");
             }
 
             else if (patternNbr == 3 && isWaitingForNextPattern == true)
@@ -71,7 +72,9 @@ namespace Boss
                 GetComponent<Phase1Pattern2>().enabled = false;
 
                 GetComponent<Phase1Pattern3>().enabled = true;
+                Debug.Log("Pattern " + patternNbr + " has begun");
             }
+
         }
 
         /// <summary>
@@ -83,6 +86,7 @@ namespace Boss
             for (int i = 0; i < patternCount; i++)
             {
                 //patternSelector = Random.Range(1, 4);
+                //patternSelector = Random.Range(1, 3);
                 patternSelector = 1;
 
                 if (patternSelector != patternNbr)

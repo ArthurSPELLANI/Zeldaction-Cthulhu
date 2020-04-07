@@ -51,7 +51,6 @@ namespace Boss
             pathIsChoosen = false;
             patternCanStart = false;
 
-            Debug.Log("pattern1 à commencé");
             bossPhase1Rb = GetComponentInParent<Rigidbody2D>();
             anchorPath = new List<int>();
 

@@ -110,7 +110,6 @@ namespace Enemy
 			wolfAnimator.SetFloat("Horizontal", animDirection.x);
 			wolfAnimator.SetBool("isAttacking", true);
 
-			GetComponentInParent<BoxCollider2D>().isTrigger = true;
 			wolfRb.velocity = dashDirection * attackSpeed * Time.fixedDeltaTime;
 			
 			
@@ -127,7 +126,6 @@ namespace Enemy
 
 		private void OnTriggerEnter2D(Collider2D other)
 		{
-			Debug.Log(other);
 			if (other.CompareTag("Player"))
 			{
 				other.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);

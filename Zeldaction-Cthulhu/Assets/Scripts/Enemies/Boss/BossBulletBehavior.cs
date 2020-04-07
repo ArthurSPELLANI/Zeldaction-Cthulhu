@@ -68,7 +68,7 @@ namespace Boss
 
                 if (other.CompareTag("Boss"))
                 {
-                    other.GetComponent<BossBaseBehavior>().BossTakeDamage();
+                    other.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
                 }
 
                 Destroy(gameObject);
