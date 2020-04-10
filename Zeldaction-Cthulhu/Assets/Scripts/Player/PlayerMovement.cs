@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AudioManaging;
 
 namespace Player
 {
@@ -61,10 +62,10 @@ namespace Player
             horizontal = Input.GetAxisRaw("Horizontal");
 
 
-                        
+            SoundRunning();
 
             //Reset de la vitesse de déplacement si le joueur ne bouge plus
-            if(canMove == false)
+            if (canMove == false)
             {
                 playerRb.velocity = direction * 0 * Time.fixedDeltaTime;
             }
@@ -207,5 +208,23 @@ namespace Player
             playerRb.velocity = Vector2.zero;
             canMove = true;
         }
+        #region Sound
+        public float timeBetweenStep = 1f;
+        private float currentTime = 0;
+        void SoundRunning()
+        {
+            if (playerRb.velocity != Vector2.zero)
+            {
+                currentTime += Time.deltaTime;
+
+                if (currentTime >= timeBetweenStep)
+                {
+                    Debug.Log("yes");
+                    FindObjectOfType<AudioManager>().CoursePierre();
+                    currentTime = 0;
+                }
+            }
+        }
+        #endregion
     }
 }
