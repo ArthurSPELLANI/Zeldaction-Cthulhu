@@ -10,7 +10,10 @@ namespace Boss
         public GameObject wolf;
         public GameObject servant;
         public GameObject failedServant;
-        public GameObject spawnPoint;
+        private GameObject spawnPoint;
+        private GameObject spawnParent;
+
+        public GameObject[] spawnList;
 
         private Rigidbody2D wolfRb;
         private Rigidbody2D servantRb;
@@ -22,12 +25,17 @@ namespace Boss
 
         public float timeBeforePatternStart;
 
+        public float throwSpeed;
+        public float throwTime;
+
 
         void Awake()
         {
             wolfRb = wolf.GetComponentInChildren<Rigidbody2D>();
             servantRb = servant.GetComponentInChildren<Rigidbody2D>();
             failedServantRb = failedServant.GetComponentInChildren<Rigidbody2D>();
+            spawnParent = GameObject.Find("SpawnParent");
+            spawnPoint = GameObject.Find("SpawnPoint");
         }
 
         void Start()
@@ -38,12 +46,13 @@ namespace Boss
         void OnEnable()
         {
             spawnNbr = Random.Range(spawnNbrMin, spawnNbrMax);
+            spawnList = new GameObject[spawnNbr];
             StartCoroutine(Pattern());
         }
 
         void Update()
         {
-
+           
         }
 
         IEnumerator Pattern()
@@ -58,25 +67,31 @@ namespace Boss
 
                     if (selecVar == 1)
                     {
-                        Instantiate(wolf, spawnPoint.transform.position, Quaternion.identity);
-                        wolf.GetComponentInChildren<EnemyBasicBehavior>().bossThrow();
+                        Instantiate(wolf, spawnPoint.transform.position, Quaternion.identity, spawnParent.transform);
                     } 
                     else if (selecVar == 2)
                     {
-                        Instantiate(servant, spawnPoint.transform.position, Quaternion.identity);
-                        servant.GetComponentInChildren<EnemyBasicBehavior>().bossThrow();
+                        Instantiate(servant, spawnPoint.transform.position, Quaternion.identity, spawnParent.transform);
                     }
 
                 }
                 else
                 {
-                    Instantiate(failedServant, spawnPoint.transform.position, Quaternion.identity);
-                    servant.GetComponentInChildren<EnemyBasicBehavior>().bossThrow();
+                    Instantiate(failedServant, spawnPoint.transform.position, Quaternion.identity, spawnParent.transform);
                 }
+
+                spawnList[i] = spawnParent.transform.GetChild(i).gameObject;
             }
 
+            foreach (GameObject enemy in spawnList)
+            {
+                StartCoroutine(enemy.GetComponentInChildren<EnemyBasicBehavior>().bossThrowState(throwTime, throwSpeed));
+            }
 
         }
+
+      
+
     }
 }
 

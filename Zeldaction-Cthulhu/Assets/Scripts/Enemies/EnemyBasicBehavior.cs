@@ -32,6 +32,9 @@ namespace Enemy
 
         private bool canMove = true;
 
+        private bool isThrown;
+        private Vector2 vecThrow;
+
         public Animator enemyAnimator;
         [HideInInspector]public Vector2 animDirection;
 
@@ -156,14 +159,24 @@ namespace Enemy
         }
 
 
-        public void bossThrow()
+        /// <summary>
+        /// USED IN PHASE 2 PATTERN 1 OF BOSS : Desactivate player detection, throw the enemy in a semi-random position and then force player detection.
+        /// </summary>
+        /// <param name="throwTime"></param>
+        /// <returns></returns>
+        public IEnumerator bossThrowState(float throwTime, float throwSpeed)
         {
-            StartCoroutine(bossThowCoroutine());
-        }
+            fieldOfView.SetActive(false);
+            GetComponent<Collider2D>().isTrigger = true;
 
-        IEnumerator bossThowCoroutine()
-        {
+            vecThrow = new Vector2(Random.Range(-0.1f, 0.9f), Random.Range(-1f, -0.5f)).normalized;
+            EnemyRb.velocity = vecThrow * (throwSpeed * Random.Range(0.5f, 0.8f)) * Time.deltaTime;
 
+            yield return new WaitForSeconds(throwTime);
+
+            EnemyRb.velocity = new Vector2(0, 0) * 0 * Time.deltaTime;
+            fieldOfView.SetActive(true);
+            fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
         }
 
     }

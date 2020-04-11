@@ -920,10 +920,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3777866533156150207, guid: 5550a6053e4766d419b048b83a600d01,
+    - target: {fileID: 1234115951468305393, guid: 5550a6053e4766d419b048b83a600d01,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: throwTime
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234115951468305393, guid: 5550a6053e4766d419b048b83a600d01,
+        type: 3}
+      propertyPath: throwSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206268254129358348, guid: 5550a6053e4766d419b048b83a600d01,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3777866534862073196, guid: 5550a6053e4766d419b048b83a600d01,
         type: 3}
@@ -984,11 +994,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss - Mhamhy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3777866534950632723, guid: 5550a6053e4766d419b048b83a600d01,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5550a6053e4766d419b048b83a600d01, type: 3}
