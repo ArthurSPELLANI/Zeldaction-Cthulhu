@@ -155,5 +155,16 @@ namespace Enemy
             PlayerManager.Instance.playerShadowMode.sanity -= sanityDamage;
         }
 
+
+        public void bossThrow()
+        {
+            StartCoroutine(bossThowCoroutine());
+        }
+
+        IEnumerator bossThowCoroutine()
+        {
+
+        }
+
     }
 }
