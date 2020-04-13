@@ -33,6 +33,9 @@ namespace Enemy
 
 		private bool canMove = true;
 
+		public Animator servantAnimator;
+		private Vector2 animDirection;
+
 		void Awake()
 		{
 			servantRb = GetComponentInParent<Rigidbody2D>();
@@ -52,24 +55,39 @@ namespace Enemy
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
 			enemyCurrentHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth;
 
+			GetComponentInParent<EnemyBasicBehavior>().SetAnimDirection(direction);
+			animDirection = GetComponentInParent<EnemyBasicBehavior>().animDirection;
+
+			servantAnimator.SetFloat("Horizontal", animDirection.x);
+
+			if(canMove == false)
+			{
+				servantAnimator.SetBool("isRunning", false);
+			}
+		
+
 			//Si le servant n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
 			if (Vector2.Distance(transform.position, target.position) > startAttackRange && canMove == true)
 			{
 				servantRb.velocity = direction * speed * Time.fixedDeltaTime;
+				servantAnimator.SetBool("isRunning", true);
 			}
 
 			//Si le joueur est trop proche du servant, ce dernier s'en éloigne
 			else if (Vector2.Distance(transform.position, target.position) < startRetreatRange && canMove == true)
 			{
 				servantRb.velocity = -direction * speed * Time.fixedDeltaTime;
+				servantAnimator.SetBool("isRunning", true);
 			}
 
 			//Si le joueur est à portée d'attaque du joueur et qu'il peut bouger, il arrête de bouger et lance son attaque.
 			else if (Vector2.Distance(transform.position, target.position) < startAttackRange && Vector2.Distance(transform.position, target.position) > startRetreatRange && canMove == true)
 			{
+				
 				canMove = false;
 				servantRb.velocity = new Vector2(0, 0) * speed * Time.fixedDeltaTime;
 				StartCoroutine(FireProjectile());
+				
 			}
 
 			//Si l'ennemi n'a plus de pv, son entity est détruite.

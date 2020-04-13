@@ -31,9 +31,12 @@ namespace Enemy
         private double currentWaypointYMax;
 
         private bool canMove = true;
+        private bool canScratch = true;
 
         public Animator enemyAnimator;
         [HideInInspector]public Vector2 animDirection;
+
+        public float scratchChance;
 
         void Awake()
 		{
@@ -84,6 +87,12 @@ namespace Enemy
                 else
                 {
                     enemyAnimator.SetBool("isRunning", false);
+                   /* if (canScratch == true)
+                    {
+                        canScratch = false;
+                        //mettre la coroutine
+                    }
+                    */
                 }
             }
 
@@ -155,5 +164,17 @@ namespace Enemy
             PlayerManager.Instance.playerShadowMode.sanity -= sanityDamage;
         }
 
+        /*
+        private IEnumerator RandomScratch()
+        {
+            yield return new WaitForSeconds(3f);
+            float i = Random.Range(0f, 1f);
+            if (i <= scratchChance)
+            {
+
+            }
+        
+        }
+        */
     }
 }
