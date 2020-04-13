@@ -38,8 +38,8 @@ namespace Enemy
 			wolfRb = GetComponentInParent<Rigidbody2D>();
 			player = GameObject.Find("Player");
 			target = player.transform;
-			speed = enemyPrefab.GetComponent<EnemyBasicBehavior>().speed;
-			enemyDamage = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyDamage;
+			speed = GetComponentInParent<EnemyBasicBehavior>().speed;
+			enemyDamage = GetComponentInParent<EnemyBasicBehavior>().enemyDamage;
 			
 		}
 
@@ -51,11 +51,8 @@ namespace Enemy
 		void Update()
 		{
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
-			enemyCurrentHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth;
 
-			
-			
-
+			enemyCurrentHp = GetComponentInParent<EnemyBasicBehavior>().enemyCurrentHealth;
 			
 
 			//Si le wolf n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
@@ -65,8 +62,8 @@ namespace Enemy
 
 				wolfAnimator.SetBool("isRunning", true);
 
-				enemyPrefab.GetComponent<EnemyBasicBehavior>().SetAnimDirection(direction);
-				animDirection = enemyPrefab.GetComponent<EnemyBasicBehavior>().animDirection;
+				GetComponentInParent<EnemyBasicBehavior>().SetAnimDirection(direction);
+				animDirection = GetComponentInParent<EnemyBasicBehavior>().animDirection;
 				wolfAnimator.SetFloat("Horizontal", animDirection.x);
 			}
 
@@ -93,15 +90,13 @@ namespace Enemy
 		IEnumerator WolfAttack()
 		{
 			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
-			
-			
 
 			yield return new WaitForSeconds(timeBeforeTargetLock);
 
 			dashTarget = target;
 			dashDirection = new Vector2(dashTarget.position.x - transform.position.x, dashTarget.position.y - transform.position.y).normalized;
-			enemyPrefab.GetComponent<EnemyBasicBehavior>().SetAnimDirection(dashDirection);
-			animDirection = enemyPrefab.GetComponent<EnemyBasicBehavior>().animDirection;
+			GetComponentInParent<EnemyBasicBehavior>().SetAnimDirection(dashDirection);
+			animDirection = GetComponentInParent<EnemyBasicBehavior>().animDirection;
 
 			yield return new WaitForSeconds(timeBeforeWolfAttack);
 
@@ -111,8 +106,6 @@ namespace Enemy
 			wolfAnimator.SetBool("isAttacking", true);
 
 			wolfRb.velocity = dashDirection * attackSpeed * Time.fixedDeltaTime;
-			
-			
 
 			yield return new WaitForSeconds(recoilDuration);
 

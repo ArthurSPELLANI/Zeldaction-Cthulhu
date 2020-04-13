@@ -101,6 +101,11 @@ namespace Enemy
         public void TakeDamage(int playerDamage)
         {
             enemyCurrentHealth -= playerDamage;
+
+            if(enemyCurrentHealth <= 0)
+            {
+
+            }
         }
 
 

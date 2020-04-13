@@ -9,9 +9,9 @@ namespace Boss
     {
         public int phase1Hp;
         public int phase2Hp;
-        private int currentHp;
+        [SerializeField] private int currentHp;
 
-        private bool isInPhase1 = true;
+        [SerializeField] private bool isInPhase1 = true;
         public bool isWeak = false;
 
         public GameObject phase1Go;
@@ -49,6 +49,7 @@ namespace Boss
             //Feedback quand le joueur peut infliger des dégâts au boss.
             if (isWeak == true)
             {
+                
                 if (isInPhase1 == true)
                 {
                     transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.blue;
@@ -80,6 +81,7 @@ namespace Boss
                 Debug.Log("Mhamhy a prit 1 point de dgt");
                 currentHp -= 1;
                 transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                isWeak = false;
             }
 
         }

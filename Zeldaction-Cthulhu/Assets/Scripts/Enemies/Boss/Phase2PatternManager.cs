@@ -14,6 +14,7 @@ namespace Boss
         void Awake()
         {
             patternNbr = 1;
+
         }
 
         void Start()

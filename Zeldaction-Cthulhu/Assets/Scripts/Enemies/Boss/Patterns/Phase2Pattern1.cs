@@ -24,10 +24,19 @@ namespace Boss
         public int spawnNbrMax;
 
         public float timeBeforePatternStart;
+        public float timeBeforePatternEnd;
+        public float timeBeforeWeakStatusStart;
+        public float timeBeforeWeakStatusEnd;
 
         public float throwSpeed;
         public float throwTime;
 
+        private bool part2CanBegin = false;
+        private int childNbr;
+        private bool blockState;
+        private bool gotHit;
+
+        private GameObject graphics;
 
         void Awake()
         {
@@ -36,6 +45,7 @@ namespace Boss
             failedServantRb = failedServant.GetComponentInChildren<Rigidbody2D>();
             spawnParent = GameObject.Find("SpawnParent");
             spawnPoint = GameObject.Find("SpawnPoint");
+            graphics = transform.parent.GetChild(0).gameObject;
         }
 
         void Start()
@@ -47,15 +57,46 @@ namespace Boss
         {
             spawnNbr = Random.Range(spawnNbrMin, spawnNbrMax);
             spawnList = new GameObject[spawnNbr];
-            StartCoroutine(Pattern());
+
+            blockState = false;
+
+            StartCoroutine(PatternStart());
         }
 
         void Update()
         {
-           
+            if (part2CanBegin == true)
+            {
+                childNbr = spawnParent.transform.childCount;
+
+                if (childNbr > 0 && gotHit == false)
+                {
+                    blockState = true;
+                    graphics.GetComponent<SpriteRenderer>().color = Color.green;    
+                }
+
+                else if (childNbr == 0 && gotHit == false)
+                {
+                    part2CanBegin = false;
+                    StartCoroutine(EndOfPattern());                    
+                }
+
+                else if (gotHit == true)
+                {
+                    part2CanBegin = false;
+                    StartCoroutine(GetExploded());
+                }
+
+
+            }
         }
 
-        IEnumerator Pattern()
+
+        /// <summary>
+        /// Spawn a random amount of enemies, including a faibled servant and then throw them in front of the boss.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator PatternStart()
         {
             yield return new WaitForSeconds(timeBeforePatternStart);
 
@@ -88,9 +129,65 @@ namespace Boss
                 StartCoroutine(enemy.GetComponentInChildren<EnemyBasicBehavior>().bossThrowState(throwTime, throwSpeed));
             }
 
+            part2CanBegin = true;
+
         }
 
       
+        /// <summary>
+        /// Move to next pattern after a small "recoil"
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator EndOfPattern()
+        {
+            graphics.GetComponent<SpriteRenderer>().color = Color.white;
+
+            yield return new WaitForSeconds(timeBeforePatternEnd);
+
+            GetComponent<Phase2PatternManager>().NextPatternSelection();
+        }
+
+        /// <summary>
+        /// Set the time during which the boss can get hit by the player.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator GetExploded()
+        {
+
+            gotHit = true;
+            blockState = false;
+
+            yield return new WaitForSeconds(timeBeforeWeakStatusStart);
+                
+            transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
+
+            yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
+
+            transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
+                
+            //Assure we leave pattern in update function by removing all enemies and setting gotHit to false.
+            foreach (GameObject enemy in spawnList)
+            {
+                GameObject.Destroy(enemy);
+            }
+            gotHit = false;
+
+
+            part2CanBegin = true;
+
+        }
+
+
+        /// <summary>
+        /// return gotHit = true after boss get hit by failed servant explosion.
+        /// </summary>
+        public void ExploHitBoss()
+        {
+            if (blockState == true)
+            {
+                gotHit = true;
+            }
+        }
 
     }
 }

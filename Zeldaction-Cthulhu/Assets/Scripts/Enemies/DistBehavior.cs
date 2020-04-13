@@ -38,8 +38,8 @@ namespace Enemy
 			servantRb = GetComponentInParent<Rigidbody2D>();
 			player = GameObject.Find("Player");
 			target = player.transform;
-			speed = enemyPrefab.GetComponent<EnemyBasicBehavior>().speed;
-			enemyDamage = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyDamage;
+			speed = GetComponentInParent<EnemyBasicBehavior>().speed;
+			enemyDamage = GetComponentInParent<EnemyBasicBehavior>().enemyDamage;
 		}
 
 		void Start()
@@ -50,7 +50,7 @@ namespace Enemy
 		void Update()
 		{
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
-			enemyCurrentHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth;
+			enemyCurrentHp = GetComponentInParent<EnemyBasicBehavior>().enemyCurrentHealth;
 
 			//Si le servant n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
 			if (Vector2.Distance(transform.position, target.position) > startAttackRange && canMove == true)
