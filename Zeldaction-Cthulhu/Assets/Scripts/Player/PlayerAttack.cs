@@ -47,7 +47,7 @@ namespace Player
 
             coolDown -= Time.deltaTime;
 
-            if (PlayerManager.Instance.playerShoot.isAiming == false)
+            if (PlayerManager.Instance.playerShoot.isAiming == false && PlayerManager.Instance.playerShadowMode.isShadowActivated == false)
             {
                 //Si le joueur appuie sur le bouton d'attaque, lance une coroutine dans le script PlayerMovement
                 if (Input.GetButtonDown("Attack") && cantAttack == false)
