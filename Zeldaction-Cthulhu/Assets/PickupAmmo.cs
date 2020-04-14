@@ -15,7 +15,7 @@ public class PickupAmmo : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            if (PlayerManager.Instance.playerShoot.ammunitions < 6)
+            else if (PlayerManager.Instance.playerShoot.ammunitions < 6)
             {
                 PlayerManager.Instance.playerShoot.ammunitions += 2;
                 Destroy(gameObject);

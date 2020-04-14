@@ -9,13 +9,13 @@ public class PickupLife : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Shadow")
         {
-            if (PlayerManager.Instance.playerStats.playerCurrentHealth == PlayerManager.Instance.playerStats.playerMaxHealth -1)
+            if (PlayerManager.Instance.playerStats.playerCurrentHealth == 5)
             {
                 PlayerManager.Instance.playerStats.playerCurrentHealth += 1;
                 Destroy(gameObject);
             }
 
-            if (PlayerManager.Instance.playerStats.playerCurrentHealth < PlayerManager.Instance.playerStats.playerMaxHealth)
+            else if (PlayerManager.Instance.playerStats.playerCurrentHealth < PlayerManager.Instance.playerStats.playerMaxHealth)
             {
                 PlayerManager.Instance.playerStats.playerCurrentHealth += 2;
                 Destroy(gameObject);
