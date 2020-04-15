@@ -26,6 +26,8 @@ namespace Enemy
 		public LayerMask playerLayer;
 		public LayerMask enemyLayer;
 
+		public Animator exploAnimator;
+		private Vector2 animDirection;
 
 		void Awake()
 		{
@@ -47,6 +49,10 @@ namespace Enemy
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
 			currentHp = GetComponentInParent<EnemyBasicBehavior>().enemyCurrentHealth;
 
+			GetComponentInParent<EnemyBasicBehavior>().SetAnimDirection(direction);
+			animDirection = GetComponentInParent<EnemyBasicBehavior>().animDirection;
+			exploAnimator.SetFloat("Horizontal", animDirection.x);
+
 			if (canMove == true)
 			{
 				exploRb.velocity = direction * speed * Time.fixedDeltaTime;
@@ -64,6 +70,8 @@ namespace Enemy
 
 		IEnumerator TimeBeforeExplo()
 		{
+			exploAnimator.SetBool("isExploding", true);
+
 			Debug.Log("it's gonna be bim boom");
 			if (currentHp > 0)
 			{
@@ -103,6 +111,16 @@ namespace Enemy
 			}
 
 			Destroy(enemyPrefab);
+		}
+
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.DrawWireSphere(transform.position, explosionRange);
+		}
+
+		public void StopScratching()
+		{
+			exploAnimator.SetBool("isScratching", false);
 		}
 	}
 }

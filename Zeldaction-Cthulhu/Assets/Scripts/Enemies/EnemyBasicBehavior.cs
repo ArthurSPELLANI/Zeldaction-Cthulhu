@@ -31,12 +31,15 @@ namespace Enemy
         private double currentWaypointYMax;
 
         private bool canMove = true;
+        private bool canScratch = true;
 
         private bool isThrown;
         private Vector2 vecThrow;
 
         public Animator enemyAnimator;
         [HideInInspector]public Vector2 animDirection;
+
+        public float scratchChance;
 
         void Awake()
 		{
@@ -87,6 +90,12 @@ namespace Enemy
                 else
                 {
                     enemyAnimator.SetBool("isRunning", false);
+                   /* if (canScratch == true)
+                    {
+                        canScratch = false;
+                        //mettre la coroutine
+                    }
+                    */
                 }
             }
 
