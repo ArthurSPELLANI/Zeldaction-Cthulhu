@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+namespace LevelDesign
 {
-    public Pitfall pitfallScript;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Platform : MonoBehaviour
     {
-      
-    }
+        public GameObject player;
+        public GameObject pitfall;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void OnTriggerEnter2D(Collider2D player)
+        {
+            if (player.gameObject.tag == "Player")
+            {
+                pitfall.GetComponent<Pitfall>().onPlatform = true;
+            }
+        }
+        void OnTriggerExit2D(Collider2D player)
+        {
+            if (player.gameObject.tag == "Player")
+            {
+                pitfall.GetComponent<Pitfall>().onPlatform = false;
+            }
+        }
     }
 }

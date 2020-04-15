@@ -2,27 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pitfall : MonoBehaviour
+namespace LevelDesign
 {
-    public GameObject Player;
-    public Transform Respawn;
-    public Rigidbody2D Rigidbody2D;
-
-    void OnTriggerEnter2D(Collider2D player)
+    public class Pitfall : MonoBehaviour
     {
-        if (player.gameObject.tag == "Player")
+        public GameObject player;
+        public Transform trueRespawn;
+        public Transform respawn1;
+        public Transform respawn2;
+        public Rigidbody2D rigidbody2D;
+        public bool onPlatform;
+        private float sqrOffset1;
+        private float sqrOffset2;
+
+        void Update()
         {
-            StartCoroutine(PitfallActivation());    
-            //Debug.Log("Fall");          
+            Vector2 offset1 = respawn1.position - player.transform.position;
+            sqrOffset1 = offset1.sqrMagnitude;
+            Vector2 offset2 = respawn2.position - player.transform.position;
+            sqrOffset2 = offset2.sqrMagnitude;
+        }
+
+        void OnTriggerStay2D(Collider2D player)
+        {
+            if (player.gameObject.tag == "Player" && !onPlatform)
+            {
+                StartCoroutine(PitfallActivation());
+                Debug.Log("Fall");      
+            }
+        }
+
+        IEnumerator PitfallActivation()
+        {
+            yield return new WaitForSeconds(0.5f);
+            rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            yield return new WaitForSeconds(0.5f);        
+            if (sqrOffset1 < sqrOffset2)
+            {
+                trueRespawn.position = respawn1.position;
+                player.transform.position = trueRespawn.position;
+            }
+            if (sqrOffset1 > sqrOffset2)
+            {
+                trueRespawn.position = respawn2.position;
+                player.transform.position = trueRespawn.position;
+            }
+            rigidbody2D.constraints = RigidbodyConstraints2D.None;
         }
     }
-
-    IEnumerator PitfallActivation()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
-        yield return new WaitForSeconds(0.5f);
-        Player.transform.position = Respawn.transform.position;
-        Rigidbody2D.constraints = RigidbodyConstraints2D.None;
-    }
 }
+
+
