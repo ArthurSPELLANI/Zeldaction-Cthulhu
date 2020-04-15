@@ -9,9 +9,9 @@ namespace Boss
     {
         public int phase1Hp;
         public int phase2Hp;
-        private int currentHp;
+        [SerializeField] private int currentHp;
 
-        private bool isInPhase1 = true;
+        [SerializeField] private bool isInPhase1 = true;
         public bool isWeak = false;
 
         public GameObject phase1Go;
@@ -37,22 +37,40 @@ namespace Boss
                     currentHp = phase2Hp;
                     phase1Go.SetActive(false);
                     phase2Go.SetActive(true);
+                    isWeak = false;
                 }
                 else
                 {
                     Debug.Log("tu à vaincu la terrible Mhamhy");
-                    Destroy(transform.parent);
+                    Destroy(gameObject);
                 }
             }
 
             //Feedback quand le joueur peut infliger des dégâts au boss.
             if (isWeak == true)
             {
-                transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                
+                if (isInPhase1 == true)
+                {
+                    transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                }
+                else
+                {
+                    transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                }
+                
             }
             else
             {
-                transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                if (isInPhase1 == true)
+                {
+                    transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                }
+                else
+                {
+                    transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                }
+                
             }
         }
 
@@ -60,8 +78,10 @@ namespace Boss
         {
             if(isWeak == true)
             {
+                Debug.Log("Mhamhy a prit 1 point de dgt");
                 currentHp -= 1;
                 transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                isWeak = false;
             }
 
         }

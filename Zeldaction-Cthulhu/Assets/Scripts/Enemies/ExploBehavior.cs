@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using Boss;
 
 
 namespace Enemy
@@ -20,7 +21,7 @@ namespace Enemy
 		private int maxHp;
 		private int currentHp;
 		public float explosionTime;
-		[Range(0, 1)]
+		[Range(0, 10)]
 		public float explosionRange;
 		public LayerMask playerLayer;
 		public LayerMask enemyLayer;
@@ -31,9 +32,9 @@ namespace Enemy
 			exploRb = GetComponentInParent<Rigidbody2D>();
 			player = GameObject.Find("Player");
 			target = player.transform;
-			speed = enemyPrefab.GetComponent<EnemyBasicBehavior>().speed;
-			enemyDamage = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyDamage;
-			maxHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyMaxHealth;	
+			speed = GetComponentInParent<EnemyBasicBehavior>().speed;
+			enemyDamage = GetComponentInParent<EnemyBasicBehavior>().enemyDamage;
+			maxHp = GetComponentInParent<EnemyBasicBehavior>().enemyMaxHealth;	
 		}
 
 		void Start()
@@ -44,7 +45,7 @@ namespace Enemy
 		void Update()
 		{
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
-			currentHp = enemyPrefab.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth;
+			currentHp = GetComponentInParent<EnemyBasicBehavior>().enemyCurrentHealth;
 
 			if (canMove == true)
 			{
@@ -89,15 +90,19 @@ namespace Enemy
 
 			foreach (Collider2D enemy in hitEnemies)
 			{
-				enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(enemyDamage);
+				if (enemy.CompareTag("Enemy"))
+				{
+					enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(enemyDamage);
+				}
+
+				else if (enemy.CompareTag("Boss"))
+				{
+					enemy.transform.parent.GetComponentInChildren<Phase2Pattern1>().ExploHitBoss();
+				}
+				
 			}
 
 			Destroy(enemyPrefab);
-		}
-
-		private void OnDrawGizmosSelected()
-		{
-			Gizmos.DrawWireSphere(transform.position, explosionRange);
 		}
 	}
 }
