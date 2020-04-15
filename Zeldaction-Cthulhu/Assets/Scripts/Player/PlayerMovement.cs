@@ -219,8 +219,8 @@ namespace Player
 
                 if (currentTime >= timeBetweenStep)
                 {
-                    Debug.Log("yes");
-                    FindObjectOfType<AudioManager>().CoursePierre();
+                    //Debug.Log("yes");
+                    //FindObjectOfType<AudioManager>().CoursePierre();
                     currentTime = 0;
                 }
             }
