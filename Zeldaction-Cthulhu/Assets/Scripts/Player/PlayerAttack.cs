@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
 using Boss;
+using PillarSystem;
+using LevelDesignElement;
 
 namespace Player
 {
@@ -22,8 +24,6 @@ namespace Player
         public float comboKeepTime;
         float coolDown = 0;
 
-        Pillar pillar;
-        Ronces ronces;
 
         Animator animator;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Ronces : MonoBehaviour
 {
     public void Destroy()
@@ -9,3 +10,5 @@ public class Ronces : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
+

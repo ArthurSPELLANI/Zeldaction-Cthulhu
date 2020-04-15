@@ -88,11 +88,11 @@ namespace Boss
             {
                 //patternSelector = Random.Range(1, 4);
                 //patternSelector = Random.Range(1, 3);
-                patternSelector = 1;
+                patternSelector = 2;
 
                 if (patternSelector != patternNbr)
                 {
-                    patternCount = 0;
+                    patternCount = 1;
                     break;
                 }
             }

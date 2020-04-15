@@ -21,7 +21,7 @@ namespace Enemy
 		private int maxHp;
 		private int currentHp;
 		public float explosionTime;
-		[Range(0, 10)]
+		[Range(0, 1)]
 		public float explosionRange;
 		public LayerMask playerLayer;
 		public LayerMask enemyLayer;
@@ -79,6 +79,7 @@ namespace Enemy
 
 		private void Explosion()
 		{
+
 			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(transform.position, explosionRange, playerLayer);
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRange, enemyLayer);
 			
@@ -103,6 +104,12 @@ namespace Enemy
 			}
 
 			Destroy(enemyPrefab);
+		}
+
+
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.DrawWireSphere(transform.position, explosionRange);
 		}
 	}
 }
