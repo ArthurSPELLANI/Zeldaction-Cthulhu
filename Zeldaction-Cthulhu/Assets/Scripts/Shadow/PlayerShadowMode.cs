@@ -44,10 +44,10 @@ namespace Player
             timeRef = Time.fixedDeltaTime;            
         }
     
-        void Start()
+        void OnEnable()
         {
             shadowInput = Input.GetAxisRaw("Shadow");
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.Find("Player");
         }
 
         private void FixedUpdate()

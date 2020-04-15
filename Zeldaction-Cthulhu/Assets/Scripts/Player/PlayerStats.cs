@@ -34,6 +34,7 @@ namespace Player
         public void PlayerTakeDamage(int enemyDamage)
         {
             playerCurrentHealth -= enemyDamage;
+            PlayerManager.Instance.playerAttack.coolDown = 0; 
             Debug.Log("Points de vie restant au joueur : " + playerCurrentHealth);
 
             if (playerCurrentHealth <= 0)

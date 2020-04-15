@@ -20,7 +20,7 @@ namespace Player
         public int attackCount = 0;
         public int playerDamage = 1;
         public float comboKeepTime;
-        float coolDown = 0;
+        public float coolDown = 0;
 
         Pillar pillar;
         Ronces ronces;
@@ -47,7 +47,7 @@ namespace Player
 
             coolDown -= Time.deltaTime;
 
-            if (PlayerManager.Instance.playerShoot.isAiming == false)
+            if (PlayerManager.Instance.playerShoot.isAiming == false && PlayerManager.Instance.playerShadowMode.isShadowActivated == false)
             {
                 //Si le joueur appuie sur le bouton d'attaque, lance une coroutine dans le script PlayerMovement
                 if (Input.GetButtonDown("Attack") && cantAttack == false)
@@ -70,7 +70,7 @@ namespace Player
                 animator.SetBool("IsAttacking", false);
             }
 
-            if(coolDown == 0 && attackCount != 0)
+            if(coolDown <= 0 && attackCount != 0)
             {
                 attackCount = 0;
             }
@@ -155,16 +155,19 @@ namespace Player
             if (attackCount == 0)
             {
                 Attack1();
+                coolDown = comboKeepTime;
             }
 
             else if (attackCount == 1)
             {
                 Attack2();
+                coolDown = comboKeepTime;
             }
 
             else if (attackCount == 2)
             {
                 Attack3();
+                coolDown = comboKeepTime;
             }
 
             if (cantAttack == false)
@@ -173,9 +176,7 @@ namespace Player
             }
 
             if (coolDown > 0)
-                return;
-
-            coolDown = comboKeepTime;
+                return;                     
 
         }
 

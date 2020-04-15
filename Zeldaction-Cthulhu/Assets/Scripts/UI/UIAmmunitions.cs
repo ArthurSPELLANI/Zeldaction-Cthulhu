@@ -35,7 +35,7 @@ public class UIAmmunitions : MonoBehaviour
 
         for (int i = 0; i < bullets.Length; i++)
         {
-            if (i < ammo)
+            if (i <= ammo)
             {
                 bullets[i].sprite = fullBullet;
             }
