@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
+using PillarSystem;
 
 namespace Player
 {
@@ -10,7 +11,6 @@ namespace Player
 
         public Rigidbody2D rb;
         public int damage;
-        Pillar pillar;
         
 
     	void Awake()

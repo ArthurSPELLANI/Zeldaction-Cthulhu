@@ -113,7 +113,7 @@ namespace Enemy
 
             if(enemyCurrentHealth <= 0)
             {
-
+                fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
             }
         }
 
