@@ -9,7 +9,15 @@ public class PickupLife : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Shadow")
         {
-            if (PlayerManager.Instance.playerStats.playerCurrentHealth == 5)
+            
+            if (PlayerManager.Instance.playerStats.healNumber < PlayerManager.Instance.playerStats.maxHealNumber)
+            {
+                PlayerManager.Instance.playerStats.healNumber += 1;
+                Debug.Log("nombre de heal = " + PlayerManager.Instance.playerStats.healNumber);
+                Destroy(gameObject);
+            }
+
+            /*if (PlayerManager.Instance.playerStats.playerCurrentHealth == 5)
             {
                 PlayerManager.Instance.playerStats.playerCurrentHealth += 1;
                 Destroy(gameObject);
@@ -19,7 +27,7 @@ public class PickupLife : MonoBehaviour
             {
                 PlayerManager.Instance.playerStats.playerCurrentHealth += 2;
                 Destroy(gameObject);
-            }
+            }*/
         }
     }
 }
