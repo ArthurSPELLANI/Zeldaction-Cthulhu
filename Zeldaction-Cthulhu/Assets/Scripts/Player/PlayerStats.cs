@@ -22,10 +22,9 @@ namespace Player
             healNumber = 0;
             maxHealNumber = 10;
         }
-        
+
         void Start()
-        {
- 
+        { 
         }
 
         void Update()
@@ -46,6 +45,8 @@ namespace Player
 
             if (isHealing == true && Input.GetButtonUp("Heal"))
             {
+                PlayerManager.Instance.playerMovement.speed = 60;
+                isHealing = false;
                 Debug.Log("le heal a été malencontreusement interompu...");
                 StopAllCoroutines();
             }
@@ -53,6 +54,7 @@ namespace Player
             if (Input.GetButtonDown("Heal") && canHeal)
             {
                 StartCoroutine(Healing());
+                Debug.Log("J'utilise une caisse de soin");
             }
             #endregion
         }
@@ -78,8 +80,7 @@ namespace Player
         {
             isHealing = true;
 
-            int normalSpeed = PlayerManager.Instance.playerMovement.speed;
-            PlayerManager.Instance.playerMovement.speed = PlayerManager.Instance.playerMovement.speed / 2;
+            PlayerManager.Instance.playerMovement.speed = 30;
 
             yield return new WaitForSeconds(1f);
 
@@ -93,7 +94,7 @@ namespace Player
                 playerCurrentHealth += 2;
             }
 
-            PlayerManager.Instance.playerMovement.speed = normalSpeed;
+            PlayerManager.Instance.playerMovement.speed = 60;
         }
 
 
