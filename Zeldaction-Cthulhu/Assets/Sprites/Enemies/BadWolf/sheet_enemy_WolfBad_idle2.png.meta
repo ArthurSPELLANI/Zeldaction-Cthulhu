@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 0c630f42f2659d343b49a0af8f0db789
+guid: cf3423bc6f62ee047bc5fa77cde1a473
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -997788854691681744
-    second: Sheet_Wolf_Idle_0
+      213: 1507894640262105108
+    second: sheet_enemy_WolfBad_idle2_0
   - first:
-      213: 4593702628705748186
-    second: Sheet_Wolf_Idle_1
+      213: 5278046498709411225
+    second: sheet_enemy_WolfBad_idle2_1
   - first:
-      213: 1936632303259919833
-    second: Sheet_Wolf_Idle_2
+      213: -6758061704228663258
+    second: sheet_enemy_WolfBad_idle2_2
   - first:
-      213: 3467428478470274754
-    second: Sheet_Wolf_Idle_3
+      213: -5626123551261791258
+    second: sheet_enemy_WolfBad_idle2_3
+  - first:
+      213: 485186809518770972
+    second: sheet_enemy_WolfBad_idle2_4
+  - first:
+      213: 1870392053628448454
+    second: sheet_enemy_WolfBad_idle2_5
+  - first:
+      213: 7407900502300865330
+    second: sheet_enemy_WolfBad_idle2_6
+  - first:
+      213: -1407721046061667583
+    second: sheet_enemy_WolfBad_idle2_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -98,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sheet_Wolf_Idle_0
+      name: sheet_enemy_WolfBad_idle2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 37
-        height: 34
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03a224bb2542722f0800000000000000
-      internalID: -997788854691681744
+      spriteID: 418c987af2e1de410800000000000000
+      internalID: 1507894640262105108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sheet_Wolf_Idle_1
+      name: sheet_enemy_WolfBad_idle2_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 100
         y: 0
-        width: 37
-        height: 34
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad4c8cbc33c10cf30800000000000000
-      internalID: 4593702628705748186
+      spriteID: 995919783536f3940800000000000000
+      internalID: 5278046498709411225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sheet_Wolf_Idle_2
+      name: sheet_enemy_WolfBad_idle2_2
       rect:
         serializedVersion: 2
-        x: 74
+        x: 200
         y: 0
-        width: 37
-        height: 34
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d5aa50b1dc40ea10800000000000000
-      internalID: 1936632303259919833
+      spriteID: 620974d8faa8632a0800000000000000
+      internalID: -6758061704228663258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sheet_Wolf_Idle_3
+      name: sheet_enemy_WolfBad_idle2_3
       rect:
         serializedVersion: 2
-        x: 111
+        x: 300
         y: 0
-        width: 37
-        height: 34
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,8 +187,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ce3b4774d7ce1030800000000000000
-      internalID: 3467428478470274754
+      spriteID: 6ebe498407efbe1b0800000000000000
+      internalID: -5626123551261791258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_enemy_WolfBad_idle2_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1b421725dabbb600800000000000000
+      internalID: 485186809518770972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_enemy_WolfBad_idle2_5
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ceac3bb9a7f4f910800000000000000
+      internalID: 1870392053628448454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_enemy_WolfBad_idle2_6
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233b41312462ec660800000000000000
+      internalID: 7407900502300865330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_enemy_WolfBad_idle2_7
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10b27a2ca25c67ce0800000000000000
+      internalID: -1407721046061667583
       vertices: []
       indices: 
       edges: []
