@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game;
 
 namespace Player
 {
@@ -39,7 +40,9 @@ namespace Player
 
             if (playerCurrentHealth <= 0)
             {
-                Destroy(player);
+                //Destroy(player);
+                LevelManager.Instance.PlayestHub();
+                PlayerManager.Instance.ResetPlayer();
             }
         }
 
