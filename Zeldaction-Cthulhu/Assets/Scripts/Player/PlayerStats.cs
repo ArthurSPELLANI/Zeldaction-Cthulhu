@@ -11,6 +11,7 @@ namespace Player
         public int playerCurrentHealth;
         public GameObject player;
 
+        //variables relatives au heal
         public int healNumber;
         public int maxHealNumber;
         bool canHeal;
@@ -30,6 +31,7 @@ namespace Player
         void Update()
         {
             #region healing
+            //conditions pour savoir si le joueur peut se heal
             if (healNumber > 0 && playerCurrentHealth < playerMaxHealth)
             {
                 canHeal = true;
@@ -43,6 +45,7 @@ namespace Player
                 canHeal = false;
             }
 
+            //interuption du heal
             if (isHealing == true && Input.GetButtonUp("Heal"))
             {
                 PlayerManager.Instance.playerMovement.speed = 60;
@@ -51,6 +54,7 @@ namespace Player
                 StopAllCoroutines();
             }
 
+            //début du heal
             if (Input.GetButtonDown("Heal") && canHeal)
             {
                 StartCoroutine(Healing());

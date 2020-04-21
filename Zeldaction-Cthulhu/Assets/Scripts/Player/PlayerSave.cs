@@ -1,20 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
     public class PlayerSave : MonoBehaviour
     {
         public GameObject player;
+        Scene currentScene;
 
-        void DeleteSaves()
+        //Delete toutes les sauvegardes
+        public void DeleteSaves()
         {
             PlayerPrefs.DeleteAll();
+            Debug.Log("Les sauvegardes ont été effacés");
         }
 
-        void Save()
+        //fonction à appeler pour sauvegarder la progression du joueur
+        public void Save()
         {
+            //Stock la scene dans laquell se trouve le joueur
+            currentScene = SceneManager.GetActiveScene();
+            PlayerPrefs.SetString("scene", currentScene.name);
+
             //Stock la position du joueur
             PlayerPrefs.SetFloat("positionX", player.transform.position.x);
             PlayerPrefs.SetFloat("positionY", player.transform.position.y);
@@ -36,7 +45,16 @@ namespace Player
             }*/
 
             //Référence les Cristaux d'ombre toujours récupérable par le joueur
-            
+
+            PlayerPrefs.Save();
+        }
+
+        void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag("Player"))
+            {
+                Save();
+            }
         }
     }
 }
