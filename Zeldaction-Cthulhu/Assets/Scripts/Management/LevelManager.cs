@@ -43,9 +43,21 @@ namespace Game
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
         }
 
+        public void LightForest2()
+        {
+            SceneManager.LoadScene("Light_Forest_2");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+        }
+
         public void EnemyRoom()
         {
             SceneManager.LoadScene("Enemy_Room");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+        }
+
+        public void Cave1()
+        {
+            SceneManager.LoadScene("Cave_1");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
         }
 
