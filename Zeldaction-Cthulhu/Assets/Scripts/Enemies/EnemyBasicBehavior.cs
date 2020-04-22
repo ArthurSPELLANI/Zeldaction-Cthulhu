@@ -31,7 +31,7 @@ namespace Enemy
         private double currentWaypointYMax;
 
         private bool canMove = true;
-        private bool canScratch = true;
+        //private bool canScratch = true;
 
         private bool isThrown;
         private Vector2 vecThrow;

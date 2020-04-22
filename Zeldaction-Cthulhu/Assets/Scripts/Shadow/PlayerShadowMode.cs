@@ -124,8 +124,8 @@ namespace Player
             shadowObject.SetActive(true);
             shadowObject.transform.position = player.transform.position;
             shadowRb = GetComponentInChildren<Rigidbody2D>();
-            FindObjectOfType<AudioManager>().Play("entreeShadow");
-            FindObjectOfType<AudioManager>().Play("idleShadow");
+            /*FindObjectOfType<AudioManager>().Play("entreeShadow");
+            FindObjectOfType<AudioManager>().Play("idleShadow");*/
         }
 
         public void ShadowExit()
@@ -140,8 +140,8 @@ namespace Player
             shadowObject.SetActive(false);
             Time.timeScale = 1;
             Time.fixedDeltaTime = timeRef;
-            FindObjectOfType<AudioManager>().Play("sortieShadow");
-            FindObjectOfType<AudioManager>().Stop("idleShadow");
+            /*FindObjectOfType<AudioManager>().Play("sortieShadow");
+            FindObjectOfType<AudioManager>().Stop("idleShadow");*/
         }
         
 

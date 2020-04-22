@@ -27,8 +27,7 @@ namespace UI
         {
             slider.maxValue = maxSanity;
             slider.value = maxSanity;
-            fill.color = gradient.Evaluate(1f);
-            
+            fill.color = gradient.Evaluate(1f);            
         }
 
         public void SetSanity(float sanity)

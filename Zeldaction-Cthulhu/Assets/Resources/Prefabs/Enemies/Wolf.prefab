@@ -140,7 +140,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &7491350745673005207
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 6925617986655589426}
   m_Layer: 0
   m_Name: FieldOfView
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 6925617987206744220}
   - component: {fileID: 6925617987206744222}
   - component: {fileID: 2796357253064073382}
-  - component: {fileID: 754137700}
+  - component: {fileID: 3948961856080334951}
   m_Layer: 10
   m_Name: Entity
   m_TagString: Enemy
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaxHealth: 2
   enemyCurrentHealth: 0
-  enemyDamage: 2
+  enemyDamage: 1
   fieldOfView: {fileID: 6925617986655589436}
   preDetectionPath: {fileID: 6925617987783528014}
   path: []
@@ -452,7 +452,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.41, y: 0.4}
   m_EdgeRadius: 0
---- !u!114 &754137700
+--- !u!114 &3948961856080334951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

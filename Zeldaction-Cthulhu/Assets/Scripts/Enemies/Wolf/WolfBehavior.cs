@@ -33,6 +33,8 @@ namespace Enemy
 		public Animator wolfAnimator;
 		private Vector2 animDirection;
 
+        public CapsuleCollider2D collid;
+
 		void Awake()
 		{
 			wolfRb = GetComponentInParent<Rigidbody2D>();
@@ -117,14 +119,13 @@ namespace Enemy
 			
 		}
 
-		private void OnTriggerEnter2D(Collider2D other)
+        /*private void OnTriggerEnter2D(Collider2D other)
 		{
-			if (other.CompareTag("Player"))
+			if (other.gameObject.tag == "Player")
 			{
-				other.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
+				other.gameObject.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
 			}
+		}*/
 
-		}
-
-	}
+    }
 }

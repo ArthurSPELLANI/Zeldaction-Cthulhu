@@ -185,7 +185,7 @@ namespace Player
         void Attack1()
         {
             GetAttackPos1();
-            FindObjectOfType<AudioManager>().Play("coup1");
+            //FindObjectOfType<AudioManager>().Play("coup1");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
@@ -194,7 +194,7 @@ namespace Player
                 if (enemy.CompareTag("Enemy"))
                 {
                     enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
-                    FindObjectOfType<AudioManager>().Play("impactEnnemi");
+                    //FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 
                 if (enemy.CompareTag("Boss"))

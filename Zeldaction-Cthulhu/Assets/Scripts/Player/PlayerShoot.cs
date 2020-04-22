@@ -87,7 +87,7 @@ namespace Player
             PlayerManager.Instance.playerMovement.speed -= aimSlow;
             directionStored = true;
             isAiming = true;
-            FindObjectOfType<AudioManager>().Play("sortiePistolet");
+            //FindObjectOfType<AudioManager>().Play("sortiePistolet");
         }
 
         void ExitShoot()
@@ -96,7 +96,7 @@ namespace Player
             PlayerManager.Instance.playerMovement.speed += aimSlow;
             animator.SetBool("isAiming", false);
             isAiming = false;
-            FindObjectOfType<AudioManager>().Play("rangementPistolet");
+            //FindObjectOfType<AudioManager>().Play("rangementPistolet");
         }
 
         void ShootBullet()
@@ -104,7 +104,7 @@ namespace Player
             StartCoroutine(ShootDelay());
             ammunitions -= 1;
             Instantiate(bullet, this.transform.position, rotation);
-            FindObjectOfType<AudioManager>().Play("tir");
+            //FindObjectOfType<AudioManager>().Play("tir");
         }
 
         IEnumerator ShootDelay()

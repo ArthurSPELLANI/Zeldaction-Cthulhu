@@ -223,7 +223,7 @@ namespace Player
 
                 if (currentTime >= timeBetweenStep)
                 {
-                    FindObjectOfType<AudioManager>().CoursePierre();
+                    //FindObjectOfType<AudioManager>().CoursePierre();
                     currentTime = 0;
                 }
             }

@@ -10,7 +10,7 @@ namespace LevelDesign
         public Transform trueRespawn;
         public Transform respawn1;
         public Transform respawn2;
-        public Rigidbody2D rigidbody2D;
+        public Rigidbody2D rb;
         public bool onPlatform;
         private float sqrOffset1;
         private float sqrOffset2;
@@ -35,7 +35,7 @@ namespace LevelDesign
         IEnumerator PitfallActivation()
         {
             yield return new WaitForSeconds(0.5f);
-            rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
             yield return new WaitForSeconds(0.5f);        
             if (sqrOffset1 < sqrOffset2)
             {
@@ -47,7 +47,7 @@ namespace LevelDesign
                 trueRespawn.position = respawn2.position;
                 player.transform.position = trueRespawn.position;
             }
-            rigidbody2D.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.None;
         }
     }
 }
