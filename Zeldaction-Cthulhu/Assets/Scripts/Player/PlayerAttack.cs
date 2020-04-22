@@ -4,7 +4,6 @@ using UnityEngine;
 using Enemy;
 using Boss;
 using PillarSystem;
-using LevelDesignElement;
 
 namespace Player
 {

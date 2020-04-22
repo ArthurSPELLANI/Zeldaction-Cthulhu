@@ -13,7 +13,7 @@ namespace Boss
 
         void Awake()
         {
-            patternNbr = 1;
+            patternNbr = 2;
 
         }
 
