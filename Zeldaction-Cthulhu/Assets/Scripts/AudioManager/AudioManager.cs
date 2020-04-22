@@ -26,8 +26,11 @@ namespace AudioManaging
                 s.source.volume = s.volume;
                 s.source.pitch = s.pitch;
                 s.source.loop = s.loop;
-                s.pitch = 1;
-                s.volume = 0.5f;
+
+                if (s.volume == 0)
+                    s.source.volume = 0.5f;
+                if (s.pitch == 0)
+                    s.source.pitch = 1f;
             }
             foreach (Sound s in pasPierre)
             {
@@ -36,8 +39,11 @@ namespace AudioManaging
                 s.source.volume = s.volume;
                 s.source.pitch = s.pitch;
                 s.source.loop = s.loop;
-                s.pitch = 1;
-                s.volume = 0.5f;
+
+                if (s.volume == 0)
+                    s.source.volume = 0.5f;
+                if (s.pitch == 0)
+                    s.source.pitch = 1f;
             }
 
         }
@@ -50,7 +56,11 @@ namespace AudioManaging
         {
             Sound s = pasPierre[Mathf.RoundToInt(Random.value * (pasPierre.Length - 1))];
             s.source.Play();
-            Debug.Log("yes");
+        }
+        public void Stop(string name)
+        {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            s.source.Stop();
         }
         /*void Start()
         {

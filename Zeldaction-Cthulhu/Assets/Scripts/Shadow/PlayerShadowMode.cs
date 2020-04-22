@@ -4,6 +4,7 @@ using UnityEngine;
 using Shadow;
 using UI;
 using Cinemachine;
+using AudioManaging;
 
 namespace Player
 {
@@ -122,7 +123,9 @@ namespace Player
             PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0,0);
             shadowObject.SetActive(true);
             shadowObject.transform.position = player.transform.position;
-            shadowRb = GetComponentInChildren<Rigidbody2D>();                    
+            shadowRb = GetComponentInChildren<Rigidbody2D>();
+            FindObjectOfType<AudioManager>().Play("entreeShadow");
+            FindObjectOfType<AudioManager>().Play("idleShadow");
         }
 
         public void ShadowExit()
@@ -137,6 +140,8 @@ namespace Player
             shadowObject.SetActive(false);
             Time.timeScale = 1;
             Time.fixedDeltaTime = timeRef;
+            FindObjectOfType<AudioManager>().Play("sortieShadow");
+            FindObjectOfType<AudioManager>().Stop("idleShadow");
         }
         
 

@@ -43,7 +43,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a026447a0995ef4d94ddaf0518e893c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: coup1
+    clip: {fileID: 8300000, guid: 553315182d2d0b540a1f7be3be78f113, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: coup2
+    clip: {fileID: 8300000, guid: c13ff8fb489f01448a76c1a5445de90d, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: coup3
+    clip: {fileID: 8300000, guid: c4f84de812622eb44a57755584f23c49, type: 3}
+    volume: 0.3
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: tir
+    clip: {fileID: 8300000, guid: 7e49c1513f010d84580a864a0555f55c, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: impactEnnemi
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: sortiePistolet
+    clip: {fileID: 8300000, guid: 984642a2b155b784c85668687f3ae546, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: rangementPistolet
+    clip: {fileID: 8300000, guid: ee3877b959c0cec4fbb6e7fe09b00c6d, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: entreeShadow
+    clip: {fileID: 8300000, guid: 81733a0c23f67d04daf89140439fc71f, type: 3}
+    volume: 0
+    pitch: 0.04
+    loop: 0
+    source: {fileID: 0}
+  - name: sortieShadow
+    clip: {fileID: 8300000, guid: 32e8bd63f30653b47a3b2f0f1521298b, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: idleShadow
+    clip: {fileID: 8300000, guid: 2c3728b5705032741ab0291aebf8aa06, type: 3}
+    volume: 1
+    pitch: 0.04
+    loop: 1
+    source: {fileID: 0}
   pasPierre:
   - name: Pas1
     clip: {fileID: 8300000, guid: c04bafc7e5d50a744aa807033e8b96f7, type: 3}

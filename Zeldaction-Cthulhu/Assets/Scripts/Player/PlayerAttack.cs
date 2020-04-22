@@ -4,6 +4,7 @@ using UnityEngine;
 using Enemy;
 using Boss;
 using PillarSystem;
+using AudioManaging;
 //using LevelDesignElement;
 
 namespace Player
@@ -183,7 +184,8 @@ namespace Player
         //Premier coup de la série d'attaques
         void Attack1()
         {
-            GetAttackPos1();            
+            GetAttackPos1();
+            FindObjectOfType<AudioManager>().Play("coup1");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
@@ -192,6 +194,7 @@ namespace Player
                 if (enemy.CompareTag("Enemy"))
                 {
                     enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 
                 if (enemy.CompareTag("Boss"))
@@ -221,6 +224,7 @@ namespace Player
         void Attack2()
         {
             GetAttackPos2();
+            FindObjectOfType<AudioManager>().Play("coup2");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
@@ -231,6 +235,7 @@ namespace Player
                 if (enemy.CompareTag("Enemy"))
                 {
                     enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 
                 if (enemy.CompareTag("Boss"))
@@ -262,6 +267,7 @@ namespace Player
         void Attack3()
         {
             GetAttackPos3();
+            FindObjectOfType<AudioManager>().Play("coup3");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
 
@@ -272,6 +278,7 @@ namespace Player
                 if (enemy.CompareTag("Enemy"))
                 {
                     enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 
                 if (enemy.CompareTag("Boss"))
