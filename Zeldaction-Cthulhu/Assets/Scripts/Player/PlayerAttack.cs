@@ -224,7 +224,7 @@ namespace Player
         void Attack2()
         {
             GetAttackPos2();
-            FindObjectOfType<AudioManager>().Play("coup2");
+            //FindObjectOfType<AudioManager>().Play("coup2");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
