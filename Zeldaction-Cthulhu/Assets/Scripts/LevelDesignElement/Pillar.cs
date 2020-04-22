@@ -22,6 +22,7 @@ namespace PillarSystem
         BoxCollider2D colliBox;
         bool weGotShadow;
         public bool useFog;
+        public bool fogCanMove;
 
 
         void Start()
@@ -60,6 +61,10 @@ namespace PillarSystem
             {
                 Fog.SetActive(false);
             }
+            else if(playerShadowMode.isShadowActivated && isCharged && useFog)
+            {
+                Fog.SetActive(false);
+            }
 
             //Quand le player quitte le shadowMode, la charge revient.
 
@@ -69,7 +74,7 @@ namespace PillarSystem
             if (!playerShadowMode.isCharged)
                 myCharge = false;
 
-            if (useFog)
+            if (fogCanMove)
                 Fog.transform.position = gameObject.transform.position;
 
 

@@ -22,6 +22,7 @@ namespace Boss
         public float laserCountdown;
         public int laserDmg;
         public float laserThickness;
+        public float laserDistance;
 
         public float timeBeforeWeakStatusBegin;
         public float timeBeforeWeakStatusEnd;
@@ -70,6 +71,7 @@ namespace Boss
 
             //activate wall game object to constaint player
 
+            walls.SetActive(true);
             SpawnPillars();
         }
 
@@ -97,7 +99,7 @@ namespace Boss
 
             graphics.GetComponent<SpriteRenderer>().color = Color.red;
 
-            RaycastHit2D[] hitPlayer = Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), playerLayer);
+            RaycastHit2D[] hitPlayer = Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), laserDistance, playerLayer);
             Debug.Log(hitPlayer[0].collider);
 
             if (hitPlayer == null)
@@ -113,7 +115,7 @@ namespace Boss
                 foreach (RaycastHit2D player in hitPlayer)
                 {
 
-                    player.collider.gameObject.GetComponent<PlayerStats>().PlayerTakeDamage(laserDmg);  
+                    player.collider.GetComponent<PlayerStats>().PlayerTakeDamage(laserDmg);  
                 }
 
                 walls.SetActive(false);
@@ -137,8 +139,14 @@ namespace Boss
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
         }
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, new Vector3(0, -1, 0));
+        }
 
 
+        //Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), playerLayer);
     }
 }
 
