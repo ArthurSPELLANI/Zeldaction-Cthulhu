@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1947369802}
   m_Layer: 9
   m_Name: ShadowMode
-  m_TagString: Untagged
+  m_TagString: Shadow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -737,6 +737,7 @@ MonoBehaviour:
   playerShadowMode: {fileID: 0}
   playerStats: {fileID: 0}
   playerShoot: {fileID: 0}
+  nativePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4580132031572655725
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2719578629349875785}
   - component: {fileID: 474925894254228396}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: EnvironnementCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
