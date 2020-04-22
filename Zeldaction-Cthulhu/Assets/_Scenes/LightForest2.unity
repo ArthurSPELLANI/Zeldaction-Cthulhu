@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -19031,6 +19031,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0000000031417358
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00000006283368
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.000012485542
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000000039440873
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 5.2409094e-10
+      objectReference: {fileID: 0}
     - target: {fileID: 1897963198, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -19066,32 +19086,32 @@ PrefabInstance:
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2930002
+      value: 0.00001607965
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.8
+      value: -0.0031713801
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -9.999999
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.0001585664
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000059604646
+      value: -0.00000080396137
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.00000013308072
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
@@ -57521,6 +57541,7 @@ MonoBehaviour:
   sanityDamage: 0
   enemyAnimator: {fileID: 4143996207350115353}
   animDirection: {x: 0, y: 0}
+  scratchChance: 0
 --- !u!4 &4496929483493383187
 Transform:
   m_ObjectHideFlags: 0
@@ -58046,6 +58067,7 @@ MonoBehaviour:
   sanityDamage: 0
   enemyAnimator: {fileID: 7491350744926157372}
   animDirection: {x: 0, y: 0}
+  scratchChance: 0
 --- !u!1 &6925617987172342111
 GameObject:
   m_ObjectHideFlags: 0
@@ -58623,6 +58645,7 @@ MonoBehaviour:
   sanityDamage: 0
   enemyAnimator: {fileID: 7491350744711390573}
   animDirection: {x: 0, y: 0}
+  scratchChance: 0
 --- !u!4 &6925617988126152039
 Transform:
   m_ObjectHideFlags: 0

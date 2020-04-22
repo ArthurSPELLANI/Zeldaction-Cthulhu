@@ -10,6 +10,8 @@ namespace Player
         [Range(0, 100)]
         public int speed;
 
+        [SerializeField]
+        public bool isWalking = false;
         
 
         public Rigidbody2D playerRb;
@@ -109,10 +111,12 @@ namespace Player
             if (horizontal != 0 || vertical != 0)
             {
                 animator.SetBool("IsWalking", true);
+                isWalking = true;
             }
             else if (horizontal == 0 && vertical == 0)
             {
                 animator.SetBool("IsWalking", false);
+                isWalking = false;
             }            
         }
 
