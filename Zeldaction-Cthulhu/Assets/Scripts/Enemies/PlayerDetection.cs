@@ -46,9 +46,10 @@ namespace Enemy
 			}
 			else
 			{
-				behavior.SetActive(true);
-				GetComponent<PolygonCollider2D>().enabled = false;
-			}
+				
+				GetComponent<PolygonCollider2D>().enabled = false;                behavior.SetActive(true);
+
+            }
 	
 		}
 

@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Management;
 
 
 /*pour ajouer un son quelque part ajputer cette ligne à l'endroit voulu :
@@ -10,7 +11,7 @@ namespace AudioManaging
 {
 
 
-    public class AudioManager : MonoBehaviour
+    public class AudioManager : Singleton<AudioManager>
     {
         public Sound[] sounds;
         public Sound[] pasPierre;
@@ -19,6 +20,8 @@ namespace AudioManaging
         int index;
         void Awake()
         {
+            MakeSingleton(true);
+
             foreach (Sound s in sounds)
             {
                 s.source = gameObject.AddComponent<AudioSource>();

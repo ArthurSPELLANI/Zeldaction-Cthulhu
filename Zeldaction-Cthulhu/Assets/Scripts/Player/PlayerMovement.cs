@@ -43,6 +43,8 @@ namespace Player
         void Start()
         {
             animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
+            animator.SetFloat("Horizontal", 1);
+            animator.SetFloat("Vertical", 0);
         }
 
         private void FixedUpdate()
@@ -123,7 +125,7 @@ namespace Player
         //Fonction qui store la dernière direction du joueur + Direction de l'animator
         private void GetDirection()
         {
-            if(direction.x == 1 && direction.y == 0)
+            /*if(direction.x == 1 && direction.y == 0)
             {
                 currentDirection = new Vector2(1, 0);
             }
@@ -138,7 +140,19 @@ namespace Player
             if (direction.x == 0 && direction.y == -1)
             {
                 currentDirection = new Vector2(0, -1);
-            }           
+            }*/
+            
+            if(horizontal != 0 || vertical != 0)
+            {
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                {
+                    currentDirection = new Vector2(Mathf.RoundToInt(direction.x), 0);
+                }
+                else
+                {
+                    currentDirection = new Vector2(0, Mathf.RoundToInt(direction.y));
+                }
+            }                                    
 
             if (PlayerManager.Instance.playerShoot.isAiming == false)
             {
