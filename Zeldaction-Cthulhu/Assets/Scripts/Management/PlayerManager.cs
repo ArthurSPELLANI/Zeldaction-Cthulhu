@@ -19,16 +19,15 @@ namespace Player
         private void Awake()
         {
             MakeSingleton(true);
-        }
-
-        void Start()
-        {
             playerAttack = GetComponentInChildren<PlayerAttack>();
             playerMovement = GetComponentInChildren<PlayerMovement>();
             playerShadowMode = GetComponentInChildren<PlayerShadowMode>();
             playerStats = GetComponentInChildren<PlayerStats>();
             playerShoot = GetComponentInChildren<PlayerShoot>();
+        }
 
+        void Start()
+        {          
             nativePosition = new Vector3(0, 0, 0);
         }
     
