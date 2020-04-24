@@ -45,7 +45,7 @@ namespace Player
             if (collision.gameObject.tag == "pillar")
             {
                 collision.gameObject.GetComponent<Pillar>().CorruptionBeam(rb.velocity);
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
 

@@ -16,22 +16,24 @@ namespace PillarSystem
         PlayerShadowMode playerShadowMode;
         public float timeBeforeChargeComeBack = 0.10f;
         public GameObject Fog;
+        public GameObject Beam;
+        [HideInInspector] public Vector2 beamDir;
         public LayerMask pillarLayer;
         public LayerMask enemyLayer;
         BoxCollider2D shadowColliBox;
         BoxCollider2D colliBox;
         bool weGotShadow;
         public bool useFog;
-        public bool fogCanMove;
+        Vector2 pillarPos;
+        Vector2 pillarMove;
 
 
         void Start()
         {
-            playerShadowMode = GameObject.Find("ShadowMode").GetComponent<PlayerShadowMode>();
+            playerShadowMode = PlayerManager.Instance.playerShadowMode;
             colliBox = GetComponent<BoxCollider2D>();
 
             //Déclaration de si le pillar est chargé ou pas.
-
             if (isCharged == true)
             {
                 gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -41,44 +43,60 @@ namespace PillarSystem
                 gameObject.transform.GetChild(1).gameObject.SetActive(true);
             }
             canInteract = true;
+
+            //Ce vecteur est utiliser pour déplacer le fog si le pillar bouge
+            pillarPos = new Vector2(transform.position.x, transform.position.y);
         }
 
         void Update()
         {
-
+            //détecte le collider du Shadow lorsque celle ci est acivée
             if (playerShadowMode.isShadowActivated && !weGotShadow)
                 GetShadow();
             if (weGotShadow && !playerShadowMode.isShadowActivated)
                 weGotShadow = false;
 
             //Activation/désactivation du fog.
-
-            if (playerShadowMode.isShadowActivated && !isCharged && useFog)
+            if (playerShadowMode.isShadowActivated && !isCharged && useFog && !Fog.activeSelf)
             {
                 Fog.SetActive(true);
+                //change la position du fog si la postion du pillar a changé
+                Fog.transform.position += new Vector3(pillarMove.x, pillarMove.y, 0f);
+                pillarMove = new Vector2(0f, 0f);
             }
-            else if (!playerShadowMode.isShadowActivated && useFog)
+            else if (!playerShadowMode.isShadowActivated && useFog && Fog.activeSelf)
             {
                 Fog.SetActive(false);
             }
-            else if(playerShadowMode.isShadowActivated && isCharged && useFog)
+            else if(playerShadowMode.isShadowActivated && isCharged && useFog && Fog.activeSelf)
             {
                 Fog.SetActive(false);
+            }
+            
+            //Stock le changement de position du pillier pour l'appliquer au fog
+            if (useFog)
+            {         
+                if (pillarPos != new Vector2 (transform.position.x,transform.position.y) && !Fog.activeSelf)
+                {
+                    pillarMove.x += (transform.position.x - pillarPos.x);
+                    pillarMove.y += (transform.position.y - pillarPos.y);
+
+                    pillarPos = new Vector2(transform.position.x, transform.position.y);
+                }
             }
 
             //Quand le player quitte le shadowMode, la charge revient.
-
             if (playerShadowMode.isCharged && myCharge && !playerShadowMode.isShadowActivated)
                 Charge(true);
 
+            //Le bool myCharge sert à lier une cgarge à un pillier lorsque celle ci n'est plus dessus
             if (!playerShadowMode.isCharged)
                 myCharge = false;
 
-            if (fogCanMove)
-                Fog.transform.position = gameObject.transform.position;
 
 
         }
+
         //Collisions avec le Shadow.
         void OnTriggerEnter2D(Collider2D col)
         {
@@ -92,12 +110,14 @@ namespace PillarSystem
             }
         }
 
+        //détecte le collider du Shadow lorsque celle ci est acivée
         void GetShadow()
         {
             weGotShadow = true;
             shadowColliBox = GameObject.Find("Shadow").GetComponent<BoxCollider2D>();
         }
 
+        //fonction qui prend la charge du pillier, le paramètre signifie que l'action est le résultat de l'utilisation de la shadow ou pas
         void UnCharge(bool shadow)
         {
             isCharged = false;
@@ -113,6 +133,7 @@ namespace PillarSystem
 
         }
 
+        //fonction qui donne la charge au pillier, le paramètre signifie que l'action est le résultat de l'utilisation de la shadow ou pas
         void Charge(bool shadow)
         {
             isCharged = true;
@@ -125,11 +146,14 @@ namespace PillarSystem
                 playerShadowMode.isCharged = false;
         }
 
+        //délais avant que le joueur puisse inéragir avec le pillier
         IEnumerator ChargeCooldown()
         {
             yield return new WaitForSeconds(pillarCooldown);
             canInteract = true;
         }
+
+        //si le joueur garde la charge trop longtemps, celle ci revient au pillier
         IEnumerator ChargeComeBack()
         {
             yield return new WaitForSeconds(timeBeforeChargeComeBack);
@@ -139,32 +163,44 @@ namespace PillarSystem
 
 
         }
+
+        //Cette fonction gère l'utilisation des pilliers sans la shadow
         public void CorruptionBeam(Vector2 direction)
         {
+            //ces condition permettent de me faciliter la vie pour le raycast et l'instantiation du beam
             if (direction.x > 0)
-                direction.x = 1;
+                direction.x = 2;
             if (direction.x < 0)
-                direction.x = -1;
+                direction.x = -2;
             if (direction.y > 0)
-                direction.y = 1;
+                direction.y = 2;
             if (direction.y < 0)
-                direction.y = -1;
+                direction.y = -2;
 
             if (isCharged)
             {
                 UnCharge(false);
-                RaycastHit2D hitPillar = Physics2D.Raycast(new Vector2(transform.position.x + (colliBox.size.x * direction.x), transform.position.y + (colliBox.size.y * direction.y)), direction, 3f, pillarLayer);
+                //la position d'origine du rayCast est un peu plus moin que le bord du collider du pillier
+                RaycastHit2D hitPillar = Physics2D.Raycast(new Vector2(
+                    (transform.position.x + colliBox.offset.x) + (colliBox.size.x * direction.x),
+                    (transform.position.y + colliBox.offset.y) + (colliBox.size.y * direction.y)), direction, 3f, pillarLayer);
 
+                beamDir = direction;
+                //la position d'origine du beam est un peu plus moin que le bord du collider du pillier
+                Instantiate(Beam, new Vector3(
+                    (transform.position.x + colliBox.offset.x) + (colliBox.size.x * direction.x), 
+                    (transform.position.y + colliBox.offset.y) + (colliBox.size.y * direction.y), 0f), Quaternion.identity, gameObject.transform);
 
                 if (hitPillar.collider != null)
-                {
+                {                
                     hitPillar.collider.GetComponent<Pillar>().Charge(false);
                 }
-                else if (hitPillar.collider == false)
+                else if (hitPillar.collider == null)
                 {
                     StartCoroutine(RaycastFalse());
                 }
 
+                //ce rayCast sert à stun les ennemis
                 RaycastHit2D[] hitEnemis = Physics2D.RaycastAll(transform.position, direction, 3f, enemyLayer);
 
                 foreach (RaycastHit2D hit in hitEnemis)
@@ -174,6 +210,7 @@ namespace PillarSystem
             }
 
         }
+        //retour de la charge si le raycast n'a rien touché
         IEnumerator RaycastFalse()
         {
             yield return new WaitForSeconds(3f);

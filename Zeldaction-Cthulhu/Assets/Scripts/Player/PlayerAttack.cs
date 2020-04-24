@@ -185,7 +185,7 @@ namespace Player
         void Attack1()
         {
             GetAttackPos1();
-            //FindObjectOfType<AudioManager>().Play("coup1");
+            AudioManager.Instance.Play("coup1");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
@@ -224,7 +224,7 @@ namespace Player
         void Attack2()
         {
             GetAttackPos2();
-            //FindObjectOfType<AudioManager>().Play("coup2");
+            AudioManager.Instance.Play("coup2");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
@@ -267,7 +267,7 @@ namespace Player
         void Attack3()
         {
             GetAttackPos3();
-            FindObjectOfType<AudioManager>().Play("coup3");
+            AudioManager.Instance.Play("coup3");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
 

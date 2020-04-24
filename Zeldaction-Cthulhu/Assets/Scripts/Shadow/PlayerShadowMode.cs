@@ -126,6 +126,8 @@ namespace Player
             shadowRb = GetComponentInChildren<Rigidbody2D>();
             /*FindObjectOfType<AudioManager>().Play("entreeShadow");
             FindObjectOfType<AudioManager>().Play("idleShadow");*/
+            AudioManager.Instance.Play("entreeShadow");
+            AudioManager.Instance.Play("idleShadow");
         }
 
         public void ShadowExit()
@@ -142,6 +144,8 @@ namespace Player
             Time.fixedDeltaTime = timeRef;
             /*FindObjectOfType<AudioManager>().Play("sortieShadow");
             FindObjectOfType<AudioManager>().Stop("idleShadow");*/
+            AudioManager.Instance.Play("sortieShadow");
+            AudioManager.Instance.Stop("idleShadow");
         }
         
 
