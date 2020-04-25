@@ -34,7 +34,7 @@ namespace Player
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage);
+                collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage, transform.position, 100);
             }
 
             if (collision.gameObject.tag == "Enviro")

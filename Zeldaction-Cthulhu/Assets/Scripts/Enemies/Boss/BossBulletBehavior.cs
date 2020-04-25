@@ -63,7 +63,7 @@ namespace Boss
 
                 if (other.CompareTag("Enemy"))
                 {
-                    other.GetComponent<EnemyBasicBehavior>().TakeDamage(bulletDmg);
+                    other.GetComponent<EnemyBasicBehavior>().TakeDamage(bulletDmg, transform.position, 100);
                 }
 
                 if (other.CompareTag("Boss"))

@@ -31,6 +31,8 @@ namespace Boss
 
         public LayerMask playerLayer;
 
+        private bool pillarHaveSpawn;
+
         void Awake()
         {
             player = GameObject.Find("Player");
@@ -39,29 +41,34 @@ namespace Boss
             graphics = transform.parent.GetChild(0).gameObject;
             pillarsParent = transform.GetChild(3).gameObject;
             pillarInt = pillarsParent.transform.GetChild(0).gameObject;
-
         }
 
         void OnEnable()
         {
-            //pull player first
-
-            //then spawn pillars
-
-
+            pillarHaveSpawn = false;
             StartCoroutine(PatternStart());
         }
 
         void Update()
         {
-
+            if (pillarHaveSpawn)
+            {
+                if (pillarOut.transform.GetChild(0).gameObject.activeSelf)
+                {
+                    walls.SetActive(false);
+                }
+                else
+                {
+                    walls.SetActive(true);
+                }
+            }
         }
 
         private IEnumerator PatternStart()
         {
             yield return new WaitForSeconds(timeBeforePatternStart);
 
-            SpawnPillars();
+            PullPlayer();
         }
 
 
@@ -72,13 +79,13 @@ namespace Boss
             //activate wall game object to constaint player
 
             walls.SetActive(true);
+
             SpawnPillars();
         }
 
         private void SpawnPillars()
         {
-            //int i = Random.Range(1, 5);
-            int i = 2;
+            int i = Random.Range(1, 5);
 
             pillarOut = pillarsParent.transform.GetChild(i).gameObject;
 
@@ -88,6 +95,7 @@ namespace Boss
             pillarOut.SetActive(true);
             pillarOut.GetComponent<Pillar>().isCharged = false;
 
+            pillarHaveSpawn = true;
             StartCoroutine(Laser());
         }
 
@@ -100,11 +108,18 @@ namespace Boss
             graphics.GetComponent<SpriteRenderer>().color = Color.red;
 
             RaycastHit2D[] hitPlayer = Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), laserDistance, playerLayer);
-            Debug.Log(hitPlayer[0].collider);
 
-            if (hitPlayer == null)
+            if (hitPlayer.Length == 0)
             {
-                StartCoroutine(weakStatus());
+                Debug.Log("laser didn't hit the player");
+
+                yield return new WaitForSeconds(timeBeforeWeakStatusBegin);
+
+                transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
+
+                yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
+
+                transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
 
                 yield return new WaitForSeconds(timeBeforePatternEnd);
 
@@ -112,9 +127,9 @@ namespace Boss
             }
             else
             {
+                Debug.Log("laser hit the player");
                 foreach (RaycastHit2D player in hitPlayer)
                 {
-
                     player.collider.GetComponent<PlayerStats>().PlayerTakeDamage(laserDmg);  
                 }
 
@@ -126,27 +141,22 @@ namespace Boss
                 GetComponent<Phase2PatternManager>().NextPatternSelection();
             }
 
-        }
+            pillarInt.GetComponent<Pillar>().isCharged = true;
+            pillarInt.SetActive(false);
+            pillarOut.GetComponent<Pillar>().isCharged = false;
+            pillarOut.SetActive(false);
 
-        private IEnumerator weakStatus()
-        {
-            yield return new WaitForSeconds(timeBeforeWeakStatusBegin);
-
-            transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
-
-            yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
-
-            transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
         }
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, new Vector3(0, -1, 0));
+            UnityEditor.Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 1), laserThickness);
+            UnityEditor.Handles.DrawWireDisc(new Vector3(transform.position.x, transform.position.y - laserDistance, transform.position.z), new Vector3(0, 1, 1), laserThickness);
+            UnityEditor.Handles.DrawWireDisc(new Vector3(transform.position.x, transform.position.y - laserDistance/2, transform.position.z), new Vector3(0, 1, 1), laserThickness);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, new Vector2(0, -laserDistance));
         }
-
-
-        //Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), playerLayer);
     }
 }
 

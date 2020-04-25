@@ -7,15 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6925617987755804652, guid: 0e98901ae9906e24c885318e831a9b5e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6098414904070442842, guid: 95b967639b241f54485839b06883ee98,
+        type: 3}
     - target: {fileID: 7100483376807138398, guid: 0e98901ae9906e24c885318e831a9b5e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.97
       objectReference: {fileID: 0}
     - target: {fileID: 7100483376807138398, guid: 0e98901ae9906e24c885318e831a9b5e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5.23
       objectReference: {fileID: 0}
     - target: {fileID: 7100483376807138398, guid: 0e98901ae9906e24c885318e831a9b5e,
         type: 3}
@@ -65,7 +71,12 @@ PrefabInstance:
     - target: {fileID: 7130158724220475421, guid: 0e98901ae9906e24c885318e831a9b5e,
         type: 3}
       propertyPath: m_Name
-      value: BadWolf
+      value: BadWolf Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7491350745673005207, guid: 0e98901ae9906e24c885318e831a9b5e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b8b952809459a494d85c906af78ac01b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e98901ae9906e24c885318e831a9b5e, type: 3}

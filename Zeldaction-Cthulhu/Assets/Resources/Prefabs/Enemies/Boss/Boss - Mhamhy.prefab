@@ -423,7 +423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6686963254282452422
 Transform:
   m_ObjectHideFlags: 0
@@ -755,12 +755,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d0febe5f4ab0d4b8c83fe7eca14ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserCountdown: 15
+  laserCountdown: 5
   laserDmg: 3
-  laserThickness: 20
+  laserThickness: 0.65
+  laserDistance: 3.96
   timeBeforeWeakStatusBegin: 1
   timeBeforeWeakStatusEnd: 4
-  timeBeforePatternStart: 0
+  timeBeforePatternStart: 1
   timeBeforePatternEnd: 2
   playerLayer:
     serializedVersion: 2
@@ -1723,13 +1724,14 @@ GameObject:
   m_Component:
   - component: {fileID: 9193467315004315042}
   - component: {fileID: 9193467315004315043}
+  - component: {fileID: 3777866534113071953}
   m_Layer: 11
-  m_Name: GameObject
+  m_Name: Fog
   m_TagString: NegativeFog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9193467315004315042
 Transform:
   m_ObjectHideFlags: 0
@@ -1813,6 +1815,19 @@ PolygonCollider2D:
       - {x: 2.1194706, y: -0.12695408}
       - {x: 2.172041, y: 0.28827465}
       - {x: 1.944603, y: 1.2368954}
+--- !u!114 &3777866534113071953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193467315004315053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1dbf063f1429a344980e08000c7b389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeShadowExit: 0.1
 --- !u!1001 &3777866532940730270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1913,6 +1928,11 @@ PrefabInstance:
     - target: {fileID: 3100012754605638605, guid: e13e458f6bd30af4887ec0c1d44641e3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3100012754605638607, guid: e13e458f6bd30af4887ec0c1d44641e3,
+        type: 3}
+      propertyPath: isCharged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2025,6 +2045,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3100012754605638607, guid: e13e458f6bd30af4887ec0c1d44641e3,
+        type: 3}
+      propertyPath: isCharged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13e458f6bd30af4887ec0c1d44641e3, type: 3}
 --- !u!4 &2263297082475437181 stripped
@@ -2043,7 +2068,7 @@ PrefabInstance:
     - target: {fileID: 3100012753436009576, guid: e13e458f6bd30af4887ec0c1d44641e3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3100012753436009582, guid: e13e458f6bd30af4887ec0c1d44641e3,
         type: 3}
@@ -2139,7 +2164,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Fog
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9193467315004315053}
     - target: {fileID: 3100012754605638607, guid: e13e458f6bd30af4887ec0c1d44641e3,
         type: 3}
       propertyPath: useFog
@@ -2358,6 +2383,11 @@ PrefabInstance:
     - target: {fileID: 3100012754605638605, guid: e13e458f6bd30af4887ec0c1d44641e3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3100012754605638607, guid: e13e458f6bd30af4887ec0c1d44641e3,
+        type: 3}
+      propertyPath: isCharged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -11,7 +11,7 @@ namespace Boss
         public int phase2Hp;
         [SerializeField] private int currentHp;
 
-        [SerializeField] private bool isInPhase1 = true;
+        [HideInInspector] public bool isInPhase1 = true;
         public bool isWeak = false;
 
         public GameObject phase1Go;

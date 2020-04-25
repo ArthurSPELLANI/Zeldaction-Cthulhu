@@ -25,7 +25,6 @@ namespace Player
         public float comboKeepTime;
         public float coolDown = 0;
 
-
         Animator animator;
 
         [HideInInspector] public bool cantAttack = false;
@@ -193,7 +192,7 @@ namespace Player
             {
                 if (enemy.CompareTag("Enemy"))
                 {
-                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, 100);
                     //FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 
@@ -234,7 +233,7 @@ namespace Player
             {
                 if (enemy.CompareTag("Enemy"))
                 {
-                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, 100);
                     FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 
@@ -277,7 +276,7 @@ namespace Player
             {
                 if (enemy.CompareTag("Enemy"))
                 {
-                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, 100);
                     FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 

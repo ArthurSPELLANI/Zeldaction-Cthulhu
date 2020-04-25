@@ -14,6 +14,7 @@ namespace Boss
         void Awake()
         {
             patternNbr = 2;
+            transform.parent.GetComponentInParent<BossBaseBehavior>().isInPhase1 = false;
 
         }
 

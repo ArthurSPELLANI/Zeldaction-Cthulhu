@@ -63,7 +63,7 @@ namespace Enemy
 
                 if (other.CompareTag("Enemy"))
                 {
-                    other.GetComponent<EnemyBasicBehavior>().TakeDamage(bulletDmg);
+                    other.GetComponent<EnemyBasicBehavior>().TakeDamage(bulletDmg, transform.position, 100);
                 }
 
                 Destroy(gameObject);

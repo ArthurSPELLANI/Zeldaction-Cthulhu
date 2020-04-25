@@ -30,7 +30,7 @@ namespace Enemy
         private double currentWaypointYMin;
         private double currentWaypointYMax;
 
-        private bool canMove = true;
+        [HideInInspector] public bool canMove = true;
         //private bool canScratch = true;
 
         private bool isThrown;
@@ -107,14 +107,12 @@ namespace Enemy
         /// Reduce enemy health by player attack damage.
         /// </summary>
         /// <param name="playerDamage"></param>
-        public void TakeDamage(int playerDamage)
+        public void TakeDamage(int playerDamage, Vector3 sourcePos, float pushForce)
         {
             enemyCurrentHealth -= playerDamage;
+            fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
 
-            if(enemyCurrentHealth <= 0)
-            {
-                fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
-            }
+            EnemyRb.AddForce((transform.position - sourcePos) * pushForce, ForceMode2D.Impulse);
         }
 
 
