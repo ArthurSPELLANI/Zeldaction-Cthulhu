@@ -39,6 +39,11 @@ namespace Player
         public int sanityGain;
 
         public int actionPoints;
+        public int maxActionPoints;
+        float cooldownAP = 5f;
+        float timestamp;
+
+        public int fragment;
 
         void Awake()
 	    {
@@ -107,6 +112,13 @@ namespace Player
             {
                 RecallPlayer();
             }
+
+            if (actionPoints < maxActionPoints && timestamp <= Time.time)
+            {
+                actionPoints += 1;
+                timestamp = Time.time + cooldownAP;
+            }
+
 
         }
     
@@ -185,6 +197,16 @@ namespace Player
                 isOutOfBounds = false;
                 shadowObject.GetComponent<PlayerShadowMovement>().shadowSpeed = 55;
             }
+        }
+
+        public void ShadowEnhance()
+        {
+            fragment -= 3;
+            maxSanity += 15;
+            //sanity = maxSanity;
+            maxActionPoints += 1;
+            //actionPoints = maxActionPoints;
+            sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
         }
 
 

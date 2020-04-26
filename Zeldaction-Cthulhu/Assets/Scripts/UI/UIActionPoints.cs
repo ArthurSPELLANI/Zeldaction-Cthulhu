@@ -7,10 +7,12 @@ using Player;
 public class UIActionPoints : MonoBehaviour
 {
     int actionPoints;
+    int maxAP;
 
     public Image[] points;
     public Sprite fullAP;
     public Sprite emptyAP;
+    public Sprite noAP;
 
 
     private void Start()
@@ -21,6 +23,7 @@ public class UIActionPoints : MonoBehaviour
     void Update()
     {
         actionPoints = PlayerManager.Instance.playerShadowMode.actionPoints;
+        maxAP = PlayerManager.Instance.playerShadowMode.maxActionPoints;
 
         for (int i = 0; i < points.Length; i++)
         {
@@ -28,9 +31,13 @@ public class UIActionPoints : MonoBehaviour
             {
                 points[i].sprite = fullAP;
             }
-            else if (i >= actionPoints)
+            if (i >= actionPoints)
             {
                 points[i].sprite = emptyAP;
+            }
+            if (i >= maxAP)
+            {
+                points[i].sprite = noAP;
             }
         }
     }

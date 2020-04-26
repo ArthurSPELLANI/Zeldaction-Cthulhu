@@ -1,5 +1,78 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &823207307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823207308}
+  - component: {fileID: 823207309}
+  - component: {fileID: 823207310}
+  m_Layer: 5
+  m_Name: JaugeMiddle_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &823207308
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823207307}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5000001, y: 1.5000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4247797823624443758}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 58.1, y: 392.74002}
+  m_SizeDelta: {x: 12, y: 16}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &823207309
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823207307}
+  m_CullTransparentMesh: 0
+--- !u!114 &823207310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823207307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5386ac86d00574741b43b88653a92e06, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4247797822048240990
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +240,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4247797823143150211}
+  - {fileID: 4247797822775931008}
   - {fileID: 4247797823624443758}
   m_Father: {fileID: 4247797822303431626}
   m_RootOrder: 0
@@ -553,17 +626,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4247797822775931009}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.12}
+  m_LocalScale: {x: 0.7099999, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4247797823143150211}
+  m_Father: {fileID: 4247797822209622402}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -8.640018, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.5, y: -5.5}
+  m_SizeDelta: {x: -15.5, y: -10.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &4247797822775931038
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -880,42 +953,7 @@ MonoBehaviour:
   - {fileID: 4247797823340365378}
   fullAP: {fileID: 21300000, guid: 6f009e1410e57694bb03bc29b1bde9ec, type: 3}
   emptyAP: {fileID: 21300000, guid: 30d1886333470474e93757fec206c88c, type: 3}
---- !u!1 &4247797823143150212
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4247797823143150211}
-  m_Layer: 5
-  m_Name: Fill Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4247797823143150211
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4247797823143150212}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.71, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4247797822775931008}
-  m_Father: {fileID: 4247797822209622402}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 5.1299973, y: -5.0000153}
-  m_SizeDelta: {x: 140, y: 10}
-  m_Pivot: {x: 0, y: 1}
+  noAP: {fileID: 21300000, guid: c30a41fc6c521b449a216b168422cd9a, type: 3}
 --- !u!1 &4247797823340365380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +1039,7 @@ GameObject:
   - component: {fileID: 4247797823364190270}
   - component: {fileID: 4247797823364190271}
   m_Layer: 5
-  m_Name: JaugeMiddle
+  m_Name: JaugeMiddle_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1024,7 +1062,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 42.5, y: 392.74002}
-  m_SizeDelta: {x: 22, y: 16}
+  m_SizeDelta: {x: 12, y: 16}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4247797823364190270
 CanvasRenderer:
@@ -1052,7 +1090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 60008bf26ece3574e8a5c9736f6f3c4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9be02af80abaa147b5007df757b462b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1238,6 +1276,7 @@ RectTransform:
   - {fileID: 4247797823914140015}
   - {fileID: 4247797823364190240}
   - {fileID: 4247797823787170788}
+  - {fileID: 823207308}
   m_Father: {fileID: 4247797822209622402}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1633,7 +1672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75.1, y: 392.74002}
+  m_AnchoredPosition: {x: 76, y: 392.74002}
   m_SizeDelta: {x: 39, y: 16}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4247797823787170786
@@ -2005,3 +2044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e3e1673baae2046b65108d1ae01f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jaugeMid1: {fileID: 4247797823364190271}
+  jaugeMid2: {fileID: 823207310}
+  jaugeEnd: {fileID: 4247797823787170787}
+  fill: {fileID: 4247797822775931039}
+  sanityGauge: {fileID: 4247797822209622401}

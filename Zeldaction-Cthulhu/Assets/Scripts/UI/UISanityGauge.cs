@@ -15,13 +15,11 @@ namespace UI
         float maxSanity;
         float sanity;
 
-               
-
         private void Start()
         {
-            sanity = PlayerManager.Instance.playerShadowMode.sanity;
             maxSanity = PlayerManager.Instance.playerShadowMode.maxSanity;
-        }
+            sanity = PlayerManager.Instance.playerShadowMode.sanity;
+        }        
 
         public void SetMaxSanity(float sanity)
         {
