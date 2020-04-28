@@ -11,6 +11,9 @@ namespace Boss
         private int patternCount;
         private bool isWaitingForNextPattern = true;
 
+        [HideInInspector] public bool canDoPattern1 = true;
+        [HideInInspector] public bool canDoPattern2 = true;
+
         void Awake()
         {
             patternNbr = 2;
@@ -25,7 +28,7 @@ namespace Boss
 
         void Update()
         {
-            if (patternNbr == 1 && isWaitingForNextPattern == true)
+            if (patternNbr == 1 && isWaitingForNextPattern == true && !canDoPattern1)
             {
                 if (patternCount > 0)
                 {
@@ -42,7 +45,7 @@ namespace Boss
                 Debug.Log("Pattern " + patternNbr + " has begun");
             }
 
-            else if (patternNbr == 2 && isWaitingForNextPattern == true)
+            else if (patternNbr == 2 && isWaitingForNextPattern == true && !canDoPattern2)
             {
                 if (patternCount > 0)
                 {
@@ -96,9 +99,22 @@ namespace Boss
                     patternCount = 1;
                     break;
                 }
+
+
+            }
+
+            if (patternSelector == 1 && !canDoPattern1)
+            {
+                patternSelector = 2;
+            }
+
+            else if (patternSelector == 2 && !canDoPattern2)
+            {
+                patternSelector = 1;
             }
 
             patternNbr = patternSelector;
+
             isWaitingForNextPattern = true;
         }
 

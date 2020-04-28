@@ -37,8 +37,6 @@ namespace Enemy
 		public Animator wolfAnimator;
 		private Vector2 animDirection;
 
-        public Collider2D wolfCollider;
-
 		void Awake()
 		{
 			wolfRb = GetComponentInParent<Rigidbody2D>();
@@ -105,7 +103,7 @@ namespace Enemy
 
 			yield return new WaitForSeconds(timeBeforeWolfAttack);
 
-			GetComponentInParent<BoxCollider2D>().isTrigger = true;
+			GetComponentInParent<CapsuleCollider2D>().isTrigger = true;
 			GetComponent<CircleCollider2D>().isTrigger = true;
 			isAttacking = true;
 
@@ -124,7 +122,7 @@ namespace Enemy
 
 			wolfRb.velocity = new Vector2(0, 0) * attackSpeed * Time.deltaTime;
 
-			GetComponentInParent<BoxCollider2D>().isTrigger = false;
+			GetComponentInParent<CapsuleCollider2D>().isTrigger = false;
 			GetComponent<CircleCollider2D>().isTrigger = false;
 			isAttacking = false;
 

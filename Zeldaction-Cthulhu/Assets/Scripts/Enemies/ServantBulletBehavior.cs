@@ -14,6 +14,7 @@ namespace Enemy
         private Transform target;
         private GameObject player;
         public int bulletDmg;
+        public int knockback;
 
         [Range(0, 5)]
         public float safeTime;

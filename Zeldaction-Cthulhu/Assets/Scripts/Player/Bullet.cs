@@ -11,6 +11,12 @@ namespace Player
 
         public Rigidbody2D rb;
         public int damage;
+        public float knockback;
+
+        public int maxEnemyHit;
+        private int currentEnemyHit;
+
+        public float timeBeforeBulletKill;
         
 
     	void Awake()
@@ -27,14 +33,18 @@ namespace Player
     
         void Update()
         {
-            
+            if (currentEnemyHit >= maxEnemyHit)
+            {
+                Destroy(gameObject);
+            }
         }        
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage, transform.position, 100);
+                collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage, transform.position, knockback);
+                currentEnemyHit++;
             }
 
             if (collision.gameObject.tag == "Enviro")
@@ -51,7 +61,7 @@ namespace Player
 
         IEnumerator DeathByTime()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(timeBeforeBulletKill);
 
             Destroy(gameObject);
         }

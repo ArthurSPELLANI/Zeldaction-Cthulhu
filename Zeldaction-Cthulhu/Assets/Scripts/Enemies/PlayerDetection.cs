@@ -44,9 +44,8 @@ namespace Enemy
 					transform.eulerAngles = new Vector3(0, 0, 180);
 				}
 			}
-			else
+			else
 			{
-				
 				GetComponent<PolygonCollider2D>().enabled = false;                behavior.SetActive(true);
 
             }
@@ -63,13 +62,19 @@ namespace Enemy
 
 				Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, alertRange, enemyLayer);
 
-				foreach (Collider2D enemy in hitEnemies)
-				{
-					enemy.GetComponentInChildren<PlayerDetection>().isDetected = true;
+				foreach (Collider2D enemy in hitEnemies)
+				{
+					enemy.GetComponentInChildren<PlayerDetection>().isDetected = true;
 				}
 			}
            
         }
 
-    }
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.color = Color.yellow;
+			Gizmos.DrawWireSphere(transform.position, alertRange);
+		}
+
+	}
 }

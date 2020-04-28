@@ -87,11 +87,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.025532246, y: 1.0135459}
-      - {x: -0.64092994, y: 0.57268775}
-      - {x: -0.3108878, y: -0.35605288}
-      - {x: 0.3229277, y: -0.35605264}
-      - {x: 0.7291033, y: 0.61535335}
+    - - {x: 0.011710167, y: 0.9688549}
+      - {x: -0.41002536, y: 0.81104064}
+      - {x: -0.3882687, y: 0.31109238}
+      - {x: -0.117226124, y: -0.14749384}
+      - {x: 0.15161276, y: -0.14749384}
+      - {x: 0.43892574, y: 0.33894205}
+      - {x: 0.46840477, y: 0.7717724}
 --- !u!114 &3575282250267150290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,10 +108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDetected: 0
   behavior: {fileID: 3575282250111895572}
-  alertRange: 0
+  alertRange: 2
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!1 &3575282250818050937
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +123,7 @@ GameObject:
   - component: {fileID: 3575282250818050941}
   - component: {fileID: 3575282250818050940}
   - component: {fileID: 3575282250818050942}
-  - component: {fileID: 8597337075638858566}
+  - component: {fileID: 76103372}
   m_Layer: 10
   m_Name: Entity
   m_TagString: Enemy
@@ -167,9 +169,53 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   speed: 40
   sanityDamage: 0
+  canMove: 1
   enemyAnimator: {fileID: 400149054}
   animDirection: {x: 0, y: 0}
   scratchChance: 0
+  knockbackDuration: 0.1
+  knockbackForceModifier:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.045364358
+      value: 0.0038798172
+      inSlope: 0.5733237
+      outSlope: 0.5733237
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15834805
+      value: 0.06865605
+      inSlope: 1.4344274
+      outSlope: 1.4344274
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17234924
+      outWeight: 0.22479454
+    - serializedVersion: 3
+      time: 0.54875284
+      value: 0.095303796
+      inSlope: -0.93144745
+      outSlope: -0.93144745
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.065967515
+      outWeight: 0.29617542
+    - serializedVersion: 3
+      time: 0.994502
+      value: 0.025790825
+      inSlope: -0.15594639
+      outSlope: -0.15594639
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!50 &3575282250818050942
 Rigidbody2D:
   serializedVersion: 4
@@ -178,7 +224,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3575282250818050937}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -191,8 +237,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8597337075638858566
-BoxCollider2D:
+--- !u!70 &76103372
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -200,23 +246,13 @@ BoxCollider2D:
   m_GameObject: {fileID: 3575282250818050937}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4a8689ddd8c8a414b92ba414b47ce6a3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.41, y: 0.4}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.0013685226, y: -0.050394297}
+  m_Size: {x: 0.28676033, y: 0.39638662}
+  m_Direction: 0
 --- !u!1 &3575282251319205294
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +435,11 @@ PrefabInstance:
       propertyPath: exploAnimator
       value: 
       objectReference: {fileID: 400149054}
+    - target: {fileID: 6684340554449417391, guid: c14d29f2c8de5f3468bb75188c3867e4,
+        type: 3}
+      propertyPath: explosionRange
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 8151076781617664924, guid: c14d29f2c8de5f3468bb75188c3867e4,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -82,6 +82,19 @@ namespace Boss
                 currentHp -= 1;
                 transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.red;
                 isWeak = false;
+
+                if (!isInPhase1)
+                {
+                    if (phase2Go.GetComponent<Phase2PatternManager>().patternNbr == 1)
+                    {
+                        phase2Go.GetComponent<Phase2PatternManager>().canDoPattern1 = false;
+                    }
+
+                    else if (phase2Go.GetComponent<Phase2PatternManager>().patternNbr == 2)
+                    {
+                        phase2Go.GetComponent<Phase2PatternManager>().canDoPattern2 = false;
+                    }
+                }
             }
 
         }

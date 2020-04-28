@@ -41,6 +41,9 @@ namespace Enemy
 
         public float scratchChance;
 
+        public float knockbackDuration;
+        public AnimationCurve knockbackForceModifier;
+
         void Awake()
 		{
             enemyCurrentHealth = enemyMaxHealth;
@@ -103,16 +106,23 @@ namespace Enemy
 
 
 
+
         /// <summary>
         /// Reduce enemy health by player attack damage.
         /// </summary>
         /// <param name="playerDamage"></param>
         public void TakeDamage(int playerDamage, Vector3 sourcePos, float pushForce)
         {
+            
             enemyCurrentHealth -= playerDamage;
-            fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
 
-            EnemyRb.AddForce((transform.position - sourcePos) * pushForce, ForceMode2D.Impulse);
+            if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
+            {
+                fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
+            }
+
+            StartCoroutine(Knockback(sourcePos, pushForce));
+
         }
 
 
@@ -190,6 +200,25 @@ namespace Enemy
             fieldOfView.SetActive(true);
             fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
         }
+
+
+        IEnumerator Knockback(Vector3 sourcePos, float pushForce)
+        {
+            float timer = 0.0f;
+
+            while (timer < knockbackDuration)
+            {
+                EnemyRb.velocity = (transform.position - sourcePos) * pushForce * knockbackForceModifier.Evaluate(timer / knockbackDuration);
+                timer += Time.deltaTime;
+
+                //Animation de prise de dégats ici.
+
+                yield return null;
+            }
+
+            EnemyRb.velocity = new Vector2(0, 0) * 0 * Time.deltaTime;
+        }
+
 
     }
 }
