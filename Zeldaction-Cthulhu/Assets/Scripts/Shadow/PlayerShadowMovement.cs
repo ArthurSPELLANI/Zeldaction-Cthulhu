@@ -33,6 +33,15 @@ namespace Player
 
             ShadowMove();
             GetDirection();
+            
+            if (shadowRb.velocity.x != 0 || shadowRb.velocity.y != 0)
+            {
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+            }
         }
 
         private void ShadowMove()

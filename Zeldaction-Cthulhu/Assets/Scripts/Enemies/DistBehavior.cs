@@ -85,14 +85,16 @@ namespace Enemy
 			{
 				
 				canMove = false;
+				servantAnimator.SetBool("isAttacking", true);
 				servantRb.velocity = new Vector2(0, 0) * speed * Time.fixedDeltaTime;
 				StartCoroutine(FireProjectile());
 				
 			}
 
 			//Si l'ennemi n'a plus de pv, son entity est détruite.
-			else if (enemyCurrentHp <= 0)
+			if (enemyCurrentHp <= 0)
 			{
+				servantAnimator.SetBool("isDiying", true);
 				Destroy(enemyPrefab);
 			}
 		}
@@ -104,7 +106,7 @@ namespace Enemy
 		/// <returns></returns>
 		IEnumerator FireProjectile()
 		{
-			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
+			//enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
 
 			yield return new WaitForSeconds(timeBeforeServantFire);
 
@@ -112,8 +114,9 @@ namespace Enemy
 
 			yield return new WaitForSeconds(recoilDuration);
 
-			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.white;
+			///enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.white;
 			canMove = true;
+			servantAnimator.SetBool("isAttacking", false);
 		}
 
 	}
