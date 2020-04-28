@@ -13,7 +13,7 @@ namespace Boss
         
         void Awake()
         {
-            patternNbr = 2;
+            patternNbr = 1;
         }
 
         void Start()
@@ -86,8 +86,7 @@ namespace Boss
             for (int i = 0; i < patternCount; i++)
             {
                 //patternSelector = Random.Range(1, 4);
-                //patternSelector = Random.Range(1, 3);
-                patternSelector = 2;
+                patternSelector = Random.Range(1, 3);
 
                 if (patternSelector != patternNbr)
                 {

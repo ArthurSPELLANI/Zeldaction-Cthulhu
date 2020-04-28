@@ -19,7 +19,15 @@ namespace Boss
 
         void Awake()
         {
-            currentHp = phase1Hp;
+            if (isInPhase1)
+            {
+                currentHp = phase1Hp;
+            }
+            else
+            {
+                currentHp = phase2Hp;
+            }
+            
         }
 
         void Start()
@@ -85,14 +93,14 @@ namespace Boss
 
                 if (!isInPhase1)
                 {
-                    if (phase2Go.GetComponent<Phase2PatternManager>().patternNbr == 1)
+                    if (phase2Go.GetComponentInChildren<Phase2PatternManager>().patternNbr == 1)
                     {
-                        phase2Go.GetComponent<Phase2PatternManager>().canDoPattern1 = false;
+                        phase2Go.GetComponentInChildren<Phase2PatternManager>().canDoPattern1 = false;
                     }
 
-                    else if (phase2Go.GetComponent<Phase2PatternManager>().patternNbr == 2)
+                    else if (phase2Go.GetComponentInChildren<Phase2PatternManager>().patternNbr == 2)
                     {
-                        phase2Go.GetComponent<Phase2PatternManager>().canDoPattern2 = false;
+                        phase2Go.GetComponentInChildren<Phase2PatternManager>().canDoPattern2 = false;
                     }
                 }
             }

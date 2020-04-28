@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
 using PillarSystem;
+using Boss;
 
 namespace Player
 {
@@ -15,6 +16,7 @@ namespace Player
 
         public int maxEnemyHit;
         private int currentEnemyHit;
+        
 
         public float timeBeforeBulletKill;
         
@@ -55,6 +57,12 @@ namespace Player
             if (collision.gameObject.tag == "pillar")
             {
                 collision.gameObject.GetComponent<Pillar>().CorruptionBeam(rb.velocity);
+                Destroy(gameObject);
+            }
+
+            if (collision.gameObject.tag == "Boss")
+            {
+                collision.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
                 Destroy(gameObject);
             }
         }

@@ -17,8 +17,9 @@ namespace Boss
         private GameObject pillarsParent;
         private GameObject pillarInt;
         private GameObject pillarOut;
+        private GameObject pullPoint;
 
-
+        public float pullForce;
         public float laserCountdown;
         public int laserDmg;
         public float laserThickness;
@@ -41,6 +42,7 @@ namespace Boss
             graphics = transform.parent.GetChild(0).gameObject;
             pillarsParent = transform.GetChild(3).gameObject;
             pillarInt = pillarsParent.transform.GetChild(0).gameObject;
+            pullPoint = transform.GetChild(5).gameObject;
         }
 
         void OnEnable()
@@ -68,15 +70,27 @@ namespace Boss
         {
             yield return new WaitForSeconds(timeBeforePatternStart);
 
-            PullPlayer();
+            StartCoroutine(PullPlayer());
         }
 
-
-        private void PullPlayer()
+        //Add force to the avatar so he goes at the center of the arena 
+        private IEnumerator PullPlayer()
         {
-            //Pull player on center of wall with rigidbody
+            while (player.transform.position != pullPoint.transform.position)
+            {
+                playerRb.AddForce((pullPoint.transform.position - player.transform.position) * pullForce);
 
-            //activate wall game object to constaint player
+                //safe zone around the pullPoint
+                Collider2D hitPlayer = Physics2D.OverlapCircle(pullPoint.transform.position, 0.1f, playerLayer);
+
+                if(hitPlayer != null)
+                {
+                    break;
+                }
+
+                yield return null;
+
+            }
 
             walls.SetActive(true);
 

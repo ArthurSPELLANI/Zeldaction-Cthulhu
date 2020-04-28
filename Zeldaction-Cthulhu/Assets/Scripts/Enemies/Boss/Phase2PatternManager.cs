@@ -28,7 +28,7 @@ namespace Boss
 
         void Update()
         {
-            if (patternNbr == 1 && isWaitingForNextPattern == true && !canDoPattern1)
+            if (patternNbr == 1 && isWaitingForNextPattern == true && canDoPattern1 == true)
             {
                 if (patternCount > 0)
                 {
@@ -45,7 +45,7 @@ namespace Boss
                 Debug.Log("Pattern " + patternNbr + " has begun");
             }
 
-            else if (patternNbr == 2 && isWaitingForNextPattern == true && !canDoPattern2)
+            else if (patternNbr == 2 && isWaitingForNextPattern == true && canDoPattern2 == true)
             {
                 if (patternCount > 0)
                 {
