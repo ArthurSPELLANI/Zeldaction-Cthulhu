@@ -30,11 +30,16 @@ namespace Enemy
 		public float timeBeforeServantFire;
 
 		public float recoilDuration;
+		public float maxChaseTime;
 
 		private bool canMove = true;
+		
 
 		public Animator servantAnimator;
 		private Vector2 animDirection;
+
+		//private bool canForce = true;
+		//private bool forceAttack = false;
 
 		void Awake()
 		{
@@ -71,6 +76,10 @@ namespace Enemy
 			{
 				servantRb.velocity = direction * speed * Time.fixedDeltaTime;
 				servantAnimator.SetBool("isRunning", true);
+
+				/*StopCoroutine(EndChase());
+				forceAttack = false;
+				canForce = true;*/
 			}
 
 			//Si le joueur est trop proche du servant, ce dernier s'en éloigne
@@ -78,17 +87,28 @@ namespace Enemy
 			{
 				servantRb.velocity = -direction * speed * Time.fixedDeltaTime;
 				servantAnimator.SetBool("isRunning", true);
+
+				/*if (canForce)
+				{
+					Debug.Log("alodazdazd");
+					StartCoroutine(EndChase());
+					canForce = false;
+				}*/
+				
 			}
 
 			//Si le joueur est à portée d'attaque du joueur et qu'il peut bouger, il arrête de bouger et lance son attaque.
-			else if (Vector2.Distance(transform.position, target.position) < startAttackRange && Vector2.Distance(transform.position, target.position) > startRetreatRange && canMove == true)
+			else if (Vector2.Distance(transform.position, target.position) < startAttackRange && Vector2.Distance(transform.position, target.position) > startRetreatRange && canMove == true /*|| forceAttack == true*/)
 			{
-				
 				canMove = false;
 				servantAnimator.SetBool("isAttacking", true);
 				servantRb.velocity = new Vector2(0, 0) * speed * Time.fixedDeltaTime;
 				StartCoroutine(FireProjectile());
-				
+
+				/*StopCoroutine(EndChase());
+				forceAttack = false;
+				canForce = true;*/
+
 			}
 
 			//Si l'ennemi n'a plus de pv, son entity est détruite.
@@ -118,6 +138,14 @@ namespace Enemy
 			canMove = true;
 			servantAnimator.SetBool("isAttacking", false);
 		}
+
+		/*IEnumerator EndChase()
+		{
+			yield return new WaitForSeconds(maxChaseTime);
+
+			forceAttack = true;
+			canForce = true;
+		}*/
 
 	}
 }

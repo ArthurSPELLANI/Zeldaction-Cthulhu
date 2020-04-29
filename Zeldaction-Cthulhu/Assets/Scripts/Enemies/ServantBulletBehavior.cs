@@ -14,6 +14,7 @@ namespace Enemy
         private Transform target;
         private GameObject player;
         public int bulletDmg;
+        public int knockback;
 
         public GameObject splashGo;
 
@@ -65,7 +66,7 @@ namespace Enemy
 
                 if (other.CompareTag("Enemy"))
                 {
-                    other.GetComponent<EnemyBasicBehavior>().TakeDamage(bulletDmg);
+                    other.GetComponent<EnemyBasicBehavior>().TakeDamage(bulletDmg, transform.position, 100);
                 }
 
                 Destroy(gameObject);

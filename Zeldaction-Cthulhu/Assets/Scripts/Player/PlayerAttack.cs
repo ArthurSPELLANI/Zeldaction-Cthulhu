@@ -24,7 +24,7 @@ namespace Player
         public int playerDamage = 1;
         public float comboKeepTime;
         public float coolDown = 0;
-
+        public float attackKnockback;
 
         Animator animator;
 
@@ -193,7 +193,7 @@ namespace Player
             {
                 if (enemy.CompareTag("Enemy"))
                 {
-                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, attackKnockback);
                     //FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 
@@ -234,7 +234,7 @@ namespace Player
             {
                 if (enemy.CompareTag("Enemy"))
                 {
-                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, attackKnockback);
                     FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 
@@ -277,7 +277,7 @@ namespace Player
             {
                 if (enemy.CompareTag("Enemy"))
                 {
-                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage);
+                    enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, attackKnockback * 1.5f);
                     FindObjectOfType<AudioManager>().Play("impactEnnemi");
                 }
 

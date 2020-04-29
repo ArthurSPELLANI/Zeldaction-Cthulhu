@@ -26,14 +26,16 @@ namespace Enemy
 		public float timeBeforeWolfAttack;
 		[Range(0, 200)]
 		public int attackSpeed;
+		public AnimationCurve attackSpeedMofifier;
+		public float attackDuration;
 		public float recoilDuration;
+
+		public bool isAttacking;
 
 		private bool canMove = true;
 
 		public Animator wolfAnimator;
 		private Vector2 animDirection;
-
-        public CapsuleCollider2D collid;
 
 		void Awake()
 		{
@@ -42,7 +44,6 @@ namespace Enemy
 			target = player.transform;
 			speed = GetComponentInParent<EnemyBasicBehavior>().speed;
 			enemyDamage = GetComponentInParent<EnemyBasicBehavior>().enemyDamage;
-			
 		}
 
 		void Start()
@@ -78,7 +79,7 @@ namespace Enemy
 				StartCoroutine(WolfAttack());
 			}
 
-			else if (enemyCurrentHp <= 0)
+			if (enemyCurrentHp <= 0)
 			{
 				wolfAnimator.SetBool("isDiying", true);
 				Destroy(enemyPrefab);
@@ -92,7 +93,7 @@ namespace Enemy
 		/// <returns></returns>
 		IEnumerator WolfAttack()
 		{
-			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
+
 
 			yield return new WaitForSeconds(timeBeforeTargetLock);
 
@@ -103,29 +104,49 @@ namespace Enemy
 
 			yield return new WaitForSeconds(timeBeforeWolfAttack);
 
-			GetComponentInParent<BoxCollider2D>().isTrigger = true;
+			GetComponentInParent<CapsuleCollider2D>().isTrigger = true;
+			GetComponent<CircleCollider2D>().isTrigger = true;
+			isAttacking = true;
 
 			wolfAnimator.SetFloat("Horizontal", animDirection.x);
 			wolfAnimator.SetBool("isAttacking", true);
 
-			wolfRb.velocity = dashDirection * attackSpeed * Time.fixedDeltaTime;
+			float timer = 0.0f;
+
+			while (timer < attackDuration)
+			{
+				wolfRb.velocity = dashDirection * attackSpeed * attackSpeedMofifier.Evaluate(timer / attackDuration);
+
+				timer += Time.deltaTime;
+				yield return null;
+			}
+
+			wolfRb.velocity = new Vector2(0, 0) * attackSpeed * Time.deltaTime;
+
+			GetComponentInParent<CapsuleCollider2D>().isTrigger = false;
+			GetComponent<CircleCollider2D>().isTrigger = false;
+			isAttacking = false;
+
+			wolfAnimator.SetBool("isAttacking", false);
+			GetComponentInParent<EnemyBasicBehavior>().canMove = false;
 
 			yield return new WaitForSeconds(recoilDuration);
 
-			GetComponentInParent<BoxCollider2D>().isTrigger = false;
-			enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.white;
+			GetComponentInParent<EnemyBasicBehavior>().canMove = true;
 			canMove = true;
-			wolfAnimator.SetBool("isAttacking", false);
-
 			
 		}
 
         private void OnTriggerEnter2D(Collider2D other)
 		{
-			if (other.gameObject.tag == "Player")
+			if (isAttacking)
 			{
-				other.gameObject.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
+				if (other.gameObject.tag == "Player")
+				{
+					other.gameObject.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
+				}
 			}
+			
 		}
 
 

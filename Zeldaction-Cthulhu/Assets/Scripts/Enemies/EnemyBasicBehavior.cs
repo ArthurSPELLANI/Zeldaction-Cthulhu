@@ -30,7 +30,7 @@ namespace Enemy
         private double currentWaypointYMin;
         private double currentWaypointYMax;
 
-        private bool canMove = true;
+        [HideInInspector] public bool canMove = true;
         //private bool canScratch = true;
 
         private bool isThrown;
@@ -40,6 +40,9 @@ namespace Enemy
         [HideInInspector]public Vector2 animDirection;
 
         public float scratchChance;
+
+        public float knockbackDuration;
+        public AnimationCurve knockbackForceModifier;
 
         void Awake()
 		{
@@ -103,21 +106,23 @@ namespace Enemy
 
 
 
+
         /// <summary>
         /// Reduce enemy health by player attack damage.
         /// </summary>
         /// <param name="playerDamage"></param>
-        public void TakeDamage(int playerDamage)
+        public void TakeDamage(int playerDamage, Vector3 sourcePos, float pushForce)
         {
+            
             enemyCurrentHealth -= playerDamage;
 
-            //coroutine changement de material
-            //StartCoroutine(damageHit());
-
-            if(enemyCurrentHealth <= 0)
+            if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
             {
                 fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
             }
+
+            StartCoroutine(Knockback(sourcePos, pushForce));
+
         }
 
 
@@ -196,20 +201,24 @@ namespace Enemy
             fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
         }
 
-        //changement de material pour les hitframes
-        /*
-        private IEnumerator damageHit()
+
+        IEnumerator Knockback(Vector3 sourcePos, float pushForce)
         {
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Black");
+            float timer = 0.0f;
 
-            yield return new WaitForSeconds(0.2f);
+            while (timer < knockbackDuration)
+            {
+                EnemyRb.velocity = (transform.position - sourcePos) * pushForce * knockbackForceModifier.Evaluate(timer / knockbackDuration);
+                timer += Time.deltaTime;
 
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("White");
+                //Animation de prise de dégats ici.
 
-            yield return new WaitForSeconds(0.2f);
+                yield return null;
+            }
 
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Sprite-Default");
+            EnemyRb.velocity = new Vector2(0, 0) * 0 * Time.deltaTime;
         }
-        */
+
+
     }
 }

@@ -101,7 +101,7 @@ namespace Enemy
 			{
 				if (enemy.CompareTag("Enemy"))
 				{
-					enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(enemyDamage);
+					enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(enemyDamage, transform.position, 100);
 				}
 
 				else if (enemy.CompareTag("Boss"))

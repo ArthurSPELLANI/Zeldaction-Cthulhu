@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 6793088303081489668}
   - component: {fileID: 6793088303081489669}
   - component: {fileID: 6793088303081489671}
-  - component: {fileID: 1772150049639476543}
+  - component: {fileID: 1282719314}
   m_Layer: 10
   m_Name: Entity
   m_TagString: Enemy
@@ -221,9 +221,53 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   speed: 40
   sanityDamage: 0
+  canMove: 1
   enemyAnimator: {fileID: 1237867225}
   animDirection: {x: 0, y: 0}
   scratchChance: 0
+  knockbackDuration: 0.1
+  knockbackForceModifier:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.045364358
+      value: 0.0038798172
+      inSlope: 0.5733237
+      outSlope: 0.5733237
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15834805
+      value: 0.06865605
+      inSlope: 1.4344274
+      outSlope: 1.4344274
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17234924
+      outWeight: 0.22479454
+    - serializedVersion: 3
+      time: 0.54875284
+      value: 0.095303796
+      inSlope: -0.93144745
+      outSlope: -0.93144745
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.065967515
+      outWeight: 0.29617542
+    - serializedVersion: 3
+      time: 0.994502
+      value: 0.025790825
+      inSlope: -0.15594639
+      outSlope: -0.15594639
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!50 &6793088303081489671
 Rigidbody2D:
   serializedVersion: 4
@@ -232,7 +276,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6793088303081489664}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -245,8 +289,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1772150049639476543
-BoxCollider2D:
+--- !u!70 &1282719314
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -258,19 +302,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.41, y: 0.4}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.022596598, y: 0.0062925816}
+  m_Size: {x: 0.25649214, y: 0.4255185}
+  m_Direction: 0
 --- !u!1 &6793088303603292581
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,11 +362,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.004392147, y: 1.6688898}
-      - {x: -0.36610794, y: 0.5515473}
-      - {x: -0.20518756, y: -0.18693185}
-      - {x: 0.23836756, y: -0.18693149}
-      - {x: 0.34858084, y: 0.5942135}
+    - - {x: 0.3286128, y: 1.474546}
+      - {x: -0.004392147, y: 1.6688898}
+      - {x: -0.3030038, y: 1.5229559}
+      - {x: -0.36610794, y: 1.2144666}
+      - {x: -0.123253345, y: -0.00071811676}
+      - {x: 0.14153671, y: -0.00816679}
+      - {x: 0.39327145, y: 1.2571328}
 --- !u!114 &6793088303603292587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDetected: 0
   behavior: {fileID: 6793088304060405357}
-  alertRange: 5
+  alertRange: 2.8
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -408,7 +444,7 @@ PrefabInstance:
     - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
         type: 3}
       propertyPath: startAttackRange
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
         type: 3}
@@ -418,23 +454,28 @@ PrefabInstance:
     - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
         type: 3}
       propertyPath: timeBeforeServantFire
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
         type: 3}
       propertyPath: recoilDuration
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
         type: 3}
       propertyPath: startRetreatRange
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
         type: 3}
       propertyPath: servantAnimator
       value: 
       objectReference: {fileID: 1237867225}
+    - target: {fileID: 940518815872323553, guid: 9701ac0cab941814b89af2f2224a3cee,
+        type: 3}
+      propertyPath: maxChaseTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4491452026761534537, guid: 9701ac0cab941814b89af2f2224a3cee,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -17,8 +17,9 @@ namespace Boss
         private GameObject pillarsParent;
         private GameObject pillarInt;
         private GameObject pillarOut;
+        private GameObject pullPoint;
 
-
+        public float pullForce;
         public float laserCountdown;
         public int laserDmg;
         public float laserThickness;
@@ -31,6 +32,8 @@ namespace Boss
 
         public LayerMask playerLayer;
 
+        private bool pillarHaveSpawn;
+
         void Awake()
         {
             player = GameObject.Find("Player");
@@ -39,46 +42,64 @@ namespace Boss
             graphics = transform.parent.GetChild(0).gameObject;
             pillarsParent = transform.GetChild(3).gameObject;
             pillarInt = pillarsParent.transform.GetChild(0).gameObject;
-
+            pullPoint = transform.GetChild(5).gameObject;
         }
 
         void OnEnable()
         {
-            //pull player first
-
-            //then spawn pillars
-
-
+            pillarHaveSpawn = false;
             StartCoroutine(PatternStart());
         }
 
         void Update()
         {
-
+            if (pillarHaveSpawn)
+            {
+                if (pillarOut.transform.GetChild(0).gameObject.activeSelf)
+                {
+                    walls.SetActive(false);
+                }
+                else
+                {
+                    walls.SetActive(true);
+                }
+            }
         }
 
         private IEnumerator PatternStart()
         {
             yield return new WaitForSeconds(timeBeforePatternStart);
 
-            SpawnPillars();
+            StartCoroutine(PullPlayer());
         }
 
-
-        private void PullPlayer()
+        //Add force to the avatar so he goes at the center of the arena 
+        private IEnumerator PullPlayer()
         {
-            //Pull player on center of wall with rigidbody
+            while (player.transform.position != pullPoint.transform.position)
+            {
+                playerRb.AddForce((pullPoint.transform.position - player.transform.position) * pullForce);
 
-            //activate wall game object to constaint player
+                //safe zone around the pullPoint
+                Collider2D hitPlayer = Physics2D.OverlapCircle(pullPoint.transform.position, 0.1f, playerLayer);
+
+                if(hitPlayer != null)
+                {
+                    break;
+                }
+
+                yield return null;
+
+            }
 
             walls.SetActive(true);
+
             SpawnPillars();
         }
 
         private void SpawnPillars()
         {
-            //int i = Random.Range(1, 5);
-            int i = 2;
+            int i = Random.Range(1, 5);
 
             pillarOut = pillarsParent.transform.GetChild(i).gameObject;
 
@@ -88,6 +109,7 @@ namespace Boss
             pillarOut.SetActive(true);
             pillarOut.GetComponent<Pillar>().isCharged = false;
 
+            pillarHaveSpawn = true;
             StartCoroutine(Laser());
         }
 
@@ -100,11 +122,18 @@ namespace Boss
             graphics.GetComponent<SpriteRenderer>().color = Color.red;
 
             RaycastHit2D[] hitPlayer = Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), laserDistance, playerLayer);
-            Debug.Log(hitPlayer[0].collider);
 
-            if (hitPlayer == null)
+            if (hitPlayer.Length == 0)
             {
-                StartCoroutine(weakStatus());
+                Debug.Log("laser didn't hit the player");
+
+                yield return new WaitForSeconds(timeBeforeWeakStatusBegin);
+
+                transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
+
+                yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
+
+                transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
 
                 yield return new WaitForSeconds(timeBeforePatternEnd);
 
@@ -112,9 +141,9 @@ namespace Boss
             }
             else
             {
+                Debug.Log("laser hit the player");
                 foreach (RaycastHit2D player in hitPlayer)
                 {
-
                     player.collider.GetComponent<PlayerStats>().PlayerTakeDamage(laserDmg);  
                 }
 
@@ -126,27 +155,22 @@ namespace Boss
                 GetComponent<Phase2PatternManager>().NextPatternSelection();
             }
 
-        }
+            pillarInt.GetComponent<Pillar>().isCharged = true;
+            pillarInt.SetActive(false);
+            pillarOut.GetComponent<Pillar>().isCharged = false;
+            pillarOut.SetActive(false);
 
-        private IEnumerator weakStatus()
-        {
-            yield return new WaitForSeconds(timeBeforeWeakStatusBegin);
-
-            transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
-
-            yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
-
-            transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
         }
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, new Vector3(0, -1, 0));
+            UnityEditor.Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 1), laserThickness);
+            UnityEditor.Handles.DrawWireDisc(new Vector3(transform.position.x, transform.position.y - laserDistance, transform.position.z), new Vector3(0, 1, 1), laserThickness);
+            UnityEditor.Handles.DrawWireDisc(new Vector3(transform.position.x, transform.position.y - laserDistance/2, transform.position.z), new Vector3(0, 1, 1), laserThickness);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, new Vector2(0, -laserDistance));
         }
-
-
-        //Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), playerLayer);
     }
 }
 

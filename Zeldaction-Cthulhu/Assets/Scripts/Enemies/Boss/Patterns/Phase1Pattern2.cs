@@ -12,17 +12,21 @@ namespace Boss
         private GameObject player;
 
         public int dmg;
+
         public float attackSpeed;
+        public AnimationCurve attackSpeedMofifier;
         public float dashTime;
+
         public float timeBeforeAttack;
+        public float timeBeforePatternEnd;
+
         public float bounceSpeed;
+        public AnimationCurve bounceSpeedModifier;
         public float bounceTime;
+
         public float timeBeforeWeakStatusBegin;
         public float timeBeforeWeakStatusEnd;
 
-
-        private bool canGoToNextPattern;
-        private bool canMove;
         private Vector2 vecDir;
         private Rigidbody2D bossPhase1Rb;
         public GameObject phase1Collider;
@@ -37,35 +41,22 @@ namespace Boss
 
         void OnEnable()
         {
-            canMove = false;
-            canGoToNextPattern = false;
-            hasHitWall = false;
             target = player.transform;
+
             StartCoroutine(WaitingForPatternStart());
         }
 
         void Update()
         {
-            if (canMove == true)
-            {
-                StartCoroutine(Dash()); 
-            }
-
-            if (canGoToNextPattern == true)
-            {
-                GetComponent<Phase1PatternManager>().NextPatternSelection();
-            }
-
             if (hasHitWall == true)
             {
-                canMove = false;
                 hasHitWall = false;
-                StopCoroutine(Dash());
+                StopAllCoroutines();
 
                 bossPhase1Rb.velocity = new Vector2(0, 0) * attackSpeed * Time.fixedDeltaTime;
                 phase1Collider.GetComponent<Collider2D>().isTrigger = false;
-                
-                StartCoroutine(WeakTiming());
+
+                StartCoroutine(BounceIntoWeak());
             }
         }
 
@@ -79,7 +70,8 @@ namespace Boss
             yield return new WaitForSeconds(timeBeforeAttack);
 
             vecDir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
-            canMove = true;
+
+            StartCoroutine(Dash());
 
         }
 
@@ -89,28 +81,48 @@ namespace Boss
         /// <returns></returns>
         IEnumerator Dash()
         {
-            canMove = false;
+            float timer = 0.0f;
 
-            bossPhase1Rb.velocity = vecDir * attackSpeed * Time.fixedDeltaTime;
             phase1Collider.GetComponent<Collider2D>().isTrigger = true;
-            
-            yield return new WaitForSeconds(dashTime);
+
+            while (timer < dashTime)
+            {
+                bossPhase1Rb.velocity = vecDir * attackSpeed * attackSpeedMofifier.Evaluate(timer / dashTime);
+
+                timer += Time.deltaTime;
+
+                yield return null;
+            }
 
             bossPhase1Rb.velocity = new Vector2(0, 0) * attackSpeed * Time.fixedDeltaTime;
             phase1Collider.GetComponent<Collider2D>().isTrigger = false;
 
-            canGoToNextPattern = true;
+            yield return new WaitForSeconds(timeBeforePatternEnd);
+
+            Debug.Log("aled");
+            GetComponent<Phase1PatternManager>().NextPatternSelection();
         }
 
         /// <summary>
         /// Bounce effect + Time during which the boss can be hit 
         /// </summary>
         /// <returns></returns>
-        IEnumerator WeakTiming()
+        IEnumerator BounceIntoWeak()
         {
-            bossPhase1Rb.velocity = -vecDir * bounceSpeed * Time.fixedDeltaTime;
+            StopCoroutine(Dash());
 
-            yield return new WaitForSeconds(bounceTime);
+            hasHitWall = false;
+
+            float timer = 0.0f;
+
+            while (timer < bounceTime)
+            {
+                bossPhase1Rb.velocity = -vecDir * bounceSpeed * bounceSpeedModifier.Evaluate(timer / bounceTime);
+
+                timer += Time.deltaTime;
+
+                yield return null;
+            }
 
             bossPhase1Rb.velocity = new Vector2(0, 0) * attackSpeed * Time.fixedDeltaTime;
 
@@ -122,7 +134,9 @@ namespace Boss
 
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
 
-            canGoToNextPattern = true;
+            yield return new WaitForSeconds(timeBeforePatternEnd);
+
+            GetComponent<Phase1PatternManager>().NextPatternSelection();
         }
 
 

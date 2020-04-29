@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
 using PillarSystem;
+using Boss;
 
 namespace Player
 {
@@ -11,6 +12,13 @@ namespace Player
 
         public Rigidbody2D rb;
         public int damage;
+        public float knockback;
+
+        public int maxEnemyHit;
+        private int currentEnemyHit;
+        
+
+        public float timeBeforeBulletKill;
         
 
     	void Awake()
@@ -27,14 +35,18 @@ namespace Player
     
         void Update()
         {
-            
+            if (currentEnemyHit >= maxEnemyHit)
+            {
+                Destroy(gameObject);
+            }
         }        
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage);
+                collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage, transform.position, knockback);
+                currentEnemyHit++;
             }
 
             if (collision.gameObject.tag == "Enviro")
@@ -47,11 +59,17 @@ namespace Player
                 collision.gameObject.GetComponent<Pillar>().CorruptionBeam(rb.velocity);
                 Destroy(gameObject);
             }
+
+            if (collision.gameObject.tag == "Boss")
+            {
+                collision.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
+                Destroy(gameObject);
+            }
         }
 
         IEnumerator DeathByTime()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(timeBeforeBulletKill);
 
             Destroy(gameObject);
         }
