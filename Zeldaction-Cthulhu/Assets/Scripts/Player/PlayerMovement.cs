@@ -37,12 +37,13 @@ namespace Player
 
         void Awake()
         {
-            playerRb = GetComponentInParent<Rigidbody2D>();            
+                       
         }
 
         void Start()
         {
-            animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
+            playerRb = GetComponentInParent<Rigidbody2D>();
+            animator = PlayerManager.Instance.playerAnimator;
             animator.SetFloat("Horizontal", 1);
             animator.SetFloat("Vertical", 0);
         }

@@ -40,7 +40,7 @@ namespace Player
         void Start()
         {
             canShoot = true;
-            animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
+            animator = PlayerManager.Instance.playerAnimator;
         }
     
         void Update()

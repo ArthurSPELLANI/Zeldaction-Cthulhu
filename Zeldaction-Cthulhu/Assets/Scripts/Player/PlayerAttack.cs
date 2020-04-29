@@ -39,7 +39,7 @@ namespace Player
     
         void Start()
         {
-            animator = PlayerManager.Instance.GetComponentInChildren<Animator>();
+            animator = PlayerManager.Instance.playerAnimator;
         }
     
         void Update()

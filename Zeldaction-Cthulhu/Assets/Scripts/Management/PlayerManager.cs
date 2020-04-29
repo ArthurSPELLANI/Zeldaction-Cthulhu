@@ -13,7 +13,8 @@ namespace Player
         public PlayerShadowMode playerShadowMode;
         public PlayerStats playerStats;
         public PlayerShoot playerShoot;
-
+        public Animator playerAnimator;  
+    
         public Vector3 nativePosition;
 
         private void Awake()
