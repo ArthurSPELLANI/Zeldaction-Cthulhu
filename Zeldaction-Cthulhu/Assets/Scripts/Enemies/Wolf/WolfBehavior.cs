@@ -80,6 +80,7 @@ namespace Enemy
 
 			else if (enemyCurrentHp <= 0)
 			{
+				wolfAnimator.SetBool("isDiying", true);
 				Destroy(enemyPrefab);
 			}
 		}
@@ -126,6 +127,7 @@ namespace Enemy
 				other.gameObject.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
 			}
 		}
+
 
     }
 }

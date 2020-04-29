@@ -15,6 +15,8 @@ namespace Enemy
         private GameObject player;
         public int bulletDmg;
 
+        public GameObject splashGo;
+
         [Range(0, 5)]
         public float safeTime;
         private bool canDoDmg = false;
@@ -29,7 +31,7 @@ namespace Enemy
         void Start()
         {
             vectorDir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
-
+            Instantiate(splashGo, transform.position, Quaternion.identity);
             StartCoroutine(TimeUntilDmg());
         }
 

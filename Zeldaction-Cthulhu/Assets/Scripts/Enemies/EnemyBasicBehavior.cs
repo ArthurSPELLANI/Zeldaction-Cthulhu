@@ -111,6 +111,9 @@ namespace Enemy
         {
             enemyCurrentHealth -= playerDamage;
 
+            //coroutine changement de material
+            //StartCoroutine(damageHit());
+
             if(enemyCurrentHealth <= 0)
             {
                 fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
@@ -193,5 +196,20 @@ namespace Enemy
             fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
         }
 
+        //changement de material pour les hitframes
+        /*
+        private IEnumerator damageHit()
+        {
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Black");
+
+            yield return new WaitForSeconds(0.2f);
+
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("White");
+
+            yield return new WaitForSeconds(0.2f);
+
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Sprite-Default");
+        }
+        */
     }
 }
