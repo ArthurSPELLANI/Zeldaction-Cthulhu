@@ -41,6 +41,8 @@ namespace Enemy
 
         public float scratchChance;
 
+        Material defaultMaterial;
+
         public float knockbackDuration;
         public AnimationCurve knockbackForceModifier;
 
@@ -54,6 +56,7 @@ namespace Enemy
 		void Start()
 		{
             LookingForPath();
+            defaultMaterial = GetComponentInChildren<SpriteRenderer>().material;
         }
 
 		void Update()
@@ -212,6 +215,8 @@ namespace Enemy
                 timer += Time.deltaTime;
 
                 //Animation de prise de dégats ici.
+                StartCoroutine(hitFrames());
+               
 
                 yield return null;
             }
@@ -219,6 +224,13 @@ namespace Enemy
             EnemyRb.velocity = new Vector2(0, 0) * 0 * Time.deltaTime;
         }
 
-
+        IEnumerator hitFrames()
+        {
+            gameObject.GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/White");
+            yield return new WaitForSeconds(0.2f);
+            gameObject.GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
+            yield return new WaitForSeconds(0.2f);
+            gameObject.GetComponentInChildren<SpriteRenderer>().material = defaultMaterial;
+        }
     }
 }
