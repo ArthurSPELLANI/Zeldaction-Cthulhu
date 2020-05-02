@@ -205,7 +205,7 @@ namespace PillarSystem
 
                 foreach (RaycastHit2D hit in hitEnemis)
                 {
-                    //hit.collider.GetComponent<EnemyBasicBehavior>().TaFonction();
+                    hit.collider.GetComponent<EnemyBasicBehavior>().EnemyStun();
                 }
             }
 

@@ -44,6 +44,10 @@ namespace Enemy
         public float knockbackDuration;
         public AnimationCurve knockbackForceModifier;
 
+        public bool isStunned = false;
+        float timestampStun;
+        float coolDownStun = 3f;
+
         void Awake()
 		{
             enemyCurrentHealth = enemyMaxHealth;
@@ -58,47 +62,60 @@ namespace Enemy
 
 		void Update()
 		{
-            if (childNbr > 0)
+            if(timestampStun <= Time.time)
             {
-                if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
+                isStunned = false;
+                canMove = true;
+                if(fieldOfView.GetComponent<PlayerDetection>().isDetected == true)
                 {
-                    direction = new Vector2(path[currentWaypoint].position.x - transform.position.x, path[currentWaypoint].position.y - transform.position.y).normalized;
-                    SetAnimDirection(direction);
+                    fieldOfView.GetComponent<PlayerDetection>().behavior.SetActive(true);
+                }                
+            }
 
-                    enemyAnimator.SetFloat("Horizontal", animDirection.x);
-                   
-
-                    //Soft spot around the Waypoint position cause rigidbody can't reach a precise position while using velocity to move.
-                    currentWaypointXMin = path[currentWaypoint].position.x - 0.02;
-                    currentWaypointXMax = path[currentWaypoint].position.x + 0.02;
-                    currentWaypointYMin = path[currentWaypoint].position.y - 0.02;
-                    currentWaypointYMax = path[currentWaypoint].position.y + 0.02;
-
-                    //if the enemy as reached the Waypoint, he target the next one on the Array.
-                    if (transform.position.x >= currentWaypointXMin && transform.position.x <= currentWaypointXMax && transform.position.y >= currentWaypointYMin && transform.position.y <= currentWaypointYMax)
-                    {
-                        StartCoroutine(ChangingWaypoint());
-                    }
-                    //If the enemy as not reached the Waypoint yet, he goes towards it.
-                    else if (canMove == true)
-                    {
-                        EnemyRb.velocity = direction * speed * Time.fixedDeltaTime;
-                    }
-
-                }
-                if (canMove == true)
+            if(isStunned == false)
+            {
+                if (childNbr > 0)
                 {
-                    enemyAnimator.SetBool("isRunning", true);
-                }
-                else
-                {
-                    enemyAnimator.SetBool("isRunning", false);
-                   /* if (canScratch == true)
+                    if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
                     {
-                        canScratch = false;
-                        //mettre la coroutine
+                        direction = new Vector2(path[currentWaypoint].position.x - transform.position.x, path[currentWaypoint].position.y - transform.position.y).normalized;
+                        SetAnimDirection(direction);
+
+                        enemyAnimator.SetFloat("Horizontal", animDirection.x);
+
+
+                        //Soft spot around the Waypoint position cause rigidbody can't reach a precise position while using velocity to move.
+                        currentWaypointXMin = path[currentWaypoint].position.x - 0.02;
+                        currentWaypointXMax = path[currentWaypoint].position.x + 0.02;
+                        currentWaypointYMin = path[currentWaypoint].position.y - 0.02;
+                        currentWaypointYMax = path[currentWaypoint].position.y + 0.02;
+
+                        //if the enemy as reached the Waypoint, he target the next one on the Array.
+                        if (transform.position.x >= currentWaypointXMin && transform.position.x <= currentWaypointXMax && transform.position.y >= currentWaypointYMin && transform.position.y <= currentWaypointYMax)
+                        {
+                            StartCoroutine(ChangingWaypoint());
+                        }
+                        //If the enemy as not reached the Waypoint yet, he goes towards it.
+                        else if (canMove == true)
+                        {
+                            EnemyRb.velocity = direction * speed * Time.fixedDeltaTime;
+                        }
+
                     }
-                    */
+                    if (canMove == true)
+                    {
+                        enemyAnimator.SetBool("isRunning", true);
+                    }
+                    else
+                    {
+                        enemyAnimator.SetBool("isRunning", false);
+                        /* if (canScratch == true)
+                         {
+                             canScratch = false;
+                             //mettre la coroutine
+                         }
+                         */
+                    }
                 }
             }
 
@@ -199,6 +216,15 @@ namespace Enemy
             EnemyRb.velocity = new Vector2(0, 0) * 0 * Time.deltaTime;
             fieldOfView.SetActive(true);
             fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
+        }
+
+        public void EnemyStun()
+        {
+            isStunned = true;
+            canMove = false;
+            timestampStun = Time.time + coolDownStun;
+            EnemyRb.velocity = new Vector2(0, 0);
+            fieldOfView.GetComponent<PlayerDetection>().behavior.SetActive(false);
         }
 
 

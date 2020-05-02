@@ -480,7 +480,7 @@ MonoBehaviour:
   speed: 60
   isWalking: 0
   playerRb: {fileID: 0}
-  currentDirection: {x: 0, y: 0}
+  currentDirection: {x: 1, y: 0}
   canMove: 1
   dashTime: 0.6
   dashDelay: 0.15
@@ -776,6 +776,7 @@ MonoBehaviour:
   playerDamage: 1
   comboKeepTime: 2
   coolDown: 0
+  attackKnockback: 0
   cantAttack: 0
 --- !u!114 &4580132031067072194
 MonoBehaviour:
@@ -966,6 +967,7 @@ MonoBehaviour:
   playerShadowMode: {fileID: 0}
   playerStats: {fileID: 0}
   playerShoot: {fileID: 0}
+  playerAnimator: {fileID: 4580132031657520922}
   nativePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4580132031572655725
 GameObject:
