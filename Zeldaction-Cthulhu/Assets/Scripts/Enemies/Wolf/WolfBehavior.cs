@@ -82,7 +82,7 @@ namespace Enemy
 			if (enemyCurrentHp <= 0)
 			{
 				wolfAnimator.SetBool("isDiying", true);
-				Destroy(enemyPrefab);
+				StopAllCoroutines();
 			}
 		}
 

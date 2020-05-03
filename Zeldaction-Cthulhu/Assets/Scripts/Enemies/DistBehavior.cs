@@ -101,7 +101,7 @@ namespace Enemy
 			else if (Vector2.Distance(transform.position, target.position) < startAttackRange && Vector2.Distance(transform.position, target.position) > startRetreatRange && canMove == true /*|| forceAttack == true*/)
 			{
 				canMove = false;
-				servantAnimator.SetBool("isAttacking", true);
+				
 				servantRb.velocity = new Vector2(0, 0) * speed * Time.fixedDeltaTime;
 				StartCoroutine(FireProjectile());
 
@@ -115,7 +115,7 @@ namespace Enemy
 			if (enemyCurrentHp <= 0)
 			{
 				servantAnimator.SetBool("isDiying", true);
-				Destroy(enemyPrefab);
+				StopAllCoroutines();
 			}
 		}
 
@@ -128,7 +128,9 @@ namespace Enemy
 		{
 			//enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
 
+			servantAnimator.SetBool("isAttacking", true);
 			yield return new WaitForSeconds(timeBeforeServantFire);
+
 
 			Instantiate(servantProjectile, transform.position, Quaternion.identity);
 
