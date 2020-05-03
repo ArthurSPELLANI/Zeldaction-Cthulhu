@@ -42,6 +42,9 @@ namespace Enemy
 
         public Animator enemyAnimator;
         [HideInInspector]public Vector2 animDirection;
+        [SerializeField] public Animator catchAnimator;
+        SpriteRenderer catchSprite;
+        
 
         public float scratchChance;
 
@@ -57,6 +60,8 @@ namespace Enemy
             enemyCurrentHealth = enemyMaxHealth;
             childNbr = preDetectionPath.transform.childCount;
             EnemyRb = GetComponent<Rigidbody2D>();
+            catchAnimator = GetComponent<Animator>();
+            catchSprite = GetComponent<SpriteRenderer>();
         }
 
 		void Start()
@@ -264,8 +269,24 @@ namespace Enemy
             isMarked = true;
             timestampMark = Time.time + coolDownMark;
         }
-    
 
+        public void ExitCatchAnimator()
+        {
+            catchAnimator.SetBool("isDetected", false);
+            catchAnimator.SetBool("isDesactivated", false);
+            catchAnimator.enabled = false;
+            catchSprite.sprite = null;
+        }
+
+        public void CatchByShadow()
+        {
+            catchAnimator.SetBool("isDetected", true);
+        }
+
+        public void CatchOut()
+        {
+            catchAnimator.SetBool("isDesactivated", true);
+        }
 
     }
 }

@@ -5,6 +5,7 @@ using Shadow;
 using UI;
 using Cinemachine;
 using AudioManaging;
+using Enemy;
 
 namespace Player
 {
@@ -197,6 +198,32 @@ namespace Player
                 isOutOfBounds = false;
                 shadowObject.GetComponent<PlayerShadowMovement>().shadowSpeed = 55;
             }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (isShadowActivated == true)
+            {
+                if(collision.gameObject.tag == "Enemy")
+                {
+                    if(collision.gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled == false)
+                    {
+                        collision.gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled = true;
+                    }
+                }
+            }
+
+            if (isShadowActivated == false)
+            {
+                if (collision.gameObject.tag == "Enemy")
+                {
+                    if (collision.gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled == true)
+                    {
+                        collision.gameObject.GetComponent<EnemyBasicBehavior>().CatchOut();
+                    }
+                }
+            }
+
         }
 
         public void ShadowEnhance()

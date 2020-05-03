@@ -63,6 +63,7 @@ namespace Shadow
                     {
                         collision.gameObject.GetComponent<EnemyBasicBehavior>().SanityDamage();
                         collision.gameObject.GetComponent<EnemyBasicBehavior>().MarkingCoolDown();
+                        collision.gameObject.GetComponent<EnemyBasicBehavior>().CatchByShadow();
                     }
                 }
 
