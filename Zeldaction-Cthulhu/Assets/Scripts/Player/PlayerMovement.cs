@@ -228,7 +228,7 @@ namespace Player
             canMove = true;
         }
         #region Sound
-        float timeBetweenStep = 0.68f;
+        float timeBetweenStep = 0.5f;
         private float currentTime = 0;
         void SoundRunning()
         {
@@ -238,11 +238,11 @@ namespace Player
 
                 if (currentTime >= timeBetweenStep)
                 {
-                    //FindObjectOfType<AudioManager>().CoursePierre();
+                    AudioManager.Instance.CoursePierre();
                     currentTime = 0;
                 }
             }
         }
-        #endregion
+        #endregion 
     }
 }

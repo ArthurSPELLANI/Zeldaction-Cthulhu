@@ -194,7 +194,7 @@ namespace Player
                 if (enemy.CompareTag("Enemy"))
                 {
                     enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, attackKnockback);
-                    //FindObjectOfType<AudioManager>().Play("impactEnnemi");
+                    AudioManager.Instance.Play("impactEnnemi");
                 }
 
                 if (enemy.CompareTag("Boss"))
@@ -208,6 +208,7 @@ namespace Player
             if (pillar != null)
             {
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+                AudioManager.Instance.Play("tappagePillier");
             }
 
             Collider2D[] hitRonces = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, roncesLayer);
@@ -215,6 +216,8 @@ namespace Player
             foreach(Collider2D ronces in hitRonces)
             {
                 ronces.GetComponent<Ronces>().Destroy();
+                AudioManager.Instance.Play("cassageBuisson");
+
             }
 
             attackCount += 1;
@@ -235,7 +238,7 @@ namespace Player
                 if (enemy.CompareTag("Enemy"))
                 {
                     enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, attackKnockback);
-                    FindObjectOfType<AudioManager>().Play("impactEnnemi");
+                    AudioManager.Instance.Play("impactEnnemi");
                 }
 
                 if (enemy.CompareTag("Boss"))
@@ -249,6 +252,8 @@ namespace Player
             if (pillar != null)
             {
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+                AudioManager.Instance.Play("tappagePillier");
+
             }
 
             Collider2D[] hitRonces = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, roncesLayer);
@@ -256,6 +261,8 @@ namespace Player
             foreach (Collider2D ronces in hitRonces)
             {
                 ronces.GetComponent<Ronces>().Destroy();
+                AudioManager.Instance.Play("cassageBuisson");
+
             }
 
 
@@ -278,7 +285,7 @@ namespace Player
                 if (enemy.CompareTag("Enemy"))
                 {
                     enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(playerDamage, transform.position, attackKnockback * 1.5f);
-                    FindObjectOfType<AudioManager>().Play("impactEnnemi");
+                    AudioManager.Instance.Play("impactEnnemi");
                 }
 
                 if (enemy.CompareTag("Boss"))
@@ -292,6 +299,8 @@ namespace Player
             if (pillar != null)
             {
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+                AudioManager.Instance.Play("tappagePillier");
+
             }
 
 
@@ -300,6 +309,8 @@ namespace Player
             foreach (Collider2D ronces in hitRonces)
             {
                 ronces.GetComponent<Ronces>().Destroy();
+                AudioManager.Instance.Play("cassageBuisson");
+
             }
 
             attackCount = 0;
