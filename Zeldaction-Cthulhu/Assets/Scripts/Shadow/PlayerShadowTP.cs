@@ -62,6 +62,7 @@ namespace Shadow
                     if (collision.gameObject.tag is "Enemy")
                     {
                         collision.gameObject.GetComponent<EnemyBasicBehavior>().SanityDamage();
+                        collision.gameObject.GetComponent<EnemyBasicBehavior>().MarkingCoolDown();
                     }
                 }
 

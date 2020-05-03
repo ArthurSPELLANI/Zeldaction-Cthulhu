@@ -24,6 +24,10 @@ namespace Enemy
         public int speed;
 
         public float sanityDamage;
+        public bool isMarked;
+        public float sanityReward;
+        public float timestampMark;
+        public float coolDownMark = 5f;
 
         private double currentWaypointXMin;
         private double currentWaypointXMax;
@@ -70,6 +74,11 @@ namespace Enemy
                 {
                     fieldOfView.GetComponent<PlayerDetection>().behavior.SetActive(true);
                 }                
+            }
+
+            if(timestampMark <= Time.time)
+            {
+                isMarked = false;
             }
 
             if(isStunned == false)
@@ -197,6 +206,11 @@ namespace Enemy
             PlayerManager.Instance.playerShadowMode.sanity -= sanityDamage;
         }
 
+        public void SanityReward()
+        {
+            PlayerManager.Instance.playerShadowMode.sanity += sanityReward;
+        }
+
 
         /// <summary>
         /// USED IN PHASE 2 PATTERN 1 OF BOSS : Desactivate player detection, throw the enemy in a semi-random position and then force player detection.
@@ -244,6 +258,13 @@ namespace Enemy
 
             EnemyRb.velocity = new Vector2(0, 0) * 0 * Time.deltaTime;
         }
+
+        public void MarkingCoolDown()
+        {
+            isMarked = true;
+            timestampMark = Time.time + coolDownMark;
+        }
+    
 
 
     }
