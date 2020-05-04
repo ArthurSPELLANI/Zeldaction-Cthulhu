@@ -45,8 +45,12 @@ namespace Enemy
 				}
 			}
 			else
-			{
-				GetComponent<PolygonCollider2D>().enabled = false;                behavior.SetActive(true);
+			{				if (GetComponent<PolygonCollider2D>().enabled == true)
+				{
+					GetComponent<PolygonCollider2D>().enabled = false;
+					behavior.SetActive(true);
+				}
+				
 
             }
 	

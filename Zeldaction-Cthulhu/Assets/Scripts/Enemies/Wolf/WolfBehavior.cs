@@ -91,6 +91,7 @@ namespace Enemy
 				//son
 				AudioManager.Instance.Play("mortLoup");
 				Destroy(enemyPrefab);
+				StopAllCoroutines();
 			}
 		}
 

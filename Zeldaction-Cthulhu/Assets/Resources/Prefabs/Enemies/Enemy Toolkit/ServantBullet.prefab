@@ -89,7 +89,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 150
   bulletDmg: 1
+  knockback: 0
   splashGo: {fileID: 5636083086462378882, guid: 901ca3aaaa79bf84b9fe4c8d8d3fcfb7,
     type: 3}
   safeTime: 0.25
