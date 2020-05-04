@@ -5,13 +5,13 @@ using Player;
 
 public class FogScript : MonoBehaviour
 {
-    BoxCollider2D shadowColliBox;
+    Collider2D shadowColliBox;
     PlayerShadowMode playerShadowMode;
     public float timeBeforeShadowExit;
 
     void Start()
     {
-        shadowColliBox = GameObject.Find("Shadow").GetComponent<BoxCollider2D>();
+        shadowColliBox = GameObject.Find("Shadow").GetComponent<Collider2D>();
         playerShadowMode = PlayerManager.Instance.playerShadowMode;
     }
 

@@ -20,12 +20,16 @@ namespace PillarSystem
         [HideInInspector] public Vector2 beamDir;
         public LayerMask pillarLayer;
         public LayerMask enemyLayer;
-        BoxCollider2D shadowColliBox;
+        Collider2D shadowColliBox;
         BoxCollider2D colliBox;
         bool weGotShadow;
         public bool useFog;
         Vector2 pillarPos;
         Vector2 pillarMove;
+
+        public float loadFogDistance;
+        private float shadowPillarDistance;
+        private GameObject shadow;
 
 
         void Start()
@@ -59,10 +63,17 @@ namespace PillarSystem
             //Activation/désactivation du fog.
             if (playerShadowMode.isShadowActivated && !isCharged && useFog && !Fog.activeSelf)
             {
-                Fog.SetActive(true);
-                //change la position du fog si la postion du pillar a changé
-                Fog.transform.position += new Vector3(pillarMove.x, pillarMove.y, 0f);
-                pillarMove = new Vector2(0f, 0f);
+                shadow = GameObject.Find("Shadow");
+                shadowPillarDistance = Vector2.Distance(shadow.transform.position, transform.position);
+
+                if (shadowPillarDistance < loadFogDistance)
+                {
+                    Fog.SetActive(true);
+                    //change la position du fog si la postion du pillar a changé
+                    Fog.transform.position += new Vector3(pillarMove.x, pillarMove.y, 0f);
+                    pillarMove = new Vector2(0f, 0f);
+                }
+ 
             }
             else if (!playerShadowMode.isShadowActivated && useFog && Fog.activeSelf)
             {
@@ -114,7 +125,7 @@ namespace PillarSystem
         void GetShadow()
         {
             weGotShadow = true;
-            shadowColliBox = GameObject.Find("Shadow").GetComponent<BoxCollider2D>();
+            shadowColliBox = GameObject.Find("Shadow").GetComponent<Collider2D>();
         }
 
         //fonction qui prend la charge du pillier, le paramètre signifie que l'action est le résultat de l'utilisation de la shadow ou pas
@@ -215,6 +226,12 @@ namespace PillarSystem
         {
             yield return new WaitForSeconds(3f);
             Charge(false);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, loadFogDistance);
         }
     }
 
