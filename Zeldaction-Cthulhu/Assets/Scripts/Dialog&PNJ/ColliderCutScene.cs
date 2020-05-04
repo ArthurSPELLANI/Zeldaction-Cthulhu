@@ -16,7 +16,7 @@ public class ColliderCutScene : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<PolygonCollider2D>().enabled = false;
             timeline.Play();
         }
     }
