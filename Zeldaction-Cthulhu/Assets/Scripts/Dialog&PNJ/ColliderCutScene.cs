@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game;
+using UnityEngine.Playables;
 
 public class ColliderCutScene : MonoBehaviour
 {
-   // public SecondCinematic SecondCinematic;
+    private PlayableDirector timeline;
+
+    private void Start()
+    {
+        timeline = GetComponentInParent<PlayableDirector>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
-         //   SecondCinematic.SetActive(true);
+            GetComponent<PolygonCollider2D>().enabled = false;
+            timeline.Play();
         }
     }
 }

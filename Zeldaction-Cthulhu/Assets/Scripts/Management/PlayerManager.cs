@@ -16,6 +16,7 @@ namespace Player
         public Animator playerAnimator;  
     
         public Vector3 nativePosition;
+        public Transform currentPosition;
 
         private void Awake()
         {
@@ -30,6 +31,7 @@ namespace Player
         void Start()
         {          
             nativePosition = new Vector3(0, 0, 0);
+            currentPosition = gameObject.transform;
         }
     
         void Update()
