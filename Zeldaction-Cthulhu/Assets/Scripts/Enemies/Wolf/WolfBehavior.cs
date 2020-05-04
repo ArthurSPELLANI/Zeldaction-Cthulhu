@@ -38,6 +38,8 @@ namespace Enemy
 		public Animator wolfAnimator;
 		private Vector2 animDirection;
 
+		private bool canDeathSound = true;
+
 		void Awake()
 		{
 			wolfRb = GetComponentInParent<Rigidbody2D>();
@@ -82,16 +84,23 @@ namespace Enemy
 
 			if (enemyCurrentHp <= 0)
 			{
+				canMove = false;
+
 				wolfAnimator.SetBool("isDiying", true);
                 if(GetComponentInParent<EnemyBasicBehavior>().isMarked == true)
                 {
                     GetComponentInParent<EnemyBasicBehavior>().SanityReward();
                 }
 
-				//son
-				AudioManager.Instance.Play("mortLoup");
-				Destroy(enemyPrefab);
+				if (canDeathSound)
+				{
+					canDeathSound = false;
+					//son
+					AudioManager.Instance.Play("mortLoup");
+				}
+
 				StopAllCoroutines();
+
 			}
 		}
 
@@ -102,7 +111,6 @@ namespace Enemy
 		/// <returns></returns>
 		IEnumerator WolfAttack()
 		{
-
 
 			yield return new WaitForSeconds(timeBeforeTargetLock);
 
@@ -134,7 +142,6 @@ namespace Enemy
 			}
 
 			wolfRb.velocity = new Vector2(0, 0) * attackSpeed * Time.deltaTime;
-
 
 
 			GetComponentInParent<CapsuleCollider2D>().isTrigger = false;
