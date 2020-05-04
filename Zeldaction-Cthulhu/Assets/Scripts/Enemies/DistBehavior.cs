@@ -115,6 +115,11 @@ namespace Enemy
 			if (enemyCurrentHp <= 0)
 			{
 				servantAnimator.SetBool("isDiying", true);
+                if(GetComponentInParent<EnemyBasicBehavior>().isMarked == true)
+                {
+                    GetComponentInParent<EnemyBasicBehavior>().SanityReward();
+                }
+
 				Destroy(enemyPrefab);
 			}
 		}

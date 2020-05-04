@@ -20,7 +20,7 @@ namespace Player
         float horizontal;
         Vector2 direction;
 
-        [HideInInspector] public Vector2 currentDirection;
+        public Vector2 currentDirection;
 
         Animator animator;
 

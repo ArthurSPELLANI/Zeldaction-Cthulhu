@@ -110,6 +110,11 @@ namespace Enemy
 				}
 				
 			}
+        
+            if(GetComponentInParent<EnemyBasicBehavior>().isMarked == true)
+            {
+                GetComponentInParent<EnemyBasicBehavior>().SanityReward();
+            }
 
 			Destroy(enemyPrefab);
 		}
