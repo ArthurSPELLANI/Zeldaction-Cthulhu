@@ -4,6 +4,7 @@ using UnityEngine;
 using Enemy;
 using PillarSystem;
 using Boss;
+using AudioManaging;
 
 namespace Player
 {
@@ -46,6 +47,7 @@ namespace Player
             if (collision.gameObject.tag == "Enemy")
             {
                 collision.gameObject.GetComponent<EnemyBasicBehavior>().TakeDamage(damage, transform.position, knockback);
+                AudioManager.Instance.Play("impactEnnemi");
                 currentEnemyHit++;
             }
 
@@ -57,6 +59,7 @@ namespace Player
             if (collision.gameObject.tag == "pillar")
             {
                 collision.gameObject.GetComponent<Pillar>().CorruptionBeam(rb.velocity);
+                AudioManager.Instance.Play("tappagePillier");
                 Destroy(gameObject);
             }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using AudioManaging;
 
 namespace Enemy
 {
@@ -104,6 +105,8 @@ namespace Enemy
 				servantAnimator.SetBool("isAttacking", true);
 				servantRb.velocity = new Vector2(0, 0) * speed * Time.fixedDeltaTime;
 				StartCoroutine(FireProjectile());
+				//son
+				AudioManager.Instance.Play("attackRanged");
 
 				/*StopCoroutine(EndChase());
 				forceAttack = false;
@@ -120,6 +123,8 @@ namespace Enemy
                     GetComponentInParent<EnemyBasicBehavior>().SanityReward();
                 }
 
+				//son
+				AudioManager.Instance.Play("mortRanged");
 				Destroy(enemyPrefab);
 			}
 		}

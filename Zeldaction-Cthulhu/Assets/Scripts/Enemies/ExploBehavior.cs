@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Player;
 using Boss;
+using AudioManaging;
 
 
 namespace Enemy
@@ -71,6 +72,8 @@ namespace Enemy
 		IEnumerator TimeBeforeExplo()
 		{
 			exploAnimator.SetBool("isExploding", true);
+			//son
+			AudioManager.Instance.Play("prexplosion");
 
 			Debug.Log("it's gonna be bim boom");
 			if (currentHp > 0)
@@ -90,6 +93,10 @@ namespace Enemy
 
 			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(transform.position, explosionRange, playerLayer);
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRange, enemyLayer);
+
+			//son
+			AudioManager.Instance.Play("explosion");
+			AudioManager.Instance.Stop("prexplosion");
 			
 
 			foreach (Collider2D player in hitPlayer)

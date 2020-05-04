@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using AudioManaging;
 
 namespace Enemy
 {
@@ -87,6 +88,8 @@ namespace Enemy
                     GetComponentInParent<EnemyBasicBehavior>().SanityReward();
                 }
 
+				//son
+				AudioManager.Instance.Play("mortLoup");
 				Destroy(enemyPrefab);
 			}
 		}
@@ -106,6 +109,9 @@ namespace Enemy
 			dashDirection = new Vector2(dashTarget.position.x - transform.position.x, dashTarget.position.y - transform.position.y).normalized;
 			GetComponentInParent<EnemyBasicBehavior>().SetAnimDirection(dashDirection);
 			animDirection = GetComponentInParent<EnemyBasicBehavior>().animDirection;
+
+			//Son
+			AudioManager.Instance.Play("attackLoup");
 
 			yield return new WaitForSeconds(timeBeforeWolfAttack);
 
@@ -127,6 +133,8 @@ namespace Enemy
 			}
 
 			wolfRb.velocity = new Vector2(0, 0) * attackSpeed * Time.deltaTime;
+
+
 
 			GetComponentInParent<CapsuleCollider2D>().isTrigger = false;
 			GetComponent<CircleCollider2D>().isTrigger = false;
