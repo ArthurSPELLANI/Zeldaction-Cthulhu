@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using Player;
 using PillarSystem;
 
@@ -162,7 +163,7 @@ namespace Boss
 
         }
 
-        private void OnDrawGizmos()
+        /*private void OnDrawGizmos()
         {
             UnityEditor.Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 1), laserThickness);
             UnityEditor.Handles.DrawWireDisc(new Vector3(transform.position.x, transform.position.y - laserDistance, transform.position.z), new Vector3(0, 1, 1), laserThickness);
@@ -170,7 +171,7 @@ namespace Boss
 
             Gizmos.color = Color.blue;
             Gizmos.DrawRay(transform.position, new Vector2(0, -laserDistance));
-        }
+        }*/
     }
 }
 

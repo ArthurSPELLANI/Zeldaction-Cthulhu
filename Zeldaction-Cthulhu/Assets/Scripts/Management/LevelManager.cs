@@ -30,11 +30,10 @@ namespace Game
             PlayerManager.Instance.ResetPlayer();
         }
 
-        public void DarkForest1()
+        public void DarkForest()
         {
-            SceneManager.LoadScene("Dark_Forest_1");
-            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
-            
+            SceneManager.LoadScene("10_DarkForest");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;            
         }
 
         public void LightForest1()
@@ -45,7 +44,7 @@ namespace Game
 
         public void LightForest2()
         {
-            SceneManager.LoadScene("Light_Forest_2");
+            SceneManager.LoadScene("09_LightForest2");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
         }
 
@@ -55,9 +54,21 @@ namespace Game
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
         }
 
-        public void Cave1()
+        public void Cave()
         {
-            SceneManager.LoadScene("Cave_1");
+            SceneManager.LoadScene("11_Cave");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+        }
+
+        public void InnInterior()
+        {
+            SceneManager.LoadScene("02_InnInterior");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+        }
+
+        public void UpstairInn()
+        {
+            SceneManager.LoadScene("03_UpstairInn");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
         }
 

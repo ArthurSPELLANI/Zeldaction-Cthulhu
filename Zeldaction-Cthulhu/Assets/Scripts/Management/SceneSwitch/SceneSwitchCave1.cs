@@ -9,7 +9,7 @@ public class SceneSwitchCave1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LevelManager.Instance.Cave1();
+            LevelManager.Instance.Cave();
         }
     }
 }

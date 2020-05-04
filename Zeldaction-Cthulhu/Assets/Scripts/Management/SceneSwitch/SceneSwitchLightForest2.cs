@@ -5,11 +5,8 @@ using Game;
 
 public class SceneSwitchLightForest2 : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        if (other.CompareTag("Player"))
-        {
-            LevelManager.Instance.LightForest2();
-        }
-    }
+        LevelManager.Instance.LightForest2();
+    }   
 }

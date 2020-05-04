@@ -9,7 +9,7 @@ public class SceneSwitchDarkForest1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LevelManager.Instance.DarkForest1();
+            LevelManager.Instance.DarkForest();
         }
     }
 }
