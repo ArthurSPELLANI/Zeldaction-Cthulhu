@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Player;
 using Shadow;
+using AudioManaging;
 
 namespace Enemy
 {
@@ -156,6 +157,17 @@ namespace Enemy
             }
 
             StartCoroutine(Knockback(sourcePos, pushForce));
+
+            //son de prise de dégâts
+            if (gameObject.transform.parent.gameObject.CompareTag("Loup") && enemyCurrentHealth > 0)
+            {
+                AudioManager.Instance.Play("priseDeDegatsLoup");
+            }
+            else if (gameObject.transform.parent.gameObject.CompareTag("Range") && enemyCurrentHealth > 0)
+            {
+                AudioManager.Instance.Play("priseDeDegatsRanged");
+            }
+
 
         }
 
