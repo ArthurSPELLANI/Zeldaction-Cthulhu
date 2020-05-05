@@ -43,6 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a026447a0995ef4d94ddaf0518e893c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSounds: 0
+  volumeMusics: 0
+  walkOnPierre: 0
+  walkOnHerbe: 0
+  walkOnPlancher: 0
+  bruitBresson: 0
   sounds:
   - name: coup1
     clip: {fileID: 8300000, guid: 553315182d2d0b540a1f7be3be78f113, type: 3}
@@ -99,7 +105,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: idleShadow
-    clip: {fileID: 8300000, guid: 2c3728b5705032741ab0291aebf8aa06, type: 3}
+    clip: {fileID: 8300000, guid: f0155697cc00ea04b8ba033f3c6cd6d5, type: 3}
     volume: 1
     pitch: 0.04
     loop: 1
@@ -164,6 +170,30 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: rechargement
+    clip: {fileID: 8300000, guid: d4d8772942f24a24ebbfd9c731335f10, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: tirVide
+    clip: {fileID: 8300000, guid: dcaf26dd42705f54fb6f8418c3448bed, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: priseHeal
+    clip: {fileID: 8300000, guid: b67921191c9f96847ab23b5431ca68d4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: healing
+    clip: {fileID: 8300000, guid: 087609ce7f20596458e53ce4a22e60ea, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   pasPierre:
   - name: Pas1
     clip: {fileID: 8300000, guid: c04bafc7e5d50a744aa807033e8b96f7, type: 3}
@@ -201,3 +231,92 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  pasHerbe:
+  - name: pas1
+    clip: {fileID: 8300000, guid: b79be0e7622b2644b83a64b7396d8753, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: pas2
+    clip: {fileID: 8300000, guid: c78425117d6b7104daec4d6cbd680437, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: pas3
+    clip: {fileID: 8300000, guid: 9104148c48d54d2449a1d608fc468393, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: pas4
+    clip: {fileID: 8300000, guid: b139f48eb7d1348428808b31e318be0e, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: pas5
+    clip: {fileID: 8300000, guid: bb2517b0e1530e341aba8e1f360bf5c1, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: pas6
+    clip: {fileID: 8300000, guid: 11100e277d2918041ab8f5a0c7e08ae3, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  pasPlancher:
+  - name: pas1
+    clip: {fileID: 8300000, guid: 23081d62844c465429d2813bc1792712, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: pas2
+    clip: {fileID: 8300000, guid: 446f6b0a14dbfd4449a4d0995954d7d2, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: pas3
+    clip: {fileID: 8300000, guid: 9017aebe8c6c50843bbda3a93aa5463a, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: pas4
+    clip: {fileID: 8300000, guid: b99b39e030b3c8c478185a8c8161205e, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  currentPas: []
+  BruitsSombes:
+  - name: 
+    clip: {fileID: 8300000, guid: 53a9a9660193f0b4da5830d08c772e9c, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: c6096dc4b55e5da41a2bf7e5af407733, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 5c01e17aeae826445926dbb7062bdb58, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 6b466d11a3774d24e8276eea1209a394, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  negativeEffectPalier: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game;
+using AudioManaging;
 
 namespace Player
 {
@@ -53,12 +54,15 @@ namespace Player
                 isHealing = false;
                 Debug.Log("le heal a été malencontreusement interompu...");
                 StopAllCoroutines();
+                AudioManager.Instance.Stop("healing");
+                AudioManager.Instance.Play("priseHeal");
             }
 
             //début du heal
             if (Input.GetButtonDown("Heal") && canHeal)
             {
                 StartCoroutine(Healing());
+                AudioManager.Instance.Play("healing");
                 Debug.Log("J'utilise une caisse de soin");
             }
             #endregion

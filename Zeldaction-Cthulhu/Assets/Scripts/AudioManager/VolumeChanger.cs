@@ -2,31 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VolumeChanger : MonoBehaviour
+namespace AudioManaging
 {
-
-    public AudioSource Music;
-    float volume;
-
-    static float time = 0f;
-    public float IncreasVolume;
-
-    void Start()
+    public class VolumeChanger : MonoBehaviour
     {
-        volume = 0.5f; 
-    }
 
+        public AudioSource Music;
+        float volume;
 
-    void Update()
-    {
-        if (Music.volume != volume)
-            Music.volume = Mathf.Lerp(0f, volume, time);
+        static float time = 0f;
+        public float IncreasVolume;
 
-        if (time > 1f)
+        void Start()
         {
-            time = 0f;
+            volume = 0.5f * AudioManager.Instance.volumeMusics;
         }
 
-        time += IncreasVolume * Time.deltaTime;
+
+        void Update()
+        {
+            if (Music.volume != volume)
+                Music.volume = Mathf.Lerp(0f, volume, time);
+
+            if (time > 1f)
+            {
+                time = 0f;
+            }
+
+            time += IncreasVolume * Time.deltaTime;
+        }
     }
+
 }
