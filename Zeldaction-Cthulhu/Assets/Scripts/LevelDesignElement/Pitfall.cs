@@ -15,12 +15,39 @@ namespace LevelDesign
         private float sqrOffset1;
         private float sqrOffset2;
 
+        void Start()
+        {
+
+        }
+
         void Update()
         {
             Vector2 offset1 = respawn1.position - player.transform.position;
             sqrOffset1 = offset1.sqrMagnitude;
             Vector2 offset2 = respawn2.position - player.transform.position;
             sqrOffset2 = offset2.sqrMagnitude;
+
+            /*if (Input.GetKey(KeyCode.Space))
+            {
+                RaycastHit2D boxResult;
+                boxResult = Physics2D.BoxCast(gameObject.transform.position, new Vector2(1, 0.5f), 0f, new Vector2(0, -1), 0, 25f);
+                if (boxResult.collider == respawn1.collider)
+                {
+                    Debug.Log("Respawn 1 !");
+                }
+                if (boxResult.collider == respawn2.collider)
+                {
+                    Debug.Log("Respawn 2 !");
+                }
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * 10f, Color.red);
+                 RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 10f);
+
+                 if (hit)
+                 {
+                     Debug.Log("Hit something : " + hit.collider.name);
+                     hit.transform.GetComponent<SpriteRenderer>().color = Color.red;
+                 }
+            }*/
         }
 
         void OnTriggerStay2D(Collider2D player)
