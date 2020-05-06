@@ -22,6 +22,30 @@ namespace Game
             }
         }
 
+        //Fonction à lancer au début du jeu pour utiliser les sauvegardes
+        Scene currentScene;
+        float posX;
+        float posY;
+        public void LaunchGame()
+        {
+            if (PlayerPrefs.HasKey("Scene"))
+            {
+                currentScene.name = PlayerPrefs.GetString("scene");
+                SceneManager.LoadScene("scene");
+
+                posX = PlayerPrefs.GetFloat("positionX");
+                posY = PlayerPrefs.GetFloat("positionY");
+                PlayerManager.Instance.transform.position = new Vector3(posX, posY, 0f);
+                PlayerManager.Instance.LoadPlayer();
+            }
+            else
+            {
+                SceneManager.LoadScene("FirstScene"); //je connais pas le nom de la première scene
+                PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+                PlayerManager.Instance.ResetPlayer();
+            }
+
+        }
 
         public void PlayestHub()
         {

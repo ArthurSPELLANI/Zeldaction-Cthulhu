@@ -32,34 +32,48 @@ namespace Player
                 PlayerPrefs.SetFloat("positionX", player.transform.position.x);
                 PlayerPrefs.SetFloat("positionY", player.transform.position.y);
 
+                //Stock la vie du joueur
+                PlayerPrefs.SetInt("life", PlayerManager.Instance.playerStats.playerCurrentHealth);
+
                 //Stock le nombre de balles et le nombre de heal dans l'inventaire du joueur
                 PlayerPrefs.SetInt("bulletNumber", PlayerManager.Instance.playerShoot.ammunitions);
                 PlayerPrefs.SetInt("healNumber", PlayerManager.Instance.playerStats.healNumber);
 
-                //Stock toutes les variables relatives 
-                /*if (bool canUseShadow ou qlqc comme ça)
+                //Stock le fait que le joueur puisse utiliser son ombre
+                if (PlayerManager.Instance.playerShadowMode.enabled)
                 {
-                  PlayerPrefs.SetInt("canUseShadow", 1);
-                }*/
-
-                //stock le fait que le joueur ait acces à la machette ou non
-                /*if (bool canUseMachette ou qlqc comme ça)
+                    PlayerPrefs.SetInt("canUseShadow", 1);
+                    PlayerPrefs.SetFloat("maxSanity", PlayerManager.Instance.playerShadowMode.maxSanity);
+                    PlayerPrefs.SetInt("maxActionPoints", PlayerManager.Instance.playerShadowMode.maxActionPoints);
+                    PlayerPrefs.SetInt("fragementNumbre", PlayerManager.Instance.playerShadowMode.fragment);
+                }
+                else if (!PlayerManager.Instance.playerShadowMode.enabled)
                 {
-                PlayerPrefs.SetInt("canUseMachette", 1);
-                }*/
+                    PlayerPrefs.SetInt("canUseShadow", 0);
+                }
 
-                //Référence les Cristaux d'ombre toujours récupérable par le joueur
+                //Stock le fait que le joueur puisse utiliser sa machette
+                if (PlayerManager.Instance.playerAttack.enabled)
+                {
+                    PlayerPrefs.SetInt("canUseMachette", 1);
+                }
+                else if (!PlayerManager.Instance.playerAttack.enabled)
+                {
+                    PlayerPrefs.SetInt("canUseMachette", 0);
+                }
+
+                //Stock le fait que le joueur puisse utiliser son gun
+                if (PlayerManager.Instance.playerShoot.enabled)
+                {
+                    PlayerPrefs.SetInt("canUsGun", 1);
+                }
+                else if (!PlayerManager.Instance.playerShoot.enabled)
+                {
+                    PlayerPrefs.SetInt("canUseGun", 0);
+                }
 
                 //toutes les variables sont stockés dans les playerprefs
                 PlayerPrefs.Save();
-            }
-        }
-
-        void OnTriggerEnter2D(Collider2D col)
-        {
-            if (col.CompareTag("Player"))
-            {
-                Save();
             }
         }
     }

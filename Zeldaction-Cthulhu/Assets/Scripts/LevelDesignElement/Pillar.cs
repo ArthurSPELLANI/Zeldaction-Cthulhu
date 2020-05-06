@@ -9,7 +9,7 @@ namespace PillarSystem
 {
     public class Pillar : MonoBehaviour
     {
-        public bool isCharged;
+        public bool isCharged;        
         bool myCharge;
         float pillarCooldown = 0.04f;
         bool canInteract;
@@ -31,11 +31,24 @@ namespace PillarSystem
         private float shadowPillarDistance;
         private GameObject shadow;
 
+        // pour la sauvegarde
+        
+        public int isCharge;
 
         void Start()
         {
             playerShadowMode = PlayerManager.Instance.playerShadowMode;
             colliBox = GetComponent<BoxCollider2D>();
+
+            //Pour la sauvegarde
+            if (isCharge == 0)
+            {
+                isCharged = false;
+            }
+            else if (isCharge == 1)
+            {
+                isCharged = true;
+            }
 
             //Déclaration de si le pillar est chargé ou pas.
             if (isCharged == true)
@@ -50,6 +63,8 @@ namespace PillarSystem
 
             //Ce vecteur est utiliser pour déplacer le fog si le pillar bouge
             pillarPos = new Vector2(transform.position.x, transform.position.y);
+
+
         }
 
         void Update()
@@ -104,7 +119,15 @@ namespace PillarSystem
             if (!playerShadowMode.isCharged)
                 myCharge = false;
 
-
+            //Pour les sauvegarde
+            if (isCharged && isCharge == 0)
+            {
+                isCharge = 1;
+            }
+            else if (!isCharged && isCharge == 1)
+            {
+                isCharge = 0;
+            }
 
         }
 

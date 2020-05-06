@@ -47,7 +47,29 @@ namespace Player
             playerShoot.ammunitions = 6;
         }
 
+        //fonction à lancer pour load le player avec ses stats sauvegardées
+        public void LoadPlayer()
+        {
+            playerStats.playerCurrentHealth = PlayerPrefs.GetInt("life");
+            playerStats.healNumber = PlayerPrefs.GetInt("healNumber");
+            playerShoot.ammunitions = PlayerPrefs.GetInt("bulletNumber");
+            
 
+            if (PlayerPrefs.GetInt("canUseShadow") == 1)
+            {
+                playerShadowMode.enabled = true;
+                playerShadowMode.maxSanity = PlayerPrefs.GetFloat("maxSanity");
+                playerShadowMode.maxActionPoints = PlayerPrefs.GetInt("mawActionPoints");
+                playerShadowMode.fragment = PlayerPrefs.GetInt("fragemntNumbre");
+            }
 
+            playerShadowMode.sanity = playerShadowMode.maxSanity;
+            playerShadowMode.actionPoints = playerShadowMode.maxActionPoints;
+
+            if (PlayerPrefs.GetInt("canUseMachette") == 1)
+                playerAttack.enabled = true;
+            if (PlayerPrefs.GetInt("canUseGun") == 1)
+                playerShoot.enabled = true;
+        }
     }
 }
