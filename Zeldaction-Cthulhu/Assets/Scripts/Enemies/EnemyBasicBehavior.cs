@@ -49,6 +49,8 @@ namespace Enemy
         public float scratchChance;
 
         Material defaultMaterial;
+        public Material blackMaterial;
+        public Material whiteMaterial;
 
         public float knockbackDuration;
         public AnimationCurve knockbackForceModifier;
@@ -64,6 +66,7 @@ namespace Enemy
             EnemyRb = GetComponent<Rigidbody2D>();
             catchAnimator = GetComponent<Animator>();
             catchSprite = GetComponent<SpriteRenderer>();
+            defaultMaterial = GetComponentInChildren<SpriteRenderer>().material;
         }
 
 		void Start()
@@ -156,6 +159,7 @@ namespace Enemy
             }
 
             StartCoroutine(Knockback(sourcePos, pushForce));
+            StartCoroutine(hitFrames());
 
         }
 
@@ -256,12 +260,8 @@ namespace Enemy
 
             while (timer < knockbackDuration)
             {
-                EnemyRb.velocity = (transform.position - sourcePos) * pushForce * knockbackForceModifier.Evaluate(timer / knockbackDuration);
+                EnemyRb.velocity = (transform.position - sourcePos).normalized * pushForce * knockbackForceModifier.Evaluate(timer / knockbackDuration);
                 timer += Time.deltaTime;
-
-                //Animation de prise de dégats ici.
-                StartCoroutine(hitFrames());
-               
 
                 yield return null;
             }
@@ -271,12 +271,15 @@ namespace Enemy
 
         IEnumerator hitFrames()
         {
-            gameObject.GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/White");
-            yield return new WaitForSeconds(0.2f);
-            gameObject.GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
-            yield return new WaitForSeconds(0.2f);
-            gameObject.GetComponentInChildren<SpriteRenderer>().material = defaultMaterial;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Material/White");
+            yield return new WaitForSeconds(0.05f);
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
+            yield return new WaitForSeconds(0.05f);
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
+            yield return new WaitForSeconds(0.05f);
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = defaultMaterial;
         }
+
         public void MarkingCoolDown()
         {
             isMarked = true;

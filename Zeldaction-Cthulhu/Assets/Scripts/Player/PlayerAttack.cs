@@ -83,22 +83,22 @@ namespace Player
         {
             if (currentDirection.x == 1)
             {
-                currentAttackPos = attackPos[3];
+                currentAttackPos = attackPos[1];
             }
 
             if (currentDirection.x == -1)
             {
-                currentAttackPos = attackPos[7];
+                currentAttackPos = attackPos[3];
             }
 
             if (currentDirection.y == 1)
             {
-                currentAttackPos = attackPos[1];
+                currentAttackPos = attackPos[0];
             }
 
             if (currentDirection.y == -1)
             {
-                currentAttackPos = attackPos[5];
+                currentAttackPos = attackPos[2];
             }
         }
 
@@ -112,31 +112,7 @@ namespace Player
 
             if (currentDirection.x == -1)
             {
-                currentAttackPos = attackPos[5];
-            }
-
-            if (currentDirection.y == 1)
-            {
-                currentAttackPos = attackPos[7];
-            }
-
-            if (currentDirection.y == -1)
-            {
                 currentAttackPos = attackPos[3];
-            }
-        }
-
-        //Trouver la position d'attaque pour le troisième coup
-        void GetAttackPos3()
-        {
-            if (currentDirection.x == 1)
-            {
-                currentAttackPos = attackPos[2];
-            }
-
-            if (currentDirection.x == -1)
-            {
-                currentAttackPos = attackPos[6];
             }
 
             if (currentDirection.y == 1)
@@ -146,7 +122,31 @@ namespace Player
 
             if (currentDirection.y == -1)
             {
+                currentAttackPos = attackPos[2];
+            }
+        }
+
+        //Trouver la position d'attaque pour le troisième coup
+        void GetAttackPos3()
+        {
+            if (currentDirection.x == 1)
+            {
+                currentAttackPos = attackPos[5];
+            }
+
+            if (currentDirection.x == -1)
+            {
+                currentAttackPos = attackPos[7];
+            }
+
+            if (currentDirection.y == 1)
+            {
                 currentAttackPos = attackPos[4];
+            }
+
+            if (currentDirection.y == -1)
+            {
+                currentAttackPos = attackPos[6];
             }
         }
 
@@ -276,7 +276,7 @@ namespace Player
             GetAttackPos3();
             AudioManager.Instance.Play("coup3");
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange / 2, enemyLayer);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
 
 
@@ -344,7 +344,9 @@ namespace Player
             if (currentAttackPos == null)
                 return;
 
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(currentAttackPos.position, attackRange);
+            Gizmos.DrawLine(currentAttackPos.position, transform.position);
         }
     }
 }

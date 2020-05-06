@@ -34,6 +34,7 @@ namespace Enemy
 		public float maxChaseTime;
 
 		private bool canMove = true;
+		private bool canDeathSound = true;
 		
 
 		public Animator servantAnimator;
@@ -118,15 +119,22 @@ namespace Enemy
 			if (enemyCurrentHp <= 0)
 			{
 				servantAnimator.SetBool("isDiying", true);
-                if(GetComponentInParent<EnemyBasicBehavior>().isMarked == true)
+				canMove = false;
+				StopAllCoroutines();
+
+				if (GetComponentInParent<EnemyBasicBehavior>().isMarked == true)
                 {
                     GetComponentInParent<EnemyBasicBehavior>().SanityReward();
                 }
+				
+				if(canDeathSound)
+				{
+					//son
+					canDeathSound = false;
+					AudioManager.Instance.Play("mortRanged");
+				}
 
-				//son
-				AudioManager.Instance.Play("mortRanged");
-				Destroy(enemyPrefab);
-				StopAllCoroutines();
+				
 			}
 		}
 
