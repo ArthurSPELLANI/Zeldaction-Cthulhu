@@ -17,7 +17,7 @@ namespace AudioManaging
 
         void Start()
         {
-            volume = 0.5f;
+            volume = 0.5f * AudioManager.Instance.volumeMusics;
             startMusic.volume = volume;
             loopMusic.volume = volume;
             time = 0f;           
@@ -40,13 +40,30 @@ namespace AudioManaging
             }
 
             time += 0.2f * Time.deltaTime;
-    
+
+            if (AudioManager.Instance.negativeEffectPalier > 0)
+                NegativeEffects();
+            else
+                ThingsGoNormal();
         }
         IEnumerator EndOfTheStart()
         {
             yield return new WaitForSecondsRealtime(startMusic.clip.length);
             loopMusic.Play();
             combatMusic.Play();
+        }
+
+        void NegativeEffects()
+        {
+            startMusic.bypassReverbZones = false;
+            combatMusic.bypassReverbZones = false;
+            loopMusic.bypassReverbZones = false;
+        }
+        void ThingsGoNormal()
+        {
+            startMusic.bypassReverbZones = true;
+            combatMusic.bypassReverbZones = true;
+            loopMusic.bypassReverbZones = true;
         }
     }
 

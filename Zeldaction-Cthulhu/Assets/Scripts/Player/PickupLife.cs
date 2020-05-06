@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using AudioManaging;
 
 public class PickupLife : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PickupLife : MonoBehaviour
             if (PlayerManager.Instance.playerStats.healNumber < PlayerManager.Instance.playerStats.maxHealNumber)
             {
                 PlayerManager.Instance.playerStats.healNumber += 1;
+                AudioManager.Instance.Play("priseHeal");
                 Debug.Log("nombre de heal = " + PlayerManager.Instance.playerStats.healNumber);
                 Destroy(gameObject);
             }

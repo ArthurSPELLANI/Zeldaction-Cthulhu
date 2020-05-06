@@ -76,7 +76,11 @@ namespace Player
                 {
                     animator.SetBool("isShooting", true);
                     ShootBullet();
-                }                
+                }
+                else if (ammunitions == 0)
+                {
+                    AudioManager.Instance.Play("tirVide");
+                }
             }
 
         }
