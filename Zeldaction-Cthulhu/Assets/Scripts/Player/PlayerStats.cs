@@ -19,15 +19,22 @@ namespace Player
         bool canHeal;
         bool isHealing;
 
+        private Material defaultMaterial;
+
+        private bool canTakeDmg = true;
+        public float invuCooldown;
+
         void Awake()
         {
             playerCurrentHealth = playerMaxHealth;
             healNumber = 0;
             maxHealNumber = 10;
+            defaultMaterial = transform.parent.parent.GetChild(0).GetComponent<SpriteRenderer>().material;
         }
 
         void Start()
         { 
+
         }
 
         void Update()
@@ -75,16 +82,25 @@ namespace Player
         /// <param name="enemyDamage"></param>
         public void PlayerTakeDamage(int enemyDamage)
         {
-            playerCurrentHealth -= enemyDamage;
-            PlayerManager.Instance.playerAttack.coolDown = 0; 
-            Debug.Log("Points de vie restant au joueur : " + playerCurrentHealth);
-
-            if (playerCurrentHealth <= 0)
+            if (canTakeDmg)
             {
-                //Destroy(player);
-                LevelManager.Instance.PlayestHub();
-                PlayerManager.Instance.ResetPlayer();
+                playerCurrentHealth -= enemyDamage;
+                //PlayerManager.Instance.playerAttack.coolDown = 0; (fix un jour peut etre)
+                //PlayerManager.Instance.playerAttack.animator.SetBool("IsAttacking", false);
+
+                Debug.Log("Points de vie restant au joueur : " + playerCurrentHealth);
+
+                if (playerCurrentHealth <= 0)
+                {
+                    //Destroy(player);
+                    LevelManager.Instance.PlayestHub();
+                    PlayerManager.Instance.ResetPlayer();
+                }
+
+                StartCoroutine(HitFrames());
+                StartCoroutine(Invulnerability());
             }
+            
         }
 
         IEnumerator Healing()
@@ -108,6 +124,32 @@ namespace Player
             PlayerManager.Instance.playerMovement.speed = 60;
         }
 
+
+        IEnumerator HitFrames()
+        {
+            transform.parent.parent.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Material/White");
+            yield return new WaitForSeconds(0.1f);
+            transform.parent.parent.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
+            yield return new WaitForSeconds(0.1f);
+            transform.parent.parent.GetChild(0).GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
+            yield return new WaitForSeconds(0.1f);
+            transform.parent.parent.GetChild(0).GetComponent<SpriteRenderer>().material = defaultMaterial;
+        }
+
+
+        IEnumerator Invulnerability()
+        {
+            float timer = 0.0f;
+
+            while (timer < invuCooldown)
+            {
+                canTakeDmg = false;
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            canTakeDmg = true;
+        }
 
     }
 }
