@@ -11,6 +11,7 @@ namespace Boss
         private int dashNbr;
         private bool patternCanStart = false;
         private Vector2 vecDir;
+        Vector2 vecAnim;
         private Rigidbody2D bossPhase1Rb;
         private int currentAnchor;
         private bool isWaitingForNextAnchor;
@@ -34,6 +35,8 @@ namespace Boss
         private double AnchorYMin;
         private double AnchorYMax;
 
+        public Animator animator;
+
 
         void Awake()
         {
@@ -42,7 +45,7 @@ namespace Boss
 
         void Start()
         {
-            
+ 
         }
 
         void OnEnable()
@@ -60,10 +63,16 @@ namespace Boss
 
         void Update()
         {
+
+
+
             //le pattern commence par le boss qui se replace sur le point situé au milieu de l'arène.
             if (patternCanStart == false)
-            {
+            {                
                 vecDir = new Vector2(anchor[4].position.x - transform.position.x, anchor[4].position.y - transform.position.y).normalized;
+                SetAnimDirection(vecDir);
+                animator.SetFloat("Horizontal", vecAnim.x);
+                animator.SetBool("isDrifting", true);
 
                 //Soft spot around the Anchor position cause rigidbody can't reach a precise position while using velocity to move.
                 AnchorXMin = anchor[4].position.x - 0.04;
@@ -74,13 +83,18 @@ namespace Boss
                 //tant que le boss n'a pas atteint le millieu de l'arène, il s'y déplace.
                 if (transform.position.x >= AnchorXMin && transform.position.x <= AnchorXMax && transform.position.y >= AnchorYMin && transform.position.y <= AnchorYMax)
                 {
+                    animator.SetBool("isDrifting", false);                    
                     patternCanStart = true;
                     currentAnchor = 4;
                     bossPhase1Rb.velocity = new Vector2(0, 0) * moveSpeed * Time.fixedDeltaTime;
                 }
                 else
                 {
+                    animator.SetBool("isDrifting", true);
                     bossPhase1Rb.velocity = vecDir * moveSpeed * Time.fixedDeltaTime;
+                    SetAnimDirection(vecDir);
+                    animator.SetFloat("Horizontal", vecAnim.x);
+
                 }
             }
 
@@ -110,7 +124,11 @@ namespace Boss
             for (int i = 0; i < dashNbr; i++)
             {
                 vecDir = new Vector2(anchor[anchorPath[i]].position.x - transform.position.x, anchor[anchorPath[i]].position.y - transform.position.y).normalized;
-                
+                animator.SetBool("isDrifting", true);
+                SetAnimDirection(vecDir);
+                animator.SetFloat("Horizontal", vecAnim.x);
+
+
                 yield return new WaitForSeconds(timeBeforeNextDash);
 
                 //Soft spot around the Anchor position cause rigidbody can't reach a precise position while using velocity to move.
@@ -123,24 +141,32 @@ namespace Boss
                 while (transform.position.x <= AnchorXMin || transform.position.x >= AnchorXMax || transform.position.y <= AnchorYMin || transform.position.y >= AnchorYMax)
                 {
                     bossPhase1Rb.velocity = vecDir * moveSpeed * Time.fixedDeltaTime;
+                    animator.SetBool("isDrifting", true);
+                    SetAnimDirection(vecDir);
+                    animator.SetFloat("Horizontal", vecAnim.x);
 
                     yield return null;
                 }
 
                 //une fois le point d'ancrage atteint, le boss s'arrête.
                 bossPhase1Rb.velocity = new Vector2(0, 0) * moveSpeed * Time.fixedDeltaTime;
+                animator.SetBool("isDrifting", false);
             }
 
+            animator.SetBool("isShooting", true);
             yield return new WaitForSeconds(timeBeforeFiring);
 
+            animator.SetBool("isShooting", false);
             Instantiate(bossBullet, transform.position, Quaternion.identity);
 
             yield return new WaitForSeconds(timeBeforeWeakStateBegin);
 
+            animator.SetBool("isWeak", true);
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
 
             yield return new WaitForSeconds(timeBeforeWeakStateEnd);
 
+            animator.SetBool("isWeak", false);
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
 
             GetComponent<Phase1PatternManager>().NextPatternSelection();
@@ -271,6 +297,17 @@ namespace Boss
             }
         }
 
+        public void SetAnimDirection(Vector2 vecDir)
+        {
+            if (vecDir.x > 0)
+            {
+                vecAnim.x = 1;
+            }
+            else
+            {
+                vecAnim.x = -1;
+            }
+        }
 
     }
 }

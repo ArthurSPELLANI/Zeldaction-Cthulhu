@@ -72,11 +72,11 @@ namespace Boss
             {
                 if (isInPhase1 == true)
                 {
-                    transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                    transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 }
                 else
                 {
-                    transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                    transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 }
                 
             }
