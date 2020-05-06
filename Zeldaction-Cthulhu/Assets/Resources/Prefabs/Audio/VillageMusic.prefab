@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3676266829049891293}
   - component: {fileID: 3676266829049891282}
   - component: {fileID: 3676266829049891283}
+  - component: {fileID: 2479809118597731801}
   m_Layer: 0
   m_Name: VillageMusic
   m_TagString: Untagged
@@ -239,3 +240,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2479809118597731801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676266829049891280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79463a0f9225fca40a2dc8fc4aa004f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

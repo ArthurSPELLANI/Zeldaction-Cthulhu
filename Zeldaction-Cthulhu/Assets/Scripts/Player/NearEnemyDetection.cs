@@ -9,13 +9,13 @@ namespace Player
     {
         public LayerMask EnemyLayer;
         public GameObject Music;
-        MusicManager musicManager;
-        CircleCollider2D Detection;
+        public MusicManager musicManager;
+        public CircleCollider2D Detection;
 
         void Start()
         {
             musicManager = Music.GetComponent<MusicManager>();
-            Detection = GetComponent<CircleCollider2D>();
+            //Detection = GetComponent<CircleCollider2D>();
         }
 
         void Update()
