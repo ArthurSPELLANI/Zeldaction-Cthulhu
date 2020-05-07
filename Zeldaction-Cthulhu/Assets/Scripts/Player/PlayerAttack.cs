@@ -26,7 +26,7 @@ namespace Player
         public float coolDown = 0;
         public float attackKnockback;
 
-        Animator animator;
+        [HideInInspector] public Animator animator;
 
         [HideInInspector] public bool cantAttack = false;
         
@@ -74,6 +74,7 @@ namespace Player
             if(coolDown <= 0 && attackCount != 0)
             {
                 attackCount = 0;
+                playerDamage = 1;
             }
 
         }

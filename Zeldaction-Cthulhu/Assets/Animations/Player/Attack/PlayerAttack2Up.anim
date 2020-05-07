@@ -25,16 +25,16 @@ AnimationClip:
     - time: 0.125
       value: {fileID: -6731725337561399179, guid: eb4e349f45f3f014fad3e555e38d559f,
         type: 3}
-    - time: 0.625
+    - time: 0.375
       value: {fileID: -5748659353684789692, guid: eb4e349f45f3f014fad3e555e38d559f,
         type: 3}
-    - time: 0.75
+    - time: 0.5
       value: {fileID: -5874066187343368567, guid: eb4e349f45f3f014fad3e555e38d559f,
         type: 3}
-    - time: 0.875
+    - time: 0.625
       value: {fileID: -7603400149295633660, guid: eb4e349f45f3f014fad3e555e38d559f,
         type: 3}
-    - time: 1
+    - time: 0.75
       value: {fileID: -5180112063242497210, guid: eb4e349f45f3f014fad3e555e38d559f,
         type: 3}
     attribute: m_Sprite
@@ -67,7 +67,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.125
+    m_StopTime: 0.875
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,7 +87,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.625
+  - time: 0.375
     functionName: AnimatorAttack
     data: 
     objectReferenceParameter: {fileID: 0}

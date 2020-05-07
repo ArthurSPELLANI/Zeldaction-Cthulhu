@@ -29,7 +29,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.125
+        time: 0.875
         value: {x: -1, y: 1, z: 1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -50,19 +50,19 @@ AnimationClip:
     - time: 0.125
       value: {fileID: -5024744966028065483, guid: 75858747102f7b14d8c451d69171a988,
         type: 3}
-    - time: 0.625
+    - time: 0.375
       value: {fileID: -3228622308321229846, guid: 75858747102f7b14d8c451d69171a988,
         type: 3}
-    - time: 0.75
+    - time: 0.5
       value: {fileID: -5425823056269454176, guid: 75858747102f7b14d8c451d69171a988,
         type: 3}
-    - time: 0.875
+    - time: 0.625
       value: {fileID: -6059777385942127049, guid: 75858747102f7b14d8c451d69171a988,
         type: 3}
-    - time: 1
+    - time: 0.75
       value: {fileID: -7350249031601200770, guid: 75858747102f7b14d8c451d69171a988,
         type: 3}
-    - time: 1.125
+    - time: 0.875
       value: {fileID: -648725842819211905, guid: 3898aafe3c6f9d04ab4ba5729f6ff14e,
         type: 3}
     attribute: m_Sprite
@@ -103,7 +103,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.25
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -151,7 +151,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.125
+        time: 0.875
         value: 1
         inSlope: 0
         outSlope: 0
@@ -179,7 +179,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.125
+        time: 0.875
         value: 1
         inSlope: 0
         outSlope: 0
@@ -198,7 +198,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.625
+  - time: 0.375
     functionName: AnimatorAttack
     data: 
     objectReferenceParameter: {fileID: 0}

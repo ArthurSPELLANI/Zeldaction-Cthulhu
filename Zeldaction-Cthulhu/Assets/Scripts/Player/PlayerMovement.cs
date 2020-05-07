@@ -33,6 +33,9 @@ namespace Player
         [Range(0, 10)]
         public float dashSpeed;
 
+        [Range(0, 1)]
+        public float dashRecoil;
+
         public AnimationCurve dashCurve;
 
         void Awake()
@@ -191,7 +194,7 @@ namespace Player
                 yield return null;
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(dashRecoil);
 
             PlayerManager.Instance.playerAttack.cantAttack = false;
             playerRb.velocity = Vector2.zero;
@@ -221,7 +224,7 @@ namespace Player
                 yield return null;
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(dashRecoil * 2);
 
             PlayerManager.Instance.playerAttack.cantAttack = false;
             playerRb.velocity = Vector2.zero;

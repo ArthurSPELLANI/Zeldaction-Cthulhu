@@ -24,11 +24,14 @@ namespace Enemy
 		public float explosionTime;
 		[Range(0, 1)]
 		public float explosionRange;
+		public float knockback;
 		public LayerMask playerLayer;
 		public LayerMask enemyLayer;
 
 		public Animator exploAnimator;
 		private Vector2 animDirection;
+
+		
 
 		void Awake()
 		{
@@ -108,7 +111,7 @@ namespace Enemy
 			{
 				if (enemy.CompareTag("Enemy"))
 				{
-					enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(enemyDamage, transform.position, 100);
+					enemy.GetComponent<EnemyBasicBehavior>().TakeDamage(enemyDamage, transform.position, knockback);
 				}
 
 				else if (enemy.CompareTag("Boss"))
