@@ -38,6 +38,8 @@ namespace Boss
 
         private GameObject graphics;
 
+        public Animator animator;
+
         void Awake()
         {
             wolfRb = wolf.GetComponentInChildren<Rigidbody2D>();
@@ -158,11 +160,13 @@ namespace Boss
             blockState = false;
 
             yield return new WaitForSeconds(timeBeforeWeakStatusStart);
-                
+
+            animator.SetBool("isVul", true);
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
 
             yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
 
+            animator.SetBool("isVul", false);
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
                 
             //Assure we leave pattern in update function by removing all enemies and setting gotHit to false.
