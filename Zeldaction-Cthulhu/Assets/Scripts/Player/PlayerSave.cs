@@ -7,7 +7,7 @@ namespace Player
 {
     public class PlayerSave : MonoBehaviour
     {
-        public GameObject player;
+        GameObject player;
         Scene currentScene;
         public bool useSaves;
 
@@ -29,6 +29,7 @@ namespace Player
                 PlayerPrefs.SetString("scene", currentScene.name);
 
                 //Stock la position du joueur
+                player = PlayerManager.Instance.gameObject;
                 PlayerPrefs.SetFloat("positionX", player.transform.position.x);
                 PlayerPrefs.SetFloat("positionY", player.transform.position.y);
 
