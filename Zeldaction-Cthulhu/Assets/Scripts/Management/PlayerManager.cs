@@ -13,7 +13,8 @@ namespace Player
         public PlayerShadowMode playerShadowMode;
         public PlayerStats playerStats;
         public PlayerShoot playerShoot;
-        public Animator playerAnimator;  
+        public Animator playerAnimator;
+        public NearEnemyDetection nearEnemyDetection;
     
         public Vector3 nativePosition;
         public Transform currentPosition;
@@ -26,6 +27,7 @@ namespace Player
             playerShadowMode = GetComponentInChildren<PlayerShadowMode>();
             playerStats = GetComponentInChildren<PlayerStats>();
             playerShoot = GetComponentInChildren<PlayerShoot>();
+            nearEnemyDetection = GetComponentInChildren<NearEnemyDetection>();
         }
 
         void Start()

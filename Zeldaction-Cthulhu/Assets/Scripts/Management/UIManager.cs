@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Management;
 using Player;
 using UnityEngine.UI;
@@ -34,14 +32,20 @@ namespace Game
             {
                 SanityLevel2();
             }
+
+            if (PlayerManager.Instance.playerShadowMode.maxSanity == 90)
+            {
+                SanityLevel3();
+            }
+
         }
 
         public void SanityLevel1()
         {
             jaugeMid1.gameObject.SetActive(false);
             jaugeMid2.gameObject.SetActive(false);
-            jaugeEnd.rectTransform.anchoredPosition = new Vector2(43, 392.74f);
-            fill.rectTransform.offsetMax = new Vector2(-63f, -4.5f);
+            jaugeEnd.rectTransform.anchoredPosition = new Vector2(48.8f, 390.5f);
+            fill.rectTransform.offsetMax = new Vector2(-58.5f, -4.5f);
             sanityGauge.maxValue = 60;
             sanityGauge.minValue = -40;
         }
@@ -50,12 +54,23 @@ namespace Game
         {
             jaugeMid1.gameObject.SetActive(true);
             jaugeMid2.gameObject.SetActive(false);
-            jaugeEnd.rectTransform.anchoredPosition = new Vector2(60, 392.74f);
-            fill.rectTransform.offsetMax = new Vector2(-39f, -4.5f);
+            jaugeEnd.rectTransform.anchoredPosition = new Vector2(66.8f, 390.5f);
+            fill.rectTransform.offsetMax = new Vector2(-33.5f, -4.5f);
             sanityGauge.maxValue = 75;
             sanityGauge.minValue = -25;
         }
 
+        public void SanityLevel3()
+        {
+            jaugeMid1.gameObject.SetActive(true);
+            jaugeMid2.gameObject.SetActive(true);
+            jaugeEnd.rectTransform.anchoredPosition = new Vector2(84.2f, 390.5f);
+            fill.rectTransform.offsetMax = new Vector2(-8.5f, -4.5f);
+            sanityGauge.maxValue = 90;
+            sanityGauge.minValue = -10;
+        }
+
+        //87.4f
     }
 }
 
