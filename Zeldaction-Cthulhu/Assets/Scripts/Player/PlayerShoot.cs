@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AudioManaging;
+using Menu;
 
 namespace Player
 {
@@ -13,7 +14,7 @@ namespace Player
         float aimVertical;
 
         bool directionStored = false;
-        bool canShoot;        
+        [HideInInspector] public bool canShoot;        
 
         [Range(0,50)]
         public int aimSlow;
@@ -30,6 +31,8 @@ namespace Player
         Quaternion rotation = Quaternion.identity;
 
         [HideInInspector] public bool isAiming = false;
+
+        public GameObject pauseMenuGo;
 
 
         void Awake()
@@ -48,17 +51,20 @@ namespace Player
             aimHorizontal = shootDirection.normalized.x;
             aimVertical = shootDirection.normalized.y;
 
-
-            if (Input.GetAxisRaw("Shoot") != 0)
+            if (PauseMenu.gameIsPaused == false)
             {
-               AimMovement();
-               animator.SetBool("isAiming", true);
+                if (Input.GetAxisRaw("Shoot") != 0)
+                {
+                    AimMovement();
+                    animator.SetBool("isAiming", true);
+                }
+
+                if (Input.GetAxisRaw("Shoot") == 0 && isAiming == true)
+                {
+                    ExitShoot();
+                }
             }
 
-            if (Input.GetAxisRaw("Shoot") == 0 && isAiming == true)
-            {              
-               ExitShoot();
-            }
         }
 
         void AimMovement()
