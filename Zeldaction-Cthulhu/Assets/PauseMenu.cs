@@ -56,6 +56,7 @@ namespace Menu
             Time.timeScale = 0f;
             gameIsPaused = true;
             EventSystem.current.SetSelectedGameObject(myButton);
+            shadowModeGo.GetComponent<PlayerShadowMode>().isShadowActivated = false;
             shadowModeGo.SetActive(false);
             attackBehaviorGo.GetComponent<PlayerAttack>().cantAttack = true;
             attackBehaviorGo.GetComponent<PlayerShoot>().canShoot = false;
