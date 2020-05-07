@@ -10,7 +10,7 @@ public class UIHearts : MonoBehaviour
 
     public Image[] hearts;
     public Sprite fullHeart;
-    public Sprite halfHeart;
+    //public Sprite halfHeart;
     public Sprite emptyHeart;
 
 
@@ -29,11 +29,8 @@ public class UIHearts : MonoBehaviour
             {
                 hearts[i].sprite = fullHeart;
             }
-            else if (i == health)
-            {
-                hearts[i].sprite = halfHeart;
-            }
-            else if(i > health)
+
+            else if(i >= health)
             {
                 hearts[i].sprite = emptyHeart;
             }             
