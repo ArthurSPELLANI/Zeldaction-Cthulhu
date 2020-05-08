@@ -14,7 +14,7 @@ public class TestPlayableForPlayerFind : MonoBehaviour
     GameObject player;
 
     public Animator[] trackAnimators = new Animator[2];
-    public GameObject[] trackObjects = new GameObject[7];
+    public GameObject[] trackObjects = new GameObject[8];
 
     public void Start()
     {
@@ -29,7 +29,9 @@ public class TestPlayableForPlayerFind : MonoBehaviour
         trackObjects[4] = GameObject.Find("Coeurs");
         trackObjects[5] = GameObject.Find("Ammunitions");
         trackObjects[6] = GameObject.Find("Sanity Gauge");
-        
+        trackObjects[6] = GameObject.Find("Behaviour_Player");
+
+
         var outputs = playableAsset.outputs;
         foreach (var itm in outputs)
         {
@@ -70,6 +72,11 @@ public class TestPlayableForPlayerFind : MonoBehaviour
             {
                 playableDirector.SetGenericBinding(itm.sourceObject, trackObjects[6]);
             }
+            if (itm.streamName == "Behaviour")
+            {
+                playableDirector.SetGenericBinding(itm.sourceObject, trackObjects[7]);
+            }
+
 
 
 

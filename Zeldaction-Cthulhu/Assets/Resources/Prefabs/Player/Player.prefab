@@ -515,6 +515,7 @@ MonoBehaviour:
   dashTime: 0.6
   dashDelay: 0.15
   dashSpeed: 2.5
+  dashRecoil: 0
   dashCurve:
     serializedVersion: 2
     m_Curve:
@@ -679,7 +680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4580132030933035051}
   m_Layer: 8
-  m_Name: Behaviour
+  m_Name: Behaviour_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -811,6 +812,7 @@ MonoBehaviour:
   comboKeepTime: 2
   coolDown: 0
   attackKnockback: 0
+  animator: {fileID: 0}
   cantAttack: 0
 --- !u!114 &4580132031067072194
 MonoBehaviour:
@@ -825,12 +827,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootDirection: {x: 0, y: 0}
+  canShoot: 0
   aimSlow: 40
   bulletSpeed: 5
   bullet: {fileID: 5844217980954619402, guid: 880becf3ee5851d42aed7db5a282d655, type: 3}
   shootCooldown: 0.7
   ammunitions: 6
   isAiming: 0
+  pauseMenuGo: {fileID: 0}
 --- !u!1 &4580132031356252412
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +900,7 @@ MonoBehaviour:
   player: {fileID: 4580132031468944960}
   healNumber: 0
   maxHealNumber: 0
+  invuCooldown: 0
 --- !u!1 &4580132031392485401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1009,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerShoot: {fileID: 0}
   playerAnimator: {fileID: 4580132031657520922}
+  nearEnemyDetection: {fileID: 0}
   nativePosition: {x: 0, y: 0, z: 0}
   currentPosition: {fileID: 0}
 --- !u!95 &7300257743383865444
@@ -1071,7 +1077,7 @@ GameObject:
   - component: {fileID: 4580132031657520922}
   - component: {fileID: 4552996261557588882}
   m_Layer: 8
-  m_Name: Graphics
+  m_Name: Graphics_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1219,7 +1225,7 @@ GameObject:
   - component: {fileID: 474925894254228396}
   m_Layer: 12
   m_Name: EnvironnementCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
