@@ -57,12 +57,12 @@ namespace Game
         public void DarkForest()
         {
             SceneManager.LoadScene("10_DarkForest");
-            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;            
+            PlayerManager.Instance.transform.position = new Vector3(6, -23);           
         }
 
         public void LightForest1()
         {
-            SceneManager.LoadScene("Light_Forest_1");
+            SceneManager.LoadScene("08_LightForest1");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
         }
 
@@ -81,7 +81,7 @@ namespace Game
         public void Cave()
         {
             SceneManager.LoadScene("11_Cave");
-            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            PlayerManager.Instance.transform.position = new Vector3(0.9f, -8);
         }
 
         public void InnInterior()

@@ -5,7 +5,7 @@ using Management;
 
 namespace Player
 {
-    public class PlayerManager : Singleton<PlayerManager>
+    public class PlayerManager : MonoBehaviour
     {
 
         public PlayerMovement playerMovement;
@@ -19,9 +19,23 @@ namespace Player
         public Vector3 nativePosition;
         public Transform currentPosition;
 
+        static public PlayerManager Instance;
+
         private void Awake()
         {
-            MakeSingleton(true);
+            //MakeSingleton(true);
+
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+                Debug.Log("Nique ta mère Jo !");
+            }
+
             playerAttack = GetComponentInChildren<PlayerAttack>();
             playerMovement = GetComponentInChildren<PlayerMovement>();
             playerShadowMode = GetComponentInChildren<PlayerShadowMode>();
