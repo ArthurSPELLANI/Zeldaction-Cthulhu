@@ -14,18 +14,6 @@ TextureImporter:
   - first:
       213: -7923749156513702089
     second: sheet_Mamy_Phase2_Shadow_3
-  - first:
-      213: 2317757889700579326
-    second: sheet_Mamy_Phase2_Shadow_0
-  - first:
-      213: -7095710110781869815
-    second: sheet_Mamy_Phase2_Shadow_1
-  - first:
-      213: 7833209401849940727
-    second: sheet_Mamy_Phase2_Shadow_2
-  - first:
-      213: 65591354189043709
-    second: sheet_Mamy_Phase2_Shadow_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -87,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,18 +102,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 310
-        height: 534
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        y: 591
+        width: 752
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef746fa45845a2020800000000000000
-      internalID: 2317757889700579326
+      spriteID: f91c5df73897ee5f0800000000000000
+      internalID: -725508884267679329
       vertices: []
       indices: 
       edges: []
@@ -134,19 +122,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_Shadow_1
       rect:
         serializedVersion: 2
-        x: 310
-        y: 0
-        width: 310
-        height: 534
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 752
+        y: 591
+        width: 752
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 901f2b9bf39f68d90800000000000000
-      internalID: -7095710110781869815
+      spriteID: 291fb0309949b53a0800000000000000
+      internalID: -6675578637744606830
       vertices: []
       indices: 
       edges: []
@@ -155,19 +143,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_Shadow_2
       rect:
         serializedVersion: 2
-        x: 620
+        x: 0
         y: 0
-        width: 310
-        height: 534
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 752
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fa0488e27625bc60800000000000000
-      internalID: 7833209401849940727
+      spriteID: f1fba8e9160e79990800000000000000
+      internalID: -7379182754546925793
       vertices: []
       indices: 
       edges: []
@@ -176,19 +164,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_Shadow_3
       rect:
         serializedVersion: 2
-        x: 930
+        x: 752
         y: 0
-        width: 310
-        height: 534
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 752
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df756c63df609e000800000000000000
-      internalID: 65591354189043709
+      spriteID: 73f13bcbf10390290800000000000000
+      internalID: -7923749156513702089
       vertices: []
       indices: 
       edges: []

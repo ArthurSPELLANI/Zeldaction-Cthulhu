@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: bf34b8f5f9c177a4d83407cb575655b0
+guid: b5ef3f2a88e095c4d94af37082ee9d2e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8116820021734975095
-    second: sheet_Mamy_Phase2_blurkOut_0
+      213: 8781567919624162390
+    second: Fx_thunder1_0
   - first:
-      213: 8823306281012383944
-    second: sheet_Mamy_Phase2_blurkOut_1
+      213: -5634162372477269913
+    second: Fx_thunder1_1
   - first:
-      213: -1364341374493206667
-    second: sheet_Mamy_Phase2_blurkOut_2
+      213: -1261938941595424013
+    second: Fx_thunder1_2
   - first:
-      213: 146067096942952166
-    second: sheet_Mamy_Phase2_blurkOut_3
-  - first:
-      213: 521422931912145324
-    second: sheet_Mamy_Phase2_blurkOut_4
-  - first:
-      213: -495187948752277862
-    second: sheet_Mamy_Phase2_blurkOut_5
+      213: -7949946544980481528
+    second: Fx_thunder1_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,76 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sheet_Mamy_Phase2_blurkOut_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 262
-        width: 188
-        height: 262
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 776aa451eccb4a070800000000000000
-      internalID: 8116820021734975095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sheet_Mamy_Phase2_blurkOut_1
-      rect:
-        serializedVersion: 2
-        x: 188
-        y: 262
-        width: 188
-        height: 262
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c05730905ea27a70800000000000000
-      internalID: 8823306281012383944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sheet_Mamy_Phase2_blurkOut_2
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 262
-        width: 188
-        height: 262
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 577d6fc9fb2e01de0800000000000000
-      internalID: -1364341374493206667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sheet_Mamy_Phase2_blurkOut_3
+      name: Fx_thunder1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 188
-        height: 262
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ee38a2304fe60200800000000000000
-      internalID: 146067096942952166
+      spriteID: 65c0a240f756ed970800000000000000
+      internalID: 8781567919624162390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_Mamy_Phase2_blurkOut_4
+      name: Fx_thunder1_1
       rect:
         serializedVersion: 2
-        x: 188
+        x: 40
         y: 0
-        width: 188
-        height: 262
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca9bd5ad4677c3700800000000000000
-      internalID: 521422931912145324
+      spriteID: 768ce9d5c2f6fc1b0800000000000000
+      internalID: -5634162372477269913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_Mamy_Phase2_blurkOut_5
+      name: Fx_thunder1_2
       rect:
         serializedVersion: 2
-        x: 376
+        x: 80
         y: 0
-        width: 188
-        height: 262
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,8 +154,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9ee0992f2db029f0800000000000000
-      internalID: -495187948752277862
+      spriteID: 3fae8f9f731bc7ee0800000000000000
+      internalID: -1261938941595424013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fx_thunder1_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a281becbd1ca190800000000000000
+      internalID: -7949946544980481528
       vertices: []
       indices: 
       edges: []

@@ -44,48 +44,6 @@ TextureImporter:
   - first:
       213: -2964817278947153216
     second: sheet_Mamy_Phase2_idle_13
-  - first:
-      213: 998351747995881613
-    second: sheet_Mamy_Phase2_idle_0
-  - first:
-      213: -6969221820686237423
-    second: sheet_Mamy_Phase2_idle_1
-  - first:
-      213: -1196900355617961933
-    second: sheet_Mamy_Phase2_idle_2
-  - first:
-      213: -1610531776210758102
-    second: sheet_Mamy_Phase2_idle_3
-  - first:
-      213: -6646577023913273583
-    second: sheet_Mamy_Phase2_idle_4
-  - first:
-      213: -7278384928402745284
-    second: sheet_Mamy_Phase2_idle_5
-  - first:
-      213: 7016012255975000349
-    second: sheet_Mamy_Phase2_idle_6
-  - first:
-      213: 1089826616842911054
-    second: sheet_Mamy_Phase2_idle_7
-  - first:
-      213: 1092026295229033144
-    second: sheet_Mamy_Phase2_idle_8
-  - first:
-      213: 4783070087478139106
-    second: sheet_Mamy_Phase2_idle_9
-  - first:
-      213: -328354959762916439
-    second: sheet_Mamy_Phase2_idle_10
-  - first:
-      213: 3012652320374222725
-    second: sheet_Mamy_Phase2_idle_11
-  - first:
-      213: -6256738570464652043
-    second: sheet_Mamy_Phase2_idle_12
-  - first:
-      213: 6192921050930396383
-    second: sheet_Mamy_Phase2_idle_13
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -147,7 +105,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -159,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -174,18 +132,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 600
-        width: 225
+        y: 900
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d805f2410abdadd00800000000000000
-      internalID: 998351747995881613
+      spriteID: db7a87bc8cb046c50800000000000000
+      internalID: 6657459106195482557
       vertices: []
       indices: 
       edges: []
@@ -194,19 +152,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_1
       rect:
         serializedVersion: 2
-        x: 225
-        y: 600
-        width: 225
+        x: 450
+        y: 900
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1118819bda9584f90800000000000000
-      internalID: -6969221820686237423
+      spriteID: 0cd435472bee0b640800000000000000
+      internalID: 5093833628779236800
       vertices: []
       indices: 
       edges: []
@@ -215,19 +173,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_2
       rect:
         serializedVersion: 2
-        x: 450
-        y: 600
-        width: 225
+        x: 900
+        y: 900
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3384adfc771c36fe0800000000000000
-      internalID: -1196900355617961933
+      spriteID: 603f52d971953d6e0800000000000000
+      internalID: -1814008266944548090
       vertices: []
       indices: 
       edges: []
@@ -236,19 +194,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_3
       rect:
         serializedVersion: 2
-        x: 675
-        y: 600
-        width: 225
+        x: 1350
+        y: 900
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a269a7be1ed36a9e0800000000000000
-      internalID: -1610531776210758102
+      spriteID: 13987754bebc85790800000000000000
+      internalID: -7541053364688680655
       vertices: []
       indices: 
       edges: []
@@ -257,19 +215,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_4
       rect:
         serializedVersion: 2
-        x: 900
+        x: 0
         y: 600
-        width: 225
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 117506d696d92c3a0800000000000000
-      internalID: -6646577023913273583
+      spriteID: 09cf7fb5618947c00800000000000000
+      internalID: 897509447553252496
       vertices: []
       indices: 
       edges: []
@@ -278,19 +236,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 300
-        width: 225
+        x: 450
+        y: 600
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c385ffb587bfdfa90800000000000000
-      internalID: -7278384928402745284
+      spriteID: 7934fd1b4aa051750800000000000000
+      internalID: 6274933358285767575
       vertices: []
       indices: 
       edges: []
@@ -299,19 +257,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_6
       rect:
         serializedVersion: 2
-        x: 225
-        y: 300
-        width: 225
+        x: 900
+        y: 600
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d194d2179f1ed5160800000000000000
-      internalID: 7016012255975000349
+      spriteID: a3b30077da285c610800000000000000
+      internalID: 1640861320783870778
       vertices: []
       indices: 
       edges: []
@@ -320,19 +278,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_7
       rect:
         serializedVersion: 2
-        x: 450
-        y: 300
-        width: 225
+        x: 1350
+        y: 600
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4dffaba887df1f00800000000000000
-      internalID: 1089826616842911054
+      spriteID: 239dce6dd4d7d8d00800000000000000
+      internalID: 976574467481065778
       vertices: []
       indices: 
       edges: []
@@ -341,19 +299,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_8
       rect:
         serializedVersion: 2
-        x: 675
+        x: 0
         y: 300
-        width: 225
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ba23843128a72f00800000000000000
-      internalID: 1092026295229033144
+      spriteID: 7a97c4286ed4444a0800000000000000
+      internalID: -6610072700649178713
       vertices: []
       indices: 
       edges: []
@@ -362,19 +320,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_9
       rect:
         serializedVersion: 2
-        x: 900
+        x: 450
         y: 300
-        width: 225
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e85eeb17e0e06240800000000000000
-      internalID: 4783070087478139106
+      spriteID: 906cdd79218943d90800000000000000
+      internalID: -7118897905341184503
       vertices: []
       indices: 
       edges: []
@@ -383,19 +341,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 225
+        x: 900
+        y: 300
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9abf71f57e2717bf0800000000000000
-      internalID: -328354959762916439
+      spriteID: 119fd500e1fa1e590800000000000000
+      internalID: -7646638148908353263
       vertices: []
       indices: 
       edges: []
@@ -404,19 +362,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_11
       rect:
         serializedVersion: 2
-        x: 225
+        x: 0
         y: 0
-        width: 225
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58f69abd2571fc920800000000000000
-      internalID: 3012652320374222725
+      spriteID: 1dda35b0f0bbb4c10800000000000000
+      internalID: 2038928929604218321
       vertices: []
       indices: 
       edges: []
@@ -427,17 +385,17 @@ TextureImporter:
         serializedVersion: 2
         x: 450
         y: 0
-        width: 225
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f418f67b699b29a0800000000000000
-      internalID: -6256738570464652043
+      spriteID: 74631b5f02d5b1510800000000000000
+      internalID: 1520911695310042695
       vertices: []
       indices: 
       edges: []
@@ -446,19 +404,19 @@ TextureImporter:
       name: sheet_Mamy_Phase2_idle_13
       rect:
         serializedVersion: 2
-        x: 675
+        x: 900
         y: 0
-        width: 225
+        width: 450
         height: 300
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdcbeb262eca1f550800000000000000
-      internalID: 6192921050930396383
+      spriteID: 0ca2a60a46adad6d0800000000000000
+      internalID: -2964817278947153216
       vertices: []
       indices: 
       edges: []
