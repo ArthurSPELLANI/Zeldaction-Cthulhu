@@ -16,10 +16,10 @@ namespace Game
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            /*if (Input.GetKeyDown(KeyCode.Return))
             {
                 PlayestHub();
-            }
+            }*/
         }
 
         //Fonction à lancer au début du jeu pour utiliser les sauvegardes
@@ -40,7 +40,7 @@ namespace Game
             }
             else
             {
-                SceneManager.LoadScene("FirstScene"); //je connais pas le nom de la première scene
+                SceneManager.LoadScene("01_Town"); //je connais pas le nom de la première scene
                 PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
                 PlayerManager.Instance.ResetPlayer();
             }
@@ -95,6 +95,31 @@ namespace Game
             SceneManager.LoadScene("03_UpstairInn");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
         }
+
+        public void Bedroom()
+        {
+            SceneManager.LoadScene("04_Bedroom");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+        }
+
+        public void UpstairInnNight()
+        {
+            SceneManager.LoadScene("05_UpstairInnNight");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+        }
+
+        public void InnInteriorNight()
+        {
+            SceneManager.LoadScene("06_InnInteriorNight");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+        }
+
+        public void TownNight()
+        {
+            SceneManager.LoadScene("07_TownNight");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+        }
+
 
 
 
