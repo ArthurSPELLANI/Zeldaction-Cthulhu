@@ -35,6 +35,8 @@ namespace Boss
 
         private bool pillarHaveSpawn;
 
+        public Animator animator;
+
         void Awake()
         {
             player = GameObject.Find("Player");
@@ -130,10 +132,12 @@ namespace Boss
 
                 yield return new WaitForSeconds(timeBeforeWeakStatusBegin);
 
+                animator.SetBool("isVul", true);
                 transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
 
                 yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
 
+                animator.SetBool("isVul", false);
                 transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
 
                 yield return new WaitForSeconds(timeBeforePatternEnd);
