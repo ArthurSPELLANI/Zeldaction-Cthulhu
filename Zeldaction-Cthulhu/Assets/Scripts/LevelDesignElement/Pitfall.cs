@@ -7,7 +7,7 @@ namespace LevelDesign
     public class Pitfall : MonoBehaviour
     {
         public GameObject player;
-        public GameObject pit;
+        public GameObject respawnList;
         private int respawnNbr;
         private float compareDist;
         private float distance;
@@ -22,7 +22,7 @@ namespace LevelDesign
 
         void Awake()
         {
-            respawnNbr = pit.transform.childCount;
+            respawnNbr = respawnList.transform.childCount;
         }
 
         void Start()
@@ -66,7 +66,7 @@ namespace LevelDesign
 
             for (int i = 0; i < respawnNbr; i++)
             {
-                respawn[i] = pit.transform.GetChild(i);
+                respawn[i] = respawnList.transform.GetChild(i);
             }
         }
 
