@@ -74,7 +74,7 @@ namespace Enemy
 
 		IEnumerator TimeBeforeExplo()
 		{
-			exploAnimator.SetBool("isExploding", true);
+			exploAnimator.SetBool("isPreExploding", true);
 			//son
 			AudioManager.Instance.Play("prexplosion");
 
@@ -100,7 +100,8 @@ namespace Enemy
 			//son
 			AudioManager.Instance.Play("explosion");
 			AudioManager.Instance.Stop("prexplosion");
-			
+
+			exploAnimator.SetBool("isExploding", true);
 
 			foreach (Collider2D player in hitPlayer)
 			{
@@ -126,7 +127,7 @@ namespace Enemy
                 GetComponentInParent<EnemyBasicBehavior>().SanityReward();
             }
 
-			Destroy(enemyPrefab);
+			
 		}
 
 		private void OnDrawGizmosSelected()
