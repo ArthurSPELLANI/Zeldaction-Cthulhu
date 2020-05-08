@@ -21,7 +21,7 @@ public class TestPlayableForPlayerFind : MonoBehaviour
         player = GameObject.Find("Player");
 
         trackAnimators[0] = player.GetComponent<Animator>();
-        trackAnimators[1] = player.GetComponentInChildren<Animator>();
+        trackAnimators[1] = GameObject.Find("Graphics_Player").GetComponent<Animator>();
         trackObjects[0] = GameObject.Find("Attack");
         trackObjects[1] = GameObject.Find("Movement");
         trackObjects[2] = GameObject.Find("Attack");

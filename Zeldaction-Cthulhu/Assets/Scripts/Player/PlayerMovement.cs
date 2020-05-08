@@ -182,7 +182,7 @@ namespace Player
             PlayerManager.Instance.playerAttack.AnimatorManager();
 
 
-            yield return new WaitForSeconds(dashDelay);
+            yield return new WaitForSeconds(dashDelay - 1f);
 
             //PlayerManager.Instance.playerAttack.AttackManager();
 
