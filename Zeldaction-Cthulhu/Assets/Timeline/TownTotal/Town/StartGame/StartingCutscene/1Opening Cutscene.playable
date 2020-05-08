@@ -175,6 +175,30 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   m_PostPlaybackState: 1
+--- !u!114 &-6407017079528923072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bf7f712d84d26478ebe6a299f21738, type: 3}
+  m_Name: Activation Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 1728866100445761231}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects: []
+  m_PostPlaybackState: 1
 --- !u!114 &-5950458909127548882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1831,6 +1855,8 @@ MonoBehaviour:
   - {fileID: 294473177592852765}
   - {fileID: -7560518822391397053}
   - {fileID: 6800131268803111725}
+  - {fileID: -6407017079528923072}
+  - {fileID: 2794682065970757833}
   m_Clips: []
   m_Markers:
     m_Objects: []
@@ -1846,6 +1872,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
   m_Name: ActivationPlayableAsset
   m_EditorClassIdentifier: 
+--- !u!114 &2794682065970757833
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bf7f712d84d26478ebe6a299f21738, type: 3}
+  m_Name: Activation Track (1)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 1728866100445761231}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects: []
+  m_PostPlaybackState: 1
 --- !u!114 &4060641692392730475
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2163,7 +2213,7 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects: []
-  m_PostPlaybackState: 0
+  m_PostPlaybackState: 1
 --- !u!114 &7584770076243136312
 MonoBehaviour:
   m_ObjectHideFlags: 1
