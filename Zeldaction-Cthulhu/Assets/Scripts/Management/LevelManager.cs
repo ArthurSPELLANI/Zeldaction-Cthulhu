@@ -44,8 +44,9 @@ namespace Game
                 PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
                 PlayerManager.Instance.ResetPlayer();
             }
-
         }
+
+
 
         public void PlayestHub()
         {
@@ -130,6 +131,24 @@ namespace Game
         {
             SceneManager.LoadScene("13_TownDestroyed");
             PlayerManager.Instance.transform.position = new Vector3(0.6f, 6);
+        }
+
+        public void EastDF()
+        {
+            SceneManager.LoadScene("10_DarkForest");
+            PlayerManager.Instance.transform.position = new Vector3(20, 6.5f);
+        }
+
+        public void WestDF()
+        {
+            SceneManager.LoadScene("10_DarkForest");
+            PlayerManager.Instance.transform.position = new Vector3(-9.5f, 13);
+        }
+
+        public void SouthDF()
+        {
+            SceneManager.LoadScene("10_DarkForest");
+            PlayerManager.Instance.transform.position = new Vector3(5.5f, 4);
         }
 
 

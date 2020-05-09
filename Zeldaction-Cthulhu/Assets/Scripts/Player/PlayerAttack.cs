@@ -202,6 +202,11 @@ namespace Player
                 {
                     enemy.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
                 }
+
+                if (enemy.CompareTag("DoorCave"))
+                {
+                    enemy.GetComponent<SpriteRenderer>().color = Color.black;
+                }
             }
 
             Collider2D pillar = Physics2D.OverlapCircle(currentAttackPos.position, attackRange, pillarLayer);
@@ -245,6 +250,11 @@ namespace Player
                 if (enemy.CompareTag("Boss"))
                 {
                     enemy.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
+                }
+
+                if (enemy.CompareTag("DoorCave"))
+                {
+                    enemy.GetComponent<SpriteRenderer>().color = Color.black;
                 }
             }
 
@@ -292,6 +302,11 @@ namespace Player
                 if (enemy.CompareTag("Boss"))
                 {
                     enemy.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
+                }
+
+                if (enemy.CompareTag("DoorCave"))
+                {
+                    enemy.GetComponent<SpriteRenderer>().color = Color.black;
                 }
             }
 

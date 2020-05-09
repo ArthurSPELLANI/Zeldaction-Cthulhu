@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Management;
+using Game;
 
 namespace Player
 {
@@ -68,7 +69,10 @@ namespace Player
     
         void Update()
         {
-            
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                LevelManager.Instance.TownDestroyed();
+            }
         }
 
         public void ResetPlayer()
