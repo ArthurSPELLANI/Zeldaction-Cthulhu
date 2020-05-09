@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Player;
 
 namespace LevelDesign
 {
@@ -28,6 +29,7 @@ namespace LevelDesign
         void Start()
         {
             RespawnList();
+            player = PlayerManager.Instance.gameObject;
         }
 
         void Update()
