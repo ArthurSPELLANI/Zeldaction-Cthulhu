@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0.8332635, b: 0.5235849, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 05266eb000000000132f0779
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -82,6 +82,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5266032667407482998}
   - component: {fileID: 5266032667407482993}
+  - component: {fileID: 1199507353}
+  - component: {fileID: 1199507352}
   m_Layer: 0
   m_Name: lantern2_on
   m_TagString: Untagged
@@ -154,3 +156,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1199507353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266032667407482992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b831483743410cd4da60c09db603eb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sanityGainLight: 5
+  range: {fileID: 0}
+--- !u!58 &1199507352
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266032667407482992}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
