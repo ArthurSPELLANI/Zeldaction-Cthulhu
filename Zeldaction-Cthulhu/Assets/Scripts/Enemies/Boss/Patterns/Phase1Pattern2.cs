@@ -119,8 +119,8 @@ namespace Boss
         IEnumerator BounceIntoWeak()
         {
             StopCoroutine(Dash());
+            animator.SetBool("hitByWall", true);
             animator.SetBool("isCharging", false);
-            animator.SetBool("hitByWall", false);
 
             hasHitWall = false;
 
@@ -148,6 +148,8 @@ namespace Boss
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
 
             yield return new WaitForSeconds(timeBeforePatternEnd);
+
+            animator.SetBool("hitByWall", false);
 
             GetComponent<Phase1PatternManager>().NextPatternSelection();
         }

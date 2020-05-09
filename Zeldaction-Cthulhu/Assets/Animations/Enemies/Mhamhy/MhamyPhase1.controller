@@ -157,6 +157,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isCharging
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: hitByWall
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2835488878274910005}
   m_Solo: 0

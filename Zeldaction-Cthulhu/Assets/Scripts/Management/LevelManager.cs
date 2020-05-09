@@ -120,7 +120,17 @@ namespace Game
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
         }
 
+        public void CorruptedForest()
+        {
+            SceneManager.LoadScene("12_CorruptedForest");
+            PlayerManager.Instance.transform.position = new Vector3 (6, -24);
+        }
 
+        public void TownDestroyed()
+        {
+            SceneManager.LoadScene("13_TownDestroyed");
+            PlayerManager.Instance.transform.position = new Vector3(0.6f, 6);
+        }
 
 
 
