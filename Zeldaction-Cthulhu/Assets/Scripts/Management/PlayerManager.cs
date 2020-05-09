@@ -21,6 +21,8 @@ namespace Player
 
         public Animator[] trackAnimators = new Animator[2];
         public GameObject[] trackObjects = new GameObject[8];
+        public GameObject baseUI;
+        public GameObject nearEnemy;
 
         static public PlayerManager Instance;
 

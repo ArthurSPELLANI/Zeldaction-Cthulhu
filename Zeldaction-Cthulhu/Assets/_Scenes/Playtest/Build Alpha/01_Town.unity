@@ -13221,6 +13221,11 @@ PrefabInstance:
       propertyPath: Music
       value: 
       objectReference: {fileID: 60161348}
+    - target: {fileID: 3191696311336113886, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4580132030262957901, guid: 2d7809d19a52f974cb8a758d823c9ba3,
         type: 3}
       propertyPath: VCamMain
@@ -13296,11 +13301,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4580132031468944961, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+        type: 3}
+      propertyPath: baseUI
+      value: 
+      objectReference: {fileID: 236230324}
+    - target: {fileID: 4580132031468944961, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+        type: 3}
+      propertyPath: nearEnemy
+      value: 
+      objectReference: {fileID: 294574812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d7809d19a52f974cb8a758d823c9ba3, type: 3}
 --- !u!95 &294574811 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7300257743383865444, guid: 2d7809d19a52f974cb8a758d823c9ba3,
+    type: 3}
+  m_PrefabInstance: {fileID: 294574810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &294574812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3191696311336113886, guid: 2d7809d19a52f974cb8a758d823c9ba3,
     type: 3}
   m_PrefabInstance: {fileID: 294574810}
   m_PrefabAsset: {fileID: 0}
@@ -56690,12 +56711,12 @@ PrefabInstance:
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.08
+      value: 0.8120003
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.21
+      value: -4.0789995
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}

@@ -13,4 +13,9 @@ public class ReceiverForCurrentDirection : MonoBehaviour
         PlayerManager.Instance.playerAnimator.gameObject.transform.localScale = new Vector3(1, 1, 1);
 
     }
+
+    public void ShowUI()
+    {
+        PlayerManager.Instance.baseUI.SetActive(true);
+    }
 }
