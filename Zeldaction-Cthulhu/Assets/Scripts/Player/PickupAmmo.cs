@@ -8,7 +8,7 @@ public class PickupAmmo : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if((collision.gameObject.tag == "Player" || collision.gameObject.tag == "Shadow") && PlayerManager.Instance.playerShoot.ammunitions != 6)
+        if((collision.gameObject.tag == "Player" /*|| collision.gameObject.tag == "Shadow"*/) && PlayerManager.Instance.playerShoot.ammunitions != 6)
         {
             if (PlayerManager.Instance.playerShoot.ammunitions == 5)
             {
