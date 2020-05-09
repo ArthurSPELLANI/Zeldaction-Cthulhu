@@ -5235,7 +5235,7 @@ GameObject:
   - component: {fileID: 4580132030482079520}
   - component: {fileID: 366841080}
   m_Layer: 8
-  m_Name: Movement
+  m_Name: Movement_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6014,7 +6014,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5071929179681249401}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4a8689ddd8c8a414b92ba414b47ce6a3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

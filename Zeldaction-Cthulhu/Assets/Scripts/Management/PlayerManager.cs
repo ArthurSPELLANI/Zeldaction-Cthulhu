@@ -19,6 +19,9 @@ namespace Player
         public Vector3 nativePosition;
         public Transform currentPosition;
 
+        public Animator[] trackAnimators = new Animator[2];
+        public GameObject[] trackObjects = new GameObject[8];
+
         static public PlayerManager Instance;
 
         private void Awake()
@@ -48,6 +51,17 @@ namespace Player
         {          
             nativePosition = new Vector3(0, 0, 0);
             currentPosition = gameObject.transform;
+
+            trackAnimators[0] = GetComponent<Animator>();
+            trackAnimators[1] = GameObject.Find("Graphics_Player").GetComponent<Animator>();
+            trackObjects[0] = GameObject.Find("Attack");
+            trackObjects[1] = GameObject.Find("Movement_Player");
+            trackObjects[2] = GameObject.Find("Attack");
+            trackObjects[3] = GameObject.Find("ShadowMode");
+            trackObjects[4] = GameObject.Find("Coeurs");
+            trackObjects[5] = GameObject.Find("Ammunitions");
+            trackObjects[6] = GameObject.Find("SanityGauge");
+            trackObjects[7] = GameObject.Find("Behaviour_Player");
         }
     
         void Update()
