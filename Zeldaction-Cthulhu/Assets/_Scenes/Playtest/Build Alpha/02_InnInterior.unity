@@ -3647,18 +3647,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 945609899}
   playableAsset: {fileID: 11400000, guid: fdf63b1d7b918df40a9850e2e389b742, type: 2}
-  trackAnimators:
-  - {fileID: 0}
-  - {fileID: 0}
-  trackObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &948276058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3840,8 +3828,8 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 4
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 0.5
-  m_ShapeLightFalloffSize: 2
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapeLightFalloffSize: 2.71
+  m_ShapeLightFalloffOffset: {x: 0, y: 1.89}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
   - {x: 0.5, y: -0.5, z: 0}

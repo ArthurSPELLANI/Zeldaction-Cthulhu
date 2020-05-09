@@ -19,9 +19,21 @@ namespace Menu
         public GameObject attackBehaviorGo;
         public GameObject movementBehaviorGo;
 
+        PauseMenu Instance;
+
         //public WorldSave worldSaveScript;
 
         public GameObject myButton;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else Destroy(gameObject);
+        }
 
         void Update()
         {
@@ -42,7 +54,14 @@ namespace Menu
         public void Resume()
         {
             PauseMenuUI.SetActive(false);
-            Time.timeScale = 1f;
+
+            if(shadowModeGo.GetComponent<PlayerShadowMode>().isShadowActivated == true)
+            {
+                Time.timeScale = 0.02f;
+            }
+            else
+                Time.timeScale = 1f;                    
+
             gameIsPaused = false;
             shadowModeGo.SetActive(true);
             attackBehaviorGo.GetComponent<PlayerAttack>().cantAttack = false;
@@ -56,7 +75,6 @@ namespace Menu
             Time.timeScale = 0f;
             gameIsPaused = true;
             EventSystem.current.SetSelectedGameObject(myButton);
-            shadowModeGo.GetComponent<PlayerShadowMode>().isShadowActivated = false;
             shadowModeGo.SetActive(false);
             attackBehaviorGo.GetComponent<PlayerAttack>().cantAttack = true;
             attackBehaviorGo.GetComponent<PlayerShoot>().canShoot = false;

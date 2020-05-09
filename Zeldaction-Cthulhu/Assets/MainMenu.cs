@@ -12,7 +12,7 @@ namespace Menu
 
         public void ResumeGame()
         {
-            //LevelManager.Instance.LaunchGame();
+            LevelManager.Instance.LaunchGame();
         }
 
         public void NewGame()
