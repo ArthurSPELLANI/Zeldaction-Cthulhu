@@ -12,7 +12,7 @@ public class UI_ShadowManager : MonoBehaviour
     private void Start()
     {
         shadowMode = PlayerManager.Instance.playerShadowMode.GetComponent<PlayerShadowMode>();
-        anim = GameObject.Find("Camera").GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
     }
 
