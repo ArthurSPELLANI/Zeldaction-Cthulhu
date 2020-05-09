@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc54ba8ed3323f543bda4e52ba839d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 2
+  enemyMaxHealth: 4
   enemyCurrentHealth: 0
   enemyDamage: 2
   fieldOfView: {fileID: 3575282250267150300}
@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 9194586857794869779}
   - component: {fileID: 3575282251299738636}
   - component: {fileID: 400149054}
+  - component: {fileID: 764639015}
   m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
@@ -500,6 +501,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &764639015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702529967486126577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f3740348a5cde46ad70bd7a35c45cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8908440074078746618
 GameObject:
   m_ObjectHideFlags: 0

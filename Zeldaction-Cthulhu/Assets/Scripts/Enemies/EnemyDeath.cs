@@ -9,7 +9,7 @@ namespace Enemy
     {
         public void Death()
         {
-            transform.parent.GetChild(2).gameObject.SetActive(false);
+            Destroy(transform.parent.GetChild(2).gameObject);
             GetComponentInParent<EnemyBasicBehavior>().enabled = false;
             GetComponentInParent<Collider2D>().enabled = false;
         }

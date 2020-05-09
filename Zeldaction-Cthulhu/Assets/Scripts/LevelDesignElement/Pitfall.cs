@@ -115,6 +115,7 @@ namespace LevelDesign
                 player.transform.position = trueRespawn.position;
             }*/
             rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 }

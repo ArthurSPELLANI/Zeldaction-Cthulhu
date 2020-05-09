@@ -7,7 +7,7 @@ public class FragmentDistributor : MonoBehaviour
     public bool isCombat;
     public bool isPuzzle;
 
-    public GameObject pillarToActivate;
+    public List<GameObject> pillarToActivate;
     public List<GameObject> enemiesToKill;
 
     public GameObject fragment;
@@ -21,17 +21,28 @@ public class FragmentDistributor : MonoBehaviour
             if(enemiesToKill[0] == null)
             {
                 Instantiate(fragment, transform.position, rotation);
-                Destroy(gameObject);
+                GetComponent<FragmentDistributor>().enabled = false;
             }
         }
 
 
         if (isPuzzle == true)
         {
-            if(pillarToActivate.gameObject.activeSelf == true)
+            for (int i = 0; i < pillarToActivate.Count; i++)
             {
-                Instantiate(fragment, transform.position, rotation);
-                Destroy(gameObject);
+                Debug.Log("test");
+                if (pillarToActivate[i].gameObject.activeSelf == true)
+                {
+                    pillarToActivate.Remove(pillarToActivate[i]);
+                    Debug.Log("alors ?");
+
+                    if (pillarToActivate.Count == 0)
+                    {
+                        Debug.Log("aller");
+                        Instantiate(fragment, transform.position, rotation);
+                        GetComponent<FragmentDistributor>().enabled = false;
+                    }
+                }
             }
         }
     }
