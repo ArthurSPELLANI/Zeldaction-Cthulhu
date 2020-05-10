@@ -71,8 +71,39 @@ namespace Player
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                ResetPlayer();
+            }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                LevelManager.Instance.Town();
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                LevelManager.Instance.LightForest1();
+            }
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                LevelManager.Instance.DarkForest();
+            }
+
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                LevelManager.Instance.Cave();
+            }
+
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                LevelManager.Instance.CorruptedForest();
+            }
+
+            if (Input.GetKeyDown(KeyCode.N))
+            {
                 LevelManager.Instance.TownDestroyed();
             }
+
         }
 
         public void ResetPlayer()

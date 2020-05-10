@@ -30,6 +30,7 @@ namespace LevelDesign
         {
             RespawnList();
             player = PlayerManager.Instance.gameObject;
+            rb = player.GetComponentInChildren<Rigidbody2D>();
         }
 
         void Update()

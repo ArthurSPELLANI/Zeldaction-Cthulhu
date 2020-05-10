@@ -46,7 +46,12 @@ namespace Game
             }
         }
 
-
+        public void Town()
+        {
+            SceneManager.LoadScene("01_Town");
+            PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            PlayerManager.Instance.ResetPlayer();
+        }
 
         public void PlayestHub()
         {
