@@ -25,6 +25,7 @@ namespace Player
         public GameObject bullet;
         public float shootCooldown;
         public int ammunitions = 3;
+        public GameObject spawnBullet;
 
         Animator animator;
 
@@ -64,6 +65,8 @@ namespace Player
                     ExitShoot();
                 }
             }
+
+
 
         }
 
@@ -113,7 +116,7 @@ namespace Player
         {
             StartCoroutine(ShootDelay());
             ammunitions -= 1;
-            Instantiate(bullet, this.transform.position, rotation);
+            Instantiate(bullet, spawnBullet.transform.position, rotation);
             AudioManager.Instance.Play("tir");
         }
 

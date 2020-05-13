@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using Game;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering;
 using AudioManaging;
@@ -13,12 +14,14 @@ public class NegativeEffects : MonoBehaviour
     public Light2D globalLight;
     public Volume volume;
 
-
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
-        globalLight.intensity = PlayerManager.Instance.playerShadowMode.sanity / PlayerManager.Instance.playerShadowMode.maxSanity;
-        playerLight.intensity = 1 - globalLight.intensity;
+        playerLight.intensity = 1 - GameManager.Instance.globalLight.intensity;
 
         if(PlayerManager.Instance.playerShadowMode.maxSanity >= 75)
         {

@@ -14,7 +14,7 @@ public class Dialog : MonoBehaviour
     //public GameObject Button;
     void Update()
     {
-      if (Input.GetKeyDown(KeyCode.E) && playerInRange)
+        if (Input.GetButtonDown("Interract"))
         {
             if (dialogBox.activeInHierarchy)
             {
@@ -23,7 +23,7 @@ public class Dialog : MonoBehaviour
             else
             {
                 dialogBox.SetActive(true);
-                dialogText.text = dialog;
+                //dialogText.text = dialog;
             }
         }
     }
