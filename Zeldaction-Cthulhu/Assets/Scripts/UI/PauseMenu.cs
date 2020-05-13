@@ -21,7 +21,7 @@ namespace Menu
 
         PauseMenu Instance;
 
-        //public WorldSave worldSaveScript;
+        public WorldSave worldSaveScript;
 
         public GameObject myButton;
 
@@ -76,6 +76,7 @@ namespace Menu
             gameIsPaused = true;
             EventSystem.current.SetSelectedGameObject(myButton);
             shadowModeGo.SetActive(false);
+
             attackBehaviorGo.GetComponent<PlayerAttack>().cantAttack = true;
             attackBehaviorGo.GetComponent<PlayerShoot>().canShoot = false;
             movementBehaviorGo.GetComponent<PlayerMovement>().canMove = false;
@@ -83,13 +84,12 @@ namespace Menu
 
         public void LoadMenu()
         {
-
             playerSaveScript.Save();
-            //worldSaveScript.SavePillar();
-            //worldSaveScript.SaveFragment();
+            worldSaveScript.SavePillar();
+            worldSaveScript.SaveFragment();
 
             Time.timeScale = 1f;
-            SceneManager.LoadScene("TestMenu");
+            SceneManager.LoadScene(0);
         }
 
         public void QuitGame()
@@ -97,8 +97,8 @@ namespace Menu
             Debug.Log("You Quit");
 
             playerSaveScript.Save();
-            //worldSaveScript.SavePillar();
-            //worldSaveScript.SaveFragment();
+            worldSaveScript.SavePillar();
+            worldSaveScript.SaveFragment();
 
             Application.Quit();
         }

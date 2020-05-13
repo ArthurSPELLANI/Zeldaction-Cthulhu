@@ -30,15 +30,12 @@ public class FragmentDistributor : MonoBehaviour
         {
             for (int i = 0; i < pillarToActivate.Count; i++)
             {
-                Debug.Log("test");
                 if (pillarToActivate[i].gameObject.activeSelf == true)
                 {
                     pillarToActivate.Remove(pillarToActivate[i]);
-                    Debug.Log("alors ?");
 
                     if (pillarToActivate.Count == 0)
                     {
-                        Debug.Log("aller");
                         Instantiate(fragment, transform.position, rotation);
                         GetComponent<FragmentDistributor>().enabled = false;
                     }
