@@ -156,9 +156,61 @@ namespace Game
         {
             SceneManager.LoadScene("10_DarkForest");
             PlayerManager.Instance.transform.position = new Vector3(5.5f, 4);
+        }        
+
+        public void Playtest_2()
+        {
+            SceneManager.LoadScene("II. Attaque corps-à-corps");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -3.5f);
         }
 
+        public void Playtest_3()
+        {
+            SceneManager.LoadScene("III. Attaque à distance");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -3.5f);
+        }
 
+        public void Playtest_4()
+        {
+            SceneManager.LoadScene("IV. Phase de combat réel (ennemis introduit 1 par 1)");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4);
+        }
+
+        public void Playtest_5()
+        {
+            SceneManager.LoadScene("V & VI. Test de puzzle - Rail & Laser Beam");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+        }
+
+        public void Playtest_7()
+        {
+            SceneManager.LoadScene("VII & VIII. Ombre - Déplacement - Téléportation perso");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+        }
+
+        public void Playtest_9()
+        {
+            SceneManager.LoadScene("VIX. Ombre - Téléportation ennemi");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+        }
+
+        public void Playtest_10()
+        {
+            SceneManager.LoadScene("X. Test Puzzle - Ombre chargée");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+        }
+
+        public void Playtest_11()
+        {
+            SceneManager.LoadScene("XI. Test de combat avec l'ombre - multiple");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+        }
+
+        public void Playtest_12()
+        {
+            SceneManager.LoadScene("XII. Test du boss");
+            PlayerManager.Instance.transform.position = new Vector3(-6.5f, -2.5f);
+        }
 
     }
 }
