@@ -9,10 +9,31 @@ namespace Menu
 {
     public class MainMenu : MonoBehaviour
     {
+        //Scene currentScene;
+        private string saveName;
+        float posX;
+        float posY;
 
         public void ResumeGame()
         {
-            LevelManager.Instance.LaunchGame();
+            //LevelManager.Instance.LaunchGame();
+
+            if (PlayerPrefs.HasKey("scene"))
+            {
+                Debug.Log("scene Detected");
+                saveName = PlayerPrefs.GetString("scene");
+                SceneManager.LoadScene(saveName);
+
+                posX = PlayerPrefs.GetFloat("positionX");
+                posY = PlayerPrefs.GetFloat("positionY");
+
+                //PlayerManager.Instance.transform.position = new Vector3(posX, posY, 0f);
+                //PlayerManager.Instance.LoadPlayer();
+            }
+            else
+            {
+                Debug.Log("Don't have any save");
+            }
         }
 
         public void NewGame()
@@ -22,9 +43,8 @@ namespace Menu
             //Fenetre de confimation
 
             PlayerPrefs.DeleteAll();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1));
 
-            //Reset la sauvegarde du joueur
         }
 
         public void QuitGame()

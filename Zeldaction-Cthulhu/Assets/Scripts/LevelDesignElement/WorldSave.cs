@@ -51,7 +51,7 @@ public class WorldSave : MonoBehaviour
 
         PlayerPrefs.Save();
     }
-    public void SaveFragement()
+    public void SaveFragment()
     {
         foreach (GameObject f in Fragement)
         {

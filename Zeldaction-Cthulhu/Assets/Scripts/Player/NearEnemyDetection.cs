@@ -20,11 +20,15 @@ namespace Player
 
         void Update()
         {
-            if (Detection.IsTouchingLayers(EnemyLayer))
-                musicManager.isOnFight = true;
+            if(musicManager != null)
+            {
+                if (Detection.IsTouchingLayers(EnemyLayer))
+                    musicManager.isOnFight = true;
 
-             if (!Detection.IsTouchingLayers(EnemyLayer))
-                musicManager.isOnFight = false;
+                if (!Detection.IsTouchingLayers(EnemyLayer))
+                    musicManager.isOnFight = false;
+            }
+            
 
         }
     }

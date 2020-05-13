@@ -30,6 +30,7 @@ namespace Game
         {
             if (PlayerPrefs.HasKey("Scene"))
             {
+                Debug.Log("Scene Detected");
                 currentScene.name = PlayerPrefs.GetString("scene");
                 SceneManager.LoadScene("scene");
 
@@ -40,9 +41,10 @@ namespace Game
             }
             else
             {
-                SceneManager.LoadScene("01_Town"); //je connais pas le nom de la première scene
-                PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
-                PlayerManager.Instance.ResetPlayer();
+                Debug.Log("No Scene Detected");
+                SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1));
+                //PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+                //PlayerManager.Instance.ResetPlayer();
             }
         }
 

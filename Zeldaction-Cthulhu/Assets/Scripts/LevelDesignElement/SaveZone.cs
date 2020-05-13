@@ -19,7 +19,7 @@ public class SaveZone : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            worldSave.SaveFragement();
+            worldSave.SaveFragment();
             worldSave.SavePillar();
             playerSave.Save();
         }

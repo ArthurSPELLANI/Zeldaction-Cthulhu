@@ -27,6 +27,7 @@ namespace Player
                 //Stock la scene dans laquelle se trouve le joueur
                 currentScene = SceneManager.GetActiveScene();
                 PlayerPrefs.SetString("scene", currentScene.name);
+                Debug.Log("sauvegarde effectuée " + currentScene.name);
 
                 //Stock la position du joueur
                 player = PlayerManager.Instance.gameObject;
