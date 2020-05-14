@@ -190,8 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sanityGainLight: 8
   range: {fileID: 413383329}
-  lightsource:
-  - {fileID: 0}
+  lightsource: []
 --- !u!58 &413383329
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -114,6 +114,11 @@ namespace Player
             playerShoot.ammunitions = 6;
         }
 
+        public void ResetPosition()
+        {
+            gameObject.transform.position = nativePosition;
+        }
+
         //fonction à lancer pour load le player avec ses stats sauvegardées
         public void LoadPlayer()
         {

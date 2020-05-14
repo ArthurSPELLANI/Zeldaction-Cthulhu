@@ -13,6 +13,9 @@ public class UIAmmunitions : MonoBehaviour
     public Sprite emptyBullet;
     public Image backBullet;
 
+    int healNumber;
+    public Text healText;
+
     bool isShooting = false;
 
 
@@ -26,12 +29,16 @@ public class UIAmmunitions : MonoBehaviour
         ammo = PlayerManager.Instance.playerShoot.ammunitions -1;
         isShooting = PlayerManager.Instance.playerShoot.isAiming;
 
-        if (isShooting == true)
+        healNumber = PlayerManager.Instance.playerStats.healNumber;
+        healText.text = healNumber.ToString();
+
+
+        /*if (isShooting == true)
         {
             backBullet.gameObject.SetActive(true);
         }
         else
-            backBullet.gameObject.SetActive(false);
+            backBullet.gameObject.SetActive(false);*/
 
         for (int i = 0; i < bullets.Length; i++)
         {

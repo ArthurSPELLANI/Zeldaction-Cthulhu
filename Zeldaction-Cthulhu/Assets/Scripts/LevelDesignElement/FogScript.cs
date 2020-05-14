@@ -11,7 +11,7 @@ public class FogScript : MonoBehaviour
 
     void Start()
     {
-        shadowColliBox = GameObject.Find("Shadow").GetComponent<Collider2D>();
+        shadowColliBox = PlayerManager.Instance.playerShadowMode.GetComponentInChildren<CapsuleCollider2D>();
         playerShadowMode = PlayerManager.Instance.playerShadowMode;
     }
 

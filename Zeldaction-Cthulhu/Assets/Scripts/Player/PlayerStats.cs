@@ -93,7 +93,8 @@ namespace Player
                 if (playerCurrentHealth <= 0)
                 {
                     //Destroy(player);
-                    LevelManager.Instance.PlayestHub();
+                    LevelManager.Instance.LoadCurrentScene();
+                    PlayerManager.Instance.ResetPosition();
                     PlayerManager.Instance.ResetPlayer();
                 }
 
@@ -120,6 +121,8 @@ namespace Player
             {
                 playerCurrentHealth += 2;
             }
+
+            healNumber -= 1;
 
             PlayerManager.Instance.playerMovement.speed = 60;
         }

@@ -16,10 +16,10 @@ namespace Game
 
         private void Update()
         {
-            /*if (Input.GetKeyDown(KeyCode.Return))
-            {
-                PlayestHub();
-            }*/
+            if (Input.GetKeyDown(KeyCode.Return))
+            {               
+                Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);                
+            }
         }
 
         //Fonction à lancer au début du jeu pour utiliser les sauvegardes
@@ -48,6 +48,11 @@ namespace Game
             }
         }
 
+        public void LoadCurrentScene()
+        {
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        }
+
         public void Town()
         {
             SceneManager.LoadScene("01_Town");
@@ -65,7 +70,8 @@ namespace Game
         public void DarkForest()
         {
             SceneManager.LoadScene("10_DarkForest");
-            PlayerManager.Instance.transform.position = new Vector3(6, -23);           
+            PlayerManager.Instance.transform.position = new Vector3(6, -23);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void LightForest1()
@@ -90,6 +96,7 @@ namespace Game
         {
             SceneManager.LoadScene("11_Cave");
             PlayerManager.Instance.transform.position = new Vector3(0.9f, -8);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void InnInterior()
@@ -162,54 +169,63 @@ namespace Game
         {
             SceneManager.LoadScene("II. Attaque corps-à-corps");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -3.5f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void Playtest_3()
         {
             SceneManager.LoadScene("III. Attaque à distance");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -3.5f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void Playtest_4()
         {
             SceneManager.LoadScene("IV. Phase de combat réel (ennemis introduit 1 par 1)");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void Playtest_5()
         {
             SceneManager.LoadScene("V & VI. Test de puzzle - Rail & Laser Beam");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void Playtest_7()
         {
             SceneManager.LoadScene("VII & VIII. Ombre - Déplacement - Téléportation perso");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void Playtest_9()
         {
             SceneManager.LoadScene("VIX. Ombre - Téléportation ennemi");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void Playtest_10()
         {
             SceneManager.LoadScene("X. Test Puzzle - Ombre chargée");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void Playtest_11()
         {
             SceneManager.LoadScene("XI. Test de combat avec l'ombre - multiple");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -4f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
         public void Playtest_12()
         {
             SceneManager.LoadScene("XII. Test du boss");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -2.5f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
     }
