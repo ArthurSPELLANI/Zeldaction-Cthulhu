@@ -10,11 +10,12 @@ namespace Enemy
 	public class EnemyBasicBehavior : MonoBehaviour
 	{
         public int enemyMaxHealth;
-        [SerializeField] public int enemyCurrentHealth;
+        public int enemyCurrentHealth;
         public int enemyDamage;
 
         public GameObject fieldOfView;
         public GameObject preDetectionPath;
+        private GameObject behavior;
         private int childNbr;
         public Transform[] path;
         private int currentWaypoint = 0;
@@ -42,29 +43,27 @@ namespace Enemy
         private Vector2 vecThrow;
 
         public Animator enemyAnimator;
-        [HideInInspector]public Vector2 animDirection;
+        [HideInInspector] public Vector2 animDirection;
         [SerializeField] public Animator catchAnimator;
         SpriteRenderer catchSprite;
-        
 
         public float scratchChance;
 
         Material defaultMaterial;
-        public Material blackMaterial;
-        public Material whiteMaterial;
 
         public float knockbackDuration;
         public AnimationCurve knockbackForceModifier;
 
         public bool isStunned = false;
-        float timestampStun;
-        float coolDownStun = 3f;
+        private float timestampStun;
+        public float HitStunDuration;
 
         void Awake()
 		{
             enemyCurrentHealth = enemyMaxHealth;
             childNbr = preDetectionPath.transform.childCount;
             EnemyRb = GetComponent<Rigidbody2D>();
+            behavior = transform.GetChild(2).gameObject;
             catchAnimator = GetComponent<Animator>();
             catchSprite = GetComponent<SpriteRenderer>();
             defaultMaterial = GetComponentInChildren<SpriteRenderer>().material;
@@ -73,18 +72,33 @@ namespace Enemy
 		void Start()
 		{
             LookingForPath();
-            defaultMaterial = GetComponentInChildren<SpriteRenderer>().material;
         }
 
 		void Update()
 		{
-            if(timestampStun <= Time.time)
+            if(timestampStun <= Time.time && isStunned == true)
             {
+                Debug.Log("fin du stun");
                 isStunned = false;
                 canMove = true;
-                if(fieldOfView.GetComponent<PlayerDetection>().isDetected == true)
+
+                if (enemyCurrentHealth > 0)
                 {
-                    fieldOfView.GetComponent<PlayerDetection>().behavior.SetActive(true);
+                    if (behavior.name == "WolfBehavior")
+                    {
+                        behavior.GetComponent<WolfBehavior>().canMove = true;
+                    }
+                    else if (behavior.name == "DistBehavior")
+                    {
+                        behavior.GetComponent<DistBehavior>().canMove = true;
+                    }
+                }
+
+
+
+                if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
+                {
+                    fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
                 }                
             }
 
@@ -151,9 +165,9 @@ namespace Enemy
         /// <param name="playerDamage"></param>
         public void TakeDamage(int playerDamage, Vector3 sourcePos, float pushForce)
         {
-            
             enemyCurrentHealth -= playerDamage;
 
+            //Si le joueur n'est pas encore detecter par l'enemy, il le devient.
             if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
             {
                 fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
@@ -161,6 +175,7 @@ namespace Enemy
 
             StartCoroutine(Knockback(sourcePos, pushForce));
             StartCoroutine(hitFrames());
+
 
             //son de prise de dégâts
             if (gameObject.transform.parent.gameObject.CompareTag("Loup") && enemyCurrentHealth > 0)
@@ -171,7 +186,6 @@ namespace Enemy
             {
                 AudioManager.Instance.Play("priseDeDegatsRanged");
             }
-
 
         }
 
@@ -230,6 +244,7 @@ namespace Enemy
             PlayerManager.Instance.playerShadowMode.sanity -= sanityDamage;
         }
 
+        
         public void SanityReward()
         {
             PlayerManager.Instance.playerShadowMode.sanity += sanityReward;
@@ -256,13 +271,39 @@ namespace Enemy
             fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
         }
 
-        public void EnemyStun()
+        public void EnemyStun(float coolDownStun)
         {
             isStunned = true;
             canMove = false;
             timestampStun = Time.time + coolDownStun;
             EnemyRb.velocity = new Vector2(0, 0);
-            fieldOfView.GetComponent<PlayerDetection>().behavior.SetActive(false);
+
+            if (behavior.name == "WolfBehavior")
+            {
+                behavior.GetComponent<WolfBehavior>().CancelAllCouritines();
+
+                behavior.GetComponent<WolfBehavior>().canMove = false;
+                behavior.GetComponent<WolfBehavior>().isAttacking = false;
+                behavior.GetComponent<WolfBehavior>().wolfAnimator.SetBool("isAttacking", false);
+
+                GetComponent<CapsuleCollider2D>().isTrigger = false;
+                behavior.GetComponent<CircleCollider2D>().isTrigger = false;
+                
+            }
+            else if (behavior.name == "DistBehavior")
+            {
+                behavior.GetComponent<DistBehavior>().CancelAllCoroutines();
+
+                behavior.GetComponent<DistBehavior>().canMove = false;
+                behavior.GetComponent<DistBehavior>().servantAnimator.SetBool("isAttacking", false);
+            }
+            else if (behavior.name == "ExploBehavior")
+            {
+                behavior.GetComponent<ExploBehavior>().canMove = false;
+                //faire fonctionner pour l'explo
+            }
+            
+            //fieldOfView.GetComponent<PlayerDetection>().behavior.SetActive(false);
         }
 
 
@@ -279,6 +320,16 @@ namespace Enemy
             }
 
             EnemyRb.velocity = new Vector2(0, 0) * 0 * Time.deltaTime;
+
+            if (!isStunned)
+            {
+                EnemyStun(HitStunDuration);
+            }
+            else
+            {
+                EnemyStun(HitStunDuration/2);
+            }
+            
         }
 
         IEnumerator hitFrames()

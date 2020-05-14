@@ -313,14 +313,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.0308249, y: 1.4424286}
-      - {x: -0.48268676, y: 1.2109985}
-      - {x: -0.68908894, y: 0.3508997}
-      - {x: -0.539417, y: -0.4185996}
-      - {x: 0.039963722, y: -0.7247429}
-      - {x: 0.685683, y: -0.41418362}
-      - {x: 0.7813833, y: 0.40027285}
-      - {x: 0.5639541, y: 1.1998148}
+    - - {x: 0.0023665428, y: 1.6131787}
+      - {x: -0.58229136, y: 1.2679152}
+      - {x: -0.93098474, y: 0.49319172}
+      - {x: -0.7528546, y: -0.54666233}
+      - {x: -0.0027234554, y: -0.89549255}
+      - {x: 0.7852869, y: -0.599164}
+      - {x: 0.9521332, y: 0.5567937}
+      - {x: 0.606642, y: 1.2709608}
 --- !u!114 &6925617986655589426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +425,7 @@ MonoBehaviour:
   attackDuration: 0.7
   recoilDuration: 1.8
   isAttacking: 0
+  canMove: 1
   wolfAnimator: {fileID: 7491350745673005207}
 --- !u!58 &333263493
 CircleCollider2D:
@@ -510,8 +511,6 @@ MonoBehaviour:
   animDirection: {x: 0, y: 0}
   catchAnimator: {fileID: 1787217355}
   scratchChance: 0
-  blackMaterial: {fileID: 0}
-  whiteMaterial: {fileID: 0}
   knockbackDuration: 0.1
   knockbackForceModifier:
     serializedVersion: 2
@@ -556,6 +555,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   isStunned: 0
+  HitStunDuration: 1.5
 --- !u!50 &6925617987206744222
 Rigidbody2D:
   serializedVersion: 4

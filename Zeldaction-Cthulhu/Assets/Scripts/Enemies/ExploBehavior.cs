@@ -17,7 +17,7 @@ namespace Enemy
 		private int enemyDamage;
 		public GameObject enemyPrefab;
 		private Vector2 direction;
-		private bool canMove = true;
+		[HideInInspector] public bool canMove = true;
 		private bool canExplode = true;
 		private int maxHp;
 		private int currentHp;
@@ -93,7 +93,6 @@ namespace Enemy
 
 		private void Explosion()
 		{
-
 			Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(transform.position, explosionRange, playerLayer);
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRange, enemyLayer);
 
@@ -101,7 +100,9 @@ namespace Enemy
 			AudioManager.Instance.Play("explosion");
 			AudioManager.Instance.Stop("prexplosion");
 
+			exploAnimator.SetBool("isRunning", false);
 			exploAnimator.SetBool("isExploding", true);
+			
 
 			foreach (Collider2D player in hitPlayer)
 			{
@@ -118,16 +119,13 @@ namespace Enemy
 				else if (enemy.CompareTag("Boss"))
 				{
 					enemy.transform.parent.GetComponentInChildren<Phase2Pattern1>().ExploHitBoss();
-				}
-				
+				}	
 			}
         
             if(GetComponentInParent<EnemyBasicBehavior>().isMarked == true)
             {
                 GetComponentInParent<EnemyBasicBehavior>().SanityReward();
             }
-
-			
 		}
 
 		private void OnDrawGizmosSelected()
