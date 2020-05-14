@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using AudioManaging;
 using Menu;
+using Game;
+using XInputDotNetPure; //controler Shake
 
 namespace Player
 {
@@ -89,6 +91,7 @@ namespace Player
                 else if (ammunitions == 0)
                 {
                     AudioManager.Instance.Play("tirVide");
+                    StartCoroutine(ShootShake(0.1f, 0.1f));
                 }
             }
 
@@ -118,6 +121,9 @@ namespace Player
             ammunitions -= 1;
             Instantiate(bullet, spawnBullet.transform.position, rotation);
             AudioManager.Instance.Play("tir");
+            StartCoroutine(ShootShake(0.1f, 1f));
+            StartCoroutine(CameraManager.Instance.MainCameraShake(0.2f,2f,0.2f));
+            Debug.Log("yes");
         }
 
         IEnumerator ShootDelay()
@@ -127,6 +133,17 @@ namespace Player
             animator.SetBool("isShooting", false);
             yield return new WaitForSeconds(shootCooldown);
             canShoot = true;            
+        }
+
+
+        PlayerIndex playerIndex = default;
+        IEnumerator ShootShake(float time, float magnitude)
+        {
+            GamePad.SetVibration(playerIndex, magnitude, magnitude);
+
+            yield return new WaitForSecondsRealtime(time);
+
+            GamePad.SetVibration(playerIndex, 0f, 0f);
         }
 
     }

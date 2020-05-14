@@ -4,6 +4,7 @@ using UnityEngine;
 using Player;
 using Shadow;
 using Enemy;
+using XInputDotNetPure;
 
 namespace PillarSystem
 {
@@ -256,6 +257,24 @@ namespace PillarSystem
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, loadFogDistance);
         }
+
+        void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.layer == 15)
+            {
+                StartCoroutine(Shake());
+            }
+        }
+        PlayerIndex playerIndex = default;
+        IEnumerator Shake()
+        {
+            GamePad.SetVibration(playerIndex, 0.3f, 0.3f);
+
+            yield return new WaitForSecondsRealtime(0.1f);
+
+            GamePad.SetVibration(playerIndex, 0f, 0f);
+        }
     }
+
 
 }
