@@ -5,7 +5,7 @@ using Player;
 
 public class FogScript : MonoBehaviour
 {
-    Collider2D shadowColliBox;
+    CapsuleCollider2D shadowColliBox;
     PlayerShadowMode playerShadowMode;
     public float timeBeforeShadowExit;
 

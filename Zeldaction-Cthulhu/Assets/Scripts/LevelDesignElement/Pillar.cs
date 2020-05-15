@@ -78,7 +78,8 @@ namespace PillarSystem
             //Activation/désactivation du fog.
             if (playerShadowMode.isShadowActivated && !isCharged && useFog && !Fog.activeSelf)
             {
-                shadow = GameObject.Find("Shadow");
+                //shadow = GameObject.Find("Shadow");
+                shadow = PlayerManager.Instance.playerShadowMode.shadowObject;
                 shadowPillarDistance = Vector2.Distance(shadow.transform.position, transform.position);
 
                 if (shadowPillarDistance < loadFogDistance)
@@ -148,7 +149,7 @@ namespace PillarSystem
         void GetShadow()
         {
             weGotShadow = true;
-            shadowColliBox = GameObject.Find("Shadow").GetComponent<Collider2D>();
+            shadowColliBox = PlayerManager.Instance.playerShadowMode.shadowObject.GetComponent<Collider2D>();
         }
 
         //fonction qui prend la charge du pillier, le paramètre signifie que l'action est le résultat de l'utilisation de la shadow ou pas
