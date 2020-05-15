@@ -48,6 +48,11 @@ namespace Player
             playerStats = GetComponentInChildren<PlayerStats>();
             playerShoot = GetComponentInChildren<PlayerShoot>();
             nearEnemyDetection = GetComponentInChildren<NearEnemyDetection>();
+
+            if (PlayerPrefs.HasKey("scene"))
+            {
+                LoadPlayer();
+            }
         }
 
         void Start()
@@ -120,8 +125,15 @@ namespace Player
         }
 
         //fonction à lancer pour load le player avec ses stats sauvegardées
+        float posX;
+        float posY;
         public void LoadPlayer()
         {
+            posX = PlayerPrefs.GetFloat("positionX");
+            posY = PlayerPrefs.GetFloat("positionY");
+
+            transform.position = new Vector3(posX, posY, 0f);
+
             playerStats.playerCurrentHealth = PlayerPrefs.GetInt("life");
             playerStats.healNumber = PlayerPrefs.GetInt("healNumber");
             playerShoot.ammunitions = PlayerPrefs.GetInt("bulletNumber");

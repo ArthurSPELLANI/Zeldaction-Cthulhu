@@ -6,33 +6,37 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Game;
 using Player;
+using Management;
 
 
 namespace Menu
 {
-    public class PauseMenu : MonoBehaviour
+    public class PauseMenu : Singleton<PauseMenu>
     {
         public static bool gameIsPaused = false;
         public GameObject PauseMenuUI;
-        public PlayerSave playerSaveScript;
         public GameObject shadowModeGo;
         public GameObject attackBehaviorGo;
         public GameObject movementBehaviorGo;
 
-        PauseMenu Instance;
-
+        public GameObject Save;
         public WorldSave worldSaveScript;
+        public PlayerSave playerSaveScript;
 
         public GameObject myButton;
 
         private void Awake()
         {
-            if (Instance == null)
+            MakeSingleton(true);
+        }
+
+        void Start()
+        {
+            if (Save != null)
             {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
+                worldSaveScript = Save.GetComponent<WorldSave>();
+                playerSaveScript = Save.GetComponent<PlayerSave>();
             }
-            else Destroy(gameObject);
         }
 
         void Update()
