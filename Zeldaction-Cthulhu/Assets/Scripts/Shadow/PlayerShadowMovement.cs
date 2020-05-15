@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enemy;
 
 namespace Player
 {
@@ -100,6 +101,16 @@ namespace Player
             animator.SetFloat("Vertical", currentDirection.y);
 
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Enemy" && PlayerManager.Instance.playerShadowMode.isCharged == true)
+            {
+                collision.GetComponent<EnemyBasicBehavior>().EnemyStun();
+            }
+        }
+
+
     }
 }
 

@@ -26,6 +26,8 @@ namespace PillarSystem
         public bool useFog;
         Vector2 pillarPos;
         Vector2 pillarMove;
+        float sanityGain = 10f;
+
 
         public float loadFogDistance;
         private float shadowPillarDistance;
@@ -178,7 +180,10 @@ namespace PillarSystem
             StartCoroutine(ChargeCooldown());
 
             if (shadow)
+            {
+                playerShadowMode.sanity += sanityGain;
                 playerShadowMode.isCharged = false;
+            }
         }
 
         //délais avant que le joueur puisse inéragir avec le pillier
