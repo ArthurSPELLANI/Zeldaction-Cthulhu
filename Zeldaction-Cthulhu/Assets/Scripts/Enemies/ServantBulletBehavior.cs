@@ -25,7 +25,7 @@ namespace Enemy
         void Awake()
         {
             bulletRb = GetComponent<Rigidbody2D>();
-            player = GameObject.Find("Player");
+            player = PlayerManager.Instance.gameObject;
             target = player.transform;
         }
 

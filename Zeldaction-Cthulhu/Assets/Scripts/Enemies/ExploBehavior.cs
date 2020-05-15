@@ -78,7 +78,6 @@ namespace Enemy
 			//son
 			AudioManager.Instance.Play("prexplosion");
 
-			Debug.Log("it's gonna be bim boom");
 			if (currentHp > 0)
 			{
 				yield return new WaitForSeconds(explosionTime);

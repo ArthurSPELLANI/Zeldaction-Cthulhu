@@ -58,6 +58,14 @@ namespace Enemy
         private float timestampStun;
         public float HitStunDuration;
 
+        public float loseAggroDistance;
+        private float distanceToPlayer;
+        private Transform playerTransform;
+        private float timestampAggro;
+        public float timeBeforeLoseAggro;
+        private bool losingPlayer = false;
+
+
         void Awake()
 		{
             enemyCurrentHealth = enemyMaxHealth;
@@ -67,6 +75,8 @@ namespace Enemy
             catchAnimator = GetComponent<Animator>();
             catchSprite = GetComponent<SpriteRenderer>();
             defaultMaterial = GetComponentInChildren<SpriteRenderer>().material;
+
+            playerTransform = PlayerManager.Instance.transform;
         }
 
 		void Start()
@@ -78,7 +88,6 @@ namespace Enemy
 		{
             if(timestampStun <= Time.time && isStunned == true)
             {
-                Debug.Log("fin du stun");
                 isStunned = false;
                 canMove = true;
 
@@ -93,8 +102,6 @@ namespace Enemy
                         behavior.GetComponent<DistBehavior>().canMove = true;
                     }
                 }
-
-
 
                 if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
                 {
@@ -137,6 +144,75 @@ namespace Enemy
                         }
 
                     }
+                    //Tout le code qui suit gère l'aggro du mob 
+                    else
+                    {
+                        if(enemyCurrentHealth > 0)
+                        {
+                            distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+
+                            if (distanceToPlayer > loseAggroDistance)
+                            {
+                                fieldOfView.GetComponent<PlayerDetection>().isDetected = false;
+                                fieldOfView.GetComponent<PolygonCollider2D>().enabled = true;
+
+                                #region Stop current attack if the player leave aggro during enemy attack
+                                if (behavior.name == "WolfBehavior")
+                                {
+                                    behavior.GetComponent<WolfBehavior>().CancelAllCouritines();
+
+                                    behavior.GetComponent<WolfBehavior>().canMove = true;
+                                    canMove = true;
+                                    behavior.GetComponent<WolfBehavior>().isAttacking = false;
+                                    behavior.GetComponent<WolfBehavior>().wolfAnimator.SetBool("isAttacking", false);
+
+                                    GetComponent<CapsuleCollider2D>().isTrigger = false;
+                                    behavior.GetComponent<CircleCollider2D>().isTrigger = false;
+
+                                }
+                                else if (behavior.name == "DistBehavior")
+                                {
+                                    behavior.GetComponent<DistBehavior>().CancelAllCoroutines();
+
+                                    behavior.GetComponent<DistBehavior>().canMove = true;
+                                    canMove = true;
+                                    behavior.GetComponent<DistBehavior>().servantAnimator.SetBool("isAttacking", false);
+                                }
+                                #endregion
+
+                                behavior.SetActive(false);
+                                losingPlayer = false;
+
+
+                            }
+                            else if (distanceToPlayer > loseAggroDistance / 1.5f && distanceToPlayer < loseAggroDistance)
+                            {
+                                if (!losingPlayer)
+                                {
+                                    timestampAggro = Time.time + timeBeforeLoseAggro;
+                                    losingPlayer = true;
+                                }
+
+                                if (timestampAggro <= Time.time)
+                                {
+                                    fieldOfView.GetComponent<PlayerDetection>().isDetected = false;
+                                    fieldOfView.GetComponent<PolygonCollider2D>().enabled = true;
+                                    behavior.SetActive(false);
+                                    losingPlayer = false;
+                                }
+                            }
+                        
+                        }
+                        else
+                        {
+                            losingPlayer = false;
+                        }
+                    }
+
+
+
+
+
                     if (canMove == true)
                     {
                         enemyAnimator.SetBool("isRunning", true);
@@ -165,26 +241,29 @@ namespace Enemy
         /// <param name="playerDamage"></param>
         public void TakeDamage(int playerDamage, Vector3 sourcePos, float pushForce)
         {
-            enemyCurrentHealth -= playerDamage;
-
-            //Si le joueur n'est pas encore detecter par l'enemy, il le devient.
-            if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
+            if (enemyCurrentHealth > 0)
             {
-                fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
-            }
+                enemyCurrentHealth -= playerDamage;
 
-            StartCoroutine(Knockback(sourcePos, pushForce));
-            StartCoroutine(hitFrames());
+                //Si le joueur n'est pas encore detecter par l'enemy, il le devient.
+                if (fieldOfView.GetComponent<PlayerDetection>().isDetected == false)
+                {
+                    fieldOfView.GetComponent<PlayerDetection>().isDetected = true;
+                }
+
+                StartCoroutine(Knockback(sourcePos, pushForce));
+                StartCoroutine(hitFrames());
 
 
-            //son de prise de dégâts
-            if (gameObject.transform.parent.gameObject.CompareTag("Loup") && enemyCurrentHealth > 0)
-            {
-                AudioManager.Instance.Play("priseDeDegatsLoup");
-            }
-            else if (gameObject.transform.parent.gameObject.CompareTag("Range") && enemyCurrentHealth > 0)
-            {
-                AudioManager.Instance.Play("priseDeDegatsRanged");
+                //son de prise de dégâts
+                if (gameObject.transform.parent.gameObject.CompareTag("Loup") && enemyCurrentHealth > 0)
+                {
+                    AudioManager.Instance.Play("priseDeDegatsLoup");
+                }
+                else if (gameObject.transform.parent.gameObject.CompareTag("Range") && enemyCurrentHealth > 0)
+                {
+                    AudioManager.Instance.Play("priseDeDegatsRanged");
+                }
             }
 
         }
@@ -276,7 +355,7 @@ namespace Enemy
             isStunned = true;
             canMove = false;
             timestampStun = Time.time + coolDownStun;
-            EnemyRb.velocity = new Vector2(0, 0);
+            EnemyRb.velocity = Vector2.zero;
 
             if (behavior.name == "WolfBehavior")
             {
@@ -300,16 +379,20 @@ namespace Enemy
             else if (behavior.name == "ExploBehavior")
             {
                 behavior.GetComponent<ExploBehavior>().canMove = false;
-                //faire fonctionner pour l'explo
             }
             
-            //fieldOfView.GetComponent<PlayerDetection>().behavior.SetActive(false);
         }
 
 
         IEnumerator Knockback(Vector3 sourcePos, float pushForce)
         {
             float timer = 0.0f;
+
+            //pour que le knockback soit moins violent à la mort de l'ennemi
+            if (enemyCurrentHealth <= 0)
+            {
+                pushForce /= 4;
+            }
 
             while (timer < knockbackDuration)
             {
@@ -319,15 +402,16 @@ namespace Enemy
                 yield return null;
             }
 
-            EnemyRb.velocity = new Vector2(0, 0) * 0 * Time.deltaTime;
-
-            if (!isStunned)
+            if (enemyCurrentHealth > 0)
             {
-                EnemyStun(HitStunDuration);
-            }
-            else
-            {
-                EnemyStun(HitStunDuration/2);
+                if (!isStunned)
+                {
+                    EnemyStun(HitStunDuration);
+                }
+                else
+                {
+                    EnemyStun(HitStunDuration / 2);
+                }
             }
             
         }
@@ -365,6 +449,20 @@ namespace Enemy
         public void CatchOut()
         {
             catchAnimator.SetBool("isDesactivated", true);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            
+            if(fieldOfView.GetComponent<PlayerDetection>().isDetected == true && enemyCurrentHealth > 0)
+            {
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawWireSphere(transform.position, loseAggroDistance);
+
+                Gizmos.color = Color.blue;
+                Gizmos.DrawWireSphere(transform.position, loseAggroDistance / 1.5f);
+            }
+            
         }
 
     }

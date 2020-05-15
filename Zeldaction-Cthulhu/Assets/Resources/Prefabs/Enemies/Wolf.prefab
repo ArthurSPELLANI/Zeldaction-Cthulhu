@@ -335,7 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDetected: 0
   behavior: {fileID: 6925617986844400628}
-  alertRange: 2.4
+  alertRange: 2
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -556,6 +556,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   isStunned: 0
   HitStunDuration: 1.5
+  loseAggroDistance: 3.65
+  timeBeforeLoseAggro: 5
 --- !u!50 &6925617987206744222
 Rigidbody2D:
   serializedVersion: 4
@@ -564,11 +566,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6925617987206744217}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 150
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
