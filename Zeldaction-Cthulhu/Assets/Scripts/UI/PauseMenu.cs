@@ -32,11 +32,7 @@ namespace Menu
 
         void Start()
         {
-            if (Save != null)
-            {
-                worldSaveScript = Save.GetComponent<WorldSave>();
-                playerSaveScript = Save.GetComponent<PlayerSave>();
-            }
+
         }
 
         void Update()
@@ -88,9 +84,15 @@ namespace Menu
 
         public void LoadMenu()
         {
-            playerSaveScript.Save();
-            worldSaveScript.SavePillar();
-            worldSaveScript.SaveFragment();
+            if (Save != null)
+            {
+                worldSaveScript = Save.GetComponent<WorldSave>();
+                playerSaveScript = Save.GetComponent<PlayerSave>();
+                playerSaveScript.Save();
+                worldSaveScript.SavePillar();
+                worldSaveScript.SaveFragment();
+            }
+            
 
             Time.timeScale = 1f;
             SceneManager.LoadScene(0);
@@ -100,11 +102,16 @@ namespace Menu
         {
             Debug.Log("You Quit");
 
-            playerSaveScript.Save();
-            worldSaveScript.SavePillar();
-            worldSaveScript.SaveFragment();
+            if (Save != null)
+            {
+                worldSaveScript = Save.GetComponent<WorldSave>();
+                playerSaveScript = Save.GetComponent<PlayerSave>();
+                playerSaveScript.Save();
+                worldSaveScript.SavePillar();
+                worldSaveScript.SaveFragment();
+            }
 
-            Application.Quit();
+                Application.Quit();
         }
     }
 }
