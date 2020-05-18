@@ -5,6 +5,7 @@ using AudioManaging;
 
 namespace Player
 {
+
     public class PlayerMovement : MonoBehaviour
     {
         [Range(0, 100)]
@@ -38,6 +39,9 @@ namespace Player
 
         public AnimationCurve dashCurve;
 
+        public GameObject pufpuf;
+        private bool activePufPuf = false;
+
         void Awake()
         {
                        
@@ -48,7 +52,7 @@ namespace Player
             playerRb = GetComponentInParent<Rigidbody2D>();
             animator = PlayerManager.Instance.playerAnimator;
             animator.SetFloat("Horizontal", 1);
-            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Vertical", 0);         
         }
 
         private void FixedUpdate()
@@ -76,6 +80,17 @@ namespace Player
             if (canMove == false)
             {
                 playerRb.velocity = direction * 0 * Time.fixedDeltaTime;
+                
+            }
+
+            if(canMove == false && activePufPuf == false)
+            {
+                Instantiate(pufpuf);
+                activePufPuf = true;
+            }
+            else
+            {
+                activePufPuf = false;
             }
 
         }
