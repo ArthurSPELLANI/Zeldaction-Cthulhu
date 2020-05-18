@@ -22,7 +22,7 @@ namespace Player
 
         public Vector2 currentDirection;
 
-        Animator animator;
+        public Animator animator;
 
         public bool canMove = true;
 

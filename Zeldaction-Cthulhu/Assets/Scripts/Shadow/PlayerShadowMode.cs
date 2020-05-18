@@ -48,11 +48,12 @@ namespace Player
 
         void Awake()
 	    {
-            timeRef = Time.fixedDeltaTime;            
+            this.enabled = false;     
         }
     
         void OnEnable()
         {
+            timeRef = Time.fixedDeltaTime;
             shadowInput = Input.GetAxisRaw("Shadow");
             player = GameObject.Find("Player");
         }

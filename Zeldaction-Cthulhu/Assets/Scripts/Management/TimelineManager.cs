@@ -52,6 +52,12 @@ public class TimelineManager : MonoBehaviour
         {
             //Debug.Log("Je suis la");
             desactivate = true; // desactivé est true
+            PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0, 0);
+            PlayerManager.Instance.playerMovement.animator.SetBool("IsWalking", false);
+            PlayerManager.Instance.playerMovement.animator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
+            PlayerManager.Instance.playerMovement.animator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
+            PlayerManager.Instance.playerMovement.isWalking = false;
+
             Movement.SetActive(false);
             Attack.SetActive(false);
             ShadowMode.SetActive(false);
@@ -61,6 +67,7 @@ public class TimelineManager : MonoBehaviour
             SanityGauge.SetActive(false);
             Base.SetActive(false);
             ActionPoints.SetActive(false);
+
         }
 
         else if (Timeline.state != PlayState.Playing && desactivate && !isplaying) // bah ici c'est l'inverse d'au dessus, si la timeline est pas joué et que les trucs sont pas ré activé
@@ -115,5 +122,12 @@ public class TimelineManager : MonoBehaviour
         Timeline.Pause();
         SkipDialog(); //on appelle la fonction 
         canSkip = true;
+    }
+
+    public void SetPlayerRight ()
+    {
+        PlayerManager.Instance.playerMovement.currentDirection = new Vector2(1, 0);
+        PlayerManager.Instance.playerMovement.animator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
+        PlayerManager.Instance.playerMovement.animator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
     }
 }
