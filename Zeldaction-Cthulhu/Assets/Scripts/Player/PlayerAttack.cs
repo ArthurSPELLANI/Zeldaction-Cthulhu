@@ -34,10 +34,10 @@ namespace Player
     
     	void Awake()
 	    {
-	        
+            this.enabled = false;
 	    }
-    
-        void Start()
+
+        private void OnEnable()
         {
             animator = PlayerManager.Instance.playerAnimator;
         }

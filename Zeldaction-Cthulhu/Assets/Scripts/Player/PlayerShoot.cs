@@ -40,10 +40,10 @@ namespace Player
 
         void Awake()
 	    {
-	    
+            this.enabled = false;
 	    }
-    
-        void Start()
+
+        private void OnEnable()
         {
             canShoot = true;
             animator = PlayerManager.Instance.playerAnimator;
