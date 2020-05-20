@@ -25,21 +25,21 @@ namespace Enemy
 		void Update()
 		{
 			//Detect in which direction the enemy is going and orientate the field of view in this same direction.
-			if (isDetected == false)
+			if (isDetected == false)
 			{
-				if (enemyRb.velocity.x >= 0.6)
+				if (enemyRb.velocity.x >= 0.6)
 				{
 					transform.eulerAngles = new Vector3(0, 0, 270);
 				}
-				else if (enemyRb.velocity.x <= -0.6)
+				else if (enemyRb.velocity.x <= -0.6)
 				{
 					transform.eulerAngles = new Vector3(0, 0, 90);
 				}
-				else if (enemyRb.velocity.y >= 0.6)
+				else if (enemyRb.velocity.y >= 0.6)
 				{
 					transform.eulerAngles = new Vector3(0, 0, 0);
 				}
-				else if (enemyRb.velocity.y <= -0.6)
+				else if (enemyRb.velocity.y <= -0.6)
 				{
 					transform.eulerAngles = new Vector3(0, 0, 180);
 				}
@@ -50,7 +50,6 @@ namespace Enemy
 					GetComponent<PolygonCollider2D>().enabled = false;
 					behavior.SetActive(true);
 				}
-				
 
             }
 	

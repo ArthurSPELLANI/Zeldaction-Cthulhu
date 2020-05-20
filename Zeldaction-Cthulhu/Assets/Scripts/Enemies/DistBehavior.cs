@@ -33,7 +33,7 @@ namespace Enemy
 		public float recoilDuration;
 		public float maxChaseTime;
 
-		private bool canMove = true;
+		[HideInInspector] public bool canMove = true;
 		private bool canDeathSound = true;
 		
 
@@ -145,8 +145,6 @@ namespace Enemy
 		/// <returns></returns>
 		IEnumerator FireProjectile()
 		{
-			//enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.red;
-
 			servantAnimator.SetBool("isAttacking", true);
 			yield return new WaitForSeconds(timeBeforeServantFire);
 
@@ -155,9 +153,13 @@ namespace Enemy
 
 			yield return new WaitForSeconds(recoilDuration);
 
-			///enemyGraphics.GetComponent<SpriteRenderer>().material.color = Color.white;
 			canMove = true;
 			servantAnimator.SetBool("isAttacking", false);
+		}
+
+		public void CancelAllCoroutines()
+		{
+			StopAllCoroutines();
 		}
 
 		/*IEnumerator EndChase()

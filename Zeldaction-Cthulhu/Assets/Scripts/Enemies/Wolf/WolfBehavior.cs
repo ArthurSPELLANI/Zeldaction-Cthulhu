@@ -33,7 +33,7 @@ namespace Enemy
 
 		public bool isAttacking;
 
-		private bool canMove = true;
+		[HideInInspector] public bool canMove = true;
 
 		public Animator wolfAnimator;
 		private Vector2 animDirection;
@@ -57,8 +57,9 @@ namespace Enemy
 		void Update()
 		{
 			direction = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
-
 			enemyCurrentHp = GetComponentInParent<EnemyBasicBehavior>().enemyCurrentHealth;
+
+			
 			
 
 			//Si le wolf n'est pas à portée d'attaque du joueur et qu'il peut bouger, il avance en direction du joueur.
@@ -87,6 +88,7 @@ namespace Enemy
 				canMove = false;
 
 				wolfAnimator.SetBool("isDiying", true);
+
                 if(GetComponentInParent<EnemyBasicBehavior>().isMarked == true)
                 {
                     GetComponentInParent<EnemyBasicBehavior>().SanityReward();
@@ -95,12 +97,12 @@ namespace Enemy
 				if (canDeathSound)
 				{
 					canDeathSound = false;
+
 					//son
 					AudioManager.Instance.Play("mortLoup");
 				}
 
 				StopAllCoroutines();
-
 			}
 		}
 
@@ -109,9 +111,8 @@ namespace Enemy
 		/// Wolf Attack Pattern
 		/// </summary>
 		/// <returns></returns>
-		IEnumerator WolfAttack()
+		public IEnumerator WolfAttack()
 		{
-
 			yield return new WaitForSeconds(timeBeforeTargetLock);
 
 			dashTarget = target;
@@ -143,7 +144,6 @@ namespace Enemy
 
 			wolfRb.velocity = new Vector2(0, 0) * attackSpeed * Time.deltaTime;
 
-
 			GetComponentInParent<CapsuleCollider2D>().isTrigger = false;
 			GetComponent<CircleCollider2D>().isTrigger = false;
 			isAttacking = false;
@@ -162,12 +162,20 @@ namespace Enemy
 		{
 			if (isAttacking)
 			{
-				if (other.gameObject.tag == "Player")
+				if (other.gameObject.layer == 8)
 				{
 					other.gameObject.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
 				}
 			}
 			
+		}
+
+		/// <summary>
+		/// To can all the coroutines from another script.
+		/// </summary>
+		public void CancelAllCouritines()
+		{
+			StopAllCoroutines();
 		}
 
 

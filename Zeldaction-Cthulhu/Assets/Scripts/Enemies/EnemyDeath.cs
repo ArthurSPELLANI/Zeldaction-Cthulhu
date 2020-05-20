@@ -9,9 +9,16 @@ namespace Enemy
     {
         public void Death()
         {
-            Destroy(transform.parent.GetChild(2).gameObject);
+            transform.parent.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+
+            //desactivate behavior
+            transform.parent.GetChild(2).gameObject.SetActive(false);
+
             GetComponentInParent<EnemyBasicBehavior>().enabled = false;
             GetComponentInParent<Collider2D>().enabled = false;
+
+            //desactivate shadow catch graph
+            transform.parent.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 

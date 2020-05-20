@@ -36,6 +36,7 @@ namespace PillarSystem
         // pour la sauvegarde
         
         public int isCharge;
+        public float stunDuration;
 
         void Start()
         {
@@ -245,7 +246,7 @@ namespace PillarSystem
 
                 foreach (RaycastHit2D hit in hitEnemis)
                 {
-                    hit.collider.GetComponent<EnemyBasicBehavior>().EnemyStun();
+                    hit.collider.GetComponent<EnemyBasicBehavior>().EnemyStun(stunDuration);
                 }
             }
 

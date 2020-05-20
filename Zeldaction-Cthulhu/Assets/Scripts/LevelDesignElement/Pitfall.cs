@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using Enemy;
 
 namespace LevelDesign
 {
@@ -89,19 +90,23 @@ namespace LevelDesign
             }
         }
 
-        void OnTriggerStay2D(Collider2D player)
+        void OnTriggerStay2D(Collider2D other)
         {
-            if (player.gameObject.tag == "Player" && !onPlatform)
+            if (other.gameObject.tag == "Player" && other.gameObject.layer == 12)
             {
-                StartCoroutine(PitfallActivation());
-                //Debug.Log("Fall");      
+                other.transform.parent.GetChild(1).GetComponent<PlayerStats>().PlayerTakeDamage(1);
+                StartCoroutine(PitfallActivation());    
+            }
+            if (other.gameObject.tag == "Enemy")
+            {
+                other.GetComponent<EnemyBasicBehavior>().TakeDamage(4, Vector3.zero, 0f);
+                other.transform.GetChild(0).gameObject.SetActive(false);
             }
         }
 
         IEnumerator PitfallActivation()
         {
             SelectingRespawn();
-            yield return new WaitForSeconds(0.5f);
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             yield return new WaitForSeconds(0.5f);
             player.transform.position = trueRespawn.position;

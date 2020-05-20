@@ -288,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6793088303081489664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.471, y: 0.754, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1171408253043262570}
@@ -327,8 +327,6 @@ MonoBehaviour:
   animDirection: {x: 0, y: 0}
   catchAnimator: {fileID: 0}
   scratchChance: 0
-  blackMaterial: {fileID: 0}
-  whiteMaterial: {fileID: 0}
   knockbackDuration: 0.1
   knockbackForceModifier:
     serializedVersion: 2
@@ -373,6 +371,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   isStunned: 0
+  HitStunDuration: 1.5
+  loseAggroDistance: 4
+  timeBeforeLoseAggro: 5
 --- !u!50 &6793088303081489671
 Rigidbody2D:
   serializedVersion: 4
@@ -381,11 +382,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6793088303081489664}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000000
+  m_Mass: 150
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -536,17 +537,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.3491738, y: 1.474546}
-      - {x: -0.004392147, y: 1.6688898}
-      - {x: -0.3030038, y: 1.5229559}
-      - {x: -0.47088787, y: 1.2335083}
-      - {x: -0.59975123, y: 0.3703863}
-      - {x: -0.50249887, y: -0.28706247}
-      - {x: -0.32535717, y: -0.4870265}
-      - {x: 0.23120382, y: -0.49732524}
-      - {x: 0.49648264, y: -0.33436424}
-      - {x: 0.6052425, y: 0.32423037}
-      - {x: 0.4804528, y: 1.2093544}
+    - - {x: 0.013259888, y: 2.5558777}
+      - {x: -0.6805005, y: 2.1687567}
+      - {x: -0.9794769, y: 1.5108628}
+      - {x: -0.62800264, y: -0.27690881}
+      - {x: -0.24116135, y: -0.5161833}
+      - {x: 0.27013588, y: -0.5099196}
+      - {x: 0.68532085, y: -0.24424595}
+      - {x: 0.913537, y: 1.5867529}
+      - {x: 0.6371074, y: 2.1196113}
 --- !u!114 &6793088303603292587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,7 +560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDetected: 0
   behavior: {fileID: 6793088304060405357}
-  alertRange: 2.8
+  alertRange: 2.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
