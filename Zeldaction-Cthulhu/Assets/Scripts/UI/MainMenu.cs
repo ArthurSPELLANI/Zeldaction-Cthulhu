@@ -11,8 +11,6 @@ namespace Menu
     {
         //Scene currentScene;
         private string saveName;
-        float posX;
-        float posY;
 
         public void ResumeGame()
         {
@@ -24,10 +22,7 @@ namespace Menu
                 saveName = PlayerPrefs.GetString("scene");
                 SceneManager.LoadScene(saveName);
 
-                posX = PlayerPrefs.GetFloat("positionX");
-                posY = PlayerPrefs.GetFloat("positionY");
-
-                //PlayerManager.Instance.transform.position = new Vector3(posX, posY, 0f);
+                
                 //PlayerManager.Instance.LoadPlayer();
             }
             else

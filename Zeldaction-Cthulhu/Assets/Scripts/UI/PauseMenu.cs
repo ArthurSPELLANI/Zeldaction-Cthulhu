@@ -6,33 +6,33 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Game;
 using Player;
+using Management;
 
 
 namespace Menu
 {
-    public class PauseMenu : MonoBehaviour
+    public class PauseMenu : Singleton<PauseMenu>
     {
         public static bool gameIsPaused = false;
         public GameObject PauseMenuUI;
-        public PlayerSave playerSaveScript;
         public GameObject shadowModeGo;
         public GameObject attackBehaviorGo;
         public GameObject movementBehaviorGo;
 
-        PauseMenu Instance;
-
+        public GameObject Save;
         public WorldSave worldSaveScript;
+        public PlayerSave playerSaveScript;
 
         public GameObject myButton;
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else Destroy(gameObject);
+            MakeSingleton(true);
+        }
+
+        void Start()
+        {
+
         }
 
         void Update()
@@ -84,9 +84,15 @@ namespace Menu
 
         public void LoadMenu()
         {
-            playerSaveScript.Save();
-            worldSaveScript.SavePillar();
-            worldSaveScript.SaveFragment();
+            if (Save != null)
+            {
+                worldSaveScript = Save.GetComponent<WorldSave>();
+                playerSaveScript = Save.GetComponent<PlayerSave>();
+                playerSaveScript.Save();
+                worldSaveScript.SavePillar();
+                worldSaveScript.SaveFragment();
+            }
+            
 
             Time.timeScale = 1f;
             SceneManager.LoadScene(0);
@@ -96,11 +102,16 @@ namespace Menu
         {
             Debug.Log("You Quit");
 
-            playerSaveScript.Save();
-            worldSaveScript.SavePillar();
-            worldSaveScript.SaveFragment();
+            if (Save != null)
+            {
+                worldSaveScript = Save.GetComponent<WorldSave>();
+                playerSaveScript = Save.GetComponent<PlayerSave>();
+                playerSaveScript.Save();
+                worldSaveScript.SavePillar();
+                worldSaveScript.SaveFragment();
+            }
 
-            Application.Quit();
+                Application.Quit();
         }
     }
 }

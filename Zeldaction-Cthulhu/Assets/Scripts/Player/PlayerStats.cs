@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game;
 using AudioManaging;
+using XInputDotNetPure;
 
 namespace Player
 {
@@ -97,9 +98,15 @@ namespace Player
                     PlayerManager.Instance.ResetPosition();
                     PlayerManager.Instance.ResetPlayer();
                 }
+                else
+                {
+                    StartCoroutine(DamageShake());
+                    StartCoroutine(CameraManager.Instance.MainCameraShake(0.5f, 2f, 0.2f));
+                }
 
                 StartCoroutine(HitFrames());
                 StartCoroutine(Invulnerability());
+                
             }
             
         }
@@ -127,6 +134,18 @@ namespace Player
             PlayerManager.Instance.playerMovement.speed = 60;
         }
 
+        PlayerIndex playerIndex = default;
+        IEnumerator DamageShake()
+        {
+            GamePad.SetVibration(playerIndex, 1f, 0f);
+            yield return new WaitForSeconds(0.1f);
+            GamePad.SetVibration(playerIndex, 0f, 1f);
+            yield return new WaitForSeconds(0.1f);
+            GamePad.SetVibration(playerIndex, 1f, 0f);
+            yield return new WaitForSeconds(0.1f);
+            GamePad.SetVibration(playerIndex, 0f, 0f);
+
+        }
 
         IEnumerator HitFrames()
         {
