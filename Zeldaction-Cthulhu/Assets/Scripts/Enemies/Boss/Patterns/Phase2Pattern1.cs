@@ -74,7 +74,7 @@ namespace Boss
                 if (childNbr > 0 && gotHit == false)
                 {
                     blockState = true;
-                    graphics.GetComponent<SpriteRenderer>().color = Color.green;    
+                    //graphics.GetComponent<SpriteRenderer>().color = Color.green;    
                 }
 
                 else if (childNbr == 0 && gotHit == false)
@@ -161,12 +161,12 @@ namespace Boss
 
             yield return new WaitForSeconds(timeBeforeWeakStatusStart);
 
-            animator.SetBool("isVul", true);
+            animator.SetBool("isWeak", true);
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
 
             yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
 
-            animator.SetBool("isVul", false);
+            animator.SetBool("isWeak", false);
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
                 
             //Assure we leave pattern in update function by removing all enemies and setting gotHit to false.

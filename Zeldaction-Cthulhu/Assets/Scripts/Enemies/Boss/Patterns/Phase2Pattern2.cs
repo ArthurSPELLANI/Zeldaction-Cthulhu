@@ -20,6 +20,8 @@ namespace Boss
         private GameObject pillarOut;
         private GameObject pullPoint;
 
+        public GameObject laser;
+
         public float pullForce;
         public float laserCountdown;
         public int laserDmg;
@@ -118,11 +120,13 @@ namespace Boss
 
         private IEnumerator Laser()
         {
-            graphics.GetComponent<SpriteRenderer>().color = Color.green;
+            //graphics.GetComponent<SpriteRenderer>().color = Color.green;
+            animator.SetBool("isChargingLaser", true);
 
             yield return new WaitForSeconds(laserCountdown);
 
-            graphics.GetComponent<SpriteRenderer>().color = Color.red;
+            //graphics.GetComponent<SpriteRenderer>().color = Color.red;
+            laser.SetActive(true);
 
             RaycastHit2D[] hitPlayer = Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), laserDistance, playerLayer);
 
@@ -132,12 +136,14 @@ namespace Boss
 
                 yield return new WaitForSeconds(timeBeforeWeakStatusBegin);
 
-                animator.SetBool("isVul", true);
+                animator.SetBool("isWeak", true);
+                animator.SetBool("isChargingLaser", false);
+                laser.SetActive(false);
                 transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
 
                 yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
 
-                animator.SetBool("isVul", false);
+                animator.SetBool("isWeak", false);
                 transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = false;
 
                 yield return new WaitForSeconds(timeBeforePatternEnd);
@@ -152,10 +158,12 @@ namespace Boss
                     player.collider.GetComponent<PlayerStats>().PlayerTakeDamage(laserDmg);  
                 }
 
+                animator.SetBool("isChargingLaser", false);
+                laser.SetActive(false);
                 walls.SetActive(false);
 
                 yield return new WaitForSeconds(timeBeforePatternEnd);
-                graphics.GetComponent<SpriteRenderer>().color = Color.white;
+                //graphics.GetComponent<SpriteRenderer>().color = Color.white;
 
                 GetComponent<Phase2PatternManager>().NextPatternSelection();
             }

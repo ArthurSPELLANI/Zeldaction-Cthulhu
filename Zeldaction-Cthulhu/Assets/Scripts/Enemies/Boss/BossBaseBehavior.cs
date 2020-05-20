@@ -10,9 +10,12 @@ namespace Boss
         public int phase1Hp;
         public int phase2Hp;
         [SerializeField] private int currentHp;
+        public GameObject wallPhase1;
 
         [HideInInspector] public bool isInPhase1 = true;
         public bool isWeak = false;
+
+        Material defaultMaterial;
 
         public GameObject phase1Go;
         public GameObject phase2Go;
@@ -32,7 +35,7 @@ namespace Boss
 
         void Start()
         {
-
+            defaultMaterial = GetComponentInChildren<SpriteRenderer>().material;
         }
 
         void Update()
@@ -43,6 +46,7 @@ namespace Boss
                 {
                     isInPhase1 = false;
                     currentHp = phase2Hp;
+                    wallPhase1.SetActive(false);
                     phase1Go.SetActive(false);
                     phase2Go.SetActive(true);
                     isWeak = false;
@@ -55,16 +59,16 @@ namespace Boss
             }
 
             //Feedback quand le joueur peut infliger des dégâts au boss.
-            if (isWeak == true)
+            /*if (isWeak == true)
             {
                 
                 if (isInPhase1 == true)
                 {
-                    transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                    transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 }
                 else
                 {
-                    transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                    transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 }
                 
             }
@@ -79,7 +83,7 @@ namespace Boss
                     transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().color = Color.white;
                 }
                 
-            }
+            }*/
         }
 
         public void BossTakeDamage()
@@ -88,8 +92,9 @@ namespace Boss
             {
                 Debug.Log("Mhamhy a prit 1 point de dgt");
                 currentHp -= 1;
-                transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                StartCoroutine(HitFeedbackBoss());
                 isWeak = false;
+                GetComponentInChildren<Animator>().SetBool("isWeak", false);
 
                 if (!isInPhase1)
                 {
@@ -104,8 +109,19 @@ namespace Boss
                     }
                 }
             }
-
         }
+
+        public IEnumerator HitFeedbackBoss()
+        {
+            GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/White");
+            yield return new WaitForSeconds(0.05f);
+            GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
+            yield return new WaitForSeconds(0.05f);
+            GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
+            yield return new WaitForSeconds(0.05f);
+            GetComponentInChildren<SpriteRenderer>().material = defaultMaterial;
+        }
+
 
     }
 }

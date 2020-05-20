@@ -75,10 +75,10 @@ namespace Boss
                 animator.SetBool("isDrifting", true);
 
                 //Soft spot around the Anchor position cause rigidbody can't reach a precise position while using velocity to move.
-                AnchorXMin = anchor[4].position.x - 0.08;
-                AnchorXMax = anchor[4].position.x + 0.08;
-                AnchorYMin = anchor[4].position.y - 0.08;
-                AnchorYMax = anchor[4].position.y + 0.08;
+                AnchorXMin = anchor[4].position.x - 0.04;
+                AnchorXMax = anchor[4].position.x + 0.04;
+                AnchorYMin = anchor[4].position.y - 0.04;
+                AnchorYMax = anchor[4].position.y + 0.04;
 
                 //tant que le boss n'a pas atteint le millieu de l'arène, il s'y déplace.
                 if (transform.position.x >= AnchorXMin && transform.position.x <= AnchorXMax && transform.position.y >= AnchorYMin && transform.position.y <= AnchorYMax)
@@ -140,6 +140,7 @@ namespace Boss
                 //tant que le boss n'a pas atteint le prochain point d'ancrage situé dans la liste, il se déplace vers se dernier
                 while (transform.position.x <= AnchorXMin || transform.position.x >= AnchorXMax || transform.position.y <= AnchorYMin || transform.position.y >= AnchorYMax)
                 {
+                    vecDir = new Vector2(anchor[anchorPath[i]].position.x - transform.position.x, anchor[anchorPath[i]].position.y - transform.position.y).normalized;
                     bossPhase1Rb.velocity = vecDir * moveSpeed * Time.fixedDeltaTime;
                     animator.SetBool("isDrifting", true);
                     SetAnimDirection(vecDir);
