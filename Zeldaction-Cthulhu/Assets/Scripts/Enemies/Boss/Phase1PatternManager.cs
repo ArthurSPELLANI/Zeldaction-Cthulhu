@@ -10,6 +10,7 @@ namespace Boss
         private int patternSelector;
         private int patternCount;
         private bool isWaitingForNextPattern = true;
+        public GameObject walls;
         
         void Awake()
         {
@@ -82,6 +83,7 @@ namespace Boss
         /// </summary>
         public void NextPatternSelection()
         {
+            walls.SetActive(false);
 
             for (int i = 0; i < patternCount; i++)
             {
