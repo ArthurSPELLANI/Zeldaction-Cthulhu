@@ -5303,6 +5303,7 @@ MonoBehaviour:
   isWalking: 0
   playerRb: {fileID: 0}
   currentDirection: {x: 1, y: 0}
+  animator: {fileID: 0}
   canMove: 1
   dashTime: 0.6
   dashDelay: 0.15
@@ -5644,6 +5645,7 @@ MonoBehaviour:
   spawnBullet: {fileID: 569752202}
   isAiming: 0
   pauseMenuGo: {fileID: 0}
+  lookObject: {fileID: 558457596}
 --- !u!1 &4580132031356252412
 GameObject:
   m_ObjectHideFlags: 0
@@ -6222,7 +6224,7 @@ PrefabInstance:
     - target: {fileID: 574004817862256032, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 574004817862256038, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
@@ -6267,7 +6269,7 @@ PrefabInstance:
     - target: {fileID: 6897967909907504152, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
