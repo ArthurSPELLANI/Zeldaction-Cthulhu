@@ -34,9 +34,18 @@ namespace AudioManaging
         public Sound[] currentPas;
         public Sound[] BruitsSombes;
 
-        AudioReverbZone Zone;
+        public  AudioReverbZone Zone;
 
         public int negativeEffectPalier;
+        int pallier; //utilisé pour savoir qd on switch de pallier
+
+        float timeForReverb;
+
+        bool negativeDown;
+        bool negativeUp;
+
+
+
         void Awake()
         {
             MakeSingleton(true);
@@ -127,11 +136,27 @@ namespace AudioManaging
             if (bruitBresson)
                 PlayBresson();
 
-            if (negativeEffectPalier > 1)
+            if (negativeEffectPalier > 0)
                 NegativeZone();
             else
                 ThingsGoNormal();
 
+            if (pallier != negativeEffectPalier)
+            {
+                if (pallier > negativeEffectPalier)
+                {
+                    negativeDown = true;
+                    negativeUp = false;
+                }
+                if (pallier < negativeEffectPalier)
+                {
+                    negativeUp = true;
+                    negativeDown = false;
+                }                  
+
+                pallier = negativeEffectPalier;
+                timeForReverb = 0f;
+            }
         }
 
         public void Play(string name)
@@ -170,6 +195,7 @@ namespace AudioManaging
                 s.source.pitch = s.pitch;
             }
             Zone.enabled = false;
+            timeForReverb = 0f;
         }
         
         
@@ -202,16 +228,40 @@ namespace AudioManaging
         void NegativeZone()
         {
             Zone.enabled = true;
-            if (negativeEffectPalier == 2)
+            if (negativeUp)
             {
-                Zone.room = -500;
-                Zone.reverb = 700;
+                if (negativeEffectPalier == 2)
+                {
+                    Zone.room = Mathf.RoundToInt(Mathf.Lerp(-1000f, -500f, timeForReverb));
+                    Zone.reverb = Mathf.RoundToInt(Mathf.Lerp(0f, 700f, timeForReverb));
+                }
+                if (negativeEffectPalier == 3)
+                {
+                    Zone.reverb = Mathf.RoundToInt(Mathf.Lerp(700f, 1500f, timeForReverb));
+                    Zone.room = Mathf.RoundToInt(Mathf.Lerp(-500f, -100f, timeForReverb));
+                }
             }
-            if (negativeEffectPalier == 3)
+            if (negativeDown)
             {
-                Zone.reverb = 1500;
-                Zone.room = -100;
+                if (negativeEffectPalier == 1)
+                {
+                    Zone.room = Mathf.RoundToInt(Mathf.Lerp(-500f, -1000f, timeForReverb));
+                    Zone.reverb = Mathf.RoundToInt(Mathf.Lerp(700f, 0f, timeForReverb));
+                }
+                if (negativeEffectPalier == 2)
+                {
+                    Zone.reverb = Mathf.RoundToInt(Mathf.Lerp(1500f, 700f, timeForReverb));
+                    Zone.room = Mathf.RoundToInt(Mathf.Lerp(-100f, -500f, timeForReverb));
+                }
             }
+            
+
+            if(timeForReverb < 1f)
+            {
+                timeForReverb += 0.3f * Time.deltaTime;
+            }
+
+            
         }    
     }
 }
