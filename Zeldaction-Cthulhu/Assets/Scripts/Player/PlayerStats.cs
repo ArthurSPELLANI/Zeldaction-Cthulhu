@@ -93,10 +93,13 @@ namespace Player
 
                 if (playerCurrentHealth <= 0)
                 {
-                    //Destroy(player);
+                    /*Destroy(player);
                     LevelManager.Instance.LoadCurrentScene();
                     PlayerManager.Instance.ResetPosition();
-                    PlayerManager.Instance.ResetPlayer();
+                    PlayerManager.Instance.ResetPlayer();*/
+                    PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0, 0);
+                    PlayerManager.Instance.DisableBehaviour();
+                    PlayerManager.Instance.playerAnimator.SetBool("isDead", true);
                 }
                 else
                 {

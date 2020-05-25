@@ -13,6 +13,7 @@ namespace Game
         public Image jaugeEnd;
         public Image fill;
         public Slider sanityGauge;
+        public GameObject gameOver;
 
 
         private void Awake()
@@ -68,9 +69,7 @@ namespace Game
             fill.rectTransform.offsetMax = new Vector2(-8.5f, -4.5f);
             sanityGauge.maxValue = 90;
             sanityGauge.minValue = -10;
-        }
-
-        //87.4f
+        }      
     }
 }
 
