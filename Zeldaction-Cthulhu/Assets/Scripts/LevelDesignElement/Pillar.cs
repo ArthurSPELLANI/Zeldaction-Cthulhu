@@ -34,6 +34,8 @@ namespace PillarSystem
         private float shadowPillarDistance;
         private GameObject shadow;
 
+        public Animator laserAnimator;
+
         // pour la sauvegarde
         
         public int isCharge;
@@ -229,9 +231,11 @@ namespace PillarSystem
 
                 beamDir = direction;
                 //la position d'origine du beam est un peu plus moin que le bord du collider du pillier
-                Instantiate(Beam, new Vector3(
+                /*Instantiate(Beam, new Vector3(
                     (transform.position.x + colliBox.offset.x) + (colliBox.size.x * direction.x), 
-                    (transform.position.y + colliBox.offset.y) + (colliBox.size.y * direction.y), 0f), Quaternion.identity, gameObject.transform);
+                    (transform.position.y + colliBox.offset.y) + (colliBox.size.y * direction.y), 0f), Quaternion.identity, gameObject.transform);*/
+
+                StartCoroutine(CastLaser());
 
                 if (hitPillar.collider != null)
                 {                
@@ -280,6 +284,17 @@ namespace PillarSystem
             yield return new WaitForSecondsRealtime(0.1f);
 
             GamePad.SetVibration(playerIndex, 0f, 0f);
+        }
+
+        IEnumerator CastLaser()
+        {
+            laserAnimator.SetBool("isLaser", true);
+
+            laserAnimator.SetFloat("Horizontal", beamDir.x);
+            laserAnimator.SetFloat("Vertical", beamDir.y);
+
+            yield return new WaitForSeconds(0.2f);
+            laserAnimator.SetBool("isLaser", false);
         }
     }
 
