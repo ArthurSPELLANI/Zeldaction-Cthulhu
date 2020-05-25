@@ -229,6 +229,8 @@ namespace PillarSystem
                     (transform.position.x + colliBox.offset.x) + (colliBox.size.x * direction.x),
                     (transform.position.y + colliBox.offset.y) + (colliBox.size.y * direction.y)), direction, 3f, pillarLayer);
 
+                
+
                 beamDir = direction;
                 //la position d'origine du beam est un peu plus moin que le bord du collider du pillier
                 /*Instantiate(Beam, new Vector3(
@@ -247,7 +249,7 @@ namespace PillarSystem
                 }
 
                 //ce rayCast sert à stun les ennemis
-                RaycastHit2D[] hitEnemis = Physics2D.RaycastAll(transform.position, direction, 3f, enemyLayer);
+                RaycastHit2D[] hitEnemis = Physics2D.CircleCastAll(transform.position, 0.7f, direction, 12f, enemyLayer);
 
                 foreach (RaycastHit2D hit in hitEnemis)
                 {

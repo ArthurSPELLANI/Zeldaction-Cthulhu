@@ -27,6 +27,7 @@ namespace Enemy
 
         public float sanityDamage;
         public bool isMarked;
+        public GameObject markedParticle;
         public float sanityReward;
         public float timestampMark;
         public float coolDownMark = 5f;
@@ -431,6 +432,7 @@ namespace Enemy
         {
             isMarked = true;
             timestampMark = Time.time + coolDownMark;
+            Instantiate(markedParticle, transform);
         }
 
         public void ExitCatchAnimator()

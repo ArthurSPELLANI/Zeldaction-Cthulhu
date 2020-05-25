@@ -13,21 +13,23 @@ namespace Player
 
         void Update()
         {
-            aim = new Vector3(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical") * -1, 0.0f);
-
-            if(PlayerManager.Instance.playerMovement.isWalking == false)
+            if(PlayerManager.Instance.playerShoot.isAiming == false)
             {
-                if (aim.magnitude > 0.0f)
+                aim = new Vector3(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical") * -1, 0.0f);
+
+                if (PlayerManager.Instance.playerMovement.isWalking == false)
                 {
-                    aim *= lookDistance;
-                    lookObject.transform.localPosition = aim;
+                    if (aim.magnitude > 0.0f)
+                    {
+                        aim *= lookDistance;
+                        lookObject.transform.localPosition = aim;
+                    }
                 }
-            }
-            else
-            {
-                lookObject.transform.localPosition = new Vector3(0,0,0);
-            }
-
+                else
+                {
+                    lookObject.transform.localPosition = new Vector3(0, 0, 0);
+                }
+            }        
         }
     }
 }

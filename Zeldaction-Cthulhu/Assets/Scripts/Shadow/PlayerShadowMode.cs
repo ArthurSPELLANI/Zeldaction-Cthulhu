@@ -44,6 +44,9 @@ namespace Player
         float cooldownAP = 5f;
         float timestamp;
 
+        float distanceCatchAnimation;
+        public LayerMask enemyLayer;
+
         public int fragment;
 
         void Awake()
@@ -139,7 +142,7 @@ namespace Player
             {
                 SlowItDown();
             }
-
+            SetEnemyCatchAnimator();
             isShadowActivated = true;
             VCamMain.gameObject.SetActive(false);
             VCamShadow.gameObject.SetActive(true);
@@ -155,6 +158,7 @@ namespace Player
 
         public void ShadowExit()
         {
+            ExitEnemyCatchAnimator();
             shadowObject.transform.position = player.transform.position;
             isShadowActivated = false;
             VCamMain.gameObject.SetActive(true);
@@ -164,7 +168,7 @@ namespace Player
             shadowObject.GetComponent<PlayerShadowMovement>().shadowSpeed = 55;
             shadowObject.SetActive(false);
             Time.timeScale = 1;
-            Time.fixedDeltaTime = timeRef;
+            Time.fixedDeltaTime = timeRef;            
             /*FindObjectOfType<AudioManager>().Play("sortieShadow");
             FindObjectOfType<AudioManager>().Stop("idleShadow");*/
             AudioManager.Instance.Play("sortieShadow");
@@ -210,7 +214,7 @@ namespace Player
             }
         }
 
-        private void OnTriggerStay2D(Collider2D collision)
+        /*private void OnTriggerStay2D(Collider2D collision)
         {
             if (isShadowActivated == true)
             {
@@ -234,7 +238,7 @@ namespace Player
                 }
             }
 
-        }
+        }*/
 
         public void ShadowEnhance()
         {
@@ -246,7 +250,42 @@ namespace Player
             sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
         }
 
+        public void SetEnemyCatchAnimator()
+        {
+            Collider2D[] enemyhit = Physics2D.OverlapBoxAll(transform.position, new Vector2(15, 15), 0, enemyLayer);
 
+            for (int i = 0; i < enemyhit.Length; i++)
+            {
+                if (enemyhit[i].gameObject.CompareTag("Enemy"))
+                {
+                    if (enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled == false)
+                    {
+                        enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled = true;
+                    }
+                }                    
+            }
+        }
+
+        public void ExitEnemyCatchAnimator()
+        {
+            Collider2D[] enemyhit = Physics2D.OverlapBoxAll(transform.position, new Vector2(55, 55), 0, enemyLayer);
+
+            for (int i = 0; i < enemyhit.Length; i++)
+            {
+                if (enemyhit[i].gameObject.CompareTag("Enemy"))
+                {
+                    if (enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled == true && enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().isMarked == true)
+                    {
+                        enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().CatchOut();
+                    }
+                    else if (enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled == true && enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().isMarked == false)
+                    {
+                        enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled = false;
+                        enemyhit[i].gameObject.GetComponent<SpriteRenderer>().sprite = null;
+                    }
+                }                
+            }
+        }
 
     }
 }

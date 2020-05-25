@@ -36,6 +36,7 @@ namespace Player
         [HideInInspector] public bool isAiming = false;
 
         public GameObject pauseMenuGo;
+        public GameObject lookObject;
 
 
         void Awake()
@@ -100,6 +101,7 @@ namespace Player
         void GetDirection()
         {
             shootDirection = PlayerManager.Instance.playerMovement.currentDirection;
+            lookObject.transform.position = new Vector3(shootDirection.x * 3, shootDirection.y * 3, 0);
             PlayerManager.Instance.playerMovement.speed -= aimSlow;
             directionStored = true;
             isAiming = true;           
@@ -113,6 +115,7 @@ namespace Player
             animator.SetBool("isAiming", false);
             isAiming = false;
             AudioManager.Instance.Play("rangementPistolet");
+            lookObject.transform.position = new Vector3(0, 0, 0);
         }
 
         void ShootBullet()
@@ -133,17 +136,27 @@ namespace Player
             animator.SetBool("isShooting", false);
             yield return new WaitForSeconds(shootCooldown);
             canShoot = true;            
-        }
-
-
+        }
+
+
+
+
+
         PlayerIndex playerIndex = default;
-        IEnumerator ShootShake(float time, float magnitude)
-        {
-            GamePad.SetVibration(playerIndex, magnitude, magnitude);
-
-            yield return new WaitForSecondsRealtime(time);
-
-            GamePad.SetVibration(playerIndex, 0f, 0f);
+        IEnumerator ShootShake(float time, float magnitude)
+
+        {
+
+            GamePad.SetVibration(playerIndex, magnitude, magnitude);
+
+
+
+            yield return new WaitForSecondsRealtime(time);
+
+
+
+            GamePad.SetVibration(playerIndex, 0f, 0f);
+
         }
 
     }
