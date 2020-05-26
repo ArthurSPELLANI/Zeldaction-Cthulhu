@@ -69,7 +69,18 @@ namespace Game
             fill.rectTransform.offsetMax = new Vector2(-8.5f, -4.5f);
             sanityGauge.maxValue = 90;
             sanityGauge.minValue = -10;
-        }      
+        }
+        
+        public void ContinueGameOver()
+        {
+            LevelManager.Instance.LaunchGame();
+        }
+
+        public void MenuGameOver()
+        {
+
+        }
+
     }
 }
 
