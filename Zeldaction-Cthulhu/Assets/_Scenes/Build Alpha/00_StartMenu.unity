@@ -303,6 +303,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4738529229381473381, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b13eed1c60126b940a5bd654abc9c250, type: 3}
 --- !u!114 &490500693 stripped
@@ -681,11 +686,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 5385791442032837496, guid: 67457b8036a006e4c847ab5f9b542351,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5385791442032837503, guid: 67457b8036a006e4c847ab5f9b542351,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -754,12 +754,12 @@ PrefabInstance:
     - target: {fileID: 5385791442032837503, guid: 67457b8036a006e4c847ab5f9b542351,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 942
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 5385791442032837503, guid: 67457b8036a006e4c847ab5f9b542351,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 530
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 5385791442032837503, guid: 67457b8036a006e4c847ab5f9b542351,
         type: 3}
@@ -801,11 +801,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 490500693}
-    - target: {fileID: 5385791443742251200, guid: 67457b8036a006e4c847ab5f9b542351,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67457b8036a006e4c847ab5f9b542351, type: 3}
 --- !u!224 &1610026380 stripped
@@ -941,11 +936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648704591}
     m_Modifications:
-    - target: {fileID: 6663734604655196568, guid: 23574fadfbc5f104b95e9c6a39dafb06,
-        type: 3}
-      propertyPath: m_FillCenter
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6663734604655196570, guid: 23574fadfbc5f104b95e9c6a39dafb06,
         type: 3}
       propertyPath: m_Name
