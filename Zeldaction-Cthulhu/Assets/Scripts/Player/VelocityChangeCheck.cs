@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Player;
 
 namespace Player
 {
@@ -10,6 +11,7 @@ namespace Player
         private Rigidbody2D playerRb;
 
         public GameObject puffPuff;
+        
         
 
         // Start is called before the first frame update
@@ -28,7 +30,7 @@ namespace Player
             {
                 //Spawn puff à la position dépendante de la vélocité du joueur
 
-                Instantiate(puffPuff, new Vector2(transform.position.x, transform.position.y - 0.25f), Quaternion.identity);
+                Instantiate(puffPuff, new Vector2(PlayerManager.Instance.playerShoot.spawnBullet.transform.position.x, PlayerManager.Instance.playerShoot.spawnBullet.transform.position.y - 0.25f), Quaternion.identity);
                 
             }
 
