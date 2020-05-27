@@ -34,19 +34,40 @@ namespace AudioManaging
             volume = 0.5f * AudioManager.Instance.volumeMusics;
             startMusic.volume = volume;
             loopMusic.volume = volume;
-            time = 0f;           
-            startMusic.Play();
-            StartCoroutine(EndOfTheStart());
+            time = 0f;
+
+            if (startMusic != null)
+            {
+                startMusic.Play();
+                StartCoroutine(EndOfTheStart());
+            }
+            else
+            {
+                loopMusic.Play();
+
+                if (combatMusic != null)
+                    combatMusic.Play();
+            }
+           
         }
 
         void Update()
         {
+            if (AudioManager.Instance.volumeMusics != AudioManager.Instance.checkVM)
+            {
+                AudioManager.Instance.checkVM = AudioManager.Instance.volumeMusics;
+                SwitchVolumeMusic();
+            }
+
             //déclanchement/arret de la musique de combat
             if (isOnFight && combatMusic.volume != volume)
                 combatMusic.volume = Mathf.Lerp(0f, volume, time);
 
-            if (!isOnFight && combatMusic.volume != 0f)
-                combatMusic.volume = Mathf.Lerp(volume, 0f, time);
+            if (combatMusic != null)
+            {
+                if (!isOnFight && combatMusic.volume != 0f)
+                    combatMusic.volume = Mathf.Lerp(volume, 0f, time);
+            }
 
             if (time > 1f)
             {
@@ -59,17 +80,20 @@ namespace AudioManaging
             {
                 NegativeEffects();
 
-                if (!isSwitchingDistortion)
-                    StartCoroutine(SwitchDistortion(AudioManager.Instance.negativeEffectPalier));
 
-                combatMusic.pitch = Mathf.Lerp(distortion1, distortion2, distortionTime);
-                loopMusic.pitch = Mathf.Lerp(distortion1, distortion2, distortionTime);
+                if (distortionTime < 1f)
+                {
+                    if (combatMusic != null)
+                        combatMusic.pitch = Mathf.Lerp(distortion1, distortion2, distortionTime);
 
-                distortionTime += (1 / distortionSpeed) * Time.deltaTime;
+                    loopMusic.pitch = Mathf.Lerp(distortion1, distortion2, distortionTime);
 
-                if (distortionTime > 1f)
+                    distortionTime += (1 / distortionSpeed) * Time.deltaTime;
+                }
+                else
                 {
                     distortionTime = 0f;
+                    SwitchDistortion(AudioManager.Instance.negativeEffectPalier);
                 }
             }
                 
@@ -80,37 +104,58 @@ namespace AudioManaging
         {
             yield return new WaitForSecondsRealtime(startMusic.clip.length);
             loopMusic.Play();
-            combatMusic.Play();
+
+            if (combatMusic != null)
+                combatMusic.Play();
         }
 
         void NegativeEffects()
         {
-            startMusic.bypassReverbZones = false;
-            combatMusic.bypassReverbZones = false;
+            if (startMusic != null)
+                startMusic.bypassReverbZones = false;
+
+            if (combatMusic != null)
+                combatMusic.bypassReverbZones = false;
+
             loopMusic.bypassReverbZones = false;
         }
         void ThingsGoNormal()
         {
-            startMusic.bypassReverbZones = true;
-            combatMusic.bypassReverbZones = true;
+            if (startMusic != null)
+            {
+                startMusic.bypassReverbZones = true;
+                startMusic.pitch = 1;
+            }
+
+            if (combatMusic != null)
+            {
+                combatMusic.bypassReverbZones = true;
+                combatMusic.pitch = 1;
+            }
+                
+
             loopMusic.bypassReverbZones = true;
+            loopMusic.pitch = 1;
         }
 
-        IEnumerator SwitchDistortion(int pallier)
+        void SwitchDistortion(int pallier)
         {
-            isSwitchingDistortion = true;
-
-            yield return new WaitForSecondsRealtime(distortionSpeed);
-
             distortionSpeed = Random.Range(3f, 10f);
             distortion1 = distortion2;
             distortion2 = (pallier * distotionValue) * Random.Range(-1f, 1f) + 1;
+        }
 
-            if (AudioManager.Instance.negativeEffectPalier > 0)
-                StartCoroutine(SwitchDistortion(AudioManager.Instance.negativeEffectPalier));
-            else
-                isSwitchingDistortion = false;
-            
+        void SwitchVolumeMusic()
+        {
+            volume = 0.5f * AudioManager.Instance.volumeMusics;
+
+            if (startMusic != null)
+                startMusic.volume = volume;
+
+            if (combatMusic != null)
+                combatMusic.volume = volume;
+
+            loopMusic.volume = volume;
         }
     }
 

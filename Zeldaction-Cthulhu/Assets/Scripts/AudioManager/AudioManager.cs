@@ -17,9 +17,11 @@ namespace AudioManaging
     {
         [Range(0f, 2f)]
         public float volumeSounds;
+        public float checkVS;
 
         [Range(0f, 2f)]
-        public float volumeMusics; 
+        public float volumeMusics;
+        public float checkVM;
 
         public bool walkOnPierre;
         public bool walkOnHerbe;
@@ -126,6 +128,13 @@ namespace AudioManaging
         }
         void Update()
         {
+            if (volumeSounds != checkVS)
+            {
+                checkVS = volumeSounds;
+                SwitchVolumeSounds();
+            }
+
+
             if (walkOnPierre && currentPas != pasPierre)
                 currentPas = pasPierre;
             if (walkOnHerbe && currentPas != pasHerbe)
@@ -262,6 +271,27 @@ namespace AudioManaging
             }
 
             
-        }    
+        }
+
+        void SwitchVolumeSounds()
+        {
+            foreach (Sound s in sounds)
+                s.source.volume = s.volume * volumeSounds;
+
+            foreach (Sound s in pasPierre)
+                s.source.volume = s.volume * volumeSounds;
+
+            foreach (Sound s in pasHerbe)
+                s.source.volume = s.volume * volumeSounds;
+
+            foreach (Sound s in pasPlancher)
+                s.source.volume = s.volume * volumeSounds;
+
+            foreach (Sound s in currentPas)
+                s.source.volume = s.volume * volumeSounds;
+
+            foreach (Sound s in BruitsSombes)
+                s.source.volume = s.volume * volumeSounds;
+        }
     }
 }
