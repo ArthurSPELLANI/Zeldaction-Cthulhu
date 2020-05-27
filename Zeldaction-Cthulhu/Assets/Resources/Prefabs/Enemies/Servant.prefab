@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6793088304720284277}
   - component: {fileID: 1237867225}
   - component: {fileID: 1494563527}
+  - component: {fileID: 3032997395502614378}
   m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
@@ -144,6 +145,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52f3740348a5cde46ad70bd7a35c45cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3032997395502614378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3358189464692168584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5ea0511b2048e42b0620a7b6a41b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4221846481508161216
@@ -309,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc54ba8ed3323f543bda4e52ba839d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 2
+  enemyMaxHealth: 4
   enemyCurrentHealth: 0
   enemyDamage: 2
   fieldOfView: {fileID: 6793088303603292581}

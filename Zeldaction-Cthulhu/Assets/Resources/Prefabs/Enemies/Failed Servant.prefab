@@ -153,7 +153,9 @@ MonoBehaviour:
   enemyAnimator: {fileID: 400149054}
   animDirection: {x: 0, y: 0}
   catchAnimator: {fileID: 0}
-  scratchChance: 0
+  randomIdleChance: 0.7
+  timeBeforeRandomIdle: 5
+  isDoingRI: 0
   knockbackDuration: 0.1
   knockbackForceModifier:
     serializedVersion: 2

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 743657738901958129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,9 +68,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00034869462, y: 0}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.04223018
 --- !u!212 &530922967282292072
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2d50fa3819830458b831c9c84a5d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 150
+  bulletSpeed: 180
   bulletDmg: 1
   knockback: 0
   splashGo: {fileID: 5636083086462378882, guid: 901ca3aaaa79bf84b9fe4c8d8d3fcfb7,
