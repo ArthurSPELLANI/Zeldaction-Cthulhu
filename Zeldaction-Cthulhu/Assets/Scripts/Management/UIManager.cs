@@ -24,17 +24,17 @@ namespace Game
 
         private void Update()
         {
-            if (PlayerManager.Instance.playerShadowMode.maxSanity == 60)
+            if (PlayerManager.Instance.playerShadowMode.maxSanity == 60 && PlayerManager.Instance.playerShadowMode.gameObject.activeSelf == true)
             {
                 SanityLevel1();
             }
 
-            if (PlayerManager.Instance.playerShadowMode.maxSanity == 75)
+            if (PlayerManager.Instance.playerShadowMode.maxSanity == 75 && PlayerManager.Instance.playerShadowMode.gameObject.activeSelf == true)
             {
                 SanityLevel2();
             }
 
-            if (PlayerManager.Instance.playerShadowMode.maxSanity == 90)
+            if (PlayerManager.Instance.playerShadowMode.maxSanity == 90 && PlayerManager.Instance.playerShadowMode.gameObject.activeSelf == true)
             {
                 SanityLevel3();
             }

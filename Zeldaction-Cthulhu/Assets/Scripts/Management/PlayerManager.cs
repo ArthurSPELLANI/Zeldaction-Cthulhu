@@ -114,6 +114,9 @@ namespace Player
         public void ResetPlayer()
         {
             playerStats.playerCurrentHealth = playerStats.playerMaxHealth;
+            playerAttack.enabled = true;
+            playerMovement.enabled = true;
+            playerShadowMode.enabled = true;
             playerShadowMode.sanity = playerShadowMode.maxSanity;
             playerShadowMode.actionPoints = 5;
             playerShoot.ammunitions = 6;

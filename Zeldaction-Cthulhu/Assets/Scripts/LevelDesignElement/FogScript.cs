@@ -9,7 +9,8 @@ public class FogScript : MonoBehaviour
     PlayerShadowMode playerShadowMode;
     public float timeBeforeShadowExit;
 
-    void Start()
+
+    private void OnEnable()
     {
         shadowColliBox = PlayerManager.Instance.playerShadowMode.GetComponentInChildren<CapsuleCollider2D>();
         playerShadowMode = PlayerManager.Instance.playerShadowMode;
