@@ -32,6 +32,9 @@ namespace Enemy
         void Start()
         {
             vectorDir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
+
+            transform.position = new Vector2(transform.position.x + vectorDir.x / 4, transform.position.y + vectorDir.y / 4);
+
             Instantiate(splashGo, transform.position, Quaternion.identity);
             StartCoroutine(TimeUntilDmg());
         }
@@ -39,7 +42,7 @@ namespace Enemy
 
         void Update()
         {
-            bulletRb.velocity = (vectorDir * bulletSpeed * Time.fixedDeltaTime);
+            bulletRb.velocity = vectorDir * bulletSpeed * Time.fixedDeltaTime;
         }
 
         /// <summary>
@@ -62,15 +65,16 @@ namespace Enemy
                 if (other.CompareTag("Player"))
                 {
                     other.GetComponent<PlayerStats>().PlayerTakeDamage(bulletDmg);
+                    Destroy(gameObject);
                 }
 
                 if (other.CompareTag("Enemy"))
                 {
                     other.GetComponent<EnemyBasicBehavior>().TakeDamage(bulletDmg, vectorDir, knockback);
+                    Destroy(gameObject);
                 }
-
-                Destroy(gameObject);
             }
+            
             
         }
 

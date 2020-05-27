@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using Enemy;
 using Boss;
 using PillarSystem;
@@ -29,6 +30,13 @@ namespace Player
         [HideInInspector] public Animator animator;
 
         [HideInInspector] public bool cantAttack = false;
+
+        private CapsuleDirection2D attack3Dir;
+        private Vector2 attack3Size;
+        public float attack3VertSize;
+        public float attack3HoriSize;
+
+        
         
 
     
@@ -133,21 +141,25 @@ namespace Player
             if (currentDirection.x == 1)
             {
                 currentAttackPos = attackPos[5];
+                attack3Dir = CapsuleDirection2D.Horizontal;
             }
 
             if (currentDirection.x == -1)
             {
                 currentAttackPos = attackPos[7];
+                attack3Dir = CapsuleDirection2D.Horizontal;
             }
 
             if (currentDirection.y == 1)
             {
                 currentAttackPos = attackPos[4];
+                attack3Dir = CapsuleDirection2D.Vertical;
             }
 
             if (currentDirection.y == -1)
             {
                 currentAttackPos = attackPos[6];
+                attack3Dir = CapsuleDirection2D.Vertical;
             }
         }
 
@@ -287,8 +299,16 @@ namespace Player
             GetAttackPos3();
             AudioManager.Instance.Play("coup3");
             //Detect enemies in a range of attack
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
+            if(attack3Dir == CapsuleDirection2D.Horizontal)
+            {
+                attack3Size = new Vector2(attack3VertSize, attack3HoriSize);
+            }
+            else
+            {
+                attack3Size = new Vector2(attack3HoriSize, attack3VertSize);
+            }
 
+            Collider2D[] hitEnemies = Physics2D.OverlapCapsuleAll(currentAttackPos.position, attack3Size, attack3Dir, enemyLayer);
 
 
             foreach (Collider2D enemy in hitEnemies)
@@ -310,17 +330,17 @@ namespace Player
                 }
             }
 
-            Collider2D pillar = Physics2D.OverlapCircle(currentAttackPos.position, attackRange, pillarLayer);
+            Collider2D pillar = Physics2D.OverlapCapsule(currentAttackPos.position, attack3Size, attack3Dir, pillarLayer);
 
             if (pillar != null)
             {
+                Debug.Log(pillar);
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
                 AudioManager.Instance.Play("tappagePillier");
-
             }
 
 
-            Collider2D[] hitRonces = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, roncesLayer);
+            Collider2D[] hitRonces = Physics2D.OverlapCapsuleAll(currentAttackPos.position, attack3Size, attack3Dir, roncesLayer);
 
             foreach (Collider2D ronces in hitRonces)
             {
@@ -360,9 +380,34 @@ namespace Player
             if (currentAttackPos == null)
                 return;
 
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(currentAttackPos.position, attackRange);
-            Gizmos.DrawLine(currentAttackPos.position, transform.position);
+            if (attackCount == 0)
+            {
+                Gizmos.color = Color.red;
+                if (attack3Dir == CapsuleDirection2D.Horizontal)
+                {
+                    //Hozirontal
+                    Gizmos.DrawLine(new Vector2(currentAttackPos.position.x - attack3VertSize / 2, currentAttackPos.position.y), new Vector2(currentAttackPos.position.x + attack3VertSize / 2, currentAttackPos.position.y));
+                    //Vertical
+                    Gizmos.DrawLine(new Vector2(currentAttackPos.position.x, currentAttackPos.position.y - attack3HoriSize / 2), new Vector2(currentAttackPos.position.x, currentAttackPos.position.y + attack3HoriSize / 2));
+                }
+                else
+                {
+                    //Hozirontal
+                    Gizmos.DrawLine(new Vector2(currentAttackPos.position.x - attack3HoriSize / 2, currentAttackPos.position.y), new Vector2(currentAttackPos.position.x + attack3HoriSize / 2, currentAttackPos.position.y));
+                    //Vertical
+                    Gizmos.DrawLine(new Vector2(currentAttackPos.position.x, currentAttackPos.position.y - attack3VertSize / 2), new Vector2(currentAttackPos.position.x, currentAttackPos.position.y + attack3VertSize / 2));
+                }
+                
+            }
+            else
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(currentAttackPos.position, attackRange);
+                Gizmos.DrawLine(currentAttackPos.position, transform.position);
+            }
+          
         }
+
+
     }
 }

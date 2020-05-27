@@ -17,7 +17,6 @@ namespace Enemy
 		private Transform projectileTarget;
 
 		private int speed;
-		private int enemyDamage;
 		private int enemyCurrentHp;
 
 		public GameObject servantProjectile;
@@ -49,7 +48,6 @@ namespace Enemy
 			player = GameObject.Find("Player");
 			target = player.transform;
 			speed = GetComponentInParent<EnemyBasicBehavior>().speed;
-			enemyDamage = GetComponentInParent<EnemyBasicBehavior>().enemyDamage;
 		}
 
 		void Start()
@@ -79,9 +77,6 @@ namespace Enemy
 				servantRb.velocity = direction * speed * Time.fixedDeltaTime;
 				servantAnimator.SetBool("isRunning", true);
 
-				/*StopCoroutine(EndChase());
-				forceAttack = false;
-				canForce = true;*/
 			}
 
 			//Si le joueur est trop proche du servant, ce dernier s'en éloigne
@@ -89,13 +84,6 @@ namespace Enemy
 			{
 				servantRb.velocity = -direction * speed * Time.fixedDeltaTime;
 				servantAnimator.SetBool("isRunning", true);
-
-				/*if (canForce)
-				{
-					Debug.Log("alodazdazd");
-					StartCoroutine(EndChase());
-					canForce = false;
-				}*/
 				
 			}
 
@@ -105,13 +93,10 @@ namespace Enemy
 				canMove = false;
 				
 				servantRb.velocity = new Vector2(0, 0) * speed * Time.fixedDeltaTime;
-				StartCoroutine(FireProjectile());
-				//son
-				AudioManager.Instance.Play("attackRanged");
+				servantAnimator.SetBool("isAttacking", true);
 
-				/*StopCoroutine(EndChase());
-				forceAttack = false;
-				canForce = true;*/
+				
+
 
 			}
 
@@ -143,18 +128,17 @@ namespace Enemy
 		/// The Servant fire a projectile after a short delay and then wait for another short delay.
 		/// </summary>
 		/// <returns></returns>
-		IEnumerator FireProjectile()
+		public IEnumerator FireProjectile()
 		{
-			servantAnimator.SetBool("isAttacking", true);
-			yield return new WaitForSeconds(timeBeforeServantFire);
-
+			//son
+			AudioManager.Instance.Play("attackRanged");
 
 			Instantiate(servantProjectile, transform.position, Quaternion.identity);
 
 			yield return new WaitForSeconds(recoilDuration);
 
-			canMove = true;
 			servantAnimator.SetBool("isAttacking", false);
+			canMove = true;
 		}
 
 		public void CancelAllCoroutines()

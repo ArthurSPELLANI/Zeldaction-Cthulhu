@@ -17,6 +17,7 @@ namespace Player
         //variables relatives au heal
         public int healNumber;
         public int maxHealNumber;
+        public float timeBeforeHeal;
         bool canHeal;
         bool isHealing;
 
@@ -24,6 +25,7 @@ namespace Player
 
         private bool canTakeDmg = true;
         public float invuCooldown;
+
 
         void Awake()
         {
@@ -59,6 +61,7 @@ namespace Player
             if (isHealing == true && Input.GetButtonUp("Heal"))
             {
                 PlayerManager.Instance.playerMovement.speed = 60;
+                transform.GetChild(0).gameObject.SetActive(false);
                 isHealing = false;
                 Debug.Log("le heal a été malencontreusement interompu...");
                 StopAllCoroutines();
@@ -89,8 +92,6 @@ namespace Player
                 //PlayerManager.Instance.playerAttack.coolDown = 0; (fix un jour peut etre)
                 //PlayerManager.Instance.playerAttack.animator.SetBool("IsAttacking", false);
 
-                Debug.Log("Points de vie restant au joueur : " + playerCurrentHealth);
-
                 if (playerCurrentHealth <= 0)
                 {
                     /*Destroy(player);
@@ -116,11 +117,12 @@ namespace Player
 
         IEnumerator Healing()
         {
+            transform.GetChild(0).gameObject.SetActive(true);
             isHealing = true;
 
             PlayerManager.Instance.playerMovement.speed = 30;
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(timeBeforeHeal);
 
             isHealing = false;
             if (playerCurrentHealth == (playerMaxHealth - 1))
@@ -135,6 +137,7 @@ namespace Player
             healNumber -= 1;
 
             PlayerManager.Instance.playerMovement.speed = 60;
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         PlayerIndex playerIndex = default;

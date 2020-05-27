@@ -20,6 +20,12 @@ namespace Enemy
             //desactivate shadow catch graph
             transform.parent.GetComponent<SpriteRenderer>().enabled = false;
         }
+
+        public void StopRandomIdle()
+        {
+            GetComponent<Animator>().SetBool("isRandomIdle", false);
+            transform.parent.GetComponent<EnemyBasicBehavior>().isDoingRI = false;
+        }
     }
 
 }

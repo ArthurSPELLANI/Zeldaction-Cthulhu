@@ -82,17 +82,6 @@ namespace Player
                 playerRb.velocity = direction * 0 * Time.fixedDeltaTime;
                 
             }
-
-            if(canMove == false && activePufPuf == false)
-            {
-                Instantiate(pufpuf);
-                activePufPuf = true;
-            }
-            else
-            {
-                activePufPuf = false;
-            }
-
         }
 
         //Fonction qui gère le déplacement en 8 directions du personnage

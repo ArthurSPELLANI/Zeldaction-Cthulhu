@@ -38,7 +38,6 @@ namespace Enemy
         private double currentWaypointYMax;
 
         [HideInInspector] public bool canMove = true;
-        //private bool canScratch = true;
 
         private bool isThrown;
         private Vector2 vecThrow;
@@ -48,7 +47,11 @@ namespace Enemy
         [SerializeField] public Animator catchAnimator;
         SpriteRenderer catchSprite;
 
-        public float scratchChance;
+        public float randomIdleChance;
+        private bool timerHasStarted = false;
+        public float timeBeforeRandomIdle;
+        private float timerRI;
+        [HideInInspector] public bool isDoingRI;
 
         Material defaultMaterial;
 
@@ -210,23 +213,42 @@ namespace Enemy
                         }
                     }
 
-
-
-
-
                     if (canMove == true)
                     {
                         enemyAnimator.SetBool("isRunning", true);
+                        enemyAnimator.SetBool("isRandomIdle", false);
+                        timerHasStarted = false;
+                        isDoingRI = false;
                     }
                     else
                     {
                         enemyAnimator.SetBool("isRunning", false);
-                        /* if (canScratch == true)
-                         {
-                             canScratch = false;
-                             //mettre la coroutine
-                         }
-                         */
+                        
+                        if (behavior.name != "DistBehavior")
+                        {
+                            if (timerHasStarted == false && isDoingRI == false)
+                            {
+                                timerRI = timeBeforeRandomIdle;
+                                timerHasStarted = true;
+                            }
+
+                            if (timerHasStarted == true)
+                            {
+                                timerRI -= Time.deltaTime;
+                            }
+
+                            if (timerRI <= 0 && timerHasStarted == true && isDoingRI == false)
+                            {
+                                if (Random.Range(0f, 1f) < randomIdleChance)
+                                {
+                                    enemyAnimator.SetBool("isRandomIdle", true);
+                                    isDoingRI = true;
+                                }
+
+                                timerHasStarted = false;
+                            }
+                        }
+                        
                     }
                 }
             }
@@ -388,6 +410,7 @@ namespace Enemy
         IEnumerator Knockback(Vector3 sourcePos, float pushForce)
         {
             float timer = 0.0f;
+            GetComponent<CapsuleCollider2D>().isTrigger = true;
 
             //pour que le knockback soit moins violent à la mort de l'ennemi
             if (enemyCurrentHealth <= 0)
@@ -402,6 +425,8 @@ namespace Enemy
 
                 yield return null;
             }
+
+            GetComponent<CapsuleCollider2D>().isTrigger = false;
 
             if (enemyCurrentHealth > 0)
             {
