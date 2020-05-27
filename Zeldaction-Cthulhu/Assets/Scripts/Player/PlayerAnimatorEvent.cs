@@ -11,7 +11,7 @@ public class PlayerAnimatorEvent : MonoBehaviour
 
     public void AnimatorAttack()
     {
-        attack.AttackManager();
+        StartCoroutine(attack.AttackManager());
     }
 
     public void AnimatorCantMove()
@@ -22,6 +22,11 @@ public class PlayerAnimatorEvent : MonoBehaviour
     public void AnimatorCanMove()
     {
         movement.canMove = true;
+    }
+
+    public void AnimatorEndAttack()
+    {
+        attack.AttackEndEvent();
     }
 
 }

@@ -36,7 +36,11 @@ namespace Enemy
             transform.position = new Vector2(transform.position.x + vectorDir.x / 4, transform.position.y + vectorDir.y / 4);
 
             Instantiate(splashGo, transform.position, Quaternion.identity);
+
             StartCoroutine(TimeUntilDmg());
+
+            //voir si cça sert vraiment à quelque chose
+            //StartCoroutine(TimeUntilDeath());
         }
 
 
@@ -56,13 +60,20 @@ namespace Enemy
             canDoDmg = true;
         }
 
+        IEnumerator TimeUntilDeath()
+        {
+            yield return new WaitForSeconds(30f);
+
+            Destroy(gameObject);
+        }
+
 
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (canDoDmg == true)
             {
-                if (other.CompareTag("Player"))
+                if (other.CompareTag("Player") && other.gameObject.layer == 8)
                 {
                     other.GetComponent<PlayerStats>().PlayerTakeDamage(bulletDmg);
                     Destroy(gameObject);
@@ -73,6 +84,12 @@ namespace Enemy
                     other.GetComponent<EnemyBasicBehavior>().TakeDamage(bulletDmg, vectorDir, knockback);
                     Destroy(gameObject);
                 }
+
+                if (other.gameObject.layer == 12 && other.CompareTag("Enviro"))
+                {
+                    Destroy(gameObject);
+                }
+
             }
             
             

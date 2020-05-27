@@ -216,7 +216,10 @@ namespace Enemy
                     if (canMove == true)
                     {
                         enemyAnimator.SetBool("isRunning", true);
-                        enemyAnimator.SetBool("isRandomIdle", false);
+
+                        if (behavior.name != "DistBehavior")
+                            enemyAnimator.SetBool("isRandomIdle", false);
+
                         timerHasStarted = false;
                         isDoingRI = false;
                     }

@@ -27,20 +27,12 @@ namespace Player
 
         public bool canMove = true;
 
-        [Range(0, 2)]
-        public float dashTime;
-        [Range(0, 2)]
-        public float dashDelay;
-        [Range(0, 10)]
-        public float dashSpeed;
-
         [Range(0, 1)]
         public float dashRecoil;
 
         public AnimationCurve dashCurve;
 
         public GameObject pufpuf;
-        private bool activePufPuf = false;
 
         void Awake()
         {
@@ -176,19 +168,12 @@ namespace Player
         }
 
         //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack
-        public IEnumerator AttackDashShort()
+        public IEnumerator AttackDash(float dashSpeed, float dashTime)
         {
             float timer = 0.0f;
 
             Vector2 aim = currentDirection;
-            canMove = false;
-            PlayerManager.Instance.playerAttack.cantAttack = true;
-            PlayerManager.Instance.playerAttack.AnimatorManager();
-
-
-            yield return new WaitForSeconds(dashDelay - 1f);
-
-            //PlayerManager.Instance.playerAttack.AttackManager();
+            //canMove = false;
 
             while (timer < dashTime)
             {
@@ -198,42 +183,10 @@ namespace Player
                 yield return null;
             }
 
-            yield return new WaitForSeconds(dashRecoil);
-
-            PlayerManager.Instance.playerAttack.cantAttack = false;
             playerRb.velocity = Vector2.zero;
-            canMove = true;         
+            //canMove = true;         
         }
 
-        //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack
-        public IEnumerator AttackDashLong()
-        {
-            float timer = 0.0f;
-
-            Vector2 aim = currentDirection;
-            canMove = false;
-            PlayerManager.Instance.playerAttack.cantAttack = true;
-            PlayerManager.Instance.playerAttack.AnimatorManager();
-
-
-            yield return new WaitForSeconds(dashDelay);
-
-            //PlayerManager.Instance.playerAttack.AttackManager();
-
-            while (timer < dashTime)
-            {
-                playerRb.velocity = aim.normalized * 2 * (dashSpeed * dashCurve.Evaluate(timer / dashTime));
-
-                timer += Time.deltaTime;
-                yield return null;
-            }
-
-            yield return new WaitForSeconds(dashRecoil * 2);
-
-            PlayerManager.Instance.playerAttack.cantAttack = false;
-            playerRb.velocity = Vector2.zero;
-            canMove = true;
-        }
         #region Sound
         float timeBetweenStep = 0.5f;
         private float currentTime = 0;
