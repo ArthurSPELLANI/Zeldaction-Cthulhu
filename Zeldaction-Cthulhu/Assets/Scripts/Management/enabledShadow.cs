@@ -7,6 +7,6 @@ public class enabledShadow : MonoBehaviour
 {
    public void shadowOn()
     {
-        PlayerManager.Instance.playerAttack.enabled = true;
+        PlayerManager.Instance.playerShadowMode.enabled = true;
     }
 }

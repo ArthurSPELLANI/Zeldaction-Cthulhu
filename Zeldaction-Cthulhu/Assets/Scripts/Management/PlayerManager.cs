@@ -155,5 +155,12 @@ namespace Player
             if (PlayerPrefs.GetInt("canUseGun") == 1)
                 playerShoot.enabled = true;
         }
+
+        public void DisableBehaviour()
+        {
+            playerMovement.GetComponent<PlayerMovement>().enabled = false;
+            playerAttack.GetComponent<PlayerAttack>().enabled = false;
+            playerShadowMode.GetComponent<PlayerShadowMode>().enabled = false;
+        }
     }
 }

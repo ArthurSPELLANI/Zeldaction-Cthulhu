@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using Game;
 
 public class PlayerAnimatorEvent : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class PlayerAnimatorEvent : MonoBehaviour
     public void AnimatorCanMove()
     {
         movement.canMove = true;
+    }
+
+    public void GameOver()
+    {
+        UIManager.Instance.gameOver.SetActive(true);
     }
 
 }

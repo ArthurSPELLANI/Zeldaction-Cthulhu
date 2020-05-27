@@ -13,6 +13,7 @@ namespace Game
         public Image jaugeEnd;
         public Image fill;
         public Slider sanityGauge;
+        public GameObject gameOver;
 
 
         private void Awake()
@@ -69,8 +70,17 @@ namespace Game
             sanityGauge.maxValue = 90;
             sanityGauge.minValue = -10;
         }
+        
+        public void ContinueGameOver()
+        {
+            LevelManager.Instance.LaunchGame();
+        }
 
-        //87.4f
+        public void MenuGameOver()
+        {
+
+        }
+
     }
 }
 
