@@ -28,6 +28,8 @@ namespace Player
         public float attackKnockback;
 
         [HideInInspector] public Animator animator;
+        [HideInInspector] public PlayerMovement movementScript;
+        private Rigidbody2D playerRb;
 
         [HideInInspector] public bool cantAttack = false;
 
@@ -36,11 +38,15 @@ namespace Player
         public float attack3VertSize;
         public float attack3HoriSize;
 
-        
+        [Range(0, 10)]
+        public float dashSpeed;
+        [Range(0, 2)]
+        public float dashTime;
+
         
 
-    
-    	void Awake()
+
+        void Awake()
 	    {
             this.enabled = false;
 	    }
@@ -48,36 +54,38 @@ namespace Player
         private void OnEnable()
         {
             animator = PlayerManager.Instance.playerAnimator;
+            movementScript = PlayerManager.Instance.playerMovement;
+            playerRb = transform.parent.parent.GetComponent<Rigidbody2D>();
         }
     
         void Update()
         {
             currentDirection = PlayerManager.Instance.playerMovement.currentDirection;
+            
+            if (cantAttack == false)
+            {
+                coolDown -= Time.deltaTime;
+            }
 
-            coolDown -= Time.deltaTime;
+            
 
             if (PlayerManager.Instance.playerShoot.isAiming == false && PlayerManager.Instance.playerShadowMode.isShadowActivated == false)
             {
                 //Si le joueur appuie sur le bouton d'attaque, lance une coroutine dans le script PlayerMovement
                 if (Input.GetButtonDown("Attack") && cantAttack == false)
                 {
-                    if(attackCount != 2)
-                    {
-                        StartCoroutine(PlayerManager.Instance.playerMovement.AttackDashShort());
-                    }
-
-                    else if (attackCount == 2)
-                    {
-                        StartCoroutine(PlayerManager.Instance.playerMovement.AttackDashLong());
-                    }        
+                    AnimatorManager();
+                    cantAttack = true;
+                    movementScript.canMove = false;
                 }
                 
             }
             
-            if(cantAttack == false)
+            /*if(cantAttack == false)
             {
                 animator.SetBool("IsAttacking", false);
-            }
+            }*/
+
 
             if(coolDown <= 0 && attackCount != 0)
             {
@@ -183,22 +191,15 @@ namespace Player
                 Attack3();
                 coolDown = comboKeepTime;
             }
-
-            if (cantAttack == false)
-            {
-                animator.SetBool("IsAttacking", false);
-            }
-
-            if (coolDown > 0)
-                return;                     
-
         }
 
         //Premier coup de la série d'attaques
         void Attack1()
         {
             GetAttackPos1();
+
             AudioManager.Instance.Play("coup1");
+
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
@@ -217,7 +218,7 @@ namespace Player
 
                 if (enemy.CompareTag("DoorCave"))
                 {
-                    enemy.GetComponent<SpriteRenderer>().color = Color.black;
+                    enemy.GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
 
@@ -235,21 +236,17 @@ namespace Player
             {
                 ronces.GetComponent<Ronces>().Destroy();
                 AudioManager.Instance.Play("cassageBuisson");
-
             }
-
-            attackCount += 1;
         }
 
         //Second coup de la série d'attaques
         void Attack2()
         {
             GetAttackPos2();
+
             AudioManager.Instance.Play("coup2");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
-
-
 
             foreach (Collider2D enemy in hitEnemies)
             {
@@ -266,7 +263,7 @@ namespace Player
 
                 if (enemy.CompareTag("DoorCave"))
                 {
-                    enemy.GetComponent<SpriteRenderer>().color = Color.black;
+                    enemy.GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
 
@@ -276,7 +273,6 @@ namespace Player
             {
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
                 AudioManager.Instance.Play("tappagePillier");
-
             }
 
             Collider2D[] hitRonces = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, roncesLayer);
@@ -285,20 +281,18 @@ namespace Player
             {
                 ronces.GetComponent<Ronces>().Destroy();
                 AudioManager.Instance.Play("cassageBuisson");
-
             }
 
-
-            attackCount += 1;
-            playerDamage++;
         }
 
         //Troisième (et dernier) coup de la série d'attaques
         void Attack3()
         {
             GetAttackPos3();
+
             AudioManager.Instance.Play("coup3");
-            //Detect enemies in a range of attack
+
+            
             if(attack3Dir == CapsuleDirection2D.Horizontal)
             {
                 attack3Size = new Vector2(attack3VertSize, attack3HoriSize);
@@ -308,6 +302,7 @@ namespace Player
                 attack3Size = new Vector2(attack3HoriSize, attack3VertSize);
             }
 
+            //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCapsuleAll(currentAttackPos.position, attack3Size, attack3Dir, enemyLayer);
 
 
@@ -326,7 +321,7 @@ namespace Player
 
                 if (enemy.CompareTag("DoorCave"))
                 {
-                    enemy.GetComponent<SpriteRenderer>().color = Color.black;
+                    enemy.GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
 
@@ -334,9 +329,13 @@ namespace Player
 
             if (pillar != null)
             {
-                Debug.Log(pillar);
-                pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
-                AudioManager.Instance.Play("tappagePillier");
+                
+                if (pillar.CompareTag("pillar"))
+                {
+                    pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+                    AudioManager.Instance.Play("tappagePillier");
+                }
+                
             }
 
 
@@ -344,13 +343,14 @@ namespace Player
 
             foreach (Collider2D ronces in hitRonces)
             {
-                ronces.GetComponent<Ronces>().Destroy();
-                AudioManager.Instance.Play("cassageBuisson");
-
+                if (ronces.CompareTag("Enviro"))
+                {
+                    ronces.GetComponent<Ronces>().Destroy();
+                    AudioManager.Instance.Play("cassageBuisson");
+                }
+                
             }
 
-            attackCount = 0;
-            playerDamage--;
         }
 
         public void AnimatorManager()
@@ -375,12 +375,54 @@ namespace Player
 
         }
 
+        public void AttackEndEvent()
+        {
+            if (attackCount != 2)
+            {
+                if (attackCount == 1)
+                {
+                    playerDamage++;
+                }
+
+                attackCount++;
+            }
+            else
+            {
+                attackCount = 0;
+                playerDamage--;
+            }
+
+            
+
+            //laisser ces trucs à la fin de la fonction
+            movementScript.canMove = true;
+            animator.SetBool("IsAttacking", false);
+            cantAttack = false;
+        }
+
+
+        public IEnumerator AttackRedirection()
+        {
+            movementScript.canMove = true;
+            playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            //le temps d'on le joueur dispose pour rediriger son attaque. 
+            //Doit correspondre au temps entre les deux event dans les anim d'attaque
+            yield return new WaitForSeconds(0.1f);
+
+            movementScript.canMove = false;
+            playerRb.constraints = RigidbodyConstraints2D.None;
+            playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
+
+        #region DrawGizmos Function
         private void OnDrawGizmosSelected()
         {
             if (currentAttackPos == null)
                 return;
 
-            if (attackCount == 0)
+            if (attackCount == 2)
             {
                 Gizmos.color = Color.red;
                 if (attack3Dir == CapsuleDirection2D.Horizontal)
@@ -407,7 +449,7 @@ namespace Player
             }
           
         }
-
+        #endregion
 
     }
 }

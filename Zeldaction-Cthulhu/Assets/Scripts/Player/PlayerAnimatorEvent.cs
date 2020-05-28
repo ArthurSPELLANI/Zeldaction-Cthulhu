@@ -25,6 +25,32 @@ public class PlayerAnimatorEvent : MonoBehaviour
         movement.canMove = true;
     }
 
+    public void AnimatorEndAttack()
+    {
+        attack.AttackEndEvent();
+    }
+
+    public void AnimatorAttackPrep()
+    {
+
+        StartCoroutine(attack.AttackRedirection());
+
+        if (attack.attackCount == 0)
+        {
+            StartCoroutine(movement.AttackDash(attack.dashSpeed / 2, attack.dashTime));
+        }
+        else if (attack.attackCount == 1)
+        {
+            StartCoroutine(movement.AttackDash(attack.dashSpeed, attack.dashTime));
+        }
+        else if(attack.attackCount == 2)
+        {
+            StartCoroutine(movement.AttackDash(attack.dashSpeed * 2, attack.dashTime));
+        }
+
+        
+    }
+
     public void GameOver()
     {
         UIManager.Instance.gameOver.SetActive(true);

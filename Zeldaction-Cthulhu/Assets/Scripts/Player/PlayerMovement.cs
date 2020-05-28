@@ -26,13 +26,7 @@ namespace Player
         public Animator animator;
 
         public bool canMove = true;
-
-        [Range(0, 2)]
-        public float dashTime;
-        [Range(0, 2)]
-        public float dashDelay;
-        [Range(0, 10)]
-        public float dashSpeed;
+        private bool isDashing = false;
 
         [Range(0, 1)]
         public float dashRecoil;
@@ -40,7 +34,6 @@ namespace Player
         public AnimationCurve dashCurve;
 
         public GameObject pufpuf;
-        private bool activePufPuf = false;
 
         void Awake()
         {
@@ -77,7 +70,7 @@ namespace Player
             SoundRunning();
 
             //Reset de la vitesse de déplacement si le joueur ne bouge plus
-            if (canMove == false)
+            if (canMove == false && isDashing == false)
             {
                 playerRb.velocity = direction * 0 * Time.fixedDeltaTime;
                 
@@ -133,23 +126,7 @@ namespace Player
         //Fonction qui store la dernière direction du joueur + Direction de l'animator
         private void GetDirection()
         {
-            /*if(direction.x == 1 && direction.y == 0)
-            {
-                currentDirection = new Vector2(1, 0);
-            }
-            if (direction.x == -1 && direction.y == 0)
-            {
-                currentDirection = new Vector2(-1, 0);
-            }
-            if (direction.x == 0 && direction.y == 1)
-            {
-                currentDirection = new Vector2(0, 1);
-            }
-            if (direction.x == 0 && direction.y == -1)
-            {
-                currentDirection = new Vector2(0, -1);
-            }*/
-            
+
             if(horizontal != 0 || vertical != 0)
             {
                 if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
@@ -176,19 +153,16 @@ namespace Player
         }
 
         //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack
-        public IEnumerator AttackDashShort()
+        public IEnumerator AttackDash(float dashSpeed, float dashTime)
         {
+
+            //must be the same value as in AttackRedirection function + 0.01f !!!
+            yield return new WaitForSeconds(0.11f);
+
+            isDashing = true;
             float timer = 0.0f;
 
             Vector2 aim = currentDirection;
-            canMove = false;
-            PlayerManager.Instance.playerAttack.cantAttack = true;
-            PlayerManager.Instance.playerAttack.AnimatorManager();
-
-
-            yield return new WaitForSeconds(dashDelay - 1f);
-
-            //PlayerManager.Instance.playerAttack.AttackManager();
 
             while (timer < dashTime)
             {
@@ -198,42 +172,10 @@ namespace Player
                 yield return null;
             }
 
-            yield return new WaitForSeconds(dashRecoil);
-
-            PlayerManager.Instance.playerAttack.cantAttack = false;
             playerRb.velocity = Vector2.zero;
-            canMove = true;         
+            isDashing = false;
         }
 
-        //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack
-        public IEnumerator AttackDashLong()
-        {
-            float timer = 0.0f;
-
-            Vector2 aim = currentDirection;
-            canMove = false;
-            PlayerManager.Instance.playerAttack.cantAttack = true;
-            PlayerManager.Instance.playerAttack.AnimatorManager();
-
-
-            yield return new WaitForSeconds(dashDelay);
-
-            //PlayerManager.Instance.playerAttack.AttackManager();
-
-            while (timer < dashTime)
-            {
-                playerRb.velocity = aim.normalized * 2 * (dashSpeed * dashCurve.Evaluate(timer / dashTime));
-
-                timer += Time.deltaTime;
-                yield return null;
-            }
-
-            yield return new WaitForSeconds(dashRecoil * 2);
-
-            PlayerManager.Instance.playerAttack.cantAttack = false;
-            playerRb.velocity = Vector2.zero;
-            canMove = true;
-        }
         #region Sound
         float timeBetweenStep = 0.5f;
         private float currentTime = 0;
