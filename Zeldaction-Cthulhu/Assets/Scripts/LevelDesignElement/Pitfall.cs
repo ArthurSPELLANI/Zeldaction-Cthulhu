@@ -18,9 +18,10 @@ namespace LevelDesign
         //public Transform respawn1;
         //public Transform respawn2;
         public Rigidbody2D rb;
-        public bool onPlatform;      
+        public bool onPlatform;
         //private float sqrOffset1;
         //private float sqrOffset2;
+        bool isPit;
 
         void Awake()
         {
@@ -94,8 +95,10 @@ namespace LevelDesign
         {
             if (other.gameObject.tag == "Player" && other.gameObject.layer == 12)
             {
-                other.transform.parent.GetChild(1).GetComponent<PlayerStats>().PlayerTakeDamage(1);
-                StartCoroutine(PitfallActivation());    
+                if(isPit == false)
+                {
+                    StartCoroutine(PitfallActivation());
+                }                
             }
             if (other.gameObject.tag == "Enemy")
             {
@@ -106,6 +109,8 @@ namespace LevelDesign
 
         IEnumerator PitfallActivation()
         {
+            isPit = true;
+            PlayerManager.Instance.playerStats.PlayerTakeDamage(1);
             SelectingRespawn();
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             yield return new WaitForSeconds(0.5f);
@@ -122,6 +127,7 @@ namespace LevelDesign
             }*/
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            isPit = false;
         }
     }
 }

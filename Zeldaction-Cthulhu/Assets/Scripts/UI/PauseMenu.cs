@@ -15,9 +15,9 @@ namespace Menu
     {
         public static bool gameIsPaused = false;
         public GameObject PauseMenuUI;
-        public GameObject shadowModeGo;
-        public GameObject attackBehaviorGo;
-        public GameObject movementBehaviorGo;
+        GameObject shadowModeGo;
+        GameObject attackBehaviorGo;
+        GameObject movementBehaviorGo;
 
         public GameObject Save;
         public WorldSave worldSaveScript;
@@ -32,7 +32,9 @@ namespace Menu
 
         void Start()
         {
-
+            shadowModeGo = PlayerManager.Instance.playerShadowMode.gameObject;
+            attackBehaviorGo = PlayerManager.Instance.playerAttack.gameObject;
+            movementBehaviorGo = PlayerManager.Instance.playerMovement.gameObject;
         }
 
         void Update()
