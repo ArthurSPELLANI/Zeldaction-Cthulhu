@@ -7,12 +7,13 @@ namespace Game
 {
     public class UIManager : Singleton<UIManager>
     {
-
+        public Image sanityBase;
         public Image jaugeMid1;
         public Image jaugeMid2;
         public Image jaugeEnd;
         public Image fill;
         public Slider sanityGauge;
+        public GameObject actionPoints;
         public GameObject gameOver;
 
 
@@ -24,17 +25,36 @@ namespace Game
 
         private void Update()
         {
-            if (PlayerManager.Instance.playerShadowMode.maxSanity == 60 && PlayerManager.Instance.playerShadowMode.gameObject.activeSelf == true)
+            if(PlayerManager.Instance.playerShadowMode.enabled == false)
+            {
+                sanityBase.gameObject.SetActive(false);
+                actionPoints.gameObject.SetActive(false);
+                jaugeMid1.gameObject.SetActive(false);
+                jaugeMid2.gameObject.SetActive(false);
+                jaugeEnd.gameObject.SetActive(false);
+                fill.enabled = false;
+            }
+            else
+            {
+                sanityBase.gameObject.SetActive(true);
+                actionPoints.gameObject.SetActive(true);
+                jaugeMid1.gameObject.SetActive(true);
+                jaugeMid2.gameObject.SetActive(true);
+                jaugeEnd.gameObject.SetActive(true);
+                fill.enabled = true;
+            }
+
+            if (PlayerManager.Instance.playerShadowMode.maxSanity == 60 && PlayerManager.Instance.playerShadowMode.enabled == true)
             {
                 SanityLevel1();
             }
 
-            if (PlayerManager.Instance.playerShadowMode.maxSanity == 75 && PlayerManager.Instance.playerShadowMode.gameObject.activeSelf == true)
+            if (PlayerManager.Instance.playerShadowMode.maxSanity == 75 && PlayerManager.Instance.playerShadowMode.enabled == true)
             {
                 SanityLevel2();
             }
 
-            if (PlayerManager.Instance.playerShadowMode.maxSanity == 90 && PlayerManager.Instance.playerShadowMode.gameObject.activeSelf == true)
+            if (PlayerManager.Instance.playerShadowMode.maxSanity == 90 && PlayerManager.Instance.playerShadowMode.enabled == true)
             {
                 SanityLevel3();
             }
@@ -73,7 +93,10 @@ namespace Game
         
         public void ContinueGameOver()
         {
+            PlayerManager.Instance.playerAnimator.SetBool("isDead", false);
             LevelManager.Instance.LaunchGame();
+            PlayerManager.Instance.EnableBehaviour();
+            gameOver.SetActive(false);            
         }
 
         public void MenuGameOver()

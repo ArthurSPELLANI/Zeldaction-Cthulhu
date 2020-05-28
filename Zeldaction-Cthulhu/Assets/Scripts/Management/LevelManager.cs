@@ -28,11 +28,11 @@ namespace Game
         float posY;
         public void LaunchGame()
         {
-            if (PlayerPrefs.HasKey("Scene"))
+            if (PlayerPrefs.HasKey("scene"))
             {
                 Debug.Log("Scene Detected");
                 currentScene.name = PlayerPrefs.GetString("scene");
-                SceneManager.LoadScene("scene");
+                SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
 
                 posX = PlayerPrefs.GetFloat("positionX");
                 posY = PlayerPrefs.GetFloat("positionY");

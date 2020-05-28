@@ -898,7 +898,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7074371154358565464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1767857300}
+        m_MethodName: ContinueGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1543923663341785760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3034,11 +3045,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e3e1673baae2046b65108d1ae01f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sanityBase: {fileID: 4247797823914140014}
   jaugeMid1: {fileID: 4247797823364190271}
   jaugeMid2: {fileID: 823207310}
   jaugeEnd: {fileID: 4247797823787170787}
   fill: {fileID: 4247797822775931039}
   sanityGauge: {fileID: 4247797822209622401}
+  actionPoints: {fileID: 4247797823119864740}
   gameOver: {fileID: 3922732456322412069}
 --- !u!1 &5306085874891626027
 GameObject:

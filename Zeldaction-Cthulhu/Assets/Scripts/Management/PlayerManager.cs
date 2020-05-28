@@ -165,5 +165,12 @@ namespace Player
             playerAttack.GetComponent<PlayerAttack>().enabled = false;
             playerShadowMode.GetComponent<PlayerShadowMode>().enabled = false;
         }
+
+        public void EnableBehaviour()
+        {
+            playerMovement.GetComponent<PlayerMovement>().enabled = true;
+            playerAttack.GetComponent<PlayerAttack>().enabled = true;
+            playerShadowMode.GetComponent<PlayerShadowMode>().enabled = true;
+        }
     }
 }
