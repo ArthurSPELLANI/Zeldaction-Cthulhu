@@ -26,6 +26,7 @@ namespace Player
         public Animator animator;
 
         public bool canMove = true;
+        private bool isDashing = false;
 
         [Range(0, 1)]
         public float dashRecoil;
@@ -69,7 +70,7 @@ namespace Player
             SoundRunning();
 
             //Reset de la vitesse de déplacement si le joueur ne bouge plus
-            if (canMove == false)
+            if (canMove == false && isDashing == false)
             {
                 playerRb.velocity = direction * 0 * Time.fixedDeltaTime;
                 
@@ -125,23 +126,7 @@ namespace Player
         //Fonction qui store la dernière direction du joueur + Direction de l'animator
         private void GetDirection()
         {
-            /*if(direction.x == 1 && direction.y == 0)
-            {
-                currentDirection = new Vector2(1, 0);
-            }
-            if (direction.x == -1 && direction.y == 0)
-            {
-                currentDirection = new Vector2(-1, 0);
-            }
-            if (direction.x == 0 && direction.y == 1)
-            {
-                currentDirection = new Vector2(0, 1);
-            }
-            if (direction.x == 0 && direction.y == -1)
-            {
-                currentDirection = new Vector2(0, -1);
-            }*/
-            
+
             if(horizontal != 0 || vertical != 0)
             {
                 if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
@@ -170,10 +155,14 @@ namespace Player
         //Coroutine lancée après l'input d'attaque, lance la fonction d'attaque dans le script PlayerAttack
         public IEnumerator AttackDash(float dashSpeed, float dashTime)
         {
+
+            //must be the same value as in AttackRedirection function + 0.01f !!!
+            yield return new WaitForSeconds(0.11f);
+
+            isDashing = true;
             float timer = 0.0f;
 
             Vector2 aim = currentDirection;
-            //canMove = false;
 
             while (timer < dashTime)
             {
@@ -184,7 +173,7 @@ namespace Player
             }
 
             playerRb.velocity = Vector2.zero;
-            //canMove = true;         
+            isDashing = false;
         }
 
         #region Sound

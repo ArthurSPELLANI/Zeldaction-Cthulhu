@@ -172,17 +172,8 @@ namespace Player
         }
 
         //Choisi le type d'attaque en fonction du placement dans la séquence de coups
-        public IEnumerator AttackManager()
+        public void AttackManager()
         {
-            movementScript.canMove = true;
-            playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-            yield return new WaitForSeconds(0.015f);
-
-            movementScript.canMove = false;
-            playerRb.constraints = RigidbodyConstraints2D.None;
-            playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
             if (attackCount == 0)
             {
                 Attack1();
@@ -205,8 +196,6 @@ namespace Player
         //Premier coup de la série d'attaques
         void Attack1()
         {
-            Debug.Log("l'attaque 1 est lancée");
-
             GetAttackPos1();
 
             AudioManager.Instance.Play("coup1");
@@ -253,17 +242,11 @@ namespace Player
         //Second coup de la série d'attaques
         void Attack2()
         {
-            Debug.Log("l'attaque 2 est lancée");
-
             GetAttackPos2();
-
-            //StartCoroutine(PlayerManager.Instance.playerMovement.AttackDash(dashSpeed, dashTime));
 
             AudioManager.Instance.Play("coup2");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
-
-
 
             foreach (Collider2D enemy in hitEnemies)
             {
@@ -290,7 +273,6 @@ namespace Player
             {
                 pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
                 AudioManager.Instance.Play("tappagePillier");
-
             }
 
             Collider2D[] hitRonces = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, roncesLayer);
@@ -299,7 +281,6 @@ namespace Player
             {
                 ronces.GetComponent<Ronces>().Destroy();
                 AudioManager.Instance.Play("cassageBuisson");
-
             }
 
         }
@@ -307,11 +288,7 @@ namespace Player
         //Troisième (et dernier) coup de la série d'attaques
         void Attack3()
         {
-            Debug.Log("l'attaque 3 est lancée");
-
             GetAttackPos3();
-
-            //StartCoroutine(PlayerManager.Instance.playerMovement.AttackDash(dashSpeed * 2, dashTime));
 
             AudioManager.Instance.Play("coup3");
 
@@ -415,15 +392,28 @@ namespace Player
                 playerDamage--;
             }
 
-            animator.SetBool("IsAttacking", false);
+            
 
             //laisser ces trucs à la fin de la fonction
-            cantAttack = false;
             movementScript.canMove = true;
+            animator.SetBool("IsAttacking", false);
+            cantAttack = false;
         }
 
 
+        public IEnumerator AttackRedirection()
+        {
+            movementScript.canMove = true;
+            playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
 
+            //le temps d'on le joueur dispose pour rediriger son attaque. 
+            //Doit correspondre au temps entre les deux event dans les anim d'attaque
+            yield return new WaitForSeconds(0.1f);
+
+            movementScript.canMove = false;
+            playerRb.constraints = RigidbodyConstraints2D.None;
+            playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
 
 
         #region DrawGizmos Function
@@ -432,7 +422,7 @@ namespace Player
             if (currentAttackPos == null)
                 return;
 
-            if (attackCount == 0)
+            if (attackCount == 2)
             {
                 Gizmos.color = Color.red;
                 if (attack3Dir == CapsuleDirection2D.Horizontal)

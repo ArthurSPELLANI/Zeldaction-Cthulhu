@@ -11,7 +11,7 @@ public class PlayerAnimatorEvent : MonoBehaviour
 
     public void AnimatorAttack()
     {
-        StartCoroutine(attack.AttackManager());
+        attack.AttackManager();
     }
 
     public void AnimatorCantMove()
@@ -27,6 +27,27 @@ public class PlayerAnimatorEvent : MonoBehaviour
     public void AnimatorEndAttack()
     {
         attack.AttackEndEvent();
+    }
+
+    public void AnimatorAttackPrep()
+    {
+
+        StartCoroutine(attack.AttackRedirection());
+
+        if (attack.attackCount == 0)
+        {
+            StartCoroutine(movement.AttackDash(attack.dashSpeed / 2, attack.dashTime));
+        }
+        else if (attack.attackCount == 1)
+        {
+            StartCoroutine(movement.AttackDash(attack.dashSpeed, attack.dashTime));
+        }
+        else if(attack.attackCount == 2)
+        {
+            StartCoroutine(movement.AttackDash(attack.dashSpeed * 2, attack.dashTime));
+        }
+
+        
     }
 
 }
