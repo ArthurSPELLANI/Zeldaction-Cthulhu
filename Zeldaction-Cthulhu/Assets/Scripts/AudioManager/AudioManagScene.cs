@@ -10,19 +10,18 @@ namespace AudioManaging
         AudioManager AM;
 
         Scene CurrentScene;
-        Scene NewScene;
         
         void Awake()
         {
             AM = GetComponent<AudioManager>();
-            NewScene = SceneManager.GetActiveScene();
         }
 
         void Update()
         {
-            if (CurrentScene != NewScene)
+            
+            if (CurrentScene != SceneManager.GetActiveScene())
             {
-                CurrentScene = NewScene;
+                CurrentScene = SceneManager.GetActiveScene();
                 SwitchScene();
             }
         }
@@ -88,12 +87,12 @@ namespace AudioManaging
                 AM.walkOnPierre = true;
                 AM.bruitBresson = true;
             }
-            else if (CurrentScene.buildIndex == 10)
+            else if (CurrentScene.buildIndex == 12)
             {
                 AM.walkOnHerbe = true;
                 AM.bruitBresson = true;
             }
-            else if (CurrentScene.buildIndex == 10)
+            else if (CurrentScene.buildIndex == 13)
             {
                 AM.walkOnHerbe = true;
                 AM.bruitBresson = true;
