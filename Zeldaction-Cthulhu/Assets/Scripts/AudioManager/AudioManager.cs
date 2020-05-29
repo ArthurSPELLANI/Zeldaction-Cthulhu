@@ -52,6 +52,8 @@ namespace AudioManaging
         {
             MakeSingleton(true);
 
+            negativeEffectPalier = 0;
+
             volumeSounds = 1f;
             volumeMusics = 1f;
 
