@@ -11,7 +11,7 @@ public class Dialog : MonoBehaviour
     public bool dialogActive;
     public bool playerInRange;
    
-    //public GameObject Button;
+    public GameObject Button;
     void Update()
     {
       if (Input.GetKeyDown(KeyCode.E) && playerInRange || Input.GetButtonDown("Interract") && playerInRange)
@@ -32,7 +32,7 @@ public class Dialog : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             playerInRange = true;
-           // Button.SetActive(true);
+            Button.SetActive(true);
         }
     }
 
@@ -40,7 +40,7 @@ public class Dialog : MonoBehaviour
     {
      if (other.CompareTag("Player"))  
             {
-            //Button.SetActive(false);
+            Button.SetActive(false);
             dialogBox.SetActive(false);
             playerInRange = false;
             }
