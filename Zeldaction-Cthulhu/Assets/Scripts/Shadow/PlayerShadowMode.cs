@@ -41,7 +41,7 @@ namespace Player
 
         public int actionPoints;
         public int maxActionPoints;
-        float cooldownAP = 5f;
+        float cooldownAP = 4f;
         float timestamp;
 
         float distanceCatchAnimation;
@@ -115,7 +115,10 @@ namespace Player
 
             if (isShadowActivated == true && Input.GetButtonDown("Recall"))
             {
-                RecallPlayer();
+                if(actionPoints > 0)
+                {
+                    RecallPlayer();
+                }                
             }
 
             if (actionPoints < maxActionPoints && timestamp <= Time.time)
@@ -177,7 +180,9 @@ namespace Player
         
 
         private void RecallPlayer()
-        {            
+        {
+            sanity -= 5;
+            actionPoints -= 1;
             player.transform.position = shadowObject.transform.position;
             isShadowActivated = false;
             isOutOfBounds = false;

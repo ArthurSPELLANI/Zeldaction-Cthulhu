@@ -116,9 +116,10 @@ namespace Player
             playerStats.playerCurrentHealth = playerStats.playerMaxHealth;
             playerAttack.enabled = true;
             playerMovement.enabled = true;
+            playerShoot.enabled = true;
             playerShadowMode.enabled = true;
             playerShadowMode.sanity = playerShadowMode.maxSanity;
-            playerShadowMode.actionPoints = 5;
+            playerShadowMode.actionPoints = playerShadowMode.maxActionPoints;
             playerShoot.ammunitions = 6;
         }
 
