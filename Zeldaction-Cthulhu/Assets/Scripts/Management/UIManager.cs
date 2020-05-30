@@ -95,7 +95,7 @@ namespace Game
         {
             PlayerManager.Instance.playerAnimator.SetBool("isDead", false);
             LevelManager.Instance.LaunchGame();
-            PlayerManager.Instance.EnableBehaviour();
+            PlayerManager.Instance.LoadPlayer();
             gameOver.SetActive(false);            
         }
 

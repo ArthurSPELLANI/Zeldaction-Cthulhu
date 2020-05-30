@@ -11,13 +11,16 @@ public class ReceiverForCurrentDirection : MonoBehaviour
     {
         PlayerManager.Instance.playerMovement.currentDirection = new Vector2(1, 0);
         PlayerManager.Instance.playerAnimator.gameObject.transform.localScale = new Vector3(1, 1, 1);
-
+        PlayerManager.Instance.playerAnimator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
+        PlayerManager.Instance.playerAnimator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
     }
 
     public void SetCurrentDirectionLeft()
     {
         PlayerManager.Instance.playerMovement.currentDirection = new Vector2(-1, 0);
         PlayerManager.Instance.playerAnimator.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        PlayerManager.Instance.playerAnimator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
+        PlayerManager.Instance.playerAnimator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
 
     }
 
@@ -25,6 +28,8 @@ public class ReceiverForCurrentDirection : MonoBehaviour
     {
         PlayerManager.Instance.playerMovement.currentDirection = new Vector2(0, 1);
         PlayerManager.Instance.playerAnimator.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        PlayerManager.Instance.playerAnimator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
+        PlayerManager.Instance.playerAnimator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
 
     }
 
@@ -32,6 +37,8 @@ public class ReceiverForCurrentDirection : MonoBehaviour
     {
         PlayerManager.Instance.playerMovement.currentDirection = new Vector2(0, -1);
         PlayerManager.Instance.playerAnimator.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        PlayerManager.Instance.playerAnimator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
+        PlayerManager.Instance.playerAnimator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
 
     }
 

@@ -157,6 +157,8 @@ namespace Player
                 playerAttack.enabled = true;
             if (PlayerPrefs.GetInt("canUseGun") == 1)
                 playerShoot.enabled = true;
+
+            playerMovement.enabled = true;
         }
 
         public void DisableBehaviour()
