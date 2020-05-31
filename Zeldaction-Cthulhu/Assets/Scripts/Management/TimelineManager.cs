@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using Player;
 using Game;
+using AudioManaging;
 //et la c'est les usings (les bibliothèques pour trouver les machins en dessous)
 
 public class TimelineManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class TimelineManager : MonoBehaviour
     public GameObject[] Dialog;
     int Index; //on créer un Index
     int childIndex; // ici un 2nd Index
+    int indexSon;
     public Sound[] Son;
     bool canSkip;
     bool desactivate;
@@ -41,6 +43,20 @@ public class TimelineManager : MonoBehaviour
         SanityGauge = UIManager.Instance.gameObject.transform.GetChild(2).gameObject;
         Base = UIManager.Instance.gameObject.transform.GetChild(3).gameObject;
         ActionPoints = UIManager.Instance.gameObject.transform.GetChild(4).gameObject;
+
+        foreach (Sound s in Son)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume * AudioManager.Instance.volumeSounds;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+
+            if (s.volume == 0)
+                s.source.volume = 0.5f * AudioManager.Instance.volumeSounds;
+            if (s.pitch == 0)
+                s.source.pitch = 1f;
+        }
     }
  
     void Update()
@@ -91,6 +107,13 @@ public class TimelineManager : MonoBehaviour
         if (childIndex == 0)
         {
             Dialog[Index].transform.GetChild(childIndex).gameObject.SetActive(true); //on appelle un enfant
+            if (Son[indexSon] != null)
+            {
+                Son[indexSon].source.Play();
+                
+            }
+            indexSon += 1;
+
             childIndex += 1; // on incrémente
         }
 
@@ -99,6 +122,13 @@ public class TimelineManager : MonoBehaviour
             if (childIndex == (Dialog[Index].transform.childCount)) // si on arrive au maximum du nbr d'enfant (childCount)
             {
                 Dialog[Index].transform.GetChild(childIndex - 1).gameObject.SetActive(false);
+                if (Son[indexSon - 1] != null)
+                {
+                    Son[indexSon - 1].source.Stop();
+                    
+                }
+                indexSon += 1;
+
                 childIndex = 0; // On réinitialise le childIndex pour qu'il puisse recommencer de compter
                 Index += 1; // On passe au parent suivant (le gros truc qui regroupe tout les enfants dialog Box)
                 Debug.Log("Je suis la");
@@ -111,6 +141,15 @@ public class TimelineManager : MonoBehaviour
             {
                 Dialog[Index].transform.GetChild(childIndex - 1).gameObject.SetActive(false); // on chercher l'enfant -1
                 Dialog[Index].transform.GetChild(childIndex).gameObject.SetActive(true); // enfant actuel (pas besoin de mettre + 1)
+                if (Son[indexSon] != null)
+                {                    
+                    Son[indexSon].source.Play();                   
+                }
+                if (Son[indexSon - 1] != null)
+                    Son[indexSon - 1].source.Stop();
+
+                indexSon += 1;
+
                 childIndex += 1; //on incrémente encore.
             }
         }
