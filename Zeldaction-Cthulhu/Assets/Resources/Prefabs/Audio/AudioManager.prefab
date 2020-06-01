@@ -116,7 +116,7 @@ MonoBehaviour:
   sounds:
   - name: coup1
     clip: {fileID: 8300000, guid: 553315182d2d0b540a1f7be3be78f113, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -134,38 +134,38 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: tir
     clip: {fileID: 8300000, guid: 7e49c1513f010d84580a864a0555f55c, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: impactEnnemi
     clip: {fileID: 8300000, guid: 086bff47062cb7d4295b8d64c02b6f86, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: sortiePistolet
     clip: {fileID: 8300000, guid: 984642a2b155b784c85668687f3ae546, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: rangementPistolet
     clip: {fileID: 8300000, guid: ee3877b959c0cec4fbb6e7fe09b00c6d, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: entreeShadow
     clip: {fileID: 8300000, guid: 81733a0c23f67d04daf89140439fc71f, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: sortieShadow
     clip: {fileID: 8300000, guid: 32e8bd63f30653b47a3b2f0f1521298b, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: idleShadow
@@ -176,19 +176,19 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: cassageBuisson
     clip: {fileID: 8300000, guid: 72ad259396c469d4291874463ffc59f2, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: tappagePillier
     clip: {fileID: 8300000, guid: 9a69adea7612f494e831702ccc5ad4c2, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: attackLoup
     clip: {fileID: 8300000, guid: 7990edfbb83d4a54bad997240b841933, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -200,7 +200,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: priseDeDegatsLoup
     clip: {fileID: 8300000, guid: c754d896f4e2e4644a25aceed72a0c06, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
@@ -218,31 +218,31 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: attackRanged
     clip: {fileID: 8300000, guid: 8a6e72aef0621444a8480c374249dab2, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: mortRanged
     clip: {fileID: 8300000, guid: 32a3ab310d47f9741a801cd57751656e, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: priseDeDegatsRanged
     clip: {fileID: 8300000, guid: f310273436c718542bc0681d1da48d08, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: rechargement
     clip: {fileID: 8300000, guid: d4d8772942f24a24ebbfd9c731335f10, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: tirVide
     clip: {fileID: 8300000, guid: dcaf26dd42705f54fb6f8418c3448bed, type: 3}
-    volume: 0
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -255,6 +255,48 @@ MonoBehaviour:
   - name: healing
     clip: {fileID: 8300000, guid: 087609ce7f20596458e53ce4a22e60ea, type: 3}
     volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Coup1Voix
+    clip: {fileID: 8300000, guid: 7312b7e7effa6e74fafe0b49cc03c42b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Coup2Voix
+    clip: {fileID: 8300000, guid: 36b496034d857a94fb56de23906a12d7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Coup3Voix
+    clip: {fileID: 8300000, guid: b4409d9335c088b40b6352b3d21761f3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mort
+    clip: {fileID: 8300000, guid: a9a7fd1d75760cd4295097e2df0cb831, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Chute
+    clip: {fileID: 8300000, guid: 874c9ec5afb91074a97e27c3c98fd9de, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Prisededegats
+    clip: {fileID: 8300000, guid: af7e0a2fb88dc7b4f83a7dd6469d55f7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Soulagement
+    clip: {fileID: 8300000, guid: 5c0c565932832ec46aec6ca1bcf40c96, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -298,63 +340,63 @@ MonoBehaviour:
   pasHerbe:
   - name: pas1
     clip: {fileID: 8300000, guid: b79be0e7622b2644b83a64b7396d8753, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: pas2
     clip: {fileID: 8300000, guid: c78425117d6b7104daec4d6cbd680437, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: pas3
     clip: {fileID: 8300000, guid: 9104148c48d54d2449a1d608fc468393, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: pas4
     clip: {fileID: 8300000, guid: b139f48eb7d1348428808b31e318be0e, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: pas5
     clip: {fileID: 8300000, guid: bb2517b0e1530e341aba8e1f360bf5c1, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: pas6
     clip: {fileID: 8300000, guid: 11100e277d2918041ab8f5a0c7e08ae3, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   pasPlancher:
   - name: pas1
     clip: {fileID: 8300000, guid: 23081d62844c465429d2813bc1792712, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: pas2
     clip: {fileID: 8300000, guid: 446f6b0a14dbfd4449a4d0995954d7d2, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: pas3
     clip: {fileID: 8300000, guid: 9017aebe8c6c50843bbda3a93aa5463a, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: pas4
     clip: {fileID: 8300000, guid: b99b39e030b3c8c478185a8c8161205e, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   currentPas: []

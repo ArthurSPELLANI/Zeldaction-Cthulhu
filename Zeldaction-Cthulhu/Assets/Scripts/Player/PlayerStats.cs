@@ -99,12 +99,14 @@ namespace Player
                     PlayerManager.Instance.ResetPosition();
                     PlayerManager.Instance.ResetPlayer();*/
                     PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0, 0);
+                    AudioManager.Instance.Play("Mort");
                     PlayerManager.Instance.DisableBehaviour();
                     PlayerManager.Instance.playerAnimator.SetBool("isDead", true);
                 }
                 else
                 {
                     StartCoroutine(DamageShake());
+                    AudioManager.Instance.Play("Prisededegats");
                     StartCoroutine(CameraManager.Instance.MainCameraShake(0.5f, 2f, 0.2f));
                 }
 
@@ -135,6 +137,8 @@ namespace Player
             }
 
             healNumber -= 1;
+
+            AudioManager.Instance.Play("Soulagement");
 
             PlayerManager.Instance.playerMovement.speed = 60;
             transform.GetChild(0).gameObject.SetActive(false);

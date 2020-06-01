@@ -199,6 +199,7 @@ namespace Player
             GetAttackPos1();
 
             AudioManager.Instance.Play("coup1");
+            AudioManager.Instance.Play("Coup1Voix");
 
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
@@ -245,6 +246,7 @@ namespace Player
             GetAttackPos2();
 
             AudioManager.Instance.Play("coup2");
+            AudioManager.Instance.Play("Coup2Voix");
             //Detect enemies in a range of attack
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(currentAttackPos.position, attackRange, enemyLayer);
 
@@ -291,9 +293,10 @@ namespace Player
             GetAttackPos3();
 
             AudioManager.Instance.Play("coup3");
+            AudioManager.Instance.Play("Coup3Voix");
 
-            
-            if(attack3Dir == CapsuleDirection2D.Horizontal)
+
+            if (attack3Dir == CapsuleDirection2D.Horizontal)
             {
                 attack3Size = new Vector2(attack3VertSize, attack3HoriSize);
             }

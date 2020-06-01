@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Player;
 using Enemy;
+using AudioManaging;
 
 namespace LevelDesign
 {
@@ -111,6 +112,7 @@ namespace LevelDesign
         {
             isPit = true;
             PlayerManager.Instance.playerStats.PlayerTakeDamage(1);
+            AudioManager.Instance.Play("Chute");
             SelectingRespawn();
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             yield return new WaitForSeconds(0.5f);
