@@ -31,7 +31,7 @@ namespace AudioManaging
 
         void Start()
         {
-            volume = 0.5f * AudioManager.Instance.volumeMusics;
+            volume = 0.5f * PlayerPrefs.GetFloat("MusicVolume", 1);
             startMusic.volume = volume;
             loopMusic.volume = volume;
             time = 0f;

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -29940,6 +29940,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1001 &450416196
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941221, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.40125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676477628802941222, guid: 963bd6a77966c054daecd0d0d5d0b36f,
+        type: 3}
+      propertyPath: m_Name
+      value: LaPlaceDuVillage(forsounds)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 963bd6a77966c054daecd0d0d5d0b36f, type: 3}
 --- !u!1 &450516786
 GameObject:
   m_ObjectHideFlags: 0
@@ -95602,7 +95676,133 @@ MonoBehaviour:
   Dialog:
   - {fileID: 249512782}
   - {fileID: 2114897379}
-  Son: []
+  Son:
+  - name: 
+    clip: {fileID: 8300000, guid: ceddc18cd657c104c992997802403919, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 172bca3db143fcd479ed072a1a58524b, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 54415efe536240b4091ea73c1e457c4b, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 4b6fc4af58695cf4ea5f38e24b722c00, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: c16aff98ecc478446928e1d827e9a90b, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 54415efe536240b4091ea73c1e457c4b, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: a83c603c25059aa4fa44f90c38bc87df, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: f1c87344f717853499212c6852f7d749, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: f19b77e4d5163f44d8b80703b8a624bb, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 28f465ede3b0ae34284be0d5dcbdf87b, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: c16aff98ecc478446928e1d827e9a90b, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 23c366f4476ad994089394385b5ffae2, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 33f496295662e474eb93e73d52860c07, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 23c366f4476ad994089394385b5ffae2, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 9147c7048e34fe84eaaf6f7841b6715b, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: fefd07b7d9066f042943fc6bedbee7e1, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: c05ed32ae4e682c459773d5f65e3d9b8, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 4c0749037769cd54083d0d33659fa47c, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: c05ed32ae4e682c459773d5f65e3d9b8, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 7c4ccdc4b3462544382674dbfa73feef, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 59c71a6b2299e1d4cbc43be812ee70b1, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &1465495213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116379,7 +116579,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialog:
   - {fileID: 311217540}
-  Son: []
+  Son:
+  - name: 
+    clip: {fileID: 8300000, guid: 0e7de2b4525ce484292a05b70058d090, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 43befd933388aa841a9804ca3e8c676c, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 67e175453392a704fb3e09c8d743d772, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: c696ce79a009fa843a1addb20ccaa1c9, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 37971c3f3fd05354abdc7724e377aaab, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: eda6b87188cafe64a90df1ce210992ae, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 207f7dc6aefb4214ca7b102ceac703ec, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 9080435285e5e3b4ea79ccad83fff73e, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 68da5041cc9c6de44a8003a9a11e8371, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: fe9efac5d20c11d42b9b94a7e012e791, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &1814605327
 MonoBehaviour:
   m_ObjectHideFlags: 0

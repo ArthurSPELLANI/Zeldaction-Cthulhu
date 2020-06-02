@@ -52,10 +52,12 @@ namespace AudioManaging
         {
             MakeSingleton(true);
 
+
+
             negativeEffectPalier = 0;
 
-            volumeSounds = 1f;
-            volumeMusics = 1f;
+            volumeSounds = PlayerPrefs.GetFloat("SfxVolume", 1);
+            volumeMusics = PlayerPrefs.GetFloat("MusicVolume", 1);
 
             Zone = GetComponent<AudioReverbZone>();
 
