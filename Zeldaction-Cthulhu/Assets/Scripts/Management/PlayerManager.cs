@@ -147,7 +147,7 @@ namespace Player
             {
                 playerShadowMode.enabled = true;
                 playerShadowMode.maxSanity = PlayerPrefs.GetFloat("maxSanity");
-                playerShadowMode.maxActionPoints = PlayerPrefs.GetInt("mawActionPoints");
+                playerShadowMode.maxActionPoints = PlayerPrefs.GetInt("maxActionPoints");
                 playerShadowMode.fragment = PlayerPrefs.GetInt("fragemntNumbre");
             }
 

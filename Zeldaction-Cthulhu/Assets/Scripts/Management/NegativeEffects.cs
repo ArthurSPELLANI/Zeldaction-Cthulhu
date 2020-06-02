@@ -40,13 +40,17 @@ public class NegativeEffects : MonoBehaviour
         {
             AudioManager.Instance.negativeEffectPalier = 3;
         }
-        if (PlayerManager.Instance.playerShadowMode.sanity / PlayerManager.Instance.playerShadowMode.maxSanity < 0.4f)
+        else if (PlayerManager.Instance.playerShadowMode.sanity / PlayerManager.Instance.playerShadowMode.maxSanity < 0.4f)
         {
             AudioManager.Instance.negativeEffectPalier = 2;
         }
-        else if (PlayerManager.Instance.playerShadowMode.sanity / PlayerManager.Instance.playerShadowMode.maxSanity < 0.7f)
+        else if (PlayerManager.Instance.playerShadowMode.sanity / PlayerManager.Instance.playerShadowMode.maxSanity < 0.6f)
         {
             AudioManager.Instance.negativeEffectPalier = 1;
+        }
+        else if (PlayerManager.Instance.playerShadowMode.sanity / PlayerManager.Instance.playerShadowMode.maxSanity < 0.8f)
+        {
+            AudioManager.Instance.negativeEffectPalier = 0;
         }
 
     }
