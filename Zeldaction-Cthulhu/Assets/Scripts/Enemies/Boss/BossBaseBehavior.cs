@@ -20,6 +20,7 @@ namespace Boss
         public GameObject phase1Go;
         public GameObject phase2Go;
         public GameObject transition;
+        public GameObject death;
 
         void Awake()
         {
@@ -36,7 +37,7 @@ namespace Boss
 
         void Start()
         {
-            defaultMaterial = GetComponentInChildren<SpriteRenderer>().material;
+            defaultMaterial = Resources.Load<Material>("Material/Sprite-Lit-Default");
         }
 
         void Update()
@@ -49,9 +50,28 @@ namespace Boss
                 }
                 else
                 {
-                    Debug.Log("tu à vaincu la terrible Mhamhy");
-                    Destroy(gameObject);
+                    phase2Go.SetActive(false);
+                    phase1Go.SetActive(false);
+                    death.SetActive(true);
                 }
+            }
+
+            if (isWeak == true)
+            {
+                if (isInPhase1 == true)
+                {
+                    PlayerManager.Instance.playerLook.enabled = false;
+                    PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.position = new Vector2(phase1Go.transform.localPosition.x, phase1Go.transform.localPosition.y);                    
+                }
+                else
+                {
+                    PlayerManager.Instance.playerLook.enabled = false;
+                    PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.position = new Vector2(phase2Go.transform.localPosition.x, phase2Go.transform.localPosition.y + 1.5f);                    
+                }
+            }
+            else if (PlayerManager.Instance.playerLook.isActiveAndEnabled == false)
+            {
+                PlayerManager.Instance.playerLook.enabled = true;
             }
 
             //Feedback quand le joueur peut infliger des dégâts au boss.
@@ -115,7 +135,7 @@ namespace Boss
             yield return new WaitForSeconds(0.05f);
             GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
             yield return new WaitForSeconds(0.05f);
-            GetComponentInChildren<SpriteRenderer>().material = defaultMaterial;
+            GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Sprite-Lit-Default");
         }
 
         public void Phase1Done()

@@ -9,6 +9,7 @@ public class SallTentacleBoss : MonoBehaviour
     CapsuleCollider2D capsCollider;
     public Phase1PatternManager p1Man;
     public BossBaseBehavior boss;
+    public GameObject transition;
     bool isActive;
 
 
@@ -37,6 +38,13 @@ public class SallTentacleBoss : MonoBehaviour
             }
         }
         else
+        {
+            animator.SetBool("isActive", false);
+            capsCollider.enabled = false;
+            isActive = false;
+        }
+
+        if (transition.activeSelf == true)
         {
             animator.SetBool("isActive", false);
             capsCollider.enabled = false;

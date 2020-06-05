@@ -121,7 +121,11 @@ namespace Boss
             isWaitingForNextPattern = true;
         }
 
-
+        public void Phase2Over()
+        {
+            GetComponent<Phase2Pattern1>().enabled = false;
+            GetComponent<Phase2Pattern2>().enabled = false;
+        }
 
 
 

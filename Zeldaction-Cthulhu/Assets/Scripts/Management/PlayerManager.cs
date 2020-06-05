@@ -14,6 +14,7 @@ namespace Player
         public PlayerShadowMode playerShadowMode;
         public PlayerStats playerStats;
         public PlayerShoot playerShoot;
+        public PlayerLook playerLook;
         public Animator playerAnimator;
         public NearEnemyDetection nearEnemyDetection;
     
@@ -47,6 +48,7 @@ namespace Player
             playerShadowMode = GetComponentInChildren<PlayerShadowMode>();
             playerStats = GetComponentInChildren<PlayerStats>();
             playerShoot = GetComponentInChildren<PlayerShoot>();
+            playerLook = GetComponentInChildren<PlayerLook>();
             nearEnemyDetection = GetComponentInChildren<NearEnemyDetection>();
 
             if (PlayerPrefs.HasKey("scene"))
