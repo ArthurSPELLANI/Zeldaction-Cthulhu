@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Player;
 
 
 namespace Boss
@@ -10,7 +11,6 @@ namespace Boss
         public int phase1Hp;
         public int phase2Hp;
         [SerializeField] private int currentHp;
-        public GameObject wallPhase1;
 
         [HideInInspector] public bool isInPhase1 = true;
         public bool isWeak = false;
@@ -19,6 +19,7 @@ namespace Boss
 
         public GameObject phase1Go;
         public GameObject phase2Go;
+        public GameObject transition;
 
         void Awake()
         {
@@ -40,16 +41,11 @@ namespace Boss
 
         void Update()
         {
-            if (currentHp == 0)
+            if (currentHp <= 0)
             {
                 if (isInPhase1 == true)
                 {
-                    isInPhase1 = false;
-                    currentHp = phase2Hp;
-                    wallPhase1.SetActive(false);
-                    phase1Go.SetActive(false);
-                    phase2Go.SetActive(true);
-                    isWeak = false;
+                    phase1Go.GetComponentInChildren<Phase1PatternManager>().Phase1Over();
                 }
                 else
                 {
@@ -120,6 +116,21 @@ namespace Boss
             GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
             yield return new WaitForSeconds(0.05f);
             GetComponentInChildren<SpriteRenderer>().material = defaultMaterial;
+        }
+
+        public void Phase1Done()
+        {
+            transition.SetActive(true);            
+            phase1Go.SetActive(false);
+            isWeak = false;
+        }
+
+        public void Phase2Begin()
+        {
+            transition.SetActive(false);
+            isInPhase1 = false;
+            currentHp = phase2Hp;
+            phase2Go.SetActive(true);
         }
 
 

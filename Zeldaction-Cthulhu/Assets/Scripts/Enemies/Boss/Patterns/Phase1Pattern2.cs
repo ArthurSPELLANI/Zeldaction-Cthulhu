@@ -10,7 +10,6 @@ namespace Boss
 
         private Transform target;
         private GameObject player;
-        public GameObject walls;
 
         public int dmg;
 
@@ -46,7 +45,6 @@ namespace Boss
         void OnEnable()
         {
             target = player.transform;
-            walls.SetActive(true);
             StartCoroutine(WaitingForPatternStart());
         }
 
