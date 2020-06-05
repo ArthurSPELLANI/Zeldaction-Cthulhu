@@ -38,7 +38,7 @@ public class FogScript : MonoBehaviour
     }
     IEnumerator GoBackHuman()
     {
-        yield return new WaitForSecondsRealtime(timeBeforeShadowExit);
+        yield return new WaitForSecondsRealtime(1f);
         playerShadowMode.ShadowExit();
     }
 }

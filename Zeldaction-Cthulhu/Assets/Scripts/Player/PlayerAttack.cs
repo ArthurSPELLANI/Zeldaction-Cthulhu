@@ -332,13 +332,8 @@ namespace Player
 
             if (pillar != null)
             {
-                
-                if (pillar.CompareTag("pillar"))
-                {
-                    pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
-                    AudioManager.Instance.Play("tappagePillier");
-                }
-                
+                pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+                AudioManager.Instance.Play("tappagePillier");
             }
 
 
@@ -346,12 +341,8 @@ namespace Player
 
             foreach (Collider2D ronces in hitRonces)
             {
-                if (ronces.CompareTag("Enviro"))
-                {
-                    ronces.GetComponent<Ronces>().Destroy();
-                    AudioManager.Instance.Play("cassageBuisson");
-                }
-                
+                ronces.GetComponent<Ronces>().Destroy();
+                AudioManager.Instance.Play("cassageBuisson"); 
             }
 
         }
