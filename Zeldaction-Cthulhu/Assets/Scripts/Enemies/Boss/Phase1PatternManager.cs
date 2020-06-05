@@ -10,7 +10,7 @@ namespace Boss
         private int patternSelector;
         private int patternCount;
         private bool isWaitingForNextPattern = true;
-        public GameObject walls;
+        public Animator animator;
         
         void Awake()
         {
@@ -82,9 +82,7 @@ namespace Boss
         /// Tire le prochain pattern aléatoirement, plus le pattern à été joué d'affiler, moins il a de chance d'être tiré.
         /// </summary>
         public void NextPatternSelection()
-        {
-            walls.SetActive(false);
-
+        {   
             for (int i = 0; i < patternCount; i++)
             {
                 //patternSelector = Random.Range(1, 4);
@@ -101,7 +99,10 @@ namespace Boss
             isWaitingForNextPattern = true;
         }
 
-
+        public void Phase1Over()
+        {
+            animator.SetBool("isDead", true);
+        }
 
 
 

@@ -13,7 +13,6 @@ namespace Boss
 
         private GameObject player;
         private Rigidbody2D playerRb;
-        private GameObject walls;
         private GameObject graphics;
         private GameObject pillarsParent;
         private GameObject pillarInt;
@@ -21,6 +20,7 @@ namespace Boss
         private GameObject pullPoint;
 
         public GameObject laser;
+        public GameObject vortex;
 
         public float pullForce;
         public float laserCountdown;
@@ -43,7 +43,6 @@ namespace Boss
         {
             player = GameObject.Find("Player");
             playerRb = player.GetComponent<Rigidbody2D>();
-            walls = transform.GetChild(2).gameObject;
             graphics = transform.parent.GetChild(0).gameObject;
             pillarsParent = transform.GetChild(3).gameObject;
             pillarInt = pillarsParent.transform.GetChild(0).gameObject;
@@ -62,11 +61,11 @@ namespace Boss
             {
                 if (pillarOut.transform.GetChild(0).gameObject.activeSelf)
                 {
-                    walls.SetActive(false);
+                    vortex.SetActive(false);
                 }
                 else
                 {
-                    walls.SetActive(true);
+                    vortex.SetActive(true);
                 }
             }
         }
@@ -97,7 +96,7 @@ namespace Boss
 
             }
 
-            walls.SetActive(true);
+            //walls.SetActive(true);
 
             SpawnPillars();
         }
@@ -123,10 +122,24 @@ namespace Boss
             //graphics.GetComponent<SpriteRenderer>().color = Color.green;
             animator.SetBool("isChargingLaser", true);
 
+
             yield return new WaitForSeconds(laserCountdown);
 
             //graphics.GetComponent<SpriteRenderer>().color = Color.red;
             laser.SetActive(true);
+
+            yield return new WaitForSeconds(1f);
+
+            vortex.SetActive(false);
+            pillarHaveSpawn = false;
+            pillarInt.GetComponent<Pillar>().isCharged = true;
+            pillarInt.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            pillarInt.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            pillarOut.GetComponent<Pillar>().isCharged = false;
+            pillarOut.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            pillarOut.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            pillarOut.SetActive(false);
+            pillarInt.SetActive(false);
 
             RaycastHit2D[] hitPlayer = Physics2D.CircleCastAll(transform.position, laserThickness, new Vector2(0, -1), laserDistance, playerLayer);
 
@@ -156,22 +169,17 @@ namespace Boss
                 foreach (RaycastHit2D player in hitPlayer)
                 {
                     player.collider.GetComponent<PlayerStats>().PlayerTakeDamage(laserDmg);  
-                }
-
-                animator.SetBool("isChargingLaser", false);
-                laser.SetActive(false);
-                walls.SetActive(false);
-
+                }               
+                
                 yield return new WaitForSeconds(timeBeforePatternEnd);
                 //graphics.GetComponent<SpriteRenderer>().color = Color.white;
+                animator.SetBool("isChargingLaser", false);
+                laser.SetActive(false);
 
                 GetComponent<Phase2PatternManager>().NextPatternSelection();
             }
 
-            pillarInt.GetComponent<Pillar>().isCharged = true;
-            pillarInt.SetActive(false);
-            pillarOut.GetComponent<Pillar>().isCharged = false;
-            pillarOut.SetActive(false);
+            
 
         }
 

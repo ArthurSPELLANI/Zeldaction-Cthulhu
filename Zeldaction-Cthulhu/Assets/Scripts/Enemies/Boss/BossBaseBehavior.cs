@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Player;
 
 
 namespace Boss
@@ -10,7 +11,6 @@ namespace Boss
         public int phase1Hp;
         public int phase2Hp;
         [SerializeField] private int currentHp;
-        public GameObject wallPhase1;
 
         [HideInInspector] public bool isInPhase1 = true;
         public bool isWeak = false;
@@ -19,6 +19,8 @@ namespace Boss
 
         public GameObject phase1Go;
         public GameObject phase2Go;
+        public GameObject transition;
+        public GameObject death;
 
         void Awake()
         {
@@ -35,27 +37,41 @@ namespace Boss
 
         void Start()
         {
-            defaultMaterial = GetComponentInChildren<SpriteRenderer>().material;
+            defaultMaterial = Resources.Load<Material>("Material/Sprite-Lit-Default");
         }
 
         void Update()
         {
-            if (currentHp == 0)
+            if (currentHp <= 0)
             {
                 if (isInPhase1 == true)
                 {
-                    isInPhase1 = false;
-                    currentHp = phase2Hp;
-                    wallPhase1.SetActive(false);
-                    phase1Go.SetActive(false);
-                    phase2Go.SetActive(true);
-                    isWeak = false;
+                    phase1Go.GetComponentInChildren<Phase1PatternManager>().Phase1Over();
                 }
                 else
                 {
-                    Debug.Log("tu à vaincu la terrible Mhamhy");
-                    Destroy(gameObject);
+                    phase2Go.SetActive(false);
+                    phase1Go.SetActive(false);
+                    death.SetActive(true);
                 }
+            }
+
+            if (isWeak == true)
+            {
+                if (isInPhase1 == true)
+                {
+                    PlayerManager.Instance.playerLook.enabled = false;
+                    PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.position = new Vector2(phase1Go.transform.localPosition.x, phase1Go.transform.localPosition.y);                    
+                }
+                else
+                {
+                    PlayerManager.Instance.playerLook.enabled = false;
+                    PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.position = new Vector2(phase2Go.transform.localPosition.x, phase2Go.transform.localPosition.y + 1.5f);                    
+                }
+            }
+            else if (PlayerManager.Instance.playerLook.isActiveAndEnabled == false)
+            {
+                PlayerManager.Instance.playerLook.enabled = true;
             }
 
             //Feedback quand le joueur peut infliger des dégâts au boss.
@@ -119,7 +135,22 @@ namespace Boss
             yield return new WaitForSeconds(0.05f);
             GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Black");
             yield return new WaitForSeconds(0.05f);
-            GetComponentInChildren<SpriteRenderer>().material = defaultMaterial;
+            GetComponentInChildren<SpriteRenderer>().material = Resources.Load<Material>("Material/Sprite-Lit-Default");
+        }
+
+        public void Phase1Done()
+        {
+            transition.SetActive(true);            
+            phase1Go.SetActive(false);
+            isWeak = false;
+        }
+
+        public void Phase2Begin()
+        {
+            transition.SetActive(false);
+            isInPhase1 = false;
+            currentHp = phase2Hp;
+            phase2Go.SetActive(true);
         }
 
 

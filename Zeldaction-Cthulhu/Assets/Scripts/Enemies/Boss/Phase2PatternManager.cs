@@ -10,6 +10,9 @@ namespace Boss
         private int patternSelector;
         private int patternCount;
         private bool isWaitingForNextPattern = true;
+        public Animator mamyAnim;
+        public Animator tentacleAnim;
+        
 
         [HideInInspector] public bool canDoPattern1 = true;
         [HideInInspector] public bool canDoPattern2 = true;
@@ -118,7 +121,11 @@ namespace Boss
             isWaitingForNextPattern = true;
         }
 
-
+        public void Phase2Over()
+        {
+            GetComponent<Phase2Pattern1>().enabled = false;
+            GetComponent<Phase2Pattern2>().enabled = false;
+        }
 
 
 
