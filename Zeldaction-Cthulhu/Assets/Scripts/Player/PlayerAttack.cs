@@ -332,8 +332,14 @@ namespace Player
 
             if (pillar != null)
             {
-                pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
-                AudioManager.Instance.Play("tappagePillier");
+                //le if c'est un bout de scotch
+                if (pillar.gameObject.tag != "Player")
+                {
+                    Debug.Log(pillar);
+                    pillar.GetComponent<Pillar>().CorruptionBeam(currentDirection);
+                    AudioManager.Instance.Play("tappagePillier");
+                }
+                
             }
 
 
@@ -341,8 +347,14 @@ namespace Player
 
             foreach (Collider2D ronces in hitRonces)
             {
-                ronces.GetComponent<Ronces>().Destroy();
-                AudioManager.Instance.Play("cassageBuisson"); 
+                //le if c'est un bout de scotch
+                if (pillar.gameObject.tag != "Player")
+                {
+                    Debug.Log(ronces);
+                    ronces.GetComponent<Ronces>().Destroy();
+                    AudioManager.Instance.Play("cassageBuisson");
+                }
+                
             }
 
         }
