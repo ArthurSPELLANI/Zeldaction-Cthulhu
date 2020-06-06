@@ -23,7 +23,7 @@ public class Bleeding : MonoBehaviour
             bleeding[0].color = new Color(1, 1, 1, 1);
             bleeding[1].color = new Color(1, 1, 1, 0);
         }
-        else if(PlayerManager.Instance.playerStats.playerCurrentHealth == 1)
+        else if(PlayerManager.Instance.playerStats.playerCurrentHealth <= 1)
         {
             bleeding[0].color = new Color(1, 1, 1, 0);
             bleeding[1].color = new Color(1, 1, 1, 1);
