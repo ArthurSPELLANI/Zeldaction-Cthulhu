@@ -105,7 +105,10 @@ namespace Enemy
 
 			foreach (Collider2D player in hitPlayer)
 			{
-				player.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
+				if (player.CompareTag("Player"))
+				{
+					player.GetComponent<PlayerStats>().PlayerTakeDamage(enemyDamage);
+				}
 			}
 
 			foreach (Collider2D enemy in hitEnemies)

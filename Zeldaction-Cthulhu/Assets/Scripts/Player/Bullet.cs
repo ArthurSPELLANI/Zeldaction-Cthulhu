@@ -55,7 +55,7 @@ namespace Player
 
             if (collision.gameObject.tag == "Enviro")
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
 
             if (collision.gameObject.tag == "pillar")

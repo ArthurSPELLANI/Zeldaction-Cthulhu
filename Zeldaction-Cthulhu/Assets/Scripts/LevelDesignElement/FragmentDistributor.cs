@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enemy;
 
 public class FragmentDistributor : MonoBehaviour
 {
@@ -18,6 +19,20 @@ public class FragmentDistributor : MonoBehaviour
     {
         if (isCombat == true)
         {
+            for (int i = 0; i < enemiesToKill.Count; i++)
+            {
+                if (enemiesToKill[i].activeSelf == false && enemiesToKill[i].transform.parent.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth <= 0)
+                {
+                    enemiesToKill.Remove(enemiesToKill[i]);
+
+                    if (enemiesToKill.Count == 0)
+                    {
+                        Instantiate(fragment, new Vector2(transform.position.x, transform.position.y + 0.4f), rotation);
+                        GetComponent<FragmentDistributor>().enabled = false;
+                    }
+                }
+            }
+
             if(enemiesToKill[0] == null)
             {
                 Instantiate(fragment, transform.position, rotation);
@@ -36,7 +51,7 @@ public class FragmentDistributor : MonoBehaviour
 
                     if (pillarToActivate.Count == 0)
                     {
-                        Instantiate(fragment, transform.position, rotation);
+                        Instantiate(fragment, new Vector2(transform.position.x, transform.position.y + 0.4f), rotation);
                         GetComponent<FragmentDistributor>().enabled = false;
                     }
                 }
