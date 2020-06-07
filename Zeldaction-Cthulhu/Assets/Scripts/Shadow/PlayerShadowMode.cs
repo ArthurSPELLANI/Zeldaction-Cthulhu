@@ -181,6 +181,7 @@ namespace Player
 
         private void RecallPlayer()
         {
+            ExitEnemyCatchAnimator();
             sanity -= 5;
             actionPoints -= 1;
             player.transform.position = shadowObject.transform.position;

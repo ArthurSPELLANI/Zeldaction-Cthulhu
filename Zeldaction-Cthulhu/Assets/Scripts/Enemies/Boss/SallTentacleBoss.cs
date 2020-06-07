@@ -11,6 +11,7 @@ public class SallTentacleBoss : MonoBehaviour
     public BossBaseBehavior boss;
     public GameObject transition;
     bool isActive;
+    bool isPhase2 = false;
 
 
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class SallTentacleBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(boss.isInPhase1 == true)
+        if(boss.isInPhase1 == true && isPhase2 == false)
         {
             if (p1Man.patternNbr == 2 && isActive == false)
             {
@@ -46,6 +47,7 @@ public class SallTentacleBoss : MonoBehaviour
 
         if (transition.activeSelf == true)
         {
+            isPhase2 = true;
             animator.SetBool("isActive", false);
             capsCollider.enabled = false;
             isActive = false;

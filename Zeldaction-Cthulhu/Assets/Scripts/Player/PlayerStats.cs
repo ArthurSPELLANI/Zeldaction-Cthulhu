@@ -20,6 +20,7 @@ namespace Player
         public float timeBeforeHeal;
         bool canHeal;
         bool isHealing;
+        bool isDead = false;
 
         private Material defaultMaterial;
 
@@ -42,41 +43,53 @@ namespace Player
 
         void Update()
         {
-            #region healing
-            //conditions pour savoir si le joueur peut se heal
-            if (healNumber > 0 && playerCurrentHealth < playerMaxHealth)
+            if (playerCurrentHealth <= 0)
             {
-                canHeal = true;
+                isDead = true;
             }
-            else if (healNumber == 0)
+            else if (playerCurrentHealth >= 0 && isDead == true)
             {
-                canHeal = false;
-            }
-            else if (playerCurrentHealth == playerMaxHealth)
-            {
-                canHeal = false;
+                isDead = false;
             }
 
-            //interuption du heal
-            if (isHealing == true && Input.GetButtonUp("Heal"))
+            if(isDead == false)
             {
-                PlayerManager.Instance.playerMovement.speed = 60;
-                transform.GetChild(0).gameObject.SetActive(false);
-                isHealing = false;
-                Debug.Log("le heal a été malencontreusement interompu...");
-                StopAllCoroutines();
-                AudioManager.Instance.Stop("healing");
-                AudioManager.Instance.Play("priseHeal");
-            }
+                #region healing
+                //conditions pour savoir si le joueur peut se heal
+                if (healNumber > 0 && playerCurrentHealth < playerMaxHealth)
+                {
+                    canHeal = true;
+                }
+                else if (healNumber == 0)
+                {
+                    canHeal = false;
+                }
+                else if (playerCurrentHealth == playerMaxHealth)
+                {
+                    canHeal = false;
+                }
 
-            //début du heal
-            if (Input.GetButtonDown("Heal") && canHeal)
-            {
-                StartCoroutine(Healing());
-                AudioManager.Instance.Play("healing");
-                Debug.Log("J'utilise une caisse de soin");
+                //interuption du heal
+                if (isHealing == true && Input.GetButtonUp("Heal"))
+                {
+                    PlayerManager.Instance.playerMovement.speed = 60;
+                    transform.GetChild(0).gameObject.SetActive(false);
+                    isHealing = false;
+                    Debug.Log("le heal a été malencontreusement interompu...");
+                    StopAllCoroutines();
+                    AudioManager.Instance.Stop("healing");
+                    AudioManager.Instance.Play("priseHeal");
+                }
+
+                //début du heal
+                if (Input.GetButtonDown("Heal") && canHeal)
+                {
+                    StartCoroutine(Healing());
+                    AudioManager.Instance.Play("healing");
+                    Debug.Log("J'utilise une caisse de soin");
+                }
+                #endregion
             }
-            #endregion
         }
 
 
