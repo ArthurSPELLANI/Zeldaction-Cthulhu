@@ -1,7 +1,64 @@
 fileFormatVersion: 2
 guid: d929a5df2731f7749950233e8dbd6810
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 9094728785346010343
+    second: Puzzle_obstacle_vertical_0
+  - first:
+      213: -8147476795648383966
+    second: Puzzle_obstacle_vertical_1
+  - first:
+      213: 9136743051273660523
+    second: Puzzle_obstacle_vertical_2
+  - first:
+      213: -5602064337151004063
+    second: Puzzle_obstacle_vertical_3
+  - first:
+      213: 6563382390511207106
+    second: Puzzle_obstacle_vertical_4
+  - first:
+      213: -7165475506538435842
+    second: Puzzle_obstacle_vertical_5
+  - first:
+      213: 3596938756908210492
+    second: Puzzle_obstacle_vertical_6
+  - first:
+      213: 780751415406248150
+    second: Puzzle_obstacle_vertical_7
+  - first:
+      213: 5771929926194730098
+    second: Puzzle_obstacle_vertical_8
+  - first:
+      213: -6450159024887358981
+    second: Puzzle_obstacle_vertical_9
+  - first:
+      213: -8048168497807396533
+    second: Puzzle_obstacle_vertical_10
+  - first:
+      213: 2062985090036749263
+    second: Puzzle_obstacle_vertical_11
+  - first:
+      213: -4550072983373718967
+    second: Puzzle_obstacle_vertical_12
+  - first:
+      213: -8406153302713450455
+    second: Puzzle_obstacle_vertical_13
+  - first:
+      213: -9007138231671796636
+    second: Puzzle_obstacle_vertical_14
+  - first:
+      213: 496692390379288595
+    second: Puzzle_obstacle_vertical_15
+  - first:
+      213: -6464228204303974029
+    second: Puzzle_obstacle_vertical_16
+  - first:
+      213: 6691265190506399003
+    second: Puzzle_obstacle_vertical_17
+  - first:
+      213: 6191661178463569202
+    second: Puzzle_obstacle_vertical_18
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +97,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,7 +153,364 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 560
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec9113f4a7f63e70800000000000000
+      internalID: 9094728785346010343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 525
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224e3a385095eee80800000000000000
+      internalID: -8147476795648383966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 490
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b686f27856b3cce70800000000000000
+      internalID: 9136743051273660523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 455
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162fa379a287142b0800000000000000
+      internalID: -5602064337151004063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c289778281d51b50800000000000000
+      internalID: 6563382390511207106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 385
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efaa30abdfd1f8c90800000000000000
+      internalID: -7165475506538435842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 350
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c395954fdb4eae130800000000000000
+      internalID: 3596938756908210492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 315
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d04c259649c5da00800000000000000
+      internalID: 780751415406248150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 280
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2749847dfa30a1050800000000000000
+      internalID: 5771929926194730098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 245
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf91fc09a8e6c76a0800000000000000
+      internalID: -6450159024887358981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4173bb64692f4090800000000000000
+      internalID: -8048168497807396533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 175
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3519c520231ac10800000000000000
+      internalID: 2062985090036749263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a58eb9ab4ead0c0800000000000000
+      internalID: -4550072983373718967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 920c940eb18575b80800000000000000
+      internalID: -8406153302713450455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ccc5a0087300380800000000000000
+      internalID: -9007138231671796636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 35
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3187233f81b94e600800000000000000
+      internalID: 496692390379288595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puzzle_obstacle_vertical_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 371866772b27a46a0800000000000000
+      internalID: -6464228204303974029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

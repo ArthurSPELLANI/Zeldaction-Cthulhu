@@ -108,8 +108,18 @@ namespace LevelDesign
             }
         }
 
+        void OnTriggerExit2D(Collider2D col)
+        {
+            if (col.gameObject.tag == "Player" && col.gameObject.layer == 12)
+            {
+                StopAllCoroutines();
+            }
+        }
+
         IEnumerator PitfallActivation()
         {
+            yield return new WaitForSeconds(0.4f);
+
             isPit = true;
             PlayerManager.Instance.playerStats.PlayerTakeDamage(1);
             AudioManager.Instance.Play("Chute");

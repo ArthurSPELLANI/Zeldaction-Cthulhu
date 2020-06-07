@@ -17,6 +17,7 @@ namespace Player
 
         public int maxEnemyHit;
         private int currentEnemyHit;
+        private bool isSafe = false;
         
 
         public float timeBeforeBulletKill;
@@ -24,8 +25,9 @@ namespace Player
 
     	void Awake()
 	    {
-	    
-	    }
+            StartCoroutine(SafeTime());
+
+        }
     
         void Start()
         {
@@ -53,7 +55,7 @@ namespace Player
 
             if (collision.gameObject.tag == "Enviro")
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
 
             if (collision.gameObject.tag == "pillar")
@@ -68,6 +70,15 @@ namespace Player
                 collision.transform.parent.GetComponentInParent<BossBaseBehavior>().BossTakeDamage();
                 Destroy(gameObject);
             }
+
+            if (collision.gameObject.tag == "Player" && collision.gameObject.layer == 8)
+            {
+                if (isSafe)
+                {
+                    collision.GetComponent<PlayerStats>().PlayerTakeDamage(2);
+                }
+
+            }
         }
 
         IEnumerator DeathByTime()
@@ -75,6 +86,13 @@ namespace Player
             yield return new WaitForSeconds(timeBeforeBulletKill);
 
             Destroy(gameObject);
+        }
+
+        IEnumerator SafeTime()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            isSafe = true;
         }
 
     }
