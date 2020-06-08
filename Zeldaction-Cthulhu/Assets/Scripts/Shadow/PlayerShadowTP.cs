@@ -35,8 +35,14 @@ namespace Shadow
                 {
                     target.transform.position = this.gameObject.transform.position;
                     shadMode.actionPoints -= 1;
+                    if(target.tag == "Enemy")
+                    {
+                        target.GetComponent<EnemyBasicBehavior>().SanityDamage();
+                        target.GetComponent<EnemyBasicBehavior>().MarkingCoolDown();
+                    }
                 }
 
+                PlayerManager.Instance.playerShadowMode.ExitEnemyCatchAnimator();
                 shadMode.ShadowExit();
             }
         }
@@ -56,13 +62,11 @@ namespace Shadow
                     return;
                 }                
 
-                if (!targetMarked.Contains(collision.gameObject))
+                if (!targetMarked.Contains(collision.gameObject) && targetMarked.Count < shadMode.actionPoints)
                 {
                     targetMarked.Add(collision.gameObject);
                     if (collision.gameObject.tag is "Enemy")
                     {
-                        collision.gameObject.GetComponent<EnemyBasicBehavior>().SanityDamage();
-                        collision.gameObject.GetComponent<EnemyBasicBehavior>().MarkingCoolDown();
                         collision.gameObject.GetComponent<EnemyBasicBehavior>().CatchByShadow();
                     }
                 }

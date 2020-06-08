@@ -286,6 +286,7 @@ namespace Player
                     }
                     else if (enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled == true && enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().isMarked == false)
                     {
+                        enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.SetBool("isDesactivated", true);
                         enemyhit[i].gameObject.GetComponent<EnemyBasicBehavior>().catchAnimator.enabled = false;
                         enemyhit[i].gameObject.GetComponent<SpriteRenderer>().sprite = null;
                     }

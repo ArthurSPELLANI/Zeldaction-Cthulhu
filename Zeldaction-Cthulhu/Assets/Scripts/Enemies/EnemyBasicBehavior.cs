@@ -4,6 +4,8 @@ using UnityEngine;
 using Player;
 using Shadow;
 using AudioManaging;
+using Game;
+using UI;
 
 namespace Enemy
 {
@@ -347,12 +349,24 @@ namespace Enemy
         public void SanityDamage()
         {
             PlayerManager.Instance.playerShadowMode.sanity -= sanityDamage;
+            
+            if(PlayerManager.Instance.playerShadowMode.sanity < 0)
+            {
+                PlayerManager.Instance.playerShadowMode.sanity = 0;
+                UIManager.Instance.GetComponentInChildren<UISanityGauge>().SetSanity(PlayerManager.Instance.playerShadowMode.sanity);
+            }
         }
 
         
         public void SanityReward()
         {
             PlayerManager.Instance.playerShadowMode.sanity += sanityReward;
+            
+            if(PlayerManager.Instance.playerShadowMode.sanity > PlayerManager.Instance.playerShadowMode.maxSanity)
+            {
+                PlayerManager.Instance.playerShadowMode.sanity = PlayerManager.Instance.playerShadowMode.maxSanity;
+                UIManager.Instance.GetComponentInChildren<UISanityGauge>().SetSanity(PlayerManager.Instance.playerShadowMode.sanity);
+            }
         }
 
 
