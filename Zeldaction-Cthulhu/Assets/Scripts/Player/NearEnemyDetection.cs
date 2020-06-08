@@ -14,13 +14,16 @@ namespace Player
 
         void Start()
         {
-            musicManager = Music.GetComponent<MusicManager>();
+            
             //Detection = GetComponent<CircleCollider2D>();
         }
 
         void Update()
         {
-            if(musicManager != null)
+            if (musicManager == null)
+                musicManager = Music.GetComponent<MusicManager>();
+
+            if (musicManager != null)
             {
                 if (Detection.IsTouchingLayers(EnemyLayer))
                     musicManager.isOnFight = true;

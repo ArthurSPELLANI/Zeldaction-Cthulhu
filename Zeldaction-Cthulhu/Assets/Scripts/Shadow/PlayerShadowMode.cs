@@ -136,6 +136,9 @@ namespace Player
                 transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
             }
 
+            if (!isShadowActivated)
+                AudioManager.Instance.Stop("idleShadow");
+
 
         }
     
