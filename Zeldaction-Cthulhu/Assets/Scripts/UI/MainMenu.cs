@@ -12,6 +12,8 @@ namespace Menu
         //Scene currentScene;
         private string saveName;
 
+        public Intro_Manager introManager;
+
         public void ResumeGame()
         {
             //LevelManager.Instance.LaunchGame();
@@ -38,7 +40,8 @@ namespace Menu
             //Fenetre de confimation
 
             PlayerPrefs.DeleteAll();
-            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1));
+            introManager.StartCinematic();
+            //SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1));
 
         }
 
