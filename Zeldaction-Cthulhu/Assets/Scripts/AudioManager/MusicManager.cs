@@ -32,8 +32,12 @@ namespace AudioManaging
         void Start()
         {
             volume = 0.5f * PlayerPrefs.GetFloat("MusicVolume", 1);
-            startMusic.volume = volume;
+
+            if (startMusic != null)
+                startMusic.volume = volume;
+
             loopMusic.volume = volume;
+            combatMusic.volume = 0f;
             time = 0f;
 
             if (startMusic != null)
@@ -48,6 +52,8 @@ namespace AudioManaging
                 if (combatMusic != null)
                     combatMusic.Play();
             }
+
+
            
         }
 
