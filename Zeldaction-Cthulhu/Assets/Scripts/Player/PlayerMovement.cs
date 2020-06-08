@@ -70,8 +70,14 @@ namespace Player
             if(isPushing == true)
             {
                 animator.SetBool("isPushing", true);
+                speed = 45;
             }
-            else animator.SetBool("isPushing", false);
+            else
+            {
+                animator.SetBool("isPushing", false);
+                speed = 60;
+            }
+                
 
 
             SoundRunning();
