@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -393,6 +393,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648704591}
     m_Modifications:
+    - target: {fileID: 4738529227870383699, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738529227870383699, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738529227870383699, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 490500698}
+    - target: {fileID: 4738529227870383699, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 490500697}
     - target: {fileID: 4738529228114185305, guid: b13eed1c60126b940a5bd654abc9c250,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -403,6 +423,41 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 579726086}
+    - target: {fileID: 4738529228114185305, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738529228114185305, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738529228577477954, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738529228577477954, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738529228577477954, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 490500699}
+    - target: {fileID: 4738529228720670816, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738529228720670816, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4738529229248216593, guid: b13eed1c60126b940a5bd654abc9c250,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -413,6 +468,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1610026381}
+    - target: {fileID: 4738529229248216593, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738529229248216593, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4738529229381473379, guid: b13eed1c60126b940a5bd654abc9c250,
         type: 3}
       propertyPath: introManager
@@ -565,6 +630,42 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 490500692}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &490500697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4738529228577477954, guid: b13eed1c60126b940a5bd654abc9c250,
+    type: 3}
+  m_PrefabInstance: {fileID: 490500692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490500694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &490500698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4738529228114185305, guid: b13eed1c60126b940a5bd654abc9c250,
+    type: 3}
+  m_PrefabInstance: {fileID: 490500692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &490500699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4738529227870383699, guid: b13eed1c60126b940a5bd654abc9c250,
+    type: 3}
+  m_PrefabInstance: {fileID: 490500692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &513007913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,7 +2141,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Disappearance in Dorchester, Inspector Matthew Jones investigating.
 
-    
+
 
 
     For
