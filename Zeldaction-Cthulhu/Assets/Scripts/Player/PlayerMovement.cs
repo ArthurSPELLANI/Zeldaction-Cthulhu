@@ -34,6 +34,7 @@ namespace Player
         public AnimationCurve dashCurve;
 
         public GameObject pufpuf;
+        public bool isPushing = false;
 
         void Awake()
         {
@@ -65,6 +66,12 @@ namespace Player
             //Store des valeur d'input du joystick gauche
             vertical = Input.GetAxisRaw("Vertical");
             horizontal = Input.GetAxisRaw("Horizontal");
+
+            if(isPushing == true)
+            {
+                animator.SetBool("isPushing", true);
+            }
+            else animator.SetBool("isPushing", false);
 
 
             SoundRunning();
@@ -139,7 +146,7 @@ namespace Player
                 }
             }                                    
 
-            if (PlayerManager.Instance.playerShoot.isAiming == false)
+            if (PlayerManager.Instance.playerShoot.isAiming == false && isPushing == false)
             {
                 //Set de la direction de l'animator
                 animator.SetFloat("Horizontal", currentDirection.x);
@@ -174,8 +181,7 @@ namespace Player
 
             playerRb.velocity = Vector2.zero;
             isDashing = false;
-        }
-
+        }      
         #region Sound
         float timeBetweenStep = 0.5f;
         private float currentTime = 0;

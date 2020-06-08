@@ -298,7 +298,25 @@ namespace PillarSystem
             yield return new WaitForSeconds(0.2f);
             laserAnimator.SetBool("isLaser", false);
         }
+
+        public void OnCollisionStay2D(Collision2D collision)
+        {
+            if(collision.gameObject.tag == "Player")
+            {
+                PlayerManager.Instance.playerMovement.isPushing = true;
+            }
+        }
+
+        public void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                PlayerManager.Instance.playerMovement.isPushing = false;
+            }
+        }
+
     }
 
+    
 
 }
