@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AudioManaging;
 
 
 namespace Boss
@@ -127,6 +128,7 @@ namespace Boss
                 animator.SetBool("isDrifting", true);
                 SetAnimDirection(vecDir);
                 animator.SetFloat("Horizontal", vecAnim.x);
+                AudioManager.Instance.Play("Dauphin");
 
 
                 yield return new WaitForSeconds(timeBeforeNextDash);
@@ -152,10 +154,12 @@ namespace Boss
                 //une fois le point d'ancrage atteint, le boss s'arrête.
                 bossPhase1Rb.velocity = new Vector2(0, 0) * moveSpeed * Time.fixedDeltaTime;
                 animator.SetBool("isDrifting", false);
+                AudioManager.Instance.Stop("Dauphin");
             }
 
             animator.SetBool("isShooting", true);
             yield return new WaitForSeconds(timeBeforeFiring);
+            AudioManager.Instance.Play("TirM1");
 
             animator.SetBool("isShooting", false);
             Instantiate(bossBullet, transform.position, Quaternion.identity);
@@ -164,6 +168,7 @@ namespace Boss
 
             animator.SetBool("isWeak", true);
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
+            AudioManager.Instance.Play("Fatigue");
 
             yield return new WaitForSeconds(timeBeforeWeakStateEnd);
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using AudioManaging;
 
 namespace Boss
 {
@@ -60,6 +61,8 @@ namespace Boss
                 phase1Collider.GetComponent<Collider2D>().isTrigger = false;
 
                 StartCoroutine(BounceIntoWeak());
+                AudioManager.Instance.Stop("idleShadow");
+                AudioManager.Instance.Play("DegatM1");
             }
         }
 
@@ -70,6 +73,9 @@ namespace Boss
         IEnumerator WaitingForPatternStart()
         {
             animator.SetBool("isCharging", true);
+            AudioManager.Instance.Play("Tentacl");
+            AudioManager.Instance.Play("idleShadow");
+            AudioManager.Instance.Play("Tentacules");
 
             yield return new WaitForSeconds(timeBeforeAttack);
 
@@ -120,6 +126,7 @@ namespace Boss
             StopCoroutine(Dash());
             animator.SetBool("hitByWall", true);
             animator.SetBool("isCharging", false);
+            AudioManager.Instance.Stop("idleShadow");
 
             hasHitWall = false;
 
@@ -140,6 +147,8 @@ namespace Boss
 
             animator.SetBool("isWeak", true);
             transform.parent.GetComponentInParent<BossBaseBehavior>().isWeak = true;
+            AudioManager.Instance.Play("Fatigue");
+
 
             yield return new WaitForSeconds(timeBeforeWeakStatusEnd);
 
@@ -151,6 +160,7 @@ namespace Boss
             animator.SetBool("hitByWall", false);
 
             GetComponent<Phase1PatternManager>().NextPatternSelection();
+            AudioManager.Instance.Stop("Tentacules");
         }
 
 
