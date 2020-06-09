@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using AudioManaging;
 
 public class Dialog : MonoBehaviour
 {
@@ -10,8 +11,24 @@ public class Dialog : MonoBehaviour
     public string dialog;
     public bool dialogActive;
     public bool playerInRange;
+    public Sound SonDialog;
    
     public GameObject Button;
+
+    void Start()
+    {
+        SonDialog.source = gameObject.AddComponent<AudioSource>();
+        SonDialog.source.clip = SonDialog.clip;
+        SonDialog.source.volume = SonDialog.volume * AudioManager.Instance.volumeSounds;
+        SonDialog.source.pitch = SonDialog.pitch;
+        SonDialog.source.loop = SonDialog.loop;
+
+        if (SonDialog.volume == 0)
+            SonDialog.source.volume = 0.5f * AudioManager.Instance.volumeSounds;
+        if (SonDialog.pitch == 0)
+            SonDialog.source.pitch = 1f;
+    }
+
     void Update()
     {
       if (Input.GetKeyDown(KeyCode.E) && playerInRange || Input.GetButtonDown("Interract") && playerInRange)
@@ -22,6 +39,7 @@ public class Dialog : MonoBehaviour
             }
             else
             {
+                SonDialog.source.Play();
                 dialogBox.SetActive(true);
                 //dialogText.text = dialog;
             }
