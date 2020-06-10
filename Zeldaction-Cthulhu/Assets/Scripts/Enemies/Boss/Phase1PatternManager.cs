@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AudioManaging;
 
 namespace Boss
 {
@@ -82,7 +83,9 @@ namespace Boss
         /// Tire le prochain pattern aléatoirement, plus le pattern à été joué d'affiler, moins il a de chance d'être tiré.
         /// </summary>
         public void NextPatternSelection()
-        {   
+        {
+            AudioManager.Instance.Play("Rire");
+
             for (int i = 0; i < patternCount; i++)
             {
                 //patternSelector = Random.Range(1, 4);

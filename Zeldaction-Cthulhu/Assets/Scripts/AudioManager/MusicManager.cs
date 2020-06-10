@@ -37,7 +37,10 @@ namespace AudioManaging
                 startMusic.volume = volume;
 
             loopMusic.volume = volume;
-            combatMusic.volume = 0f;
+
+            if (combatMusic != null)
+                combatMusic.volume = 0f;
+
             time = 0f;
 
             if (startMusic != null)

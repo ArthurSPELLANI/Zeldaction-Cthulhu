@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using AudioManaging;
 
 
 namespace Boss
@@ -123,6 +124,11 @@ namespace Boss
                     {
                         phase2Go.GetComponentInChildren<Phase2PatternManager>().canDoPattern2 = false;
                     }
+                }
+                else if (isInPhase1)
+                {
+                    AudioManager.Instance.Play("DegatM1");
+                    AudioManager.Instance.Stop("Fatigue");
                 }
             }
         }
