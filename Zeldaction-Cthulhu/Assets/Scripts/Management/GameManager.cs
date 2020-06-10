@@ -15,12 +15,16 @@ namespace Game
     {
 
         [SerializeField] public Light2D globalLight;
+        int fps = 60;
+
 
         void Awake()
         {
             MakeSingleton(true);
-
             globalLight = GetComponentInChildren<Light2D>();
+
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = fps;
         }
 
         void Start()
@@ -33,8 +37,15 @@ namespace Game
         {
 
             if(PlayerManager.Instance.playerShadowMode.sanity < PlayerManager.Instance.playerShadowMode.maxSanity)
+            {
+                globalLight.intensity = PlayerManager.Instance.playerShadowMode.sanity / PlayerManager.Instance.playerShadowMode.maxSanity;
+            }
 
-            globalLight.intensity = PlayerManager.Instance.playerShadowMode.sanity / PlayerManager.Instance.playerShadowMode.maxSanity;
+            if(Application.targetFrameRate != fps)
+            {
+                Application.targetFrameRate = fps;
+            }
+            
         }
 
 
