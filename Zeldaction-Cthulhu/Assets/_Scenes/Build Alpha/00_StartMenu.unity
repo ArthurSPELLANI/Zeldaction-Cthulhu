@@ -321,6 +321,14 @@ PlayableDirector:
     value: {fileID: 1003831673}
   - key: {fileID: -6326395714021981034, guid: addac322abecbe84f9aa7eab47a1bee3, type: 2}
     value: {fileID: 404119206}
+  - key: {fileID: 1427140761896593542, guid: addac322abecbe84f9aa7eab47a1bee3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 599052399883126118, guid: addac322abecbe84f9aa7eab47a1bee3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9120684560334593763, guid: addac322abecbe84f9aa7eab47a1bee3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 2594526616598286559, guid: addac322abecbe84f9aa7eab47a1bee3, type: 2}
+    value: {fileID: 404119206}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &404119204
@@ -357,6 +365,10 @@ MonoBehaviour:
   startCinematic: {fileID: 404119203}
   endCinematic: {fileID: 1032706128}
   bouton: {fileID: 1366657179}
+  vroum: {fileID: 1127711207}
+  cui: {fileID: 1074729452}
+  ff: {fileID: 562002726}
+  cam: {fileID: 522023181}
 --- !u!114 &404119206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,11 +384,39 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 7c82968382ce6024d902e9a8cb0fc678, type: 2}
+    - {fileID: 11400000, guid: dc681581c87715f4eb6f82a11c4b9a92, type: 2}
+    - {fileID: 11400000, guid: 689b0702c361e6c46a0289b25ed4e893, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 404119205}
           m_MethodName: LoopText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 404119205}
+          m_MethodName: LowVolume
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 404119205}
+          m_MethodName: VroumGo
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -439,6 +479,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4738529228577477953, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4738529228577477954, guid: b13eed1c60126b940a5bd654abc9c250,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
@@ -454,6 +499,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 490500699}
+    - target: {fileID: 4738529228577477954, guid: b13eed1c60126b940a5bd654abc9c250,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4738529228720670816, guid: b13eed1c60126b940a5bd654abc9c250,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
@@ -1415,6 +1465,16 @@ PlayableDirector:
     value: {fileID: 86956733}
   - key: {fileID: -8116005360438406522, guid: e70c98c5e573e8b4d8d17eacb1723384, type: 2}
     value: {fileID: 1032706129}
+  - key: {fileID: -5195613532474408906, guid: e70c98c5e573e8b4d8d17eacb1723384, type: 2}
+    value: {fileID: 404119206}
+  - key: {fileID: 5257556711543355571, guid: e70c98c5e573e8b4d8d17eacb1723384, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7715279003103662873, guid: e70c98c5e573e8b4d8d17eacb1723384, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -1074229416414448755, guid: e70c98c5e573e8b4d8d17eacb1723384, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 3723429657524635958, guid: e70c98c5e573e8b4d8d17eacb1723384, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1032706129
