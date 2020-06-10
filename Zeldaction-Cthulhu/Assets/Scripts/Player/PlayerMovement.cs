@@ -67,15 +67,18 @@ namespace Player
             vertical = Input.GetAxisRaw("Vertical");
             horizontal = Input.GetAxisRaw("Horizontal");
 
-            if(isPushing == true)
+            if(isPushing == true && PlayerManager.Instance.playerShoot.isAiming == false)
             {
                 animator.SetBool("isPushing", true);
                 speed = 45;
             }
-            else
+            else if (isPushing == false && PlayerManager.Instance.playerShoot.isAiming == false)
             {
-                animator.SetBool("isPushing", false);
-                speed = 60;
+                if(PlayerManager.Instance.playerStats.isHealing == false)
+                {
+                    animator.SetBool("isPushing", false);
+                    speed = 60;
+                }                
             }
                 
 

@@ -19,7 +19,7 @@ namespace Player
         public int maxHealNumber;
         public float timeBeforeHeal;
         bool canHeal;
-        bool isHealing;
+        public bool isHealing;
         bool isDead = false;
 
         private Material defaultMaterial;
