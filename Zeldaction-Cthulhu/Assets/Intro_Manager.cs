@@ -18,12 +18,26 @@ public class Intro_Manager : MonoBehaviour
     public GameObject bouton;
 
     private bool canSkip;
-    
+
+    public AudioSource vroum;
+    public AudioSource cui;
+    public AudioSource ff;
+
+    bool stopVroum;
+    bool goVroum;
+    float time;
+
+    float vroumv;
+    float cuiv;
+    float ffv;
+
+    public Camera cam;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam.backgroundColor = new Color(0,0,0); ;
     }
 
     // Update is called once per frame
@@ -33,6 +47,36 @@ public class Intro_Manager : MonoBehaviour
         {
             EndCineamatic();
         }
+
+        if (goVroum)
+        {
+            if (time <= 1)
+                vroum.volume = Mathf.Lerp(vroumv, (vroumv +1), time);
+
+            time += 0.5f * Time.deltaTime;
+
+            if (time >= 1)
+            {
+                time = 0;
+                goVroum = false;
+                StartCoroutine(StopVroum());
+            }
+                
+        }
+
+        if (stopVroum)
+        {
+            if (time <= 1)
+            {
+                vroum.volume = Mathf.Lerp((vroumv + 1), 0, time);
+                ff.volume = Mathf.Lerp(ffv, 0.1f, time);
+            }
+
+            time += 1f * Time.deltaTime;
+
+            if (time >= 1)
+                stopVroum = false;
+        }
     }
 
     public void StartCinematic()
@@ -40,6 +84,8 @@ public class Intro_Manager : MonoBehaviour
         ui.SetActive(false);
         loopMenu.SetActive(false);
         startCinematic.Play();
+
+       
 
     }
 
@@ -67,5 +113,29 @@ public class Intro_Manager : MonoBehaviour
     {
         Debug.Log("commence le jeu stp");
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    public void LowVolume()
+    {
+        vroum.volume *= 0.3f;
+        cui.volume *= 0.3f;
+        ff.volume *= 0.3f;
+    }
+
+    public void VroumGo()
+    {
+        vroumv = vroum.volume * 1 / 0.3f;
+
+        ff.volume *= 1 / 0.3f;
+        cui.volume *= 1 / 0.3f;
+        goVroum = true;
+    }
+
+    IEnumerator StopVroum()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+
+        ffv = ff.volume;
+        stopVroum = true;
     }
 }
