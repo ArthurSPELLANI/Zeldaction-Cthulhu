@@ -3,34 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game;
 
-public class LittleDoor : MonoBehaviour
+
+namespace Game
 {
-    SpriteRenderer render;
-    bool destroyed;
-
-    public bool isLeft;
-    public bool isRight;
-
-    private void Start()
+    public class LittleDoor : MonoBehaviour
     {
-        render = GetComponent<SpriteRenderer>();
-    }
+        SpriteRenderer render;
+        bool destroyed = false;
+        public GameObject coreParticle;
 
-    void Update()
-    {
-        if(render.color == Color.black && destroyed == false)
+        public bool isLeft;
+        public bool isRight;
+
+        private void Start()
         {
-            if(isLeft == true)
-            {
-                destroyed = true;
-                BigDoorCave.Instance.isLeftDrestroyed = true;
-            }
+            render = GetComponent<SpriteRenderer>();
+        }
 
-            if (isRight == true)
+        void Update()
+        {
+            if (render.enabled == false && destroyed == false)
             {
-                destroyed = true;
-                BigDoorCave.Instance.isRightDestroyed = true;
+                if (isLeft == true)
+                {
+                    destroyed = true;
+                    BigDoorCave.Instance.isLeftDrestroyed = true;
+                }
+
+                if (isRight == true)
+                {
+                    destroyed = true;
+                    BigDoorCave.Instance.isRightDestroyed = true;
+                }
+
+                Instantiate(coreParticle, transform.position, Quaternion.identity);
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }
 }
+

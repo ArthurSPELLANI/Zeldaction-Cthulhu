@@ -227,7 +227,7 @@ namespace PillarSystem
                 //la position d'origine du rayCast est un peu plus moin que le bord du collider du pillier
                 RaycastHit2D hitPillar = Physics2D.Raycast(new Vector2(
                     (transform.position.x + colliBox.offset.x) + (colliBox.size.x * direction.x),
-                    (transform.position.y + colliBox.offset.y) + (colliBox.size.y * direction.y)), direction, 3f, pillarLayer);
+                    (transform.position.y + colliBox.offset.y) + (colliBox.size.y * direction.y)), direction, 7f, pillarLayer);
 
                 
 

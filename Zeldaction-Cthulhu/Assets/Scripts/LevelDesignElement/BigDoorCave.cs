@@ -28,8 +28,8 @@ namespace Game
             {
                 if (openDoor.activeSelf == false)
                 {
+                    closedDoor.SetActive(false);
                     openDoor.SetActive(true);
-                    openDoor.SetActive(false);
                     cinematicDoor.SetActive(true);
                     switchCollider.enabled = true;
                 }
