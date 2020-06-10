@@ -14136,6 +14136,13 @@ MonoBehaviour:
   dialog: ' Oh...poor child ... he may not come back like the others ...'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 345470523}
 --- !u!58 &203420814
 CircleCollider2D:
@@ -34811,6 +34818,13 @@ MonoBehaviour:
   dialog: ' I hope that we will quickly find the end of this story.'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 1806154173}
 --- !u!58 &505403868
 CircleCollider2D:
@@ -37058,6 +37072,13 @@ MonoBehaviour:
     strong you will see !
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 845815178}
 --- !u!58 &531932030
 CircleCollider2D:
@@ -56255,8 +56276,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\rHello sir, are you the inspector ? We are counting on you to do your
-    best !"
+  m_Text: It...It was horrible...I go...outside...to...search them....it had so many
+    teeth...it decapited Joseph...OH MY GOD JOSEPH WHY !!
 --- !u!222 &779267852
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -69601,7 +69622,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969449635}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.359, y: -12.301001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -97432,6 +97453,10 @@ PlayableDirector:
     value: {fileID: 163966816}
   - key: {fileID: -4559471305768108545, guid: 415f10a046fefb64581826a05ae4e582, type: 2}
     value: {fileID: 1465495213}
+  - key: {fileID: -7036154027353157051, guid: 415f10a046fefb64581826a05ae4e582, type: 2}
+    value: {fileID: 969449636}
+  - key: {fileID: 8806642015595780647, guid: 415f10a046fefb64581826a05ae4e582, type: 2}
+    value: {fileID: 969449636}
   m_ExposedReferences:
     m_References:
     - 1d26a3c9639f107419156fb4843e2543: {fileID: 0}
@@ -97584,6 +97609,30 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: 
     clip: {fileID: 8300000, guid: 7c4ccdc4b3462544382674dbfa73feef, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 59c71a6b2299e1d4cbc43be812ee70b1, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 59c71a6b2299e1d4cbc43be812ee70b1, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 59c71a6b2299e1d4cbc43be812ee70b1, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 59c71a6b2299e1d4cbc43be812ee70b1, type: 3}
     volume: 0
     pitch: 0
     loop: 0
@@ -99039,6 +99088,13 @@ MonoBehaviour:
   dialog: ' Finally you are here! I can''t wait for your investigation to begin!'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 1421394917}
 --- !u!58 &1481790846
 CircleCollider2D:
@@ -100159,6 +100215,13 @@ MonoBehaviour:
   dialog: Did you hear that Haley's father is not back yet ?
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 1397070738}
 --- !u!58 &1497575616
 CircleCollider2D:
@@ -104422,6 +104485,13 @@ MonoBehaviour:
     here young man ! Go to work !"
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 502367445}
 --- !u!58 &1567248023
 CircleCollider2D:
@@ -113583,7 +113653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719755148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.89, y: 3.54275, z: -10}
+  m_LocalPosition: {x: -5.8899994, y: 3.54275, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 87172149}
@@ -118904,6 +118974,8 @@ PlayableDirector:
     value: {fileID: 642570266}
   - key: {fileID: 4197418767902279005, guid: 355c7c7b44df47e41a0b86ac0cc58e17, type: 2}
     value: {fileID: 925524859}
+  - key: {fileID: 2952568777136415641, guid: 355c7c7b44df47e41a0b86ac0cc58e17, type: 2}
+    value: {fileID: 969449636}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1814605324
@@ -123765,6 +123837,13 @@ MonoBehaviour:
   dialog: ' Welcome to Dorchester Inspector ! Good luck for your investigation !'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 1171409146}
 --- !u!58 &1888134870
 CircleCollider2D:
@@ -132706,10 +132785,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBox: {fileID: 1184912625}
   dialogText: {fileID: 779267851}
-  dialog: ' Hello sir, are you the inspector ? We are counting on you to do your
-    best !'
+  dialog: 'It...It was horrible...I go...outside...to...search them....it had so
+    many teeth...it decapited Joseph...OH MY GOD JOSEPH WHY !! '
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 406795292}
 --- !u!58 &2018279900
 CircleCollider2D:
