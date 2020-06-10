@@ -14136,6 +14136,13 @@ MonoBehaviour:
   dialog: ' Oh...poor child ... he may not come back like the others ...'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 345470523}
 --- !u!58 &203420814
 CircleCollider2D:
@@ -20395,7 +20402,7 @@ PrefabInstance:
     - target: {fileID: 4580132031051305784, guid: 2d7809d19a52f974cb8a758d823c9ba3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4580132031051305784, guid: 2d7809d19a52f974cb8a758d823c9ba3,
         type: 3}
@@ -34811,6 +34818,13 @@ MonoBehaviour:
   dialog: ' I hope that we will quickly find the end of this story.'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 1806154173}
 --- !u!58 &505403868
 CircleCollider2D:
@@ -37058,6 +37072,13 @@ MonoBehaviour:
     strong you will see !
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 845815178}
 --- !u!58 &531932030
 CircleCollider2D:
@@ -91377,7 +91398,7 @@ PrefabInstance:
     - target: {fileID: 4247797824112509089, guid: 15b1464e9f6bb4d4091872c9f560ebf9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4247797824112509089, guid: 15b1464e9f6bb4d4091872c9f560ebf9,
         type: 3}
@@ -99039,6 +99060,13 @@ MonoBehaviour:
   dialog: ' Finally you are here! I can''t wait for your investigation to begin!'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 1421394917}
 --- !u!58 &1481790846
 CircleCollider2D:
@@ -100159,6 +100187,13 @@ MonoBehaviour:
   dialog: Did you hear that Haley's father is not back yet ?
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 1397070738}
 --- !u!58 &1497575616
 CircleCollider2D:
@@ -104422,6 +104457,13 @@ MonoBehaviour:
     here young man ! Go to work !"
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 502367445}
 --- !u!58 &1567248023
 CircleCollider2D:
@@ -123709,6 +123751,7 @@ GameObject:
   - component: {fileID: 1888134870}
   - component: {fileID: 1888134869}
   - component: {fileID: 1888134868}
+  - component: {fileID: 1888134873}
   m_Layer: 12
   m_Name: Arthur
   m_TagString: Untagged
@@ -123765,6 +123808,13 @@ MonoBehaviour:
   dialog: ' Welcome to Dorchester Inspector ! Good luck for your investigation !'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 1171409146}
 --- !u!58 &1888134870
 CircleCollider2D:
@@ -123837,7 +123887,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 95b5e17e84283044ab9d41912f724b2d, type: 3}
+  m_Sprite: {fileID: 2872098736149321003, guid: d89500bc0da813942a9925d15bf1078f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -123848,6 +123899,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1888134873
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888134866}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72574f6a38e77de409c69818cf9d89eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1888160143
 GameObject:
   m_ObjectHideFlags: 0
@@ -132710,6 +132780,13 @@ MonoBehaviour:
     best !'
   dialogActive: 0
   playerInRange: 0
+  SonDialog:
+    name: 
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   Button: {fileID: 406795292}
 --- !u!58 &2018279900
 CircleCollider2D:
