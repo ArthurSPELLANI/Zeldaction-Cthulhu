@@ -17,16 +17,20 @@ public class Dialog : MonoBehaviour
 
     void Start()
     {
-        SonDialog.source = gameObject.AddComponent<AudioSource>();
-        SonDialog.source.clip = SonDialog.clip;
-        SonDialog.source.volume = SonDialog.volume * AudioManager.Instance.volumeSounds;
-        SonDialog.source.pitch = SonDialog.pitch;
-        SonDialog.source.loop = SonDialog.loop;
+        if (SonDialog != null)
+        {
+            SonDialog.source = gameObject.AddComponent<AudioSource>();
+            SonDialog.source.clip = SonDialog.clip;
+            SonDialog.source.volume = SonDialog.volume * AudioManager.Instance.volumeSounds;
+            SonDialog.source.pitch = SonDialog.pitch;
+            SonDialog.source.loop = SonDialog.loop;
 
-        if (SonDialog.volume == 0)
-            SonDialog.source.volume = 0.5f * AudioManager.Instance.volumeSounds;
-        if (SonDialog.pitch == 0)
-            SonDialog.source.pitch = 1f;
+            if (SonDialog.volume == 0)
+                SonDialog.source.volume = 0.5f * AudioManager.Instance.volumeSounds;
+            if (SonDialog.pitch == 0)
+                SonDialog.source.pitch = 1f;
+        }
+        
     }
 
     void Update()
@@ -39,7 +43,9 @@ public class Dialog : MonoBehaviour
             }
             else
             {
-                SonDialog.source.Play();
+                if (SonDialog != null)
+                    SonDialog.source.Play();
+
                 dialogBox.SetActive(true);
                 //dialogText.text = dialog;
             }

@@ -9,7 +9,7 @@ namespace Game
     public class LittleDoor : MonoBehaviour
     {
         SpriteRenderer render;
-        bool destroyed = false;
+        public bool destroyed = false;
         public GameObject coreParticle;
 
         public bool isLeft;
