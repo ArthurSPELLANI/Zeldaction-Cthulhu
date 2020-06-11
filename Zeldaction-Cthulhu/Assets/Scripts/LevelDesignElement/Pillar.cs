@@ -5,6 +5,8 @@ using Player;
 using Shadow;
 using Enemy;
 using XInputDotNetPure;
+using UnityEngine.SceneManagement;
+using AudioManaging;
 
 namespace PillarSystem
 {
@@ -29,6 +31,9 @@ namespace PillarSystem
         Vector2 pillarMove;
         float sanityGain = 10f;
 
+        Rigidbody2D rb;
+        bool isMakingSound;
+
 
         public float loadFogDistance;
         private float shadowPillarDistance;
@@ -45,6 +50,7 @@ namespace PillarSystem
         {
             playerShadowMode = PlayerManager.Instance.playerShadowMode;
             colliBox = GetComponent<BoxCollider2D>();
+            rb = GetComponent<Rigidbody2D>();
 
             //Pour la sauvegarde
             if (isCharge == 0)
@@ -135,6 +141,38 @@ namespace PillarSystem
             {
                 isCharge = 0;
             }
+
+            //pour le sons
+            if ((rb.velocity.x < -0.15f || rb.velocity.x > 0.15f) || (rb.velocity.y < -0.15f || rb.velocity.y > 0.15f))
+            {
+                if (!isMakingSound)
+                {
+                    if (SceneManager.GetActiveScene().buildIndex == 11)
+                    {
+                        AudioManager.Instance.Play("Roche");
+                    }
+                    else if (SceneManager.GetActiveScene().buildIndex != 11)
+                    {
+                        AudioManager.Instance.Play("Herbe");
+                    }
+                    isMakingSound = true;
+                }
+            }
+            else
+            {
+                if (isMakingSound)
+                {
+                    if (SceneManager.GetActiveScene().buildIndex == 11)
+                    {
+                        AudioManager.Instance.Stop("Roche");
+                    }
+                    else if (SceneManager.GetActiveScene().buildIndex != 11)
+                    {
+                        AudioManager.Instance.Stop("Herbe");
+                    }
+                    isMakingSound = false;
+                }
+            } 
 
         }
 
@@ -314,6 +352,8 @@ namespace PillarSystem
                 PlayerManager.Instance.playerMovement.isPushing = false;
             }
         }
+
+        
 
     }
 
