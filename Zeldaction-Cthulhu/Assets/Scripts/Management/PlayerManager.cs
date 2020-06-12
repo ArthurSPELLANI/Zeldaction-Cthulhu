@@ -140,7 +140,7 @@ namespace Player
 
             transform.position = new Vector3(posX, posY, 0f);
 
-            playerStats.playerCurrentHealth = PlayerPrefs.GetInt("life");
+            playerStats.playerCurrentHealth = 6;//PlayerPrefs.GetInt("life");
             playerStats.healNumber = PlayerPrefs.GetInt("healNumber");
             playerShoot.ammunitions = PlayerPrefs.GetInt("bulletNumber");
             

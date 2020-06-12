@@ -21,6 +21,7 @@ public class SaveZone : MonoBehaviour
         {
             worldSave.SaveFragment();
             worldSave.SavePillar();
+            worldSave.SaveGameObjectActivation();
             playerSave.Save();
         }
     }
