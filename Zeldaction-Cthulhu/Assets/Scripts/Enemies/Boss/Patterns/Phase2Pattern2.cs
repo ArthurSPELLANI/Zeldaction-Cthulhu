@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using Player;
 using PillarSystem;
+using AudioManaging;
 
 
 namespace Boss
@@ -127,6 +128,7 @@ namespace Boss
 
             //graphics.GetComponent<SpriteRenderer>().color = Color.red;
             laser.SetActive(true);
+            AudioManager.Instance.Play("Laser");
 
             yield return new WaitForSeconds(1f);
 

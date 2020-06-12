@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AudioManaging;
 
 namespace Boss
 {
@@ -26,7 +27,7 @@ namespace Boss
 
         void Start()
         {
-
+            AudioManager.Instance.Play("Tentacules");
         }
 
         void Update()
@@ -123,6 +124,7 @@ namespace Boss
 
         public void Phase2Over()
         {
+            AudioManager.Instance.Stop("Tentacules");
             GetComponent<Phase2Pattern1>().enabled = false;
             GetComponent<Phase2Pattern2>().enabled = false;
         }
