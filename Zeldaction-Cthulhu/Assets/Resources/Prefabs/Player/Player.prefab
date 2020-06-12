@@ -5373,6 +5373,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   pufpuf: {fileID: 7912540169082825264, guid: 99a8cda53f213fd4da9c7fb23584320b, type: 3}
+  isPushing: 0
 --- !u!114 &366841080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5749,6 +5750,7 @@ MonoBehaviour:
   healNumber: 0
   maxHealNumber: 0
   timeBeforeHeal: 2
+  isHealing: 0
   invuCooldown: 1
 --- !u!1 &4580132031392485401
 GameObject:
@@ -5859,6 +5861,7 @@ MonoBehaviour:
   playerShadowMode: {fileID: 0}
   playerStats: {fileID: 0}
   playerShoot: {fileID: 0}
+  playerLook: {fileID: 0}
   playerAnimator: {fileID: 4580132031657520922}
   nearEnemyDetection: {fileID: 0}
   nativePosition: {x: -3, y: -5.21, z: 0}
@@ -6026,7 +6029,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &4580132031657520922
 Animator:
   serializedVersion: 3
@@ -6263,7 +6266,7 @@ PrefabInstance:
     - target: {fileID: 574004817862256032, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 574004817862256038, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
@@ -6308,7 +6311,7 @@ PrefabInstance:
     - target: {fileID: 6897967909907504152, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
