@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 3100012754605638606}
   - component: {fileID: 3100012754605638607}
   - component: {fileID: 3100012754605638604}
+  - component: {fileID: 7199877801197749614}
   m_Layer: 14
   m_Name: CorruptionTower
   m_TagString: pillar
@@ -399,6 +400,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   useFog: 0
+  isMakingSound: 0
   loadFogDistance: 0
   laserAnimator: {fileID: 1811713971}
   isCharge: 1
@@ -424,6 +426,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &7199877801197749614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100012754605638600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdbf0b52fb0b0e4088110a7887fe586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PuffPuff: {fileID: 7912540169082825264, guid: 99a8cda53f213fd4da9c7fb23584320b,
+    type: 3}
 --- !u!1 &4179547299836987702
 GameObject:
   m_ObjectHideFlags: 0

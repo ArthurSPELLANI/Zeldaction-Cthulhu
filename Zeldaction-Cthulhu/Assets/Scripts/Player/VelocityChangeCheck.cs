@@ -13,6 +13,8 @@ namespace Player
         public GameObject puffPuff;
 
         public Transform pufPufParentTransform;
+
+        float time;
         
         
 
@@ -27,16 +29,25 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            
-            if(oldVelocity != playerRb.velocity.magnitude)
             {
-                //Spawn puff à la position dépendante de la vélocité du joueur
+                time += 0.5f * Time.deltaTime;
 
-                Instantiate(puffPuff, new Vector2(transform.position.x, transform.position.y - 0.25f), Quaternion.identity, pufPufParentTransform);
-                
+                if (time > 0.05f)
+                {
+                    time = 0;
+
+
+                    if (oldVelocity != playerRb.velocity.magnitude)
+                    {
+                        //Spawn puff à la position dépendante de la vélocité du joueur
+
+                        Instantiate(puffPuff, new Vector2(transform.position.x, transform.position.y - 0.25f), Quaternion.identity, pufPufParentTransform);
+
+                    }
+
+                    oldVelocity = playerRb.velocity.magnitude;
+                }
             }
-
-            oldVelocity = playerRb.velocity.magnitude;
         }
     }
 }
