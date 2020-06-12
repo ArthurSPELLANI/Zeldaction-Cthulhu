@@ -63,11 +63,6 @@ namespace Player
 
         private void FixedUpdate()
         {
-            
-        }
-
-        void Update()
-        {
             shadowInput = Input.GetAxisRaw("Shadow");
             sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
 
@@ -77,15 +72,15 @@ namespace Player
             }
             else if (isShadowActivated == false && sanity < maxSanity)
             {
-                sanity += Time.deltaTime * sanityGain;                
+                sanity += Time.deltaTime * sanityGain;
             }
-            
-            if(sanity <= 0)
+
+            if (sanity <= 0)
             {
                 ShadowExit();
             }
 
-            if(isOutOfBounds == true)
+            if (isOutOfBounds == true)
             {
                 sanity -= Time.fixedDeltaTime * sanityDecay * 3;
             }
@@ -94,7 +89,7 @@ namespace Player
 
             if (shadowInput != 0 && isAxisInUse == false)
             {
-                if(sanity > 0)
+                if (sanity > 0)
                 {
                     isAxisInUse = true;
 
@@ -107,20 +102,20 @@ namespace Player
                     {
                         ShadowExit();
                     }
-                }                             
+                }
             }
 
-            else if(shadowInput == 0 && isAxisInUse == true)
+            else if (shadowInput == 0 && isAxisInUse == true)
             {
                 isAxisInUse = false;
             }
 
             if (isShadowActivated == true && Input.GetButtonDown("Recall"))
             {
-                if(actionPoints > 0)
+                if (actionPoints > 0)
                 {
                     RecallPlayer();
-                }                
+                }
             }
 
             if (actionPoints < maxActionPoints && timestamp <= Time.time)
@@ -140,7 +135,10 @@ namespace Player
 
             if (!isShadowActivated)
                 AudioManager.Instance.Stop("idleShadow");
+        }
 
+        void Update()
+        {           
 
         }
     
