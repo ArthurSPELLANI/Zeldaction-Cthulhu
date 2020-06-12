@@ -31,7 +31,7 @@ public class WorldSave : MonoBehaviour
         CurrentScene = SceneManager.GetActiveScene();
 
         //Assignation des charges aux pilliers sauvegardés
-        foreach  (GameObject p in Pillar)
+        foreach (GameObject p in Pillar)
         {
             p.GetComponent<Pillar>().isCharge = PlayerPrefs.GetInt("scene" + CurrentScene.buildIndex.ToString() + " pillar" + index.ToString(), p.GetComponent<Pillar>().isCharge);
             index += 1;
@@ -49,13 +49,9 @@ public class WorldSave : MonoBehaviour
         //Désactivation des cinématiques déjà jouées
         foreach (GameObject c in Cinematic)
         {
-            int i = PlayerPrefs.GetInt("scene" + CurrentScene.buildIndex.ToString() + " cinematic" + index3.ToString(), 1);
-
-            if (i == 0)
-            {
-                c.SetActive(false);
-            }
-            index3 += 1;
+        
+            c.GetComponentInParent<TimelineManager>().isNotActivable = PlayerPrefs.GetInt("scene" + CurrentScene.buildIndex.ToString() + " cinematic " + index3.ToString(), c.GetComponentInParent<TimelineManager>().isNotActivable);
+            index3 += 1;                    
         }
         index3 = 0;
     }
@@ -64,7 +60,7 @@ public class WorldSave : MonoBehaviour
     public void SavePillar()
     {
         foreach (GameObject p in Pillar)
-        { 
+        {
             PlayerPrefs.SetInt("scene" + CurrentScene.buildIndex.ToString() + " pillar" + index.ToString(), p.GetComponent<Pillar>().isCharge);
             index += 1;
         }
@@ -89,22 +85,11 @@ public class WorldSave : MonoBehaviour
     {
         foreach (GameObject c in Cinematic)
         {
-            if (c.activeSelf)
-            {
-                PlayerPrefs.SetInt("scene" + CurrentScene.buildIndex.ToString() + " cinematic" + index3.ToString(), 1);
-                index3 += 1;
-            }
-            else if (!c.activeSelf)
-            {
-                PlayerPrefs.SetInt("scene" + CurrentScene.buildIndex.ToString() + " cinematic" + index3.ToString(), 0);
-                index3 += 1;
-            }
-            else
-            {
-                Debug.LogError("Le gameObject " + c.name + " n'est n' actif ni inactif (c'est trop bizarre");
-            }
-            index3 = 0;
+            PlayerPrefs.SetInt("scene" + CurrentScene.buildIndex.ToString() + " cinematic " + index3.ToString(), c.GetComponentInParent<TimelineManager>().isNotActivable);
+            index3 += 1;
         }
+        index3 = 0;
 
+        PlayerPrefs.Save();
     }
 }

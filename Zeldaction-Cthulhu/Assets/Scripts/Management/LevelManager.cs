@@ -228,6 +228,8 @@ namespace Game
             PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
+
+
     }
 }
 

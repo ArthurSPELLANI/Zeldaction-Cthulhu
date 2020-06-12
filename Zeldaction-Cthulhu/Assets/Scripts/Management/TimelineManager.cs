@@ -29,6 +29,10 @@ public class TimelineManager : MonoBehaviour
     GameObject Base;
     GameObject ActionPoints;
 
+    public int isNotActivable;
+    bool alreadyDone;
+    public GameObject[] objectsToDesactivate;
+
 
     void Start()
     {
@@ -57,12 +61,38 @@ public class TimelineManager : MonoBehaviour
             if (s.pitch == 0)
                 s.source.pitch = 1f;
         }
+
+        //Pour la sauvegarde
+        if (isNotActivable == 0)
+        {
+            alreadyDone = false;
+        }
+        else if (isNotActivable == 1)
+        {
+            alreadyDone = true;
+        }
+
+        if(alreadyDone == true)
+        {
+            for (int i = 0; i < objectsToDesactivate.Length; i++)
+            {
+                objectsToDesactivate[i].SetActive(false);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < objectsToDesactivate.Length; i++)
+            {
+                objectsToDesactivate[i].SetActive(true);
+            }
+        }
     }
  
     void Update()
     {
         if (Input.GetButtonDown("Interract") && canSkip) // vérifie si le bool est true
             SkipDialog();
+
 
         if (Timeline.state == PlayState.Playing && !desactivate && isplaying ) // on regarde si la timeline est entrain d'etre joué et si les trucs en dessous sont désactivés.
         {

@@ -226,6 +226,11 @@ namespace PillarSystem
                 playerShadowMode.sanity += sanityGain;
                 playerShadowMode.isCharged = false;
             }
+
+            if(playerShadowMode.sanity > playerShadowMode.maxSanity)
+            {
+                playerShadowMode.sanity = playerShadowMode.maxSanity;
+            }
         }
 
         //délais avant que le joueur puisse inéragir avec le pillier

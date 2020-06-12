@@ -69,16 +69,15 @@ namespace Player
         void Update()
         {
             shadowInput = Input.GetAxisRaw("Shadow");
+            sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
 
             if (isShadowActivated == true)
             {
                 sanity -= Time.fixedDeltaTime * sanityDecay;
-                sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
             }
             else if (isShadowActivated == false && sanity < maxSanity)
             {
-                sanity += Time.deltaTime * sanityGain;
-                sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
+                sanity += Time.deltaTime * sanityGain;                
             }
             
             if(sanity <= 0)
@@ -95,17 +94,20 @@ namespace Player
 
             if (shadowInput != 0 && isAxisInUse == false)
             {
-                isAxisInUse = true;
-
-                if (isShadowActivated == false)
+                if(sanity > 0)
                 {
-                    ShadowActivation();                    
-                }
+                    isAxisInUse = true;
 
-                else if (isShadowActivated == true)
-                {
-                    ShadowExit();
-                }               
+                    if (isShadowActivated == false)
+                    {
+                        ShadowActivation();
+                    }
+
+                    else if (isShadowActivated == true)
+                    {
+                        ShadowExit();
+                    }
+                }                             
             }
 
             else if(shadowInput == 0 && isAxisInUse == true)

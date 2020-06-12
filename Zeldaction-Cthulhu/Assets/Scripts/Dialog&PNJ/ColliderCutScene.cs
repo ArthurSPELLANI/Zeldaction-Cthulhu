@@ -17,6 +17,7 @@ public class ColliderCutScene : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {            
             timeline.Play();
+            GetComponentInParent<TimelineManager>().isNotActivable = 1;
             this.gameObject.SetActive(false);
         }
     }
