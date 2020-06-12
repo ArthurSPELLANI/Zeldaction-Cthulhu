@@ -5,11 +5,26 @@ using Game;
 
 public class SceneSwitchInnInterior : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other)
-    {
+    public GameObject button;
+
+    void OnTriggerStay2D(Collider2D other)
+    {       
         if (other.CompareTag("Player"))
         {
-            LevelManager.Instance.InnInterior();
+            button.SetActive(true);
+
+            if (Input.GetButtonDown("Interract"))
+            {
+                LevelManager.Instance.InnInterior();
+            }            
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            button.SetActive(false);           
         }
     }
 }
