@@ -107,6 +107,14 @@ namespace Player
             if (collision.gameObject.tag == "Enemy" && PlayerManager.Instance.playerShadowMode.isCharged == true)
             {
                 collision.GetComponent<EnemyBasicBehavior>().EnemyStun(3f);
+            }            
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "NegativeFog")
+            {
+                PlayerManager.Instance.playerShadowMode.isInFog = true;
             }
         }
 

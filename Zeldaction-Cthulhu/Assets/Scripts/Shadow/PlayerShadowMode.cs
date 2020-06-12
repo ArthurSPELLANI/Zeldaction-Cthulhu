@@ -48,6 +48,7 @@ namespace Player
         public LayerMask enemyLayer;
 
         public int fragment;
+        public bool isInFog = false;
 
         void Awake()
 	    {
@@ -160,11 +161,14 @@ namespace Player
             FindObjectOfType<AudioManager>().Play("idleShadow");*/
             AudioManager.Instance.Play("entreeShadow");
             AudioManager.Instance.Play("idleShadow");
+
+            StartCoroutine(CheckForFog());
         }
 
         public void ShadowExit()
         {
             ExitEnemyCatchAnimator();
+            isInFog = false;
             shadowObject.transform.position = player.transform.position;
             isShadowActivated = false;
             VCamMain.gameObject.SetActive(true);
@@ -179,6 +183,7 @@ namespace Player
             FindObjectOfType<AudioManager>().Stop("idleShadow");*/
             AudioManager.Instance.Play("sortieShadow");
             AudioManager.Instance.Stop("idleShadow");
+
         }
         
 
@@ -294,6 +299,15 @@ namespace Player
                         enemyhit[i].gameObject.GetComponent<SpriteRenderer>().sprite = null;
                     }
                 }                
+            }
+        }
+
+        IEnumerator CheckForFog()
+        {
+            yield return new WaitForSeconds(0.01f);
+            if(isInFog == true)
+            {
+                ShadowExit();
             }
         }
 
