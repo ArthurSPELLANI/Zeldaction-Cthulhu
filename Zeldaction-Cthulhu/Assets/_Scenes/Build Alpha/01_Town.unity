@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -14440,7 +14440,7 @@ MonoBehaviour:
   playerInRange: 0
   SonDialog:
     name: 
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: cd4d30bbcd603e743bfb89ac433d88f4, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -23353,6 +23353,9 @@ MonoBehaviour:
     pitch: 0
     loop: 0
     source: {fileID: 0}
+  isNotActivable: 0
+  objectsToDesactivate: []
+  isJustDialog: 0
 --- !u!114 &341908216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36775,6 +36778,9 @@ MonoBehaviour:
     pitch: 0
     loop: 0
     source: {fileID: 0}
+  isNotActivable: 0
+  objectsToDesactivate: []
+  isJustDialog: 0
 --- !u!114 &519047319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37812,8 +37818,8 @@ MonoBehaviour:
   playerInRange: 0
   SonDialog:
     name: 
-    clip: {fileID: 0}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 568e88b8e501b2740af8d969470245d4, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -99071,6 +99077,7 @@ GameObject:
   - component: {fileID: 1465495213}
   - component: {fileID: 1465495212}
   - component: {fileID: 1465495214}
+  - component: {fileID: 1465495215}
   m_Layer: 16
   m_Name: ThirdCinematic
   m_TagString: Untagged
@@ -99278,6 +99285,8 @@ PlayableDirector:
     value: {fileID: 1915754296}
   - key: {fileID: -5245993529465351459, guid: 415f10a046fefb64581826a05ae4e582, type: 2}
     value: {fileID: 1465495213}
+  - key: {fileID: -3840110215910324614, guid: 415f10a046fefb64581826a05ae4e582, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 1d26a3c9639f107419156fb4843e2543: {fileID: 0}
@@ -99464,6 +99473,9 @@ MonoBehaviour:
     pitch: 0
     loop: 0
     source: {fileID: 0}
+  isNotActivable: 0
+  objectsToDesactivate: []
+  isJustDialog: 0
 --- !u!114 &1465495213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99481,6 +99493,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4d7fa47eceaaa964f976b65fadeca2c2, type: 2}
     - {fileID: 11400000, guid: 961f87e03cbd3504d92655d6dec47420, type: 2}
     - {fileID: 11400000, guid: 78669557b4c3af84ca856edffbf4bd70, type: 2}
+    - {fileID: 11400000, guid: 7aa3f5e4f3d7a0d44bf8c12fcc143112, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -99521,6 +99534,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1465495215}
+          m_MethodName: ReReglageSon
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1465495214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99533,6 +99559,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bbdeeceb796e64e8ddb796b49975cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1465495215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465495208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb88bacc2756aa44ca011ada1c9ec63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.01
 --- !u!1 &1465578539
 GameObject:
   m_ObjectHideFlags: 0
@@ -100992,8 +101031,8 @@ MonoBehaviour:
   playerInRange: 0
   SonDialog:
     name: 
-    clip: {fileID: 0}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: b1fad9a96947b0e4d9dd768e8cbaed3f, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -102238,7 +102277,7 @@ MonoBehaviour:
   playerInRange: 0
   SonDialog:
     name: 
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 8da2145850714bf4c9a981ce415eae06, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -106670,8 +106709,8 @@ MonoBehaviour:
   playerInRange: 0
   SonDialog:
     name: 
-    clip: {fileID: 0}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: b38737767772711499c8539038db8a3d, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -121751,6 +121790,9 @@ MonoBehaviour:
     pitch: 0
     loop: 0
     source: {fileID: 0}
+  isNotActivable: 0
+  objectsToDesactivate: []
+  isJustDialog: 0
 --- !u!114 &1814605327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126724,9 +126766,9 @@ MonoBehaviour:
   playerInRange: 0
   SonDialog:
     name: 
-    clip: {fileID: 0}
-    volume: 0.5
-    pitch: 1
+    clip: {fileID: 8300000, guid: 9fe440eb9236ec64182151925374119c, type: 3}
+    volume: 1
+    pitch: 0.96
     loop: 0
     source: {fileID: 0}
   Button: {fileID: 1171409146}
@@ -135876,7 +135918,7 @@ MonoBehaviour:
   playerInRange: 0
   SonDialog:
     name: 
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 767147aec90f4ec44a2510327251cddd, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

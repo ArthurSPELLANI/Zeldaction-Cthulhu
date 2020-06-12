@@ -7,10 +7,11 @@ public class FixBugDegeuTimeline : MonoBehaviour
 {
 
     public float time = 2;
-    TimelineManager TM;
+    public TimelineManager TM;
     void Start()
     {
-        TM = gameObject.GetComponent<TimelineManager>();
+        if (TM == null)
+            TM = gameObject.GetComponent<TimelineManager>();
 
         StartCoroutine(Reglagedesons());
     
@@ -21,10 +22,13 @@ public class FixBugDegeuTimeline : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(time);
 
+
         foreach (Sound s in TM.Son)
         {
             s.source.volume = 0.000001f;
         }
+
+        Debug.Log("son = 0");
     }
 
     public void ReReglageSon()
