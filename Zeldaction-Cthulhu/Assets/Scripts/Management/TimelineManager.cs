@@ -32,6 +32,7 @@ public class TimelineManager : MonoBehaviour
     public int isNotActivable;
     bool alreadyDone;
     public GameObject[] objectsToDesactivate;
+    public bool isJustDialog = false;
 
 
     void Start()
@@ -90,47 +91,50 @@ public class TimelineManager : MonoBehaviour
  
     void Update()
     {
-        if (Input.GetButtonDown("Interract") && canSkip) // vérifie si le bool est true
-            SkipDialog();
-
-
-        if (Timeline.state == PlayState.Playing && !desactivate && isplaying ) // on regarde si la timeline est entrain d'etre joué et si les trucs en dessous sont désactivés.
+        if(isJustDialog == false)
         {
-            //Debug.Log("Je suis la");
-            desactivate = true; // desactivé est true
-            PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0, 0);
-            PlayerManager.Instance.playerMovement.animator.SetBool("IsWalking", false);
-            PlayerManager.Instance.playerMovement.animator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
-            PlayerManager.Instance.playerMovement.animator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
-            PlayerManager.Instance.playerMovement.isWalking = false;
+            if (Input.GetButtonDown("Interract") && canSkip) // vérifie si le bool est true
+                SkipDialog();
 
-            Movement.SetActive(false);
-            Attack.SetActive(false);
-            ShadowMode.SetActive(false);
 
-            Coeurs.SetActive(false);
-            Ammunitions.SetActive(false);
-            SanityGauge.SetActive(false);
-            Base.SetActive(false);
-            ActionPoints.SetActive(false);
+            if (Timeline.state == PlayState.Playing && !desactivate && isplaying) // on regarde si la timeline est entrain d'etre joué et si les trucs en dessous sont désactivés.
+            {
+                //Debug.Log("Je suis la");
+                desactivate = true; // desactivé est true
+                PlayerManager.Instance.playerMovement.playerRb.velocity = new Vector2(0, 0);
+                PlayerManager.Instance.playerMovement.animator.SetBool("IsWalking", false);
+                PlayerManager.Instance.playerMovement.animator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
+                PlayerManager.Instance.playerMovement.animator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
+                PlayerManager.Instance.playerMovement.isWalking = false;
 
+                Movement.SetActive(false);
+                Attack.SetActive(false);
+                ShadowMode.SetActive(false);
+
+                Coeurs.SetActive(false);
+                Ammunitions.SetActive(false);
+                SanityGauge.SetActive(false);
+                Base.SetActive(false);
+                ActionPoints.SetActive(false);
+
+            }
+
+            else if (Timeline.state != PlayState.Playing && desactivate && !isplaying) // bah ici c'est l'inverse d'au dessus, si la timeline est pas joué et que les trucs sont pas ré activé
+            {
+                desactivate = false;
+                Movement.SetActive(true);
+                Attack.SetActive(true);
+                ShadowMode.SetActive(true);
+
+                Coeurs.SetActive(true);
+                Ammunitions.SetActive(true);
+                SanityGauge.SetActive(true);
+                Base.SetActive(true);
+                ActionPoints.SetActive(true);
+            }
         }
-
-        else if (Timeline.state != PlayState.Playing && desactivate && !isplaying) // bah ici c'est l'inverse d'au dessus, si la timeline est pas joué et que les trucs sont pas ré activé
-        {
-            desactivate = false;
-            Movement.SetActive(true);
-            Attack.SetActive(true);
-            ShadowMode.SetActive(true);
-
-            Coeurs.SetActive(true);
-            Ammunitions.SetActive(true);
-            SanityGauge.SetActive(true);
-            Base.SetActive(true);
-            ActionPoints.SetActive(true);
-        }
-
     }
+        
 
     void SkipDialog() // c'est une fonction
     {
