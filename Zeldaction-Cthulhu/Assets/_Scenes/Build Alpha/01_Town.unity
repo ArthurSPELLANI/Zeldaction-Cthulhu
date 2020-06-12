@@ -35459,7 +35459,7 @@ MonoBehaviour:
   playerInRange: 0
   SonDialog:
     name: 
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 54415efe536240b4091ea73c1e457c4b, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -99286,7 +99286,7 @@ PlayableDirector:
   - key: {fileID: -5245993529465351459, guid: 415f10a046fefb64581826a05ae4e582, type: 2}
     value: {fileID: 1465495213}
   - key: {fileID: -3840110215910324614, guid: 415f10a046fefb64581826a05ae4e582, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1465495213}
   m_ExposedReferences:
     m_References:
     - 1d26a3c9639f107419156fb4843e2543: {fileID: 0}
@@ -99372,20 +99372,44 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: 
-    clip: {fileID: 8300000, guid: f19b77e4d5163f44d8b80703b8a624bb, type: 3}
+    clip: {fileID: 8300000, guid: f1c87344f717853499212c6852f7d749, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
   - name: 
-    clip: {fileID: 8300000, guid: 28f465ede3b0ae34284be0d5dcbdf87b, type: 3}
+    clip: {fileID: 8300000, guid: f19b77e4d5163f44d8b80703b8a624bb, type: 3}
     volume: 0.8
     pitch: 0
     loop: 0
     source: {fileID: 0}
   - name: 
-    clip: {fileID: 8300000, guid: c16aff98ecc478446928e1d827e9a90b, type: 3}
+    clip: {fileID: 8300000, guid: 28f465ede3b0ae34284be0d5dcbdf87b, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: fefd07b7d9066f042943fc6bedbee7e1, type: 3}
     volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 33f496295662e474eb93e73d52860c07, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: fefd07b7d9066f042943fc6bedbee7e1, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 9147c7048e34fe84eaaf6f7841b6715b, type: 3}
+    volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
@@ -99408,24 +99432,6 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: 
-    clip: {fileID: 8300000, guid: 9147c7048e34fe84eaaf6f7841b6715b, type: 3}
-    volume: 0.8
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 8300000, guid: fefd07b7d9066f042943fc6bedbee7e1, type: 3}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 8300000, guid: c05ed32ae4e682c459773d5f65e3d9b8, type: 3}
-    volume: 0.8
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
     clip: {fileID: 8300000, guid: 4c0749037769cd54083d0d33659fa47c, type: 3}
     volume: 0
     pitch: 0
@@ -99439,12 +99445,6 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: 
     clip: {fileID: 8300000, guid: 7c4ccdc4b3462544382674dbfa73feef, type: 3}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 8300000, guid: 59c71a6b2299e1d4cbc43be812ee70b1, type: 3}
     volume: 0
     pitch: 0
     loop: 0
@@ -99571,7 +99571,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb88bacc2756aa44ca011ada1c9ec63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0.01
+  time: 2
+  TM: {fileID: 0}
 --- !u!1 &1465578539
 GameObject:
   m_ObjectHideFlags: 0
@@ -101310,6 +101311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1483988803}
+  - component: {fileID: 1483988804}
   m_Layer: 0
   m_Name: Cinematics
   m_TagString: Untagged
@@ -101336,6 +101338,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1483988804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483988802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb88bacc2756aa44ca011ada1c9ec63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.01
+  TM: {fileID: 1465495212}
 --- !u!1 &1484932304
 GameObject:
   m_ObjectHideFlags: 0
