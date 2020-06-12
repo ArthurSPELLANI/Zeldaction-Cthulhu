@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Management;
+using UnityEngine.SceneManagement;
 using Game;
 
 namespace Player
@@ -79,6 +80,11 @@ namespace Player
             if (Input.GetKeyDown(KeyCode.R))
             {
                 ResetPlayer();
+            }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                PlayerPrefs.DeleteAll();
             }
 
             if (Input.GetKeyDown(KeyCode.W))
