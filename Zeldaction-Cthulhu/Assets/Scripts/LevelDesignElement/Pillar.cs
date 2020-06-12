@@ -32,7 +32,7 @@ namespace PillarSystem
         float sanityGain = 10f;
 
         Rigidbody2D rb;
-        bool isMakingSound;
+        public bool isMakingSound;
 
 
         public float loadFogDistance;
