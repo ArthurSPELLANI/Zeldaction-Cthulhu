@@ -6,6 +6,7 @@ using AudioManaging;
 public class FixBugDegeuTimeline : MonoBehaviour
 {
 
+    public float time = 2;
     TimelineManager TM;
     void Start()
     {
@@ -18,7 +19,7 @@ public class FixBugDegeuTimeline : MonoBehaviour
 
     IEnumerator Reglagedesons()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(time);
 
         foreach (Sound s in TM.Son)
         {
