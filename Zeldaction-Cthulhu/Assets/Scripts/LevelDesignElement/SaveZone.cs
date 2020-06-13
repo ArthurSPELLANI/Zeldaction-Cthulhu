@@ -25,6 +25,7 @@ public class SaveZone : MonoBehaviour
             worldSave.SaveFragment();
             worldSave.SavePillar();
             worldSave.SaveGameObjectActivation();
+            worldSave.SaveCorruptionCore();
             playerSave.Save();
 
             if (savingText.activeSelf == false)

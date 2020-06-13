@@ -10,6 +10,7 @@ namespace Game
     {
         SpriteRenderer render;
         public bool destroyed = false;
+        public int destroyedInt;
         public GameObject coreParticle;
 
         public bool isLeft;
@@ -18,6 +19,15 @@ namespace Game
         private void Start()
         {
             render = GetComponent<SpriteRenderer>();
+
+            if(destroyedInt == 1)
+            {
+                destroyed = true;
+            }
+            else if(destroyedInt == 0)
+            {
+                destroyed = false;
+            }
         }
 
         void Update()
@@ -27,19 +37,43 @@ namespace Game
                 if (isLeft == true)
                 {
                     destroyed = true;
-                    BigDoorCave.Instance.isLeftDrestroyed = true;
+                    destroyedInt = 1;
+                    BigDoorCave.Instance.isLeftDestroyed = true;
                 }
 
                 if (isRight == true)
                 {
                     destroyed = true;
+                    destroyedInt = 1;
                     BigDoorCave.Instance.isRightDestroyed = true;
                 }
 
                 Instantiate(coreParticle, transform.position, Quaternion.identity);
                 transform.GetChild(0).gameObject.SetActive(false);
+
+                
+            }
+
+            if (destroyed == true)
+            {
+                if (render.enabled == true)
+                {
+                    render.enabled = false;
+
+                    if (isLeft)
+                    {
+                        BigDoorCave.Instance.isLeftDestroyed = true;
+                    }
+                    if (isRight)
+                    {
+                        BigDoorCave.Instance.isRightDestroyed = true;
+                    }
+                }
             }
         }
+
+
+
     }
 }
 
