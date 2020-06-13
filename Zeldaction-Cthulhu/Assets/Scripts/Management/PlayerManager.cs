@@ -96,6 +96,11 @@ namespace Player
                 playerAnimator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
             }
 
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                playerShadowMode.ShadowEnhance();
+            }
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 LevelManager.Instance.Town();

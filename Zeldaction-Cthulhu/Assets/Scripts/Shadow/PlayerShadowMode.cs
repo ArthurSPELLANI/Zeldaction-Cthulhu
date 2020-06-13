@@ -267,9 +267,11 @@ namespace Player
         public void ShadowEnhance()
         {
             fragment -= 3;
-            maxSanity += 30;
+            if (fragment < 0)
+                fragment = 0;
+            maxSanity = 90;
             //sanity = maxSanity;
-            maxActionPoints += 2;
+            maxActionPoints = 5;
             //actionPoints = maxActionPoints;
             sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
 
