@@ -55,7 +55,7 @@ namespace Player
             aimHorizontal = shootDirection.normalized.x;
             aimVertical = shootDirection.normalized.y;
 
-            if (PauseMenu.gameIsPaused == false)
+            if (PauseMenu.Instance.gameIsPaused == false)
             {
                 if (Input.GetAxisRaw("Shoot") != 0)
                 {

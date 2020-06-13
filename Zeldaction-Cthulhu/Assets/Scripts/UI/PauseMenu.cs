@@ -14,7 +14,7 @@ namespace Menu
 {
     public class PauseMenu : Singleton<PauseMenu>
     {
-        public static bool gameIsPaused = false;
+        public bool gameIsPaused = false;
         public GameObject PauseMenuUI;
         GameObject shadowModeGo;
         GameObject attackBehaviorGo;

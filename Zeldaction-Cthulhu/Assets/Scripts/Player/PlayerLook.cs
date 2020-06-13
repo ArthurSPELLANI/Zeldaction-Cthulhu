@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Menu;
 
 namespace Player
 {
@@ -13,7 +14,7 @@ namespace Player
 
         void Update()
         {
-            if(PlayerManager.Instance.playerShoot.isAiming == false)
+            if (PlayerManager.Instance.playerShoot.isAiming == false && PauseMenu.Instance.gameIsPaused == false)
             {
                 aim = new Vector3(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical") * -1, 0.0f);
 
