@@ -15,6 +15,7 @@ namespace Game
         public Slider sanityGauge;
         public GameObject actionPoints;
         public GameObject gameOver;
+        public GameObject savingText;
 
 
         private void Awake()

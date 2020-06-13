@@ -1406,7 +1406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8831603742958918052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3535,6 +3535,7 @@ MonoBehaviour:
   sanityGauge: {fileID: 4247797822209622401}
   actionPoints: {fileID: 4247797823119864740}
   gameOver: {fileID: 3922732456322412069}
+  savingText: {fileID: 2593864438842863082}
 --- !u!1 &5306085874891626027
 GameObject:
   m_ObjectHideFlags: 0
