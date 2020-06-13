@@ -47,7 +47,7 @@ namespace Player
                     PlayerPrefs.SetInt("canUseShadow", 1);
                     PlayerPrefs.SetFloat("maxSanity", PlayerManager.Instance.playerShadowMode.maxSanity);
                     PlayerPrefs.SetInt("maxActionPoints", PlayerManager.Instance.playerShadowMode.maxActionPoints);
-                    PlayerPrefs.SetInt("fragementNumbre", PlayerManager.Instance.playerShadowMode.fragment);
+                    PlayerPrefs.SetInt("fragmentNumber", PlayerManager.Instance.playerShadowMode.fragment);
                 }
                 else if (!PlayerManager.Instance.playerShadowMode.enabled)
                 {

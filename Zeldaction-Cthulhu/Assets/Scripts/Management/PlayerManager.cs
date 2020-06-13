@@ -163,7 +163,7 @@ namespace Player
                 playerShadowMode.enabled = true;
                 playerShadowMode.maxSanity = PlayerPrefs.GetFloat("maxSanity");
                 playerShadowMode.maxActionPoints = PlayerPrefs.GetInt("maxActionPoints");
-                playerShadowMode.fragment = PlayerPrefs.GetInt("fragemntNumbre");
+                playerShadowMode.fragment = PlayerPrefs.GetInt("fragmentNumber");
             }
 
             playerShadowMode.sanity = playerShadowMode.maxSanity;

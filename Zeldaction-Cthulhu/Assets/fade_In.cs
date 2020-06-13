@@ -33,7 +33,6 @@ public class fade_In : MonoBehaviour
         {
             Color newColor = new Color(0, 0, 0, Mathf.Lerp(alpha, aValue, t));
             fond.color = newColor;
-            Debug.Log("fade");
 
             yield return null;
         }

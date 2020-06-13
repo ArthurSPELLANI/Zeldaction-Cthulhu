@@ -62,12 +62,12 @@ namespace Boss
                 if (isInPhase1 == true)
                 {
                     PlayerManager.Instance.playerLook.enabled = false;
-                    PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.position = new Vector2(phase1Go.transform.localPosition.x, phase1Go.transform.localPosition.y);                    
+                    PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.position = new Vector2(phase1Go.transform.localPosition.x, phase1Go.transform.localPosition.y - 5f);                    
                 }
                 else
                 {
                     PlayerManager.Instance.playerLook.enabled = false;
-                    PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.position = new Vector2(phase2Go.transform.localPosition.x, phase2Go.transform.localPosition.y + 1.5f);                    
+                    PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.position = new Vector2(phase2Go.transform.localPosition.x, phase2Go.transform.localPosition.y - 1.5f);                    
                 }
             }
             else if (PlayerManager.Instance.playerLook.isActiveAndEnabled == false)

@@ -15,6 +15,6 @@ public class MamyTransition : MonoBehaviour
 
     private void Update()
     {
-        PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.localPosition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 2f);
+        PlayerManager.Instance.playerMovement.gameObject.GetComponent<PlayerLook>().lookObject.transform.localPosition = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 7f);
     }
 }
