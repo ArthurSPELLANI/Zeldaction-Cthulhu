@@ -99,6 +99,20 @@ namespace Game
             PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
         }
 
+        public void CaveWest()
+        {
+            SceneManager.LoadScene("11_Cave");
+            PlayerManager.Instance.transform.position = new Vector3(-20f, 24f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
+        }
+
+        public void CaveEast()
+        {
+            SceneManager.LoadScene("11_Cave");
+            PlayerManager.Instance.transform.position = new Vector3(26f, 21.5f);
+            PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
+        }
+
         public void InnInterior()
         {
             SceneManager.LoadScene("02_InnInterior");
