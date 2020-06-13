@@ -25,6 +25,7 @@ public class FogScript : MonoBehaviour
     {
         if (col == shadowColliBox)
         {
+            PlayerManager.Instance.playerShadowMode.isInFog = true;
             StartCoroutine(GoBackHuman());
         }
     }
@@ -33,6 +34,7 @@ public class FogScript : MonoBehaviour
         if (col == shadowColliBox)
         {
             Debug.Log("yes");
+            PlayerManager.Instance.playerShadowMode.isInFog = false;
             StopAllCoroutines();
         }
     }

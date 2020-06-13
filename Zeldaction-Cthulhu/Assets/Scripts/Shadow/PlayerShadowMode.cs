@@ -116,10 +116,13 @@ namespace Player
 
             if (isShadowActivated == true && Input.GetButtonDown("Recall"))
             {
-                if (actionPoints > 0)
+                if(isInFog == false)
                 {
-                    RecallPlayer();
-                }
+                    if (actionPoints > 0)
+                    {
+                        RecallPlayer();
+                    }
+                }                
             }
 
             if (actionPoints < maxActionPoints && timestamp <= Time.time)
@@ -170,8 +173,6 @@ namespace Player
             FindObjectOfType<AudioManager>().Play("idleShadow");*/
             AudioManager.Instance.Play("entreeShadow");
             AudioManager.Instance.Play("idleShadow");
-
-            StartCoroutine(CheckForFog());
         }
 
         public void ShadowExit()
@@ -311,16 +312,7 @@ namespace Player
                     }
                 }                
             }
-        }
-
-        IEnumerator CheckForFog()
-        {
-            yield return new WaitForSeconds(0.01f);
-            if(isInFog == true)
-            {
-                ShadowExit();
-            }
-        }
+        }        
 
     }
 }
