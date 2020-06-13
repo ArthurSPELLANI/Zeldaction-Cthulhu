@@ -138,13 +138,13 @@ namespace Game
         public void CorruptedForest()
         {
             SceneManager.LoadScene("12_CorruptedForest");
-            PlayerManager.Instance.transform.position = new Vector3 (6, -24);
+            PlayerManager.Instance.transform.position = new Vector3 (7, -28);
         }
 
         public void TownDestroyed()
         {
             SceneManager.LoadScene("13_TownDestroyed");
-            PlayerManager.Instance.transform.position = new Vector3(0.6f, 6);
+            PlayerManager.Instance.transform.position = new Vector3(0.6f, 6.5f);
         }
 
         public void EastDF()
