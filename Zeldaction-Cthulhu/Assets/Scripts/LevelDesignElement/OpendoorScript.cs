@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enemy;
 
 public class OpendoorScript : MonoBehaviour
 {
     public GameObject Pillar;
     private float ChildNbr;
+
+    public bool isCombat;
+    public bool isPuzzle;
+
+    public List<GameObject> enemiesToKill;
+
     void Start()
     {
         ChildNbr = transform.childCount;
@@ -13,24 +20,50 @@ public class OpendoorScript : MonoBehaviour
 
     void Update()
     {
-        if (Pillar.activeSelf) 
+        if(isPuzzle == true)
         {
-            GetComponent<Collider2D>().enabled = false;
-
-            for (int i = 0; i < ChildNbr; i++)
+            if (Pillar.activeSelf)
             {
-                transform.GetChild(i).gameObject.SetActive(false);
+                GetComponent<Collider2D>().enabled = false;
+
+                for (int i = 0; i < ChildNbr; i++)
+                {
+                    transform.GetChild(i).gameObject.SetActive(false);
+                }
+
             }
-            
+            else
+            {
+                GetComponent<Collider2D>().enabled = true;
+
+                for (int i = 0; i < ChildNbr; i++)
+                {
+                    transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }
         }
-        else
+
+        if (isCombat == true)
         {
-            GetComponent<Collider2D>().enabled = true;
-
-            for (int i = 0; i < ChildNbr; i++)
+            for (int i = 0; i < enemiesToKill.Count; i++)
             {
-                transform.GetChild(i).gameObject.SetActive(true);
+                if (enemiesToKill[i].activeSelf == false && enemiesToKill[i].transform.parent.GetComponent<EnemyBasicBehavior>().enemyCurrentHealth <= 0)
+                {
+                    enemiesToKill.Remove(enemiesToKill[i]);
+
+                    if (enemiesToKill.Count == 0)
+                    {
+                        GetComponent<Collider2D>().enabled = false;
+
+                        for (int a = 0; a < ChildNbr; a++)
+                        {
+                            transform.GetChild(a).gameObject.SetActive(false);
+                        }
+                    }
+                }
             }
+
         }
+        
     }
 }

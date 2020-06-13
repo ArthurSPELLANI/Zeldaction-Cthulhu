@@ -70,6 +70,7 @@ namespace Enemy
         private float timestampAggro;
         public float timeBeforeLoseAggro;
         private bool losingPlayer = false;
+        [HideInInspector] public bool hasDiedInPit = false;
 
 
         void Awake()
@@ -474,7 +475,7 @@ namespace Enemy
         {
             isMarked = true;
             timestampMark = Time.time + coolDownMark;
-            Instantiate(markedParticle, transform);
+            Instantiate(markedParticle, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, transform.GetChild(0));
         }
 
         public void ExitCatchAnimator()

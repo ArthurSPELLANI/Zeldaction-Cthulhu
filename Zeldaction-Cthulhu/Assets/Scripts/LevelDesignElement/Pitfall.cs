@@ -104,7 +104,8 @@ namespace LevelDesign
             if (other.gameObject.tag == "Enemy")
             {
                 other.GetComponent<EnemyBasicBehavior>().TakeDamage(4, Vector3.zero, 0f);
-                other.transform.GetChild(0).gameObject.SetActive(false);
+                other.GetComponent<EnemyBasicBehavior>().hasDiedInPit = true;
+
             }
         }
 

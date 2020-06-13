@@ -33,11 +33,6 @@ public class FragmentDistributor : MonoBehaviour
                 }
             }
 
-            if(enemiesToKill[0] == null)
-            {
-                Instantiate(fragment, transform.position, rotation);
-                GetComponent<FragmentDistributor>().enabled = false;
-            }
         }
 
 
