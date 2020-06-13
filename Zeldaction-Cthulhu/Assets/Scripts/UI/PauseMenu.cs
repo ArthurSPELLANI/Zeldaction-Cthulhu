@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using Game;
 using Player;
 using Management;
+using AudioManaging;
 
 
 namespace Menu
@@ -97,7 +98,17 @@ namespace Menu
             
 
             Time.timeScale = 1f;
+
+            Destroy(AudioManager.Instance.gameObject);
+
             SceneManager.LoadScene(0);
+
+            Destroy(PlayerManager.Instance.gameObject);
+            Destroy(UIManager.Instance.gameObject);            
+            Destroy(CameraManager.Instance.gameObject);
+            Destroy(GameManager.Instance.gameObject);
+            Destroy(gameObject);
+
         }
 
         public void QuitGame()
