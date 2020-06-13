@@ -13,6 +13,7 @@ public class PlayerAnimatorEvent : MonoBehaviour
     private void Start()
     {
         movement = PlayerManager.Instance.playerMovement;
+        shoot = PlayerManager.Instance.playerShoot;
     }
 
     public void AnimatorAttack()
@@ -36,6 +37,16 @@ public class PlayerAnimatorEvent : MonoBehaviour
 
         attack.AttackEndEvent();
 
+    }
+
+    public void AnimatorCanShoot()
+    {
+        shoot.canShoot = true;
+    }
+
+    public void AnimatorCantShoot()
+    {
+        shoot.canShoot = false;
     }
 
     public void AnimatorAttackPrep()

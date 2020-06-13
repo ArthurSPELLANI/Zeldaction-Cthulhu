@@ -15,17 +15,17 @@ public class UIFragments : MonoBehaviour
     void Update()
     {
 
-        if (PlayerManager.Instance.playerShadowMode.enabled == true)
+        if (PlayerManager.Instance.playerShadowMode.enabled == false || PlayerManager.Instance.playerShadowMode.gameObject.activeSelf == false)
         {
-            fragment.enabled = true;
-            fragmentText.enabled = true;
-            fragmentText.text = PlayerManager.Instance.playerShadowMode.fragment.ToString();
+            fragment.gameObject.SetActive(false);
+            fragmentText.gameObject.SetActive(false);            
         }
         else
         {
-            fragment.enabled = false;
-            fragmentText.enabled = false;
-        }
+            fragment.gameObject.SetActive(true);
+            fragmentText.gameObject.SetActive(true);
+            fragmentText.text = PlayerManager.Instance.playerShadowMode.fragment.ToString();
+        }        
 
     }
 }

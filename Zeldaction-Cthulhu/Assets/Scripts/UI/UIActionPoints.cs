@@ -25,20 +25,32 @@ public class UIActionPoints : MonoBehaviour
         actionPoints = PlayerManager.Instance.playerShadowMode.actionPoints;
         maxAP = PlayerManager.Instance.playerShadowMode.maxActionPoints;
 
-        for (int i = 0; i < points.Length; i++)
+        if (PlayerManager.Instance.playerShadowMode.enabled == false || PlayerManager.Instance.playerShadowMode.gameObject.activeSelf == false)
         {
-            if (i < actionPoints)
+            for (int i = 0; i < points.Length; i++)
             {
-                points[i].sprite = fullAP;
-            }
-            if (i >= actionPoints)
-            {
-                points[i].sprite = emptyAP;
-            }
-            if (i >= maxAP)
-            {
-                points[i].sprite = noAP;
+                points[i].gameObject.SetActive(false);
             }
         }
+        else
+        {
+            for (int i = 0; i < points.Length; i++)
+            {
+                points[i].gameObject.SetActive(true);
+
+                if (i < actionPoints)
+                {
+                    points[i].sprite = fullAP;
+                }
+                if (i >= actionPoints)
+                {
+                    points[i].sprite = emptyAP;
+                }
+                if (i >= maxAP)
+                {
+                    points[i].sprite = noAP;
+                }
+            }
+        }        
     }
 }
