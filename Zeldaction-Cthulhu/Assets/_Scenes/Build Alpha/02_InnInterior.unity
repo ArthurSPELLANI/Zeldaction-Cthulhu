@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -561,7 +561,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Come in ! Come in young people ! Welcome at the Dorchester Inn ! '
+  m_Text: 'Come in ! Come in young people ! Welcome to the Dorchester Inn ! '
 --- !u!222 &147552190
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -787,7 +787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Thank you young lady I\u2019m Matthew the inspector and this is Billy
+  m_Text: "Thank you young lady, I\u2019m Matthew the inspector and this is Billy
     my assistant."
 --- !u!222 &225346848
 CanvasRenderer:
@@ -1617,7 +1617,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Nice to meet you M\u2019am !"
+  m_Text: Nice to meet you ma'am !
 --- !u!222 &404949653
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1775,8 +1775,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: These are the two bedrooms at the end of the corridor upstairs have a good
-    nights sweety pies !
+  m_Text: They are the two bedrooms at the end of the corridor upstairs, have a good
+    night sweety pies !
 --- !u!222 &463628371
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1915,7 +1915,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thank you Daisy, we will go to our room to sleep and eat.
+  m_Text: Thank you Daisy, we will go to our rooms to eat and sleep.
 --- !u!222 &487114235
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2665,7 +2665,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'I''m going to put your luggages upstairs Sir !
+  m_Text: 'I''m going to put your luggage upstairs sir !
 
 '
 --- !u!222 &682626955
@@ -3403,15 +3403,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 244679546, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05788001
+      value: -0.000000005980837
       objectReference: {fileID: 0}
     - target: {fileID: 244679546, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.10606353
+      value: 0.000000040978193
       objectReference: {fileID: 0}
     - target: {fileID: 244679546, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.99935
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 244679547, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_Targets.Array.data[0].target
@@ -3423,27 +3423,27 @@ PrefabInstance:
       objectReference: {fileID: 811204497}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05788001
+      value: -0.000000005980837
       objectReference: {fileID: 0}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.10606353
+      value: 0.000000040978193
       objectReference: {fileID: 0}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.99935
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0030678508
+      value: 0.0030714488
       objectReference: {fileID: 0}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000013801673
+      value: -0.000013821154
       objectReference: {fileID: 0}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0005659202
+      value: -0.0005678557
       objectReference: {fileID: 0}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3459,19 +3459,19 @@ PrefabInstance:
       objectReference: {fileID: 811204494}
     - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.057879996
+      value: -0.0000000091089385
       objectReference: {fileID: 0}
     - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.10606496
+      value: -0.0000014602768
       objectReference: {fileID: 0}
     - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000650899
+      value: -0.0000000089707175
       objectReference: {fileID: 0}
     - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000037977067
+      value: 0.000000037970146
       objectReference: {fileID: 0}
     - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3484,32 +3484,32 @@ PrefabInstance:
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08724132
+      value: -0.08724154
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4273583
+      value: -0.42743033
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.999813
+      value: -9.999811
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0030679214
+      value: -0.0030715193
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000013802055
+      value: 0.000013821536
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00056595815
+      value: 0.0005678937
       objectReference: {fileID: 0}
     - target: {fileID: 2638110287920705250, guid: 16c193a26bbd015469be0e93db5c56c4,
         type: 3}
@@ -5705,7 +5705,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "I hope your stay will be as pleasant as possible, don\u2019t hesitate
-    if you need anything ok sweethearts ? "
+    to ask if you need anything ok sweethearts ? "
 --- !u!222 &1442842404
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6271,7 +6271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "My name is Daisy but everyone call me grandma here\uFE0E. I made your
+  m_Text: "My name is Daisy but everyone calls me grandma here\uFE0E. I made your
     beds and a hot sweet meal for you tonight !"
 --- !u!222 &1587020498
 CanvasRenderer:
@@ -8216,7 +8216,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Oh Oh charming. It\u2019s a real pleasure to meet you both youngs mens
+  m_Text: "Oh how charming. It\u2019s a real pleasure to meet you both young men
     ! "
 --- !u!222 &2141239901
 CanvasRenderer:

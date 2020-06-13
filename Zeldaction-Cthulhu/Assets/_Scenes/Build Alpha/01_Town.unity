@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6474,7 +6474,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Good Afternoon Mr.Mayor we enjoy to be finally arrived too.
+  m_Text: 'Good afternoon Mr. Mayor, we enjoy having finally arrived too.
 
 '
 --- !u!222 &86953307
@@ -6728,8 +6728,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'For the day, the sun will set soon and your trip must have been exhausting
-    ! We have prepared two room for you and your assistant at the inn. '
+  m_Text: Not today, the sun will set soon and your trip must have been exhausting
+    ! We have prepared two rooms for you and your assistant at the inn. Make yourself
+    at home and if you need anything, know that the entire village is at your disposal.
 --- !u!222 &90647865
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7599,7 +7600,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Right. Follow me.
+  m_Text: That's right. Follow me.
 --- !u!222 &98344265
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9607,8 +9608,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Trust me. Me and my assistant Billy will do our best to find the reason
-    for these strange disappearances.
+  m_Text: Trust me, me and my assistant Billy will do our best to find the reasons
+    behind these strange disappearances.
 --- !u!222 &133557723
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13719,7 +13720,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nonac the lumbnerjack has not come back for three days now, I hope he's
+  m_Text: Nonac the lumberjack has not come back for three days now, I hope he's
     fine !
 --- !u!222 &189888720
 CanvasRenderer:
@@ -15199,7 +15200,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Finnaly you are here ! It's a pleasure to meet you !
+  m_Text: Finally you are here ! It's a pleasure to meet you !
 --- !u!222 &211404613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22275,7 +22276,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Make yourself at home and if you need anything, know that the whole village
+  m_Text: 'Make yourself at home and if you need anything, know that the entire village
     is at your disposal.
 
 
@@ -37790,7 +37791,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\rOh...poor child ... he may not come back like the others ..."
+  m_Text: "\rOh...poor child... he may not come back like the others..."
 --- !u!222 &527894908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38357,8 +38358,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hi Mister ! I'm Hayley ! \rAre you going to go help my daddy ? He is so
-    strong you will see !"
+  m_Text: "Hi Mister ! I'm Hayley ! \rAre you going to help my daddy ? He's so strong
+    you'll see !"
 --- !u!222 &533442443
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40682,8 +40683,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "I hope too, after all the forest is dense and they had materials and provisions
-    for a week\u2026\n"
+  m_Text: "I hope so too, after all the forest is dense and they had materials and
+    provisions for a week's worth\u2026\n"
 --- !u!222 &565771932
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42738,7 +42739,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\rI hope that we will quickly find the end of this story."
+  m_Text: "\rI hope that we will quickly find the truth behind this story."
 --- !u!222 &588709615
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -57908,8 +57909,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: It...It was horrible...I go...outside...to...search them....it had so many
-    teeth...it decapited Joseph...OH MY GOD JOSEPH WHY !!
+  m_Text: It...It was horrible...I went...outside...to...search for them....it had
+    so many teeth...it decapited Joseph...OH MY GOD JOSEPH WHY !!
 --- !u!222 &779267852
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63528,7 +63529,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' Thanks Mr.Mayor.'
+  m_Text: ' Thanks Mr. Mayor.'
 --- !u!222 &856360909
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -66397,8 +66398,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Keep calm Billy, it\u2019s not an adventure, it\u2019s serious investigation
-    into the disappearance of villagers"
+  m_Text: "Stay calm Billy, it\u2019s not an adventure, it\u2019s a serious investigation
+    into the disappearance of villagers."
 --- !u!222 &900417622
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -66880,7 +66881,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' Sure Sir !'
+  m_Text: ' Sure sir !'
 --- !u!222 &910993936
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71954,7 +71955,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: I understand, I was shaking during my first investigation.
+  m_Text: I understand, I was shaking during my first investigation myself.
 --- !u!222 &991380997
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -73319,8 +73320,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: (I should walk around and find the mayor, he should be on the square in
-    the north of the village... )
+  m_Text: (I should walk around and find the mayor, he should be in the square in
+    the north of the village...)
 --- !u!222 &1024044038
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -74677,7 +74678,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Oh. Yes. Excuse me sir, I\u2019m so happy to finally work with you on
+  m_Text: "Oh, yes. Excuse me sir, I\u2019m so happy to finally work with you on
     an affair! It\u2019s hard to contain my enthusiasm!"
 --- !u!222 &1048733155
 CanvasRenderer:
@@ -85027,7 +85028,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Inspector! Over here ! \n"
+  m_Text: "Inspector ! Over here ! \n"
 --- !u!222 &1242397773
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -86542,7 +86543,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' Yeah and then we will go to our rooms.'
+  m_Text: ' Yes and then we will go to our rooms.'
 --- !u!222 &1271807613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -93887,7 +93888,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' Oh Inspector call me Charly, Mr.Mayor is way to formal here ahah.'
+  m_Text: ' Oh Inspector please call me Charly, Mr. Mayor is way too formal here
+    haha.'
 --- !u!222 &1375698334
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -118654,7 +118656,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Yeah, that\u2019s him who sent the affair to Scotland Yard?"
+  m_Text: Yes, is it him who sent the affair to Scotland Yard ?
 --- !u!222 &1746758299
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -119795,7 +119797,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You sir? really? Whew.
+  m_Text: You sir ? Really? Woah.
 --- !u!222 &1774356825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -129823,8 +129825,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Oh good finally you\u2019re here. Not a moment too soon! Don\u2019t stay
-    here young man ! Go to work !"
+  m_Text: "Oh good you're finally here. There's not a second to lose ! Don\u2019t
+    stay here young man, get to work !"
 --- !u!222 &1918926855
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -133169,8 +133171,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thanks Charly call me Matthew, we will have look around and take leave
-    in our rooms for the night.
+  m_Text: Thanks Charly, please call me Matthew, we will have a look around and take
+    our leave in our rooms for the night.
 --- !u!222 &1973150218
 CanvasRenderer:
   m_ObjectHideFlags: 0
