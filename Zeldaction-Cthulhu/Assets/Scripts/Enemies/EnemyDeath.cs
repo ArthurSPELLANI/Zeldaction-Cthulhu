@@ -14,11 +14,18 @@ namespace Enemy
             //desactivate behavior
             transform.parent.GetChild(2).gameObject.SetActive(false);
 
+            if (GetComponentInParent<EnemyBasicBehavior>().hasDiedInPit == true)
+            {
+                StartCoroutine(TimeBeforeGraphOff());
+            }
+
             GetComponentInParent<EnemyBasicBehavior>().enabled = false;
             GetComponentInParent<Collider2D>().enabled = false;
 
             //desactivate shadow catch graph
             transform.parent.GetComponent<SpriteRenderer>().enabled = false;
+
+            
         }
 
         public void StopRandomIdle()
@@ -26,6 +33,20 @@ namespace Enemy
             GetComponent<Animator>().SetBool("isRandomIdle", false);
             transform.parent.GetComponent<EnemyBasicBehavior>().isDoingRI = false;
         }
+
+
+        IEnumerator TimeBeforeGraphOff()
+        {
+            yield return new WaitForSecondsRealtime(0.3f);
+
+            gameObject.SetActive(false);
+        }
     }
+
+
+
+
+
+   
 
 }
