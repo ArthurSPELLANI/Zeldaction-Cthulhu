@@ -87,6 +87,13 @@ namespace Player
                 PlayerPrefs.DeleteAll();
             }
 
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                playerAnimator.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                playerAnimator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
+                playerAnimator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
+            }
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 LevelManager.Instance.Town();
