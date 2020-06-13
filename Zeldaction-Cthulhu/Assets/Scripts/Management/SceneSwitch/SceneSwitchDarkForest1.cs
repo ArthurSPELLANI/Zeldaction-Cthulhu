@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game;
+using UnityEngine.SceneManagement;
 
 public class SceneSwitchDarkForest1 : MonoBehaviour
 {    
@@ -9,7 +10,7 @@ public class SceneSwitchDarkForest1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LevelManager.Instance.DarkForest();
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, SceneManager.GetActiveScene().buildIndex));
         }
     }
 }

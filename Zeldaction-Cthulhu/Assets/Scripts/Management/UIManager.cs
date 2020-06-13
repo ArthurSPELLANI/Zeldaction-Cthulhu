@@ -16,6 +16,7 @@ namespace Game
         public GameObject actionPoints;
         public GameObject gameOver;
         public GameObject savingText;
+        public FadeSwitchScene fadeSwitch;
 
 
         private void Awake()

@@ -9,7 +9,7 @@ public class SceneSwitchCaveWest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LevelManager.Instance.CaveWest();
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, 21));
         }
     }
 }

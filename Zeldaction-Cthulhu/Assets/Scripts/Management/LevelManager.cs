@@ -46,6 +46,7 @@ namespace Game
                 //PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
                 //PlayerManager.Instance.ResetPlayer();
             }
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void LoadCurrentScene()
@@ -58,6 +59,7 @@ namespace Game
             SceneManager.LoadScene("01_Town");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
             PlayerManager.Instance.ResetPlayer();
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void PlayestHub()
@@ -72,18 +74,21 @@ namespace Game
             SceneManager.LoadScene("10_DarkForest");
             PlayerManager.Instance.transform.position = new Vector3(6, -23);
             PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void LightForest1()
         {
             SceneManager.LoadScene("08_LightForest1");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void LightForest2()
         {
             SceneManager.LoadScene("09_LightForest2");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void EnemyRoom()
@@ -97,6 +102,7 @@ namespace Game
             SceneManager.LoadScene("11_Cave");
             PlayerManager.Instance.transform.position = new Vector3(0.9f, -8);
             PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void CaveWest()
@@ -104,6 +110,7 @@ namespace Game
             SceneManager.LoadScene("11_Cave");
             PlayerManager.Instance.transform.position = new Vector3(-20f, 24f);
             PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void CaveEast()
@@ -111,72 +118,84 @@ namespace Game
             SceneManager.LoadScene("11_Cave");
             PlayerManager.Instance.transform.position = new Vector3(26f, 21.5f);
             PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void InnInterior()
         {
             SceneManager.LoadScene("02_InnInterior");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void UpstairInn()
         {
             SceneManager.LoadScene("03_UpstairInn");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void Bedroom()
         {
             SceneManager.LoadScene("04_Bedroom");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void UpstairInnNight()
         {
             SceneManager.LoadScene("05_UpstairInnNight");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void InnInteriorNight()
         {
             SceneManager.LoadScene("06_InnInteriorNight");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void TownNight()
         {
             SceneManager.LoadScene("07_TownNight");
             PlayerManager.Instance.transform.position = PlayerManager.Instance.nativePosition;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void CorruptedForest()
         {
             SceneManager.LoadScene("12_CorruptedForest");
             PlayerManager.Instance.transform.position = new Vector3 (7, -28);
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void TownDestroyed()
         {
             SceneManager.LoadScene("13_TownDestroyed");
             PlayerManager.Instance.transform.position = new Vector3(0.6f, 6.5f);
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void EastDF()
         {
             SceneManager.LoadScene("10_DarkForest");
             PlayerManager.Instance.transform.position = new Vector3(26, 5f);
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void WestDF()
         {
             SceneManager.LoadScene("10_DarkForest");
             PlayerManager.Instance.transform.position = new Vector3(-9.5f, 13);
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void SouthDF()
         {
             SceneManager.LoadScene("10_DarkForest");
             PlayerManager.Instance.transform.position = new Vector3(5.5f, 4);
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }        
 
         public void Playtest_2()
@@ -184,6 +203,7 @@ namespace Game
             SceneManager.LoadScene("II. Attaque corps-à-corps");
             PlayerManager.Instance.transform.position = new Vector3(-6.5f, -3.5f);
             PlayerManager.Instance.nativePosition = PlayerManager.Instance.transform.position;
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToOut(0, 0.7f));
         }
 
         public void Playtest_3()

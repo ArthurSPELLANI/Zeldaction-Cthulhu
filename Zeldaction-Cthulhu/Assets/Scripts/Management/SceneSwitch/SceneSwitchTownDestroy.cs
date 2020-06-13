@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game;
+using UnityEngine.SceneManagement;
 
 public class SceneSwitchTownDestroy : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class SceneSwitchTownDestroy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            LevelManager.Instance.TownDestroyed();
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, SceneManager.GetActiveScene().buildIndex));
         }
     }
 }

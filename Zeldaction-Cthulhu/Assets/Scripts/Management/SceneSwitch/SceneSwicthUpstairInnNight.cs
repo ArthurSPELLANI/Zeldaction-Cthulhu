@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game;
+using UnityEngine.SceneManagement;
 
 public class SceneSwicthUpstairInnNight : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LevelManager.Instance.UpstairInnNight();
+        StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, SceneManager.GetActiveScene().buildIndex));
     }
 }

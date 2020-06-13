@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game;
+using UnityEngine.SceneManagement;
 
 public class SceneSceneUpstairInn : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class SceneSceneUpstairInn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LevelManager.Instance.UpstairInn();
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, SceneManager.GetActiveScene().buildIndex));
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game;
 
+using UnityEngine.SceneManagement;
+
 public class SceneSwitchInnInterior : MonoBehaviour
 {
     public GameObject button;
@@ -15,7 +17,7 @@ public class SceneSwitchInnInterior : MonoBehaviour
 
             if (Input.GetButtonDown("Interract"))
             {
-                LevelManager.Instance.InnInterior();
+                StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, SceneManager.GetActiveScene().buildIndex));
             }            
         }
     }

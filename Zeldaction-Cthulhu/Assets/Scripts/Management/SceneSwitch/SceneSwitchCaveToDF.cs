@@ -16,17 +16,17 @@ public class SceneSwitchCaveToDF : MonoBehaviour
         {
             if(south == true)
             {
-                LevelManager.Instance.SouthDF();
+                StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, 32));
             }
 
             if(east == true)
             {
-                LevelManager.Instance.EastDF();
+                StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, 33));
             }
 
             if(west == true)
             {
-                LevelManager.Instance.WestDF();
+                StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, 31));
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Management;
 using Game;
+using UnityEngine.SceneManagement;
 
 public class SceneSwitchBedroom : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class SceneSwitchBedroom : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && Input.GetButtonDown("Interract"))
         {
-            LevelManager.Instance.Bedroom();
+            StartCoroutine(UIManager.Instance.fadeSwitch.FadeToIn(1, 0.7f, SceneManager.GetActiveScene().buildIndex));
         }
     }
 }
