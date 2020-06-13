@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PillarSystem;
 using UnityEngine.SceneManagement;
+using Game;
 
 public class WorldSave : MonoBehaviour
 {
@@ -19,11 +20,13 @@ public class WorldSave : MonoBehaviour
     public GameObject[] Pillar;
     public GameObject[] Fragement;
     public GameObject[] Cinematic;
+    public GameObject[] CorruptionCore;
     Scene CurrentScene;
 
     int index;
     int index2;
     int index3;
+    int index4;
 
     //La fonction Awake Parcours tous les tableaux assigne les valeurs sauvegardées aux éléments
     void Awake()
@@ -54,6 +57,13 @@ public class WorldSave : MonoBehaviour
             index3 += 1;                    
         }
         index3 = 0;
+
+        foreach (GameObject p in CorruptionCore)
+        {
+            p.GetComponent<LittleDoor>().destroyedInt = PlayerPrefs.GetInt("scene" + CurrentScene.buildIndex.ToString() + " corruptionCore" + index.ToString(), p.GetComponent<LittleDoor>().destroyedInt);
+            index4 += 1;
+        }
+        index4 = 0;
     }
 
     //save des charges des pilliers
@@ -89,6 +99,17 @@ public class WorldSave : MonoBehaviour
             index3 += 1;
         }
         index3 = 0;
+
+        PlayerPrefs.Save();
+    }
+    public void SaveCorruptionCore()
+    {
+        foreach (GameObject p in CorruptionCore)
+        {
+            PlayerPrefs.SetInt("scene" + CurrentScene.buildIndex.ToString() + " corruptionCore" + index.ToString(), p.GetComponent<LittleDoor>().destroyedInt);
+            index4 += 1;
+        }
+        index4 = 0;
 
         PlayerPrefs.Save();
     }
