@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class End_Cinematic : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class End_Cinematic : MonoBehaviour
     void OnEnable()
     {
         StartCoroutine(FadeTo(1, 3));
+        video.GetComponent<VideoPlayer>().frameRate.Equals(60);
         
     }
 
@@ -33,13 +35,13 @@ public class End_Cinematic : MonoBehaviour
 
     IEnumerator FadeTo(float aValue, float aTime)
     {
-        Debug.Log("debut fade");
+        //Debug.Log("debut fade");
         float alpha = fade.color.a;
         for (float t = 0.0f; t < 3.0f; t += Time.deltaTime / aTime)
         {
             Color newColor = new Color(0, 0, 0, Mathf.Lerp(alpha, aValue, t));
             fade.color = newColor;
-            Debug.Log("fade");
+            //Debug.Log("fade");
 
             yield return null;
         }

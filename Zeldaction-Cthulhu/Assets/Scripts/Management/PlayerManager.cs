@@ -18,6 +18,7 @@ namespace Player
         public PlayerLook playerLook;
         public Animator playerAnimator;
         public NearEnemyDetection nearEnemyDetection;
+        public SpriteRenderer sprite;
     
         public Vector3 nativePosition;
         public Transform currentPosition;
@@ -51,6 +52,7 @@ namespace Player
             playerShoot = GetComponentInChildren<PlayerShoot>();
             playerLook = GetComponentInChildren<PlayerLook>();
             nearEnemyDetection = GetComponentInChildren<NearEnemyDetection>();
+            sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
             if (PlayerPrefs.HasKey("scene"))
             {

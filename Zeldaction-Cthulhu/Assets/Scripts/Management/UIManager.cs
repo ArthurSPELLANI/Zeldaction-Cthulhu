@@ -105,6 +105,11 @@ namespace Game
 
         }
 
+        public void DisableUI()
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 }
 
