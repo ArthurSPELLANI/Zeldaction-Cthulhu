@@ -7,6 +7,7 @@ public class PickupFragment : MonoBehaviour
 {
     [HideInInspector]
     public int exist = 1;
+    public GameObject particle;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class PickupFragment : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerManager.Instance.playerShadowMode.fragment += 1;
+            Instantiate(particle, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
             exist = 0;
         }

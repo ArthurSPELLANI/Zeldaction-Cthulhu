@@ -50,6 +50,9 @@ namespace Player
         public int fragment;
         public bool isInFog = false;
 
+
+        public GameObject enhanceParticle;
+
         void Awake()
 	    {
             this.enabled = false;     
@@ -136,6 +139,12 @@ namespace Player
 
             if (!isShadowActivated)
                 AudioManager.Instance.Stop("idleShadow");
+
+            if(fragment == 3)
+            {
+                ShadowEnhance();
+            }
+
         }
 
         void Update()
@@ -257,11 +266,13 @@ namespace Player
         public void ShadowEnhance()
         {
             fragment -= 3;
-            maxSanity += 15;
+            maxSanity += 30;
             //sanity = maxSanity;
-            maxActionPoints += 1;
+            maxActionPoints += 2;
             //actionPoints = maxActionPoints;
             sanityGauge.GetComponent<UISanityGauge>().SetSanity(sanity);
+
+            Instantiate(enhanceParticle, transform);
         }
 
         public void SetEnemyCatchAnimator()

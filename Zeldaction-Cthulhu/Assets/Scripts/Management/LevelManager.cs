@@ -150,7 +150,7 @@ namespace Game
         public void EastDF()
         {
             SceneManager.LoadScene("10_DarkForest");
-            PlayerManager.Instance.transform.position = new Vector3(20, 6.5f);
+            PlayerManager.Instance.transform.position = new Vector3(26, 5f);
         }
 
         public void WestDF()
