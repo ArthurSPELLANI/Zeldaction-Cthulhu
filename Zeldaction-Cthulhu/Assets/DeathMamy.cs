@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using AudioManaging;
 
 public class DeathMamy : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class DeathMamy : MonoBehaviour
     public GameObject walls;
 
     public GameObject cincematic;
+
+    public MusicManager mm;
 
     private void Start()
     {
@@ -23,10 +26,13 @@ public class DeathMamy : MonoBehaviour
 
     IEnumerator DeathByTime()
     {
+        mm.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(5.5f);
         cincematic.SetActive(true);
         Destroy(walls);
         Destroy(boss);
+
         yield return new WaitForSeconds(13f);
         Destroy(gameObject);
     }
