@@ -8,8 +8,16 @@ public class FixMJOnStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(fix());
+    }  
+    
+    IEnumerator fix()
+    {
+        yield return new WaitForSeconds(0.2f);
+
         PlayerManager.Instance.playerAnimator.gameObject.transform.localScale = new Vector3(1, 1, 1);
         PlayerManager.Instance.playerAnimator.SetFloat("Horizontal", PlayerManager.Instance.playerMovement.currentDirection.x);
         PlayerManager.Instance.playerAnimator.SetFloat("Vertical", PlayerManager.Instance.playerMovement.currentDirection.y);
-    }   
+
+    }
 }
