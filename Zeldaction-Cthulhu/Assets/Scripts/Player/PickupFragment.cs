@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using AudioManaging;
 
 public class PickupFragment : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PickupFragment : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerManager.Instance.playerShadowMode.fragment += 1;
+            AudioManager.Instance.Play("rangementPistolet");
             Instantiate(particle, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
             exist = 0;
