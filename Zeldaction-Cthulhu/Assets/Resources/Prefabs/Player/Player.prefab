@@ -5230,6 +5230,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   fragment: 0
+  isInFog: 0
+  enhanceParticle: {fileID: 8588524754406346825, guid: a91abfd4e838589439b3510b328de776,
+    type: 3}
 --- !u!61 &1947369802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5864,6 +5867,7 @@ MonoBehaviour:
   playerLook: {fileID: 0}
   playerAnimator: {fileID: 4580132031657520922}
   nearEnemyDetection: {fileID: 0}
+  sprite: {fileID: 0}
   nativePosition: {x: -3, y: -5.21, z: 0}
   currentPosition: {fileID: 0}
   trackAnimators:
@@ -6266,7 +6270,7 @@ PrefabInstance:
     - target: {fileID: 574004817862256032, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 574004817862256038, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
@@ -6311,7 +6315,7 @@ PrefabInstance:
     - target: {fileID: 6897967909907504152, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8306088901830716620, guid: 879974bc903108e47b9aba2b67cab9fd,
         type: 3}
