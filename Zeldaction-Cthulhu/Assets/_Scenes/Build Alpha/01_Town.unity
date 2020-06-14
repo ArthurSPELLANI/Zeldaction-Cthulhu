@@ -35841,6 +35841,7 @@ GameObject:
   - component: {fileID: 505403868}
   - component: {fileID: 505403867}
   - component: {fileID: 505403871}
+  - component: {fileID: 505403872}
   m_Layer: 12
   m_Name: Mayor
   m_TagString: Untagged
@@ -35988,6 +35989,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0.009607241, y: 0}
   m_Size: {x: 0.1907855, y: 0.46}
   m_Direction: 0
+--- !u!95 &505403872
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505403865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd6a6094be0180e4abebcad0a8218484, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &506477080
 GameObject:
   m_ObjectHideFlags: 0
