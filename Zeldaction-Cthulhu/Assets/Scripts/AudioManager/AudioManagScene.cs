@@ -39,7 +39,7 @@ namespace AudioManaging
             }
             else if (CurrentScene.buildIndex == 2)
             {
-                AM.walkOnPlancher = true;
+                AM.walkOnPierre = true;
                 AM.bruitBresson = false;
             }
             else if (CurrentScene.buildIndex == 3)
