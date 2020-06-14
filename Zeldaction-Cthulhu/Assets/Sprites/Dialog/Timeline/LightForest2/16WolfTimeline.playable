@@ -648,7 +648,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 5.05
         value: {x: 1.288, y: -0.819, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -659,8 +659,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 9.75
         value: {x: 1.293, y: -0.819, z: 0}
-        inSlope: {x: 0.0015810261, y: 0, z: 0}
-        outSlope: {x: 0.0015810261, y: 0, z: 0}
+        inSlope: {x: 0.0026315765, y: 0, z: 0}
+        outSlope: {x: 0.0026315765, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -721,7 +721,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 5.05
         value: 1.288
         inSlope: 0
         outSlope: 0
@@ -732,8 +732,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 9.75
         value: 1.293
-        inSlope: 0.0015810261
-        outSlope: 0.0015810261
+        inSlope: 0.0026315765
+        outSlope: 0.0026315765
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -758,7 +758,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 5.05
         value: -0.819
         inSlope: 0
         outSlope: 0
@@ -795,7 +795,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 5.05
         value: 0
         inSlope: 0
         outSlope: 0
@@ -1821,10 +1821,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: PLayerMoveRight
   - m_Version: 1
-    m_Start: 0
-    m_ClipIn: 0
+    m_Start: 5
+    m_ClipIn: 5
     m_Asset: {fileID: 6476996720599461144}
-    m_Duration: 9.8
+    m_Duration: 4.800000000000002
     m_TimeScale: 1
     m_ParentTrack: {fileID: -351995434813832749}
     m_EaseInDuration: 0
@@ -1887,7 +1887,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
+    m_PreExtrapolationTime: 5
     m_DisplayName: PlayerIdleRight
   - m_Version: 1
     m_Start: 12.683333333333326
