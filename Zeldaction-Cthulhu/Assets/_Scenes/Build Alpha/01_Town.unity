@@ -25193,7 +25193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &359860837
 Transform:
   m_ObjectHideFlags: 0
@@ -92379,11 +92379,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 244679546, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.75992584
       objectReference: {fileID: 0}
     - target: {fileID: 244679546, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00021839142
       objectReference: {fileID: 0}
     - target: {fileID: 244679546, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -92399,11 +92399,11 @@ PrefabInstance:
       objectReference: {fileID: 72373436}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.75992584
       objectReference: {fileID: 0}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00021839142
       objectReference: {fileID: 0}
     - target: {fileID: 1183738390, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -92443,11 +92443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.75992584
       objectReference: {fileID: 0}
     - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00021839142
       objectReference: {fileID: 0}
     - target: {fileID: 1697220536, guid: 16c193a26bbd015469be0e93db5c56c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -122327,7 +122327,7 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -2890193444176653505, guid: 355c7c7b44df47e41a0b86ac0cc58e17, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 661271198}
   - key: {fileID: 0}
     value: {fileID: 0}
@@ -122351,7 +122351,7 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: -2347093850567662722, guid: 355c7c7b44df47e41a0b86ac0cc58e17, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 294574811}
   - key: {fileID: 8157101567237458575, guid: 355c7c7b44df47e41a0b86ac0cc58e17, type: 2}
     value: {fileID: 969449636}
@@ -122389,6 +122389,10 @@ PlayableDirector:
     value: {fileID: 256945965}
   - key: {fileID: 3997888734797438256, guid: 355c7c7b44df47e41a0b86ac0cc58e17, type: 2}
     value: {fileID: 7887168480790905373}
+  - key: {fileID: -1732091624010317058, guid: 355c7c7b44df47e41a0b86ac0cc58e17, type: 2}
+    value: {fileID: 294574811}
+  - key: {fileID: -7568249716225198867, guid: 355c7c7b44df47e41a0b86ac0cc58e17, type: 2}
+    value: {fileID: 661271198}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1814605324
@@ -122438,7 +122442,7 @@ MonoBehaviour:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1814605327}
-          m_MethodName: SetCurrentDirectionLeft
+          m_MethodName: SetCurrentDirectionDown
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
