@@ -1,72 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4159634796429918917
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2219425120232921045}
-  - component: {fileID: 4552590284605225204}
-  - component: {fileID: 4082236316247510515}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2219425120232921045
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4159634796429918917}
-  m_LocalRotation: {x: 0.00000002328306, y: 0.00000000518321, z: 0.00000024443614,
-    w: 1}
-  m_LocalPosition: {x: -959.99963, y: -540.3778, z: -0.000015211527}
-  m_LocalScale: {x: 6.0377355, y: 6.0377355, z: 6.0377355}
-  m_Children: []
-  m_Father: {fileID: 8444390505573902617}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4552590284605225204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4159634796429918917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 8444390505326193087}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!114 &4082236316247510515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4159634796429918917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Interract
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!1 &8011544976507439036
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ec7062a260c0f408bd550f19a1c52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameIsPaused: 0
   PauseMenuUI: {fileID: 8444390505573902618}
   Save: {fileID: 0}
   worldSaveScript: {fileID: 0}

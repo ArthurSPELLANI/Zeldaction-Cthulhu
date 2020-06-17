@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using Game;
 
 public class End_Cinematic : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class End_Cinematic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        canva = UIManager.Instance.gameObject;
     }
 
     // Update is called once per frame
@@ -27,9 +28,8 @@ public class End_Cinematic : MonoBehaviour
 
     public void StartVideo()
     {
-        
-        canva.SetActive(false);
         video.SetActive(true);
+        canva.SetActive(false);       
         
     }
 

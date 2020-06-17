@@ -2,6 +2,8 @@
 using Management;
 using Player;
 using UnityEngine.UI;
+using AudioManaging;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -103,7 +105,17 @@ namespace Game
 
         public void MenuGameOver()
         {
+            Time.timeScale = 1f;
 
+            Destroy(AudioManager.Instance.gameObject);
+
+            SceneManager.LoadScene(0);
+
+            Destroy(PlayerManager.Instance.gameObject);
+            Destroy(UIManager.Instance.gameObject);
+            Destroy(CameraManager.Instance.gameObject);
+            Destroy(GameManager.Instance.gameObject);
+            Destroy(gameObject);
         }
 
         public void DisableUI()

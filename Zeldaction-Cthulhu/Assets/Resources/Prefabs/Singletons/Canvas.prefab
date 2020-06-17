@@ -1314,9 +1314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 47485648103055819}
+    m_SelectOnDown: {fileID: 47485648103055819}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -1444,9 +1444,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 802978546589554606}
+    m_SelectOnDown: {fileID: 802978546589554606}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -1474,7 +1474,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6923541161658890045}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1767857300}
+        m_MethodName: MenuGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2593864438842863082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,7 +1613,7 @@ RectTransform:
   - {fileID: 6956741187122901180}
   - {fileID: 8460601497357175177}
   - {fileID: 3843013570696223693}
-  - {fileID: 8354726895208998266}
+  - {fileID: 4575807792961278070}
   m_Father: {fileID: 4247797824112509089}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3854,7 +3865,7 @@ MonoBehaviour:
   m_Text: 'Continue
 
 '
---- !u!1 &7579107142134660542
+--- !u!1 &7401361305965551744
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3862,9 +3873,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8354726895208998266}
-  - component: {fileID: 742956017660984437}
-  - component: {fileID: 3492745004650832915}
+  - component: {fileID: 4575807792961278070}
+  - component: {fileID: 8816902538690129934}
+  - component: {fileID: 2747675455375849622}
   m_Layer: 5
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3872,13 +3883,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8354726895208998266
+--- !u!4 &4575807792961278070
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579107142134660542}
+  m_GameObject: {fileID: 7401361305965551744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -3886,13 +3897,13 @@ Transform:
   m_Father: {fileID: 6435265322625949419}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &742956017660984437
+--- !u!114 &8816902538690129934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579107142134660542}
+  m_GameObject: {fileID: 7401361305965551744}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
@@ -3901,13 +3912,13 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 1346824061040229083}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &3492745004650832915
+--- !u!114 &2747675455375849622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579107142134660542}
+  m_GameObject: {fileID: 7401361305965551744}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
