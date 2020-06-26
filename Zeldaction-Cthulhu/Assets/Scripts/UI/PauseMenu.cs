@@ -19,6 +19,7 @@ namespace Menu
         GameObject shadowModeGo;
         GameObject attackBehaviorGo;
         GameObject movementBehaviorGo;
+        private int playerHp;
 
         public GameObject Save;
         public WorldSave worldSaveScript;
@@ -40,8 +41,10 @@ namespace Menu
 
         void Update()
         {
+            playerHp = PlayerManager.Instance.playerStats.playerCurrentHealth;
+
             //changer pour start
-            if (Input.GetButtonDown("Start"))
+            if (Input.GetButtonDown("Start") && playerHp > 0)
             {
                 if (gameIsPaused)
                 {

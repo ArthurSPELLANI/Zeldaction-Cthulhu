@@ -12,10 +12,6 @@ namespace Menu
     {
         public GameObject myButton;
 
-
-
-
-
         public void ChangeSelectedButton()
         {
             EventSystem.current.SetSelectedGameObject(myButton);
