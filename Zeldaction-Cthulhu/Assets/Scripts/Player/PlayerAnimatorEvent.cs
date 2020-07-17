@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using Player;
 using Game;
 
@@ -9,6 +11,7 @@ public class PlayerAnimatorEvent : MonoBehaviour
     public PlayerAttack attack;
     public PlayerMovement movement;
     public PlayerShoot shoot;
+    public GameObject myButton;
 
     private void Start()
     {
@@ -92,6 +95,7 @@ public class PlayerAnimatorEvent : MonoBehaviour
     public void GameOver()
     {
         UIManager.Instance.gameOver.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(UIManager.Instance.gameOver.transform.GetChild(2).gameObject);
     }
 
 }
